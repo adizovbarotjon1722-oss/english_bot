@@ -117,20 +117,14 @@ def init_db():
                 file_path TEXT
             );
 
-            -- Indekslar (minglab user uchun tezlik)
-            CREATE INDEX IF NOT EXISTS idx_users_telegram ON users(telegram_id);
-            CREATE INDEX IF NOT EXISTS idx_users_referral ON users(referral_code);
-            CREATE INDEX IF NOT EXISTS idx_results_user ON results(user_id);
-            CREATE INDEX IF NOT EXISTS idx_results_created ON results(created_at);
-            CREATE INDEX IF NOT EXISTS idx_module_progress_user ON module_progress(user_id, subject);
-            CREATE INDEX IF NOT EXISTS idx_seen_user ON seen_exercises(user_id, subject);
-            CREATE INDEX IF NOT EXISTS idx_badges_user ON badges(user_id);
-            CREATE INDEX IF NOT EXISTS idx_daily_user ON daily_activity(user_id, activity_date);
             """
         )
-        # Migratsiya: eski jadvalga yangi ustunlar
+        # Migratsiya: eski bazaga yangi ustunlar (CREATE TABLE IF NOT EXISTS ularni qo'shmaydi)
         cols = {r[1] for r in conn.execute("PRAGMA table_info(users)").fetchall()}
         for col, typ in [
+            ("placement_done", "INTEGER DEFAULT 0"),
+            ("current_level", "TEXT DEFAULT 'beginner'"),
+            ("xp", "INTEGER DEFAULT 0"),
             ("is_premium", "INTEGER DEFAULT 0"),
             ("premium_until", "TEXT"),
             ("referral_code", "TEXT"),
@@ -142,6 +136,22 @@ def init_db():
                     conn.execute(f"ALTER TABLE users ADD COLUMN {col} {typ}")
                 except sqlite3.OperationalError:
                     pass
+
+        # Indekslar — faqat ustunlar mavjud bo'lgach (eski DB crash qilmasin)
+        for stmt in [
+            "CREATE INDEX IF NOT EXISTS idx_users_telegram ON users(telegram_id)",
+            "CREATE INDEX IF NOT EXISTS idx_users_referral ON users(referral_code)",
+            "CREATE INDEX IF NOT EXISTS idx_results_user ON results(user_id)",
+            "CREATE INDEX IF NOT EXISTS idx_results_created ON results(created_at)",
+            "CREATE INDEX IF NOT EXISTS idx_module_progress_user ON module_progress(user_id, subject)",
+            "CREATE INDEX IF NOT EXISTS idx_seen_user ON seen_exercises(user_id, subject)",
+            "CREATE INDEX IF NOT EXISTS idx_badges_user ON badges(user_id)",
+            "CREATE INDEX IF NOT EXISTS idx_daily_user ON daily_activity(user_id, activity_date)",
+        ]:
+            try:
+                conn.execute(stmt)
+            except sqlite3.OperationalError:
+                pass
 
 
 def _gen_ref_code() -> str:
