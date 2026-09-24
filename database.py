@@ -243,10 +243,13 @@ def get_or_create_user(
             "SELECT id, referral_code FROM users WHERE telegram_id = ?", (telegram_id,)
         ).fetchone()
         if row:
-            conn.execute(
-                "UPDATE users SET username = ?, full_name = ? WHERE id = ?",
-                (username, full_name, row["id"]),
-            )
+            # None qiymatlar mavjud ma'lumotni o'chirib yubormasin (COALESCE)
+            if username is not None or full_name is not None:
+                conn.execute(
+                    "UPDATE users SET username = COALESCE(?, username), "
+                    "full_name = COALESCE(?, full_name) WHERE id = ?",
+                    (username, full_name, row["id"]),
+                )
             if not row["referral_code"]:
                 code = _gen_ref_code()
                 while conn.execute(
@@ -647,6 +650,13 @@ def count_users() -> int:
         return conn.execute("SELECT COUNT(*) AS c FROM users").fetchone()["c"]
 
 
+def all_telegram_ids() -> list:
+    """Broadcast uchun barcha faol telegram_id lar."""
+    with get_conn() as conn:
+        rows = conn.execute("SELECT telegram_id FROM users ORDER BY id").fetchall()
+        return [r["telegram_id"] for r in rows]
+
+
 def list_users(limit: int = 20, offset: int = 0) -> list:
     with get_conn() as conn:
         rows = conn.execute(
@@ -957,6 +967,8 @@ def create_team(owner_id: int, name: str) -> str:
 
 def join_team(user_id: int, code: str) -> Optional[str]:
     code = (code or "").strip().upper()
+    if not (4 <= len(code) <= 12) or not code.isalnum():
+        return None
     with get_conn() as conn:
         t = conn.execute("SELECT * FROM teams WHERE code=?", (code,)).fetchone()
         if not t:

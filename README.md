@@ -3,6 +3,29 @@
 Ingliz va Rus tillari: placement → video → nazariya → mashq → unlock.
 Savollar ko'paytirilgan, rasm/audio, referral, premium, sertifikat, Sentry, backup.
 
+## So'nggi yangilanish (24.09.2026)
+
+### Xavfsizlik
+- `/premium` endi **faqat admin** uchun — avval har kim o'ziga premium yoqa olardi
+- Deep-link referral kodi validatsiyasi (faqat A–Z, 0–9, 4–16 belgi)
+- Jamoa kodi validatsiyasi (4–12 belgi, harf/raqam)
+- Speaking uchun vaqtinchalik ovoz fayllari avtomatik o'chiriladi
+- Throttling xotirasi cheklangan (server uzoq ishlaganda RAM o'smaydi)
+- Foydalanuvchi nomi/ismini `None` bilan o'chirib tashlash muammosi tuzatildi (COALESCE)
+- `reportlab` o'rnatilmagan bo'lsa ham bot ishlaydi (sertifikat graceful disable)
+
+### Buglar
+- Jamoaga kod bilan qo'shilish ishlamasdi (matnli handler bloklab qo'yardi) — tuzatildi
+- Tilni almashtirganda qayta placement test majburlanardi — tuzatildi
+- "Juftlik poygasi" o'yini noto'g'ri "bepul mashq" sifatida saqlanardi — tuzatildi
+- `/broadcast` faqat 500 kishiga yuborardi — endi barcha foydalanuvchilarga
+
+### UX / uslub
+- Bosh menyu ixcham va guruhlangan (8 qator)
+- Matnlar professional ohangda qayta yozildi
+- Progress indikatori (▰▰▰▱▱) — daraja, statistika va modul yakunida
+- Kunlik challenge endi haqiqatan kunlik (bir kunda bitta, hamma uchun bir xil)
+
 ## Tezkor start
 
 ```bash
@@ -32,8 +55,7 @@ python bot.py
 
 ### Monetizatsiya
 - **Premium**: cheksiz mashq, sertifikat
-  - Demo: `/premium` (o'zingizga 30 kun)
-  - Admin: `/premium <telegram_id> [days]` (`ADMIN_IDS`)
+  - Faqat admin: `/premium` (o'ziga 30 kun) yoki `/premium <telegram_id> [kunlar]` (`ADMIN_IDS`)
 - **Sertifikat**: darajadagi barcha modullar tugagach PDF (reportlab)
 
 ### Texnik
