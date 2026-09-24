@@ -1,0 +1,76 @@
+{
+  "grammar": [
+    {
+      "id": "ru_basics",
+      "order": 0,
+      "title": "1-bo'lim: Asosiy iboralar va 'быть' fe'li",
+      "text_explanation": "📘 Rus tilida hozirgi zamonda 'быть' (bo'lmoq) fe'li odatda tushiriladi, lekin egalikni bildirishda 'есть' ishlatiladi.\n\n✅ Misol: 'У меня есть брат' — Mening akam bor.\n✅ Sifatlar jinsga qarab o'zgaradi: большой (u.), большая (a.), большое (o'.).",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "ru_cases_basic",
+      "order": 1,
+      "title": "2-bo'lim: Asosiy padejlar (Винительный, Предложный)",
+      "text_explanation": "📘 <b>Винительный падеж</b> (Vinitelniy) — to'g'ridan-to'g'ri to'ldiruvchi yoki harakat yo'nalishi uchun: 'Я иду в школу.'\n\n📘 <b>Предложный падеж</b> (Predlojniy) — joyni bildirish uchun: 'Я живу в Ташкенте.'",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "ru_past",
+      "order": 2,
+      "title": "3-bo'lim: O'tgan zamon (Прошедшее время)",
+      "text_explanation": "📘 O'tgan zamonda fe'l jinsga qarab o'zgaradi: -л (erkak), -ла (ayol), -ло (o'rta), -ли (ko'plik).\n\n✅ Misol: 'Я ходил в магазин.' (erkak) / 'Она ходила в магазин.' (ayol)",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "ru_future",
+      "order": 3,
+      "title": "4-bo'lim: Kelasi zamon (Будущее время)",
+      "text_explanation": "📘 Tugallanmagan fe'llar uchun: быть + infinitiv (буду делать). Tugallangan fe'llar uchun oddiy o'zgarish: пойду, сделаю.\n\n✅ Misol: 'Завтра мы пойдём в кино.'",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "ru_cases_advanced",
+      "order": 4,
+      "title": "5-bo'lim: Qo'shimcha padejlar (Творительный)",
+      "text_explanation": "📘 <b>Творительный падеж</b> (Tvoritelniy) — vosita yoki hamrohlikni bildiradi, ba'zi fe'llar bilan qo'llanadi (интересоваться музыкой).\n\n✅ Misol: 'Я интересуюсь музыкой.'",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "ru_conditional_passive",
+      "order": 5,
+      "title": "6-bo'lim: Shart mayli va Passive",
+      "text_explanation": "📘 <b>Сослагательное наклонение</b> (shart mayli) — 'бы' zarrachasi bilan: 'Если бы у меня было время...'\n\n📘 <b>Passive (majhul nisbat)</b> — ijrochi Tvoritelniy padejda keladi: 'Текст написан писателем.'",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "ru_advanced_grammar",
+      "order": 6,
+      "title": "7-bo'lim: Murakkab grammatika",
+      "text_explanation": "📘 Bu bo'limda o'rganasiz:\n✅ 'Несмотря на' — qaramasdan\n✅ 'Как будто' — go'yoki\n✅ Kelasi zamonda tugallangan harakat: 'К концу года проект будет завершён.'\n✅ Деепричастие (masalan: читая — o'qiyotib)",
+      "pass_threshold": 0.7
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "everyday_words",
+      "order": 0,
+      "title": "1-bo'lim: Kundalik so'zlar",
+      "text_explanation": "📗 Kundalik hayotda eng ko'p ishlatiladigan rus so'zlari: дом, вода, друг, магазин va h.k.\n\n💡 Maslahat: har bir yangi so'zni gap ichida yodlang.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "useful_expressions",
+      "order": 1,
+      "title": "2-bo'lim: Foydali iboralar",
+      "text_explanation": "📗 Kundalik muloqotda foydali so'z va iboralar: возможность, опытный, достигать цели.\n\n💡 Maslahat: sinonim va antonimlarni birga yodlash tezroq eslab qolishga yordam beradi.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "advanced_vocabulary",
+      "order": 2,
+      "title": "3-bo'lim: Murakkab lug'at",
+      "text_explanation": "📗 Yuqori darajadagi so'zlar: неоднозначный, усугублять, скрупулёзный, повсеместный.\n\n💡 Maslahat: bu so'zlarni rasmiy matn yozishda ishlatishga harakat qiling.",
+      "pass_threshold": 0.7
+    }
+  ]
+}

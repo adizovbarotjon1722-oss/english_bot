@@ -1,0 +1,76 @@
+{
+  "grammar": [
+    {
+      "id": "present_simple",
+      "order": 0,
+      "title": "1-bo'lim: Present Simple (Hozirgi oddiy zamon)",
+      "text_explanation": "📘 <b>Present Simple</b> — doimiy odat, umumiy haqiqat yoki jadval bo'yicha ishlarni ifodalaydi.\n\n✅ Tuzilishi: I/You/We/They + fe'l (V1); He/She/It + fe'l+s/es\n✅ Misol: 'I work every day.' / 'She works every day.'\n✅ Salbiy: don't/doesn't + V1\n✅ So'roq: Do/Does + ega + V1?\n\n🔑 Belgilovchi so'zlar: always, usually, often, every day/week, on Mondays.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "present_continuous",
+      "order": 1,
+      "title": "2-bo'lim: Present Continuous (Hozirgi davom zamon)",
+      "text_explanation": "📘 <b>Present Continuous</b> — hozir, shu daqiqada sodir bo'layotgan harakatni bildiradi.\n\n✅ Tuzilishi: am/is/are + fe'l+ing\n✅ Misol: 'I am reading a book now.'\n✅ Salbiy: am/is/are + not + V-ing\n✅ So'roq: Am/Is/Are + ega + V-ing?\n\n🔑 Belgilovchi so'zlar: now, at the moment, right now, look!, listen!",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "past_simple",
+      "order": 2,
+      "title": "3-bo'lim: Past Simple va Past Continuous (O'tgan zamon)",
+      "text_explanation": "📘 <b>Past Simple</b> — o'tgan vaqtda tugallangan harakat.\n✅ Muntazam fe'llar: V+ed (worked); noto'g'ri fe'llar alohida yodlanadi (go→went).\n✅ Misol: 'I worked yesterday.'\n\n📘 <b>Past Continuous</b> — o'tgan vaqtda davom etayotgan harakat.\n✅ Tuzilishi: was/were + V-ing\n✅ Misol: 'I was working when she called.'\n\n🔑 Belgilovchi so'zlar: yesterday, last week, ago, when, while.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "present_perfect",
+      "order": 3,
+      "title": "4-bo'lim: Present Perfect (Hozirgi tugallangan zamon)",
+      "text_explanation": "📘 <b>Present Perfect</b> — o'tmishda boshlanib hozirgi vaqtga bog'liq bo'lgan yoki tajriba bildiruvchi harakat.\n\n✅ Tuzilishi: have/has + V3 (past participle)\n✅ Misol: 'I have visited London.' / 'She has never been to Japan.'\n\n🔑 Belgilovchi so'zlar: already, just, yet, ever, never, since, for.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "modals_and_passive",
+      "order": 4,
+      "title": "5-bo'lim: Modal fe'llar va Passive Voice",
+      "text_explanation": "📘 <b>Modal fe'llar</b> (must, have to, should, can) — majburiyat, tavsiya, imkoniyatni bildiradi.\n✅ Misol: 'You must finish this today.'\n\n📘 <b>Passive Voice</b> — harakatni bajaruvchidan ko'ra harakatning o'ziga urg'u berish uchun ishlatiladi.\n✅ Tuzilishi: be + V3\n✅ Misol: 'The book was written by him.'",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "future_simple",
+      "order": 5,
+      "title": "6-bo'lim: Future Simple va Shart gaplar (Conditionals)",
+      "text_explanation": "📘 <b>Future Simple</b> — kelajakdagi harakat, qaror yoki bashorat.\n✅ Tuzilishi: will + V1\n✅ Misol: 'I will call you tomorrow.'\n\n📘 <b>Zero/First Conditional</b> — shart va uning natijasi.\n✅ 'If it rains, I will stay home.' (real shart)\n✅ 'If you heat water, it boils.' (umumiy haqiqat)",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "advanced_grammar",
+      "order": 6,
+      "title": "7-bo'lim: Murakkab grammatika",
+      "text_explanation": "📘 Bu bo'limda quyidagilarni o'rganasiz:\n✅ <b>Third Conditional</b> — o'tmishdagi noreal shart: 'If I had known, I would have acted differently.'\n✅ <b>Inversiya</b>: 'Not only was he late...'\n✅ <b>Future Perfect</b>: 'By next year, she will have worked here for a decade.'\n✅ <b>Wish + Past Perfect</b>: 'I wish I had had more time.'",
+      "pass_threshold": 0.7
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "everyday_words",
+      "order": 0,
+      "title": "1-bo'lim: Kundalik so'zlar",
+      "text_explanation": "📗 Kundalik hayotda eng ko'p ishlatiladigan so'zlar: uy-ro'zg'or, oziq-ovqat, oddiy sifatlar (katta/kichik, issiq/sovuq) va boshqalar.\n\n💡 Maslahat: har bir yangi so'zni gap ichida yodlang, yolg'iz so'z sifatida emas.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "useful_expressions",
+      "order": 1,
+      "title": "2-bo'lim: Foydali iboralar",
+      "text_explanation": "📗 Bu bo'limda kundalik muloqotda va ishda foydali bo'lgan fe'l va iboralarni o'rganasiz (masalan: postpone, achieve, reliable).\n\n💡 Maslahat: sinonim va antonimlarni birga yodlash tezroq eslab qolishga yordam beradi.",
+      "pass_threshold": 0.7
+    },
+    {
+      "id": "advanced_vocabulary",
+      "order": 2,
+      "title": "3-bo'lim: Murakkab lug'at",
+      "text_explanation": "📗 Yuqori darajadagi (C1) so'zlar — ilmiy, rasmiy va nozik ma'noli so'zlar: ambiguous, meticulous, ubiquitous va h.k.\n\n💡 Maslahat: bu so'zlarni maqola o'qishda, IELTS Writing'da ishlatishga harakat qiling.",
+      "pass_threshold": 0.7
+    }
+  ]
+}

@@ -1,174 +1,173 @@
-# Repetitorlik Telegram Bot
+# Repetitorlik Telegram Bot — to'liq kurs tizimi
 
-Ingliz va rus tillaridan test/mashq qildiradigan Telegram bot. Grammatika va
-lug'at (vocabulary) bo'yicha 3 ta daraja (boshlang'ich, o'rta, qiyin) mavjud.
+Ingliz va rus tillaridan **strukturaviy kurs**: har bir zamon/mavzu alohida
+bo'lim (video darslik + matnli/og'zaki tushuntirish + mashqlar), bo'limlar
+**ketma-ket ochiladi** — Duolingo va shunga o'xshash platformalarning asosiy
+tamoyillari asosida qurilgan (moslashuvchan joylashtirish testi, mastery-based
+unlock, takrorlanmaydigan mashqlar, streak/nishon tizimi).
 
 ## Fayllar tuzilishi
 
 ```
 repetitor_bot/
-├── bot.py              # Asosiy bot logikasi (aiogram 3.x)
-├── database.py         # SQLite bilan ishlash funksiyalari
-├── questions_en.json   # Ingliz tili savollar banki
-├── questions_ru.json   # Rus tili savollar banki
-├── requirements.txt    # Kerakli Python kutubxonalari
+├── bot.py               # Asosiy bot logikasi (aiogram 3.x)
+├── database.py          # SQLite bilan ishlash funksiyalari
+├── curriculum_en.json   # Ingliz tili — bo'limlar (modullar) ta'rifi
+├── curriculum_ru.json   # Rus tili — bo'limlar (modullar) ta'rifi
+├── questions_en.json    # Ingliz tili savollar banki (modulga bog'langan)
+├── questions_ru.json    # Rus tili savollar banki (modulga bog'langan)
+├── requirements.txt
+├── .env.example
 └── README.md
 ```
 
-## O'rnatish va ishga tushirish
+## O'rnatish
 
-1. **Python 3.10+** o'rnatilganiga ishonch hosil qiling.
-
-2. Kutubxonalarni o'rnating:
-   ```bash
+1. **Python 3.10+**
+2. ```bash
    pip install -r requirements.txt
    ```
-
-3. Telegram bot tokenini oling:
-   - Telegramda [@BotFather](https://t.me/BotFather) ga o'ting
-   - `/newbot` buyrug'ini yuboring, nom va username bering
-   - Sizga beriladigan tokenni saqlab qo'ying
-
-4. Tokenni `.env` fayli orqali bering (tavsiya etiladi):
-   ```bash
+3. [@BotFather](https://t.me/BotFather) dan token oling.
+4. ```bash
    cp .env.example .env
-   # .env faylini ochib, BOT_TOKEN=... qatoriga haqiqiy tokeningizni yozing
+   # .env faylini ochib BOT_TOKEN va ADMIN_IDS ni to'ldiring
    ```
-   `.env` fayli `.gitignore`ga kiritilgan — u hech qachon GitHub yoki boshqa
-   ochiq joyga yuklanmaydi. Muhim: tokenni hech kim bilan ulashmang, u orqali
-   botingizni to'liq boshqarish mumkin.
-
-5. Botni ishga tushiring:
-   ```bash
+   `ADMIN_IDS` — video/audio darslik yuklay oladigan Telegram ID'lar (o'z
+   ID'ingizni bilish uchun @userinfobot ga yozing).
+5. ```bash
    python bot.py
    ```
 
-Birinchi ishga tushirishda `repetitor.db` nomli SQLite fayli avtomatik yaratiladi.
+## Tizim qanday ishlaydi
+
+### 1. Bo'limlar (modullar) — har bir zamon/mavzu uchun
+
+`curriculum_en.json` / `curriculum_ru.json` da har bir bo'lim: `id`, `order`
+(tartib raqami), `title`, `text_explanation` (yozma tushuntirish, HTML bilan),
+`pass_threshold` (bo'lim testidan o'tish uchun kerakli foiz, standart 70%).
+
+Boshlang'ich to'plam:
+- **Grammatika (EN):** Present Simple → Present Continuous → Past Simple →
+  Present Perfect → Modals/Passive → Future Simple → Murakkab grammatika
+- **Grammatika (RU):** Asosiy iboralar → Asosiy padejlar → O'tgan zamon →
+  Kelasi zamon → Qo'shimcha padejlar → Shart mayli/Passive → Murakkab grammatika
+- **Lug'at (EN/RU):** Kundalik so'zlar → Foydali iboralar → Murakkab lug'at
+
+### 2. Ketma-ket ochilish (mastery-based unlock)
+
+Har bir (foydalanuvchi, til, bo'lim-turi) uchun `unlocked_order` saqlanadi.
+Faol bo'lim tugallanmaguncha keyingisi **ochilmaydi** — o'quvchi sakrab o'tib
+ketolmaydi. Bo'lim testidan `pass_threshold` dan yuqori ball bilan o'tilsa,
+keyingi bo'lim avtomatik ochiladi.
+
+### 3. Video-gating
+
+O'qituvchi (admin) `/setvideo en grammar present_simple` buyrug'i bilan videoni
+shu bo'limga bog'laydi. Video mavjud bo'lgan bo'limda o'quvchi **"✅ Ko'rdim"**
+tugmasini bosmaguncha o'sha bo'limning mashqlari va testi ochilmaydi.
+
+> ⚠️ **Muhim cheklov:** Telegram real vaqtda "video oxirigacha ko'rildimi"
+> degan ma'lumotni bermaydi — shuning uchun bu o'z-o'zini tasdiqlash (self-report)
+> tugmasi orqali amalga oshiriladi. Bu ko'plab ta'lim botlarida qo'llaniladigan
+> standart yechim.
+
+### 4. Joylashtirish testi (placement test)
+
+Yangi o'quvchi bo'lim/til tanlaganda ikkita variant beriladi: joylashtirish
+testini ishlash yoki 1-bo'limdan boshlash. Test har bir bo'limdan bittadan
+savol oladi; natijaga qarab mos bo'limdan boshlanadi (Duolingo'dagi
+soddalashtirilgan versiyasi — to'liq adaptiv IRT algoritmi emas, lekin xuddi
+shu tamoyil: tajribali o'quvchi asosdan boshlamaydi).
+
+### 5. Mashqlar takrorlanmaydi
+
+Har bir savol foydalanuvchi bo'yicha (`seen_questions` jadvalida) kuzatiladi.
+Mashq/bo'lim testi tanlaganda avval **ko'rilmagan** savollar ustunlik qiladi;
+barcha savollar bir marta ko'rilgach, eng kam ko'rilganlari qaytadan
+aralashtirilib beriladi — shu bilan mashqlar doim yangilanib turadi.
+
+### 6. Xatolarni qayta mashq qilish — `/review`
+
+Foydalanuvchi ko'proq xato qilgan savollar alohida to'plamda (barcha
+bo'limlar bo'yicha) qayta beriladi — progressga ta'sir qilmaydi, faqat
+mustahkamlash uchun.
 
 ## Bot buyruqlari
 
-- `/start` — testni boshlash (til → bo'lim → daraja tanlash)
-- `/stats` — shaxsiy statistika (unvon, streak, ishlangan testlar, kuchsiz tomonlar)
-- `/badges` — qo'lga kiritilgan nishonlar ro'yxati
-- `/top` — reyting jadvali (TOP-10 foydalanuvchi)
+- `/start` — kursni boshlash/davom ettirish
+- `/progress` — barcha bo'limlar bo'yicha holat (✅ o'tilgan, 🔓 faol, 🔒 qulf)
+- `/review` — xato qilingan savollarni qayta mashq qilish
+- `/stats` — shaxsiy statistika (unvon, streak, nishonlar soni)
+- `/badges` — qo'lga kiritilgan nishonlar
+- `/top` — barcha vaqt reytingi
+- `/weektop` — so'nggi 7 kunlik reyting
+
+**Admin (o'qituvchi) buyruqlari** (`.env`dagi `ADMIN_IDS`ga kiritilgan bo'lishi kerak):
+- `/modules` — barcha til/bo'lim/modul ID'larini ko'rsatadi
+- `/setvideo <en|ru> <grammar|vocabulary> <module_id>` — keyingi yuborilgan
+  videoni shu modulga bog'laydi
+- `/setaudio <en|ru> <grammar|vocabulary> <module_id>` — keyingi yuborilgan
+  ovozli xabar/audioni shu modulga bog'laydi
 
 ## Savol turlari
 
-Bot 3 xil savol turini qo'llab-quvvatlaydi (`questions_*.json`dagi `"type"` maydoni orqali):
+`questions_*.json`dagi `"type"` maydoni orqali:
 
-1. **`mcq`** (standart, `type` yozilmasa ham shu) — variantli test
-2. **`fill_blank`** — foydalanuvchi javobni matn ko'rinishida yozadi;
-   `accepted_answers` massivida bir nechta to'g'ri yozilish shakli berilishi mumkin
-3. **`matching`** — chap va o'ng ustunlarni mos keltirish (`pairs` massivi);
-   bot har bir juftlikni birma-bir so'raydi va oxirida barchasi to'g'ri
-   bo'lsagina savol "to'g'ri" hisoblanadi
+1. **`mcq`** (standart) — variantli test
+2. **`fill_blank`** — matnli javob; `accepted_answers` massivida bir nechta
+   to'g'ri yozilish shakli bo'lishi mumkin
+3. **`matching`** — juftliklarni mos keltirish (`pairs` massivi)
+
+Har bir savol `"module"` maydoni orqali tegishli bo'limga bog'langan bo'lishi
+**shart** — aks holda o'sha modulda mashq/test ishlamaydi.
 
 ## O'yinlashtirish (gamification)
 
-Mashg'ulotlarni qiziqarli qilish uchun quyidagilar qo'shilgan:
+- **Unvonlar:** 🌱 Yangi boshlovchi → 📖 O'quvchi → 🎯 Bilimdon → 🏅 Usta → 👑 Professor
+- **Nishonlar:** birinchi test, 100% natija, streak bosqichlari (3/7/14/30
+  kun), test soni bosqichlari (10/50/100), **kursni to'liq tugatish**
+  sertifikat-nishoni (har til/bo'lim uchun alohida)
+- **Streak "yumshoq qo'nish"** — 2-3 kun tanaffusdan keyin streak butunlay
+  emas, yarmiga tushadi (Duolingo'dagi streak freeze tamoyiliga yaqin)
+- **Hazil-mutoyibali xabarlar** — har javobdan keyin tasodifiy tanlangan
+  rag'batlantiruvchi ibora
 
-- **Hazil-mutoyibali javob xabarlari** — har safar tasodifiy tanlangan turli
-  xil rag'batlantiruvchi/hazil iboralar (`CORRECT_PHRASES`, `WRONG_PHRASES`
-  ro'yxatlarida — xohlasangiz o'zingizniki bilan to'ldiring/almashtiring)
-- **Unvonlar** — umumiy to'g'ri javoblar soniga qarab avtomatik ochiladi:
-  🌱 Yangi boshlovchi → 📖 O'quvchi → 🎯 Bilimdon → 🏅 Usta → 👑 Professor
-- **Nishonlar (badges)** — birinchi test, 100% natija, streak bosqichlari
-  (3/7/14/30 kun), umumiy test soni bosqichlari (10/50/100 ta)
-- **Streak** — ketma-ket kunlarda test ishlash hisoblanadi va har test
-  yakunida ko'rsatiladi
+## Xavfsizlik
 
-Unvon va nishon ro'yxatini kengaytirish uchun `bot.py`dagi `TITLE_THRESHOLDS`,
-`STREAK_BADGES`, `TESTS_TAKEN_BADGES`, `CORRECT_PHRASES`, `WRONG_PHRASES`
-o'zgaruvchilarini tahrirlang.
+Oldingi versiyada qo'shilgan barcha choralar saqlanib qolgan: `.env`-based
+token, HTML-injection himoyasi, faqat shaxsiy chat, sessiya egasini
+tekshirish, anti-flood, callback-data validatsiyasi, xatolarni ushlash,
+parametrlashtirilgan SQL so'rovlari. Admin buyruqlari faqat `ADMIN_IDS`
+ro'yxatidagilar uchun ishlaydi.
 
-## Savollar bankini kengaytirish
+## Kengaytirish
 
-`questions_en.json` va `questions_ru.json` fayllariga yangi obyekt qo'shish
-kifoya. Savol turiga qarab format farq qiladi:
+### Yangi bo'lim (modul) qo'shish
+1. `curriculum_en.json`/`curriculum_ru.json`ga yangi obyekt qo'shing
+   (`id`, `order` — ketma-ketlikni buzmang, `title`, `text_explanation`).
+2. Shu `module` ID bilan kamida 4-5 ta savol yozing (`questions_*.json`).
+3. `/setvideo` va `/setaudio` bilan video/audio biriktiring (ixtiyoriy).
 
-**MCQ (variantli):**
+### Savol formati
 ```json
-{
-  "id": "en_g_b_08",
-  "section": "grammar",
-  "level": "beginner",
-  "question": "Savol matni",
-  "options": ["A", "B", "C", "D"],
-  "correct": 0,
-  "explanation": "Nega bu javob to'g'ri ekanligi tushuntirilishi"
-}
+{"id":"...", "section":"grammar", "module":"present_simple", "type":"mcq",
+ "question":"...", "options":["A","B","C","D"], "correct":0, "explanation":"..."}
+
+{"id":"...", "section":"grammar", "module":"...", "type":"fill_blank",
+ "question":"...", "accepted_answers":["..."], "explanation":"..."}
+
+{"id":"...", "section":"vocabulary", "module":"...", "type":"matching",
+ "question":"...", "pairs":[{"left":"...","right":"..."}], "explanation":"..."}
 ```
-
-**Fill_blank (bo'shliq to'ldirish):**
-```json
-{
-  "id": "en_fb_b_05",
-  "section": "grammar",
-  "level": "beginner",
-  "type": "fill_blank",
-  "question": "I ___ a student.",
-  "accepted_answers": ["am"],
-  "explanation": "Tushuntirish"
-}
-```
-
-**Matching (mos keltirish):**
-```json
-{
-  "id": "en_m_b_02",
-  "section": "vocabulary",
-  "level": "beginner",
-  "type": "matching",
-  "question": "So'zlarni mos keltiring:",
-  "pairs": [{"left": "Cat", "right": "Mushuk"}, {"left": "Dog", "right": "It"}],
-  "explanation": "Tushuntirish"
-}
-```
-
-- `section`: `"grammar"` yoki `"vocabulary"`
-- `level`: `"beginner"`, `"intermediate"` yoki `"advanced"`
-- `correct` (mcq uchun): to'g'ri javobning `options` massividagi indeksi (0 dan boshlanadi)
-
-Hozircha har bir tilda ~30 tadan savol bor (demo uchun) — botni ishga
-tushirishdan oldin buni kamida 100-150 tagacha ko'paytirish tavsiya etiladi,
-aks holda foydalanuvchilarga bir xil savollar tez-tez takrorlanadi.
-
-## Xavfsizlik bo'yicha qo'llanilgan choralar
-
-- **Token himoyasi** — token kodga yozilmaydi, `.env` fayldan o'qiladi va
-  `.gitignore` orqali repo'ga tushmaydi. Token bo'lmasa bot ishga tushmaydi
-  (aniq xato bilan to'xtaydi, noaniq holatda qolmaydi).
-- **HTML-injection himoyasi** — foydalanuvchi ismi/username kabi Telegram
-  profilidan olinadigan ma'lumotlar xabarga qo'yishdan oldin `html.escape()`
-  bilan tozalanadi, aks holda kimdir o'z ismiga maxsus belgilar kiritib
-  xabar formatini buzishi yoki soxta tugma/matn ko'rsatishi mumkin edi.
-- **Faqat shaxsiy chat** — bot faqat 1-on-1 (private) chatlarda ishlaydi;
-  guruhga qo'shilib qolsa ham boshqa a'zolarning buyruqlariga javob
-  bermaydi, shu bilan bir foydalanuvchining testiga boshqa a'zo
-  aralashib qolish xavfi yo'qoladi.
-- **Sessiya egasini tekshirish** — har bir javob tugmasi bosilganda kim
-  bosayotgani (sessiya boshlagan foydalanuvchimi) tekshiriladi — himoya
-  chuqurligi uchun qo'shimcha qatlam.
-- **Anti-flood/spam** — har bir foydalanuvchi uchun so'rovlar oralig'i
-  cheklangan (soniyaning bir qismi), shu bilan bot ustidan spam orqali
-  yuklama tushirishning oldi olinadi.
-- **Callback-data validatsiyasi** — tugmalardan keladigan ma'lumot doim
-  tekshiriladi (noto'g'ri format, chegaradan tashqari indeks va h.k.),
-  buzilgan/soxta so'rov bot ishini to'xtatmaydi.
-- **SQL-injection himoyasi** — barcha bazaga so'rovlar parametrlashtirilgan
-  (`?` placeholder), foydalanuvchi kiritgan matn hech qachon SQL so'roviga
-  to'g'ridan-to'g'ri qo'shilmaydi.
-- **Xatolarni ushlash** — kutilmagan xatoliklar (masalan, eskirgan xabarni
-  tahrirlashga urinish) botni yiqitmaydi, faqat log'ga yoziladi.
 
 ## Keyingi qadamlar (tavsiya)
 
-- [ ] Savollar bazasini kengaytirish (kamida 150+ savol/til)
-- [ ] Admin panel yoki admin-bot orqali yangi savol qo'shish imkoniyati
-- [ ] Kunlik eslatma (reminder) — foydalanuvchi uzoq vaqt kirmasa xabar yuborish
-- [ ] Do'stni taklif qilish (referral) tizimi
-- [ ] Yangi fanlar qo'shish (Matematika, Dasturlash va h.k.)
-- [ ] Production serverga deploy qilish (systemd yoki Docker orqali)
-- [ ] Production'da MemoryStorage o'rniga Redis-based FSM storage ishlatish
-      (server qayta ishga tushganda foydalanuvchi sessiyalari yo'qolmasligi uchun)
-- [ ] Sentry yoki shunga o'xshash xato kuzatuv tizimini ulash
+- [ ] Rasm/audio biriktirilgan savollar (infratuzilma tayyor — `message.answer_photo`
+      qo'shish kifoya, kontentni o'zingiz yuklaysiz)
+- [ ] Production'da `MemoryStorage` o'rniga Redis-based FSM storage
+      (server qayta ishga tushganda sessiyalar yo'qolmasligi uchun)
+- [ ] Har bir bo'lim uchun ko'proq savol qo'shish (hozir 4-8 tadan — real
+      foydalanishda kamida 15-20 ta tavsiya etiladi)
+- [ ] Sentry yoki shunga o'xshash xato kuzatuv tizimi
+- [ ] Placement testni to'liq adaptiv (IRT) qilish — hozirgi versiya
+      soddalashtirilgan (har bo'limdan bittadan savol)
