@@ -1,0 +1,377 @@
+{
+  "subject": "en",
+  "skills": {
+    "reading": {
+      "title": "📖 Reading",
+      "emoji": "📖",
+      "desc": "Qisqa hikoyalar va savollar — o'qib tushunish",
+      "units": [
+        {
+          "id": "en_read_01",
+          "title": "A Day in Tashkent",
+          "level": "beginner",
+          "passage": "My name is Aziza. I live in Tashkent. Every morning I wake up at seven o'clock. I drink tea and eat bread with jam. Then I go to school by bus. At school I study English, maths and history. After school I play with my friends in the park. In the evening I help my mother and do my homework. I go to bed at ten.",
+          "audio_hint": null,
+          "questions": [
+            {
+              "id": "en_r01_q1",
+              "type": "mcq",
+              "question": "Where does Aziza live?",
+              "options": [
+                "Samarkand",
+                "Tashkent",
+                "Bukhara",
+                "London"
+              ],
+              "correct": 1,
+              "explanation": "I live in Tashkent."
+            },
+            {
+              "id": "en_r01_q2",
+              "type": "mcq",
+              "question": "What time does she wake up?",
+              "options": [
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "correct": 1,
+              "explanation": "at seven o'clock."
+            },
+            {
+              "id": "en_r01_q3",
+              "type": "mcq",
+              "question": "How does she go to school?",
+              "options": [
+                "By car",
+                "By bus",
+                "On foot",
+                "By bike"
+              ],
+              "correct": 1,
+              "explanation": "by bus."
+            },
+            {
+              "id": "en_r01_q4",
+              "type": "mcq",
+              "question": "What does she do after school?",
+              "options": [
+                "Sleeps",
+                "Plays with friends",
+                "Works",
+                "Cooks alone"
+              ],
+              "correct": 1,
+              "explanation": "play with my friends."
+            },
+            {
+              "id": "en_r01_q5",
+              "type": "fill_blank",
+              "question": "She goes to bed at ___.",
+              "accepted_answers": [
+                "ten",
+                "10",
+                "10 o'clock",
+                "ten o'clock"
+              ],
+              "explanation": "at ten."
+            }
+          ]
+        },
+        {
+          "id": "en_read_02",
+          "title": "The Lost Key",
+          "level": "intermediate",
+          "passage": "Last Friday, Jasur was late for an important meeting. He put on his jacket, grabbed his bag, and ran to the door. Suddenly he stopped — he could not find his keys. He looked under the sofa, on the table, and inside his bag. Nothing. Then his little sister laughed and pointed at the fridge. The keys were on top of it! Jasur smiled, took the keys, and left. He was only five minutes late.",
+          "questions": [
+            {
+              "id": "en_r02_q1",
+              "type": "mcq",
+              "question": "Why was Jasur in a hurry?",
+              "options": [
+                "School exam",
+                "Important meeting",
+                "Football match",
+                "Shopping"
+              ],
+              "correct": 1,
+              "explanation": "important meeting."
+            },
+            {
+              "id": "en_r02_q2",
+              "type": "mcq",
+              "question": "Where were the keys?",
+              "options": [
+                "Under the sofa",
+                "In the bag",
+                "On the fridge",
+                "In the door"
+              ],
+              "correct": 2,
+              "explanation": "on top of the fridge."
+            },
+            {
+              "id": "en_r02_q3",
+              "type": "mcq",
+              "question": "Who helped him notice the keys?",
+              "options": [
+                "His boss",
+                "His sister",
+                "A neighbour",
+                "Nobody"
+              ],
+              "correct": 1,
+              "explanation": "his little sister."
+            },
+            {
+              "id": "en_r02_q4",
+              "type": "mcq",
+              "question": "How late was he finally?",
+              "options": [
+                "On time",
+                "5 minutes",
+                "30 minutes",
+                "1 hour"
+              ],
+              "correct": 1,
+              "explanation": "only five minutes late."
+            },
+            {
+              "id": "en_r02_q5",
+              "type": "mcq",
+              "question": "The story is mainly about:",
+              "options": [
+                "Cooking",
+                "Finding lost keys",
+                "A long trip",
+                "A test"
+              ],
+              "correct": 1,
+              "explanation": "lost keys."
+            }
+          ]
+        },
+        {
+          "id": "en_read_03",
+          "title": "Why We Learn Languages",
+          "level": "advanced",
+          "passage": "Learning a foreign language is not only about grammar rules. It opens doors to new cultures, friendships, and career opportunities. Research shows that bilingual people often have better memory and problem-solving skills. Of course, progress requires regular practice — short daily sessions are more effective than rare long ones. Mistakes are a natural part of the journey; each error teaches something new. In a global world, the ability to communicate across languages is a real superpower.",
+          "questions": [
+            {
+              "id": "en_r03_q1",
+              "type": "mcq",
+              "question": "According to the text, language learning mainly opens:",
+              "options": [
+                "Only grammar books",
+                "Cultures, friendships, careers",
+                "Only tourism",
+                "Nothing practical"
+              ],
+              "correct": 1,
+              "explanation": "cultures, friendships, career."
+            },
+            {
+              "id": "en_r03_q2",
+              "type": "mcq",
+              "question": "What kind of practice is recommended?",
+              "options": [
+                "Rare long sessions",
+                "Short daily sessions",
+                "Only weekends",
+                "Once a month"
+              ],
+              "correct": 1,
+              "explanation": "short daily sessions."
+            },
+            {
+              "id": "en_r03_q3",
+              "type": "mcq",
+              "question": "Mistakes are described as:",
+              "options": [
+                "Useless",
+                "Natural and useful",
+                "Always bad",
+                "Only for beginners"
+              ],
+              "correct": 1,
+              "explanation": "natural part of the journey."
+            },
+            {
+              "id": "en_r03_q4",
+              "type": "mcq",
+              "question": "Bilingual people may have better:",
+              "options": [
+                "Height",
+                "Memory and problem-solving",
+                "Sleep only",
+                "Hearing"
+              ],
+              "correct": 1,
+              "explanation": "memory and problem-solving."
+            }
+          ]
+        }
+      ]
+    },
+    "listening": {
+      "title": "🎧 Listening",
+      "emoji": "🎧",
+      "desc": "Eshitib tushunish — audio matn + savollar",
+      "units": [
+        {
+          "id": "en_list_01",
+          "title": "At the Café (dialogue)",
+          "level": "beginner",
+          "script": "Waiter: Hello! What would you like?\nCustomer: A cup of coffee and a sandwich, please.\nWaiter: Black coffee or with milk?\nCustomer: With milk, please.\nWaiter: Anything else?\nCustomer: No, thank you.\nWaiter: That's five dollars.",
+          "audio_url": null,
+          "audio_note": "Ovozli xabar yo'q bo'lsa — matnni o'qib eshitish mashqi qiling yoki o'qituvchi audio yuklaydi.",
+          "questions": [
+            {
+              "id": "en_l01_q1",
+              "type": "mcq",
+              "question": "What does the customer order?",
+              "options": [
+                "Tea and cake",
+                "Coffee and a sandwich",
+                "Juice only",
+                "Pizza"
+              ],
+              "correct": 1,
+              "explanation": "coffee and a sandwich."
+            },
+            {
+              "id": "en_l01_q2",
+              "type": "mcq",
+              "question": "How does he want the coffee?",
+              "options": [
+                "Black",
+                "With milk",
+                "No sugar",
+                "Iced"
+              ],
+              "correct": 1,
+              "explanation": "With milk."
+            },
+            {
+              "id": "en_l01_q3",
+              "type": "mcq",
+              "question": "How much does it cost?",
+              "options": [
+                "$3",
+                "$4",
+                "$5",
+                "$6"
+              ],
+              "correct": 2,
+              "explanation": "five dollars."
+            },
+            {
+              "id": "en_l01_q4",
+              "type": "mcq",
+              "question": "Does he order anything else?",
+              "options": [
+                "Yes",
+                "No",
+                "Only water",
+                "Dessert"
+              ],
+              "correct": 1,
+              "explanation": "No, thank you."
+            }
+          ]
+        },
+        {
+          "id": "en_list_02",
+          "title": "Weather Forecast",
+          "level": "intermediate",
+          "script": "Good morning! Here is the weather for today. In the morning it will be cloudy and cool, around 15 degrees. In the afternoon the sun will come out and the temperature will rise to 22 degrees. There is a small chance of rain in the evening, so take an umbrella if you go out. Have a nice day!",
+          "questions": [
+            {
+              "id": "en_l02_q1",
+              "type": "mcq",
+              "question": "Morning weather is:",
+              "options": [
+                "Hot and sunny",
+                "Cloudy and cool",
+                "Snowy",
+                "Stormy"
+              ],
+              "correct": 1,
+              "explanation": "cloudy and cool."
+            },
+            {
+              "id": "en_l02_q2",
+              "type": "mcq",
+              "question": "Afternoon temperature:",
+              "options": [
+                "15°",
+                "18°",
+                "22°",
+                "30°"
+              ],
+              "correct": 2,
+              "explanation": "22 degrees."
+            },
+            {
+              "id": "en_l02_q3",
+              "type": "mcq",
+              "question": "What should you take in the evening?",
+              "options": [
+                "Sunglasses",
+                "Umbrella",
+                "Hat only",
+                "Nothing"
+              ],
+              "correct": 1,
+              "explanation": "umbrella."
+            }
+          ]
+        }
+      ]
+    },
+    "speaking": {
+      "title": "🎤 Speaking",
+      "emoji": "🎤",
+      "desc": "Ovozli javob yuboring — AI tahlil + o'qituvchiga xabar",
+      "units": [
+        {
+          "id": "en_spk_01",
+          "title": "Introduce Yourself",
+          "level": "beginner",
+          "prompt": "1 daqiqada o'zingizni tanishtiring: ismingiz, yosh, shahar, sevimli fan yoki hobby. Ingliz tilida gapiring.",
+          "tips": "Sekin va aniq gapiring. Oddiy gaplardan boshlang: My name is... I live in... I like...",
+          "min_seconds": 15,
+          "max_seconds": 90
+        },
+        {
+          "id": "en_spk_02",
+          "title": "Describe Your Day",
+          "level": "beginner",
+          "prompt": "Oddiy kuningizni tasvirlab bering (ertalabdan kechgacha). Present Simple ishlating.",
+          "tips": "I wake up... Then I... After that...",
+          "min_seconds": 20,
+          "max_seconds": 120
+        },
+        {
+          "id": "en_spk_03",
+          "title": "Your Favourite Film",
+          "level": "intermediate",
+          "prompt": "Sevimli filmingiz haqida 1–2 daqiqa gapiring: nomi, janri, nima uchun yoqadi, qahramonlar.",
+          "tips": "My favourite film is... It is about... I like it because...",
+          "min_seconds": 25,
+          "max_seconds": 120
+        },
+        {
+          "id": "en_spk_04",
+          "title": "Agree or Disagree",
+          "level": "advanced",
+          "prompt": "Mavzu: «Homework is necessary every day.» Rozimisiz yoki yo'q? Fikringizni sabablar bilan ayting.",
+          "tips": "I agree/disagree because... For example... On the other hand...",
+          "min_seconds": 30,
+          "max_seconds": 150
+        }
+      ]
+    }
+  }
+}

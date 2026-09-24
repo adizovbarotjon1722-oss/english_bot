@@ -122,3 +122,39 @@ O'quvchi kartochkasida: XP, streak, premium, referral, modul progress, so'nggi t
 - [ ] Telegram Stars / to'lov
 - [ ] TTS og'zaki nazariya
 - [ ] Kunlik eslatma (reminder job)
+
+
+## Ko'nikmalar (yangi)
+
+- **Reading** — qiziqarli matnlar + tushunish savollari
+- **Listening** — dialog/matn; o'qituvchi audio biriktirishi mumkin
+- **Speaking** — ovozli javob → AI tahlil → admin/o'qituvchiga xabar
+- **Kunlik challenge** — tasodifiy speaking/topshiriq
+
+### O'qituvchi
+
+- `/admin` → Speaking navbati (tinglash, qabul/qayta)
+- `/setvideo en en_b_01 https://...` — modulga video
+- Video/audio yuborib caption: `video:en:en_b_01`
+
+### AI kalit (ixtiyoriy)
+
+`.env`: `OPENAI_API_KEY` yoki `GROQ_API_KEY` — speaking uchun boyroq feedback.
+
+## Qo'shimcha modullar (to'liq)
+
+### 🧠 SRS takrorlash
+Spaced repetition — zaif so'zlar tez-tez chiqadi. Menyu: **SRS takrorlash**.
+
+### 🎮 Mini-o'yinlar
+- So'z topish (hint bo'yicha)
+- Juftlik poygasi
+
+### 👥 Jamoa challenge
+Haftalik XP reytingi. Jamoa yaratish / kod bilan qo'shilish.
+
+### 🎤 Whisper
+`OPENAI_API_KEY` yoki `GROQ_API_KEY` bo'lsa speaking matnga aylanadi va AI chuqurroq tahlil qiladi.
+
+### 📖 Hikoya rejimi
+Tanlovli sarguzasht (A/B) — o'qib tanlang, oxirida XP.

@@ -1,0 +1,123 @@
+{
+  "subject": "en",
+  "stories": [
+    {
+      "id": "en_story_01",
+      "title": "Lost in the Bazaar",
+      "level": "beginner",
+      "start": "n1",
+      "nodes": {
+        "n1": {
+          "text": "You are in Chorsu Bazaar. You smell fresh bread. A seller smiles at you.\n\nWhat do you do?",
+          "choices": [
+            {
+              "label": "Buy bread",
+              "next": "n2a"
+            },
+            {
+              "label": "Ask for directions",
+              "next": "n2b"
+            }
+          ]
+        },
+        "n2a": {
+          "text": "You buy warm bread. Delicious! Suddenly it starts to rain.\n\nWhere do you go?",
+          "choices": [
+            {
+              "label": "Run to a café",
+              "next": "n3a"
+            },
+            {
+              "label": "Stay under a roof",
+              "next": "n3b"
+            }
+          ]
+        },
+        "n2b": {
+          "text": "You ask an old man: «Where is the metro?» He points left. You walk and see a small park.\n\nWhat next?",
+          "choices": [
+            {
+              "label": "Sit on a bench",
+              "next": "n3c"
+            },
+            {
+              "label": "Keep walking to the metro",
+              "next": "n3d"
+            }
+          ]
+        },
+        "n3a": {
+          "text": "In the café you meet a tourist who needs help with English. You practice together. Great day!\n\n🏁 The end — +XP for curiosity!",
+          "choices": []
+        },
+        "n3b": {
+          "text": "Under the roof you share bread with a student. You talk about school. New friend!\n\n🏁 The end — +XP for kindness!",
+          "choices": []
+        },
+        "n3c": {
+          "text": "On the bench you open your notebook and learn 5 new words. Peaceful and smart!\n\n🏁 The end — +XP for focus!",
+          "choices": []
+        },
+        "n3d": {
+          "text": "You find the metro and go home on time. Practical and confident!\n\n🏁 The end — +XP for independence!",
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "en_story_02",
+      "title": "The Job Interview",
+      "level": "intermediate",
+      "start": "s1",
+      "nodes": {
+        "s1": {
+          "text": "You have a job interview in 30 minutes. Your phone shows heavy traffic.\n\nWhat do you do?",
+          "choices": [
+            {
+              "label": "Call and say you may be late",
+              "next": "s2a"
+            },
+            {
+              "label": "Run to the metro immediately",
+              "next": "s2b"
+            }
+          ]
+        },
+        "s2a": {
+          "text": "The manager appreciates your honesty. You arrive 10 minutes late but calm.\n\nIn the interview they ask: Why do you want this job?",
+          "choices": [
+            {
+              "label": "I want to learn and grow",
+              "next": "s3a"
+            },
+            {
+              "label": "I need money only",
+              "next": "s3b"
+            }
+          ]
+        },
+        "s2b": {
+          "text": "You arrive sweaty but on time. The first question: Tell us about yourself.",
+          "choices": [
+            {
+              "label": "Short clear introduction",
+              "next": "s3a"
+            },
+            {
+              "label": "Very long life story",
+              "next": "s3b"
+            }
+          ]
+        },
+        "s3a": {
+          "text": "They smile. You get a second interview. Success path!\n\n🏁 End — professional communication wins.",
+          "choices": []
+        },
+        "s3b": {
+          "text": "They look unsure. Maybe next time with better answers.\n\n🏁 End — practice interview phrases!",
+          "choices": []
+        }
+      }
+    }
+  ]
+}

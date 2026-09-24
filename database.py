@@ -108,7 +108,81 @@ def init_db():
                 PRIMARY KEY (user_id, activity_date)
             );
 
-            CREATE TABLE IF NOT EXISTS certificates (
+            
+            CREATE TABLE IF NOT EXISTS speaking_submissions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                subject TEXT NOT NULL,
+                unit_id TEXT NOT NULL,
+                file_id TEXT,
+                duration INTEGER DEFAULT 0,
+                ai_score INTEGER,
+                ai_feedback TEXT,
+                status TEXT DEFAULT 'pending',
+                teacher_note TEXT,
+                created_at TEXT DEFAULT (datetime('now'))
+            );
+
+            CREATE TABLE IF NOT EXISTS teacher_videos (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                subject TEXT NOT NULL,
+                module_id TEXT NOT NULL,
+                title TEXT,
+                video_url TEXT,
+                file_id TEXT,
+                uploaded_by INTEGER,
+                created_at TEXT DEFAULT (datetime('now')),
+                UNIQUE(subject, module_id)
+            );
+
+            CREATE TABLE IF NOT EXISTS daily_challenges (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                challenge_date TEXT NOT NULL UNIQUE,
+                subject TEXT NOT NULL,
+                skill TEXT NOT NULL,
+                prompt TEXT NOT NULL
+            );
+
+
+            CREATE TABLE IF NOT EXISTS srs_cards (
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                subject TEXT NOT NULL,
+                word TEXT NOT NULL,
+                hint TEXT,
+                example TEXT,
+                ease REAL DEFAULT 2.5,
+                interval_days INTEGER DEFAULT 0,
+                reps INTEGER DEFAULT 0,
+                due_date TEXT,
+                last_result INTEGER DEFAULT 0,
+                PRIMARY KEY (user_id, subject, word)
+            );
+
+            CREATE TABLE IF NOT EXISTS game_scores (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                game_type TEXT NOT NULL,
+                score INTEGER DEFAULT 0,
+                created_at TEXT DEFAULT (datetime('now'))
+            );
+
+            CREATE TABLE IF NOT EXISTS teams (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                code TEXT UNIQUE NOT NULL,
+                name TEXT,
+                owner_id INTEGER REFERENCES users(id),
+                week_key TEXT,
+                created_at TEXT DEFAULT (datetime('now'))
+            );
+
+            CREATE TABLE IF NOT EXISTS team_members (
+                team_id INTEGER NOT NULL REFERENCES teams(id),
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                weekly_xp INTEGER DEFAULT 0,
+                PRIMARY KEY (team_id, user_id)
+            );
+
+CREATE TABLE IF NOT EXISTS certificates (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER NOT NULL REFERENCES users(id),
                 subject TEXT NOT NULL,
@@ -671,3 +745,292 @@ def set_user_level(user_id: int, level: str):
 
 def ban_note_placeholder():
     pass  # kelajakda ban jadvali
+
+
+# ---------- Speaking & teacher videos ----------
+
+def save_speaking(user_id: int, subject: str, unit_id: str, file_id: str,
+                  duration: int, ai_score: int, ai_feedback: str) -> int:
+    with get_conn() as conn:
+        cur = conn.execute(
+            """
+            INSERT INTO speaking_submissions
+                (user_id, subject, unit_id, file_id, duration, ai_score, ai_feedback, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')
+            """,
+            (user_id, subject, unit_id, file_id, duration, ai_score, ai_feedback),
+        )
+        return cur.lastrowid
+
+
+def list_speaking(limit: int = 20, status: str = None) -> list:
+    with get_conn() as conn:
+        if status:
+            rows = conn.execute(
+                """
+                SELECT s.*, u.full_name, u.username, u.telegram_id
+                FROM speaking_submissions s
+                JOIN users u ON u.id = s.user_id
+                WHERE s.status = ?
+                ORDER BY s.id DESC LIMIT ?
+                """,
+                (status, limit),
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """
+                SELECT s.*, u.full_name, u.username, u.telegram_id
+                FROM speaking_submissions s
+                JOIN users u ON u.id = s.user_id
+                ORDER BY s.id DESC LIMIT ?
+                """,
+                (limit,),
+            ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def get_speaking(sid: int) -> Optional[dict]:
+    with get_conn() as conn:
+        row = conn.execute(
+            """
+            SELECT s.*, u.full_name, u.username, u.telegram_id
+            FROM speaking_submissions s
+            JOIN users u ON u.id = s.user_id
+            WHERE s.id = ?
+            """,
+            (sid,),
+        ).fetchone()
+        return dict(row) if row else None
+
+
+def review_speaking(sid: int, status: str, teacher_note: str = "") -> bool:
+    with get_conn() as conn:
+        cur = conn.execute(
+            "UPDATE speaking_submissions SET status = ?, teacher_note = ? WHERE id = ?",
+            (status, teacher_note, sid),
+        )
+        return cur.rowcount > 0
+
+
+def set_teacher_video(subject: str, module_id: str, title: str, video_url: str,
+                      file_id: str, uploaded_by: int):
+    with get_conn() as conn:
+        conn.execute(
+            """
+            INSERT INTO teacher_videos (subject, module_id, title, video_url, file_id, uploaded_by)
+            VALUES (?, ?, ?, ?, ?, ?)
+            ON CONFLICT(subject, module_id) DO UPDATE SET
+                title = excluded.title,
+                video_url = excluded.video_url,
+                file_id = excluded.file_id,
+                uploaded_by = excluded.uploaded_by,
+                created_at = datetime('now')
+            """,
+            (subject, module_id, title, video_url, file_id, uploaded_by),
+        )
+
+
+def get_teacher_video(subject: str, module_id: str) -> Optional[dict]:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT * FROM teacher_videos WHERE subject = ? AND module_id = ?",
+            (subject, module_id),
+        ).fetchone()
+        return dict(row) if row else None
+
+
+# ---------- SRS / Games / Teams ----------
+
+from datetime import datetime as _dt
+
+def _today():
+    return date.today().isoformat()
+
+
+def _week_key():
+    iso = date.today().isocalendar()
+    return f"{iso[0]}-W{iso[1]:02d}"
+
+
+def srs_ensure_seed(user_id: int, subject: str, words: list):
+    """Birinchi marta SRS kartalarini qo'yadi."""
+    with get_conn() as conn:
+        for w in words:
+            conn.execute(
+                """
+                INSERT OR IGNORE INTO srs_cards
+                    (user_id, subject, word, hint, example, due_date)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (user_id, subject, w["word"], w.get("hint", ""), w.get("example", ""), _today()),
+            )
+
+
+def srs_due_cards(user_id: int, subject: str, limit: int = 10) -> list:
+    with get_conn() as conn:
+        rows = conn.execute(
+            """
+            SELECT * FROM srs_cards
+            WHERE user_id = ? AND subject = ?
+              AND (due_date IS NULL OR due_date <= ?)
+            ORDER BY due_date ASC, reps ASC
+            LIMIT ?
+            """,
+            (user_id, subject, _today(), limit),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def srs_review(user_id: int, subject: str, word: str, quality: int):
+    """quality 0..5 (SM-2 soddalashtirilgan)."""
+    quality = max(0, min(5, int(quality)))
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT * FROM srs_cards WHERE user_id=? AND subject=? AND word=?",
+            (user_id, subject, word),
+        ).fetchone()
+        if not row:
+            return
+        ease = float(row["ease"] or 2.5)
+        interval = int(row["interval_days"] or 0)
+        reps = int(row["reps"] or 0)
+        if quality < 3:
+            reps = 0
+            interval = 0
+        else:
+            if reps == 0:
+                interval = 1
+            elif reps == 1:
+                interval = 3
+            else:
+                interval = max(1, int(interval * ease))
+            reps += 1
+        ease = max(1.3, ease + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)))
+        due = (date.today() + timedelta(days=interval)).isoformat()
+        conn.execute(
+            """
+            UPDATE srs_cards SET ease=?, interval_days=?, reps=?, due_date=?, last_result=?
+            WHERE user_id=? AND subject=? AND word=?
+            """,
+            (ease, interval, reps, due, quality, user_id, subject, word),
+        )
+
+
+def srs_count_due(user_id: int, subject: str) -> int:
+    with get_conn() as conn:
+        row = conn.execute(
+            """
+            SELECT COUNT(*) AS c FROM srs_cards
+            WHERE user_id=? AND subject=? AND (due_date IS NULL OR due_date <= ?)
+            """,
+            (user_id, subject, _today()),
+        ).fetchone()
+        return int(row["c"] if row else 0)
+
+
+def save_game_score(user_id: int, game_type: str, score: int):
+    with get_conn() as conn:
+        conn.execute(
+            "INSERT INTO game_scores (user_id, game_type, score) VALUES (?, ?, ?)",
+            (user_id, game_type, score),
+        )
+        conn.execute("UPDATE users SET xp = xp + ? WHERE id = ?", (max(1, score), user_id))
+
+
+def create_team(owner_id: int, name: str) -> str:
+    code = secrets.token_hex(3).upper()
+    wk = _week_key()
+    with get_conn() as conn:
+        while conn.execute("SELECT 1 FROM teams WHERE code=?", (code,)).fetchone():
+            code = secrets.token_hex(3).upper()
+        cur = conn.execute(
+            "INSERT INTO teams (code, name, owner_id, week_key) VALUES (?, ?, ?, ?)",
+            (code, name or "Team", owner_id, wk),
+        )
+        tid = cur.lastrowid
+        conn.execute(
+            "INSERT INTO team_members (team_id, user_id, weekly_xp) VALUES (?, ?, 0)",
+            (tid, owner_id),
+        )
+    return code
+
+
+def join_team(user_id: int, code: str) -> Optional[str]:
+    code = (code or "").strip().upper()
+    with get_conn() as conn:
+        t = conn.execute("SELECT * FROM teams WHERE code=?", (code,)).fetchone()
+        if not t:
+            return None
+        # weekly reset if needed
+        wk = _week_key()
+        if t["week_key"] != wk:
+            conn.execute("UPDATE teams SET week_key=? WHERE id=?", (wk, t["id"]))
+            conn.execute("UPDATE team_members SET weekly_xp=0 WHERE team_id=?", (t["id"],))
+        conn.execute(
+            "INSERT OR IGNORE INTO team_members (team_id, user_id, weekly_xp) VALUES (?, ?, 0)",
+            (t["id"], user_id),
+        )
+        return t["name"] or code
+
+
+def add_team_xp(user_id: int, amount: int):
+    wk = _week_key()
+    with get_conn() as conn:
+        rows = conn.execute(
+            "SELECT team_id FROM team_members WHERE user_id=?", (user_id,)
+        ).fetchall()
+        for r in rows:
+            tid = r["team_id"]
+            t = conn.execute("SELECT week_key FROM teams WHERE id=?", (tid,)).fetchone()
+            if t and t["week_key"] != wk:
+                conn.execute("UPDATE teams SET week_key=? WHERE id=?", (wk, tid))
+                conn.execute("UPDATE team_members SET weekly_xp=0 WHERE team_id=?", (tid,))
+            conn.execute(
+                "UPDATE team_members SET weekly_xp = weekly_xp + ? WHERE team_id=? AND user_id=?",
+                (amount, tid, user_id),
+            )
+
+
+def team_leaderboard(code: str = None, limit: int = 10) -> list:
+    with get_conn() as conn:
+        if code:
+            t = conn.execute("SELECT id FROM teams WHERE code=?", (code.upper(),)).fetchone()
+            if not t:
+                return []
+            rows = conn.execute(
+                """
+                SELECT u.full_name, u.username, tm.weekly_xp, t.name AS team_name, t.code
+                FROM team_members tm
+                JOIN users u ON u.id = tm.user_id
+                JOIN teams t ON t.id = tm.team_id
+                WHERE tm.team_id=?
+                ORDER BY tm.weekly_xp DESC LIMIT ?
+                """,
+                (t["id"], limit),
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """
+                SELECT t.name AS team_name, t.code, SUM(tm.weekly_xp) AS weekly_xp
+                FROM teams t
+                JOIN team_members tm ON tm.team_id = t.id
+                GROUP BY t.id
+                ORDER BY weekly_xp DESC LIMIT ?
+                """,
+                (limit,),
+            ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def user_teams(user_id: int) -> list:
+    with get_conn() as conn:
+        rows = conn.execute(
+            """
+            SELECT t.code, t.name, tm.weekly_xp
+            FROM team_members tm
+            JOIN teams t ON t.id = tm.team_id
+            WHERE tm.user_id=?
+            """,
+            (user_id,),
+        ).fetchall()
+        return [dict(r) for r in rows]

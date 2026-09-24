@@ -1,0 +1,96 @@
+{
+  "en": [
+    {
+      "word": "apple",
+      "hint": "meva / olma",
+      "example": "I eat an apple."
+    },
+    {
+      "word": "because",
+      "hint": "chunki",
+      "example": "I study because I want success."
+    },
+    {
+      "word": "important",
+      "hint": "muhim",
+      "example": "English is important."
+    },
+    {
+      "word": "always",
+      "hint": "har doim",
+      "example": "She always arrives early."
+    },
+    {
+      "word": "friend",
+      "hint": "do'st",
+      "example": "He is my best friend."
+    },
+    {
+      "word": "weather",
+      "hint": "ob-havo",
+      "example": "The weather is sunny."
+    },
+    {
+      "word": "decide",
+      "hint": "qaror qilmoq",
+      "example": "We decided to wait."
+    },
+    {
+      "word": "improve",
+      "hint": "yaxshilamoq",
+      "example": "Practice helps you improve."
+    },
+    {
+      "word": "usually",
+      "hint": "odatda",
+      "example": "I usually wake up at 7."
+    },
+    {
+      "word": "enough",
+      "hint": "yetarli",
+      "example": "Is this enough time?"
+    }
+  ],
+  "ru": [
+    {
+      "word": "хлеб",
+      "hint": "non",
+      "example": "Я покупаю хлеб."
+    },
+    {
+      "word": "друг",
+      "hint": "do'st",
+      "example": "Это мой друг."
+    },
+    {
+      "word": "сегодня",
+      "hint": "bugun",
+      "example": "Сегодня хорошая погода."
+    },
+    {
+      "word": "потому что",
+      "hint": "chunki",
+      "example": "Я учу русский, потому что он нужен."
+    },
+    {
+      "word": "всегда",
+      "hint": "har doim",
+      "example": "Он всегда помогает."
+    },
+    {
+      "word": "важно",
+      "hint": "muhim",
+      "example": "Это очень важно."
+    },
+    {
+      "word": "утро",
+      "hint": "ertalab",
+      "example": "Утром я пью чай."
+    },
+    {
+      "word": "школа",
+      "hint": "maktab",
+      "example": "Дети идут в школу."
+    }
+  ]
+}
