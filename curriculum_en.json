@@ -1038,6 +1038,161 @@
               "explanation": "Hello. media/audio/hello.ogg qo'ying."
             }
           ]
+        },
+        {
+          "id": "en_b_06",
+          "order": 6,
+          "title": "Rasmlar bilan ingliz tili",
+          "emoji": "🖼️",
+          "video_url": "",
+          "video_title": "Vocabulary with pictures",
+          "theory": "<b>Vocabulary with pictures — So'z boyligini rasmlar orqali oshiramiz</b>\n\nRasmlar bilan o'rganish eng tez usul: miya so'zni tarjimasi orqali emas, to'g'ridan-to'g'ri obyekti bilan bog'laydi.\n\n📌 <b>Asosiy so'zlar:</b>\n• apple — olma\n• dog — it\n• house — uy\n• car — mashina\n• book — kitob\n• clock — soat\n\n📌 <b>Vaqt haqida gapirish:</b>\n• What time is it? — Soat nechchi?\n• It is three o'clock — Soat uch.\n• It is half past three — Yarim o'tib uch (3:30).\n• It is ten past three — O'n o'tib uch (3:10).\n\n📌 <b>Jumlalar:</b>\n• I have a red apple. — Menda qizil olma bor.\n• The dog is under the table. — It stol ostida.\n• My house is big. — Mening uyim katta.",
+          "theory_oral": "Rasmga qarang va so'zni ovoz chiqarib ayting. Har bir so'zni 3 marta takrorlang.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_b_06_e1",
+              "type": "mcq",
+              "image_file": "apple.png",
+              "question": "What is this? (Bu nima?)",
+              "options": [
+                "An apple",
+                "A banana",
+                "An orange",
+                "A tomato"
+              ],
+              "correct": 0,
+              "explanation": "This is an apple — olma."
+            },
+            {
+              "id": "en_b_06_e2",
+              "type": "mcq",
+              "image_file": "dog.png",
+              "question": "What animal is in the picture?",
+              "options": [
+                "A cat",
+                "A dog",
+                "A rabbit",
+                "A fox"
+              ],
+              "correct": 1,
+              "explanation": "This is a dog — it."
+            },
+            {
+              "id": "en_b_06_e3",
+              "type": "mcq",
+              "image_file": "house.png",
+              "question": "What is this?",
+              "options": [
+                "A school",
+                "A shop",
+                "A house",
+                "A hospital"
+              ],
+              "correct": 2,
+              "explanation": "This is a house — uy."
+            },
+            {
+              "id": "en_b_06_e4",
+              "type": "mcq",
+              "image_file": "car.png",
+              "question": "Choose the correct sentence.",
+              "options": [
+                "This is a car.",
+                "This is a bus.",
+                "This is a bike.",
+                "This is a train."
+              ],
+              "correct": 0,
+              "explanation": "The picture shows a car — mashina."
+            },
+            {
+              "id": "en_b_06_e5",
+              "type": "mcq",
+              "image_file": "book.png",
+              "question": "What is open in the picture?",
+              "options": [
+                "A door",
+                "A window",
+                "A book",
+                "A box"
+              ],
+              "correct": 2,
+              "explanation": "This is an open book — kitob."
+            },
+            {
+              "id": "en_b_06_e6",
+              "type": "mcq",
+              "image_file": "clock.png",
+              "question": "What time is it?",
+              "options": [
+                "Three o'clock",
+                "Ten past three",
+                "Half past three",
+                "Two o'clock"
+              ],
+              "correct": 1,
+              "explanation": "The big hand is on 2 (ten minutes), the small hand is past 3 — ten past three (3:10)."
+            },
+            {
+              "id": "en_b_06_e7",
+              "type": "fill_blank",
+              "question": "I have a red ___ (olma).",
+              "accepted_answers": [
+                "apple",
+                "an apple"
+              ],
+              "explanation": "Apple — olma. 'I have a red apple.'"
+            },
+            {
+              "id": "en_b_06_e8",
+              "type": "fill_blank",
+              "question": "The ___ is under the table. (it)",
+              "accepted_answers": [
+                "dog",
+                "a dog",
+                "the dog"
+              ],
+              "explanation": "Dog — it. 'The dog is under the table.'"
+            },
+            {
+              "id": "en_b_06_e9",
+              "type": "mcq",
+              "question": "'Soat nechchi?' — inglizchasi qaysi?",
+              "options": [
+                "What time is it?",
+                "Where is the clock?",
+                "How old are you?",
+                "What is your name?"
+              ],
+              "correct": 0,
+              "explanation": "What time is it? — Soat nechchi?"
+            },
+            {
+              "id": "en_b_06_e10",
+              "type": "matching",
+              "question": "Match the words with translations (So'zlarni tarjimalari bilan moslang):",
+              "pairs": [
+                {
+                  "left": "house",
+                  "right": "uy"
+                },
+                {
+                  "left": "car",
+                  "right": "mashina"
+                },
+                {
+                  "left": "book",
+                  "right": "kitob"
+                },
+                {
+                  "left": "clock",
+                  "right": "soat"
+                }
+              ],
+              "explanation": "House — uy, car — mashina, book — kitob, clock — soat."
+            }
+          ]
         }
       ]
     },

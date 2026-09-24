@@ -191,6 +191,25 @@ CREATE TABLE IF NOT EXISTS certificates (
                 file_path TEXT
             );
 
+            CREATE TABLE IF NOT EXISTS library_progress (
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                book_id TEXT NOT NULL,
+                chapter_idx INTEGER NOT NULL,
+                read_at TEXT DEFAULT (datetime('now')),
+                PRIMARY KEY (user_id, book_id, chapter_idx)
+            );
+
+            CREATE TABLE IF NOT EXISTS user_quests (
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                quest_date TEXT NOT NULL,
+                quest_key TEXT NOT NULL,
+                metric TEXT NOT NULL,
+                target INTEGER NOT NULL,
+                progress INTEGER DEFAULT 0,
+                claimed INTEGER DEFAULT 0,
+                PRIMARY KEY (user_id, quest_date, quest_key)
+            );
+
             """
         )
         # Migratsiya: eski bazaga yangi ustunlar (CREATE TABLE IF NOT EXISTS ularni qo'shmaydi)
@@ -204,6 +223,9 @@ CREATE TABLE IF NOT EXISTS certificates (
             ("referral_code", "TEXT"),
             ("referred_by", "INTEGER"),
             ("referral_count", "INTEGER DEFAULT 0"),
+            ("gems", "INTEGER DEFAULT 0"),
+            ("hearts", "INTEGER DEFAULT 5"),
+            ("hearts_at", "TEXT"),
         ]:
             if col not in cols:
                 try:
@@ -221,6 +243,8 @@ CREATE TABLE IF NOT EXISTS certificates (
             "CREATE INDEX IF NOT EXISTS idx_seen_user ON seen_exercises(user_id, subject)",
             "CREATE INDEX IF NOT EXISTS idx_badges_user ON badges(user_id)",
             "CREATE INDEX IF NOT EXISTS idx_daily_user ON daily_activity(user_id, activity_date)",
+            "CREATE INDEX IF NOT EXISTS idx_library_user ON library_progress(user_id)",
+            "CREATE INDEX IF NOT EXISTS idx_quests_user ON user_quests(user_id, quest_date)",
         ]:
             try:
                 conn.execute(stmt)
@@ -939,12 +963,13 @@ def srs_count_due(user_id: int, subject: str) -> int:
 
 
 def save_game_score(user_id: int, game_type: str, score: int):
+    """Faqat natijani saqlaydi. XP berish — chaqiruvchi tomonda (add_xp orqali,
+    shunda haftalik liga va questlar ham hisoblaydi)."""
     with get_conn() as conn:
         conn.execute(
             "INSERT INTO game_scores (user_id, game_type, score) VALUES (?, ?, ?)",
             (user_id, game_type, score),
         )
-        conn.execute("UPDATE users SET xp = xp + ? WHERE id = ?", (max(1, score), user_id))
 
 
 def create_team(owner_id: int, name: str) -> str:
@@ -1046,3 +1071,223 @@ def user_teams(user_id: int) -> list:
             (user_id,),
         ).fetchall()
         return [dict(r) for r in rows]
+
+
+# ---------- Duolingo-style iqtisodiyot: yuraklar va gemlar ----------
+
+MAX_HEARTS = 5
+HEART_REGEN_MINUTES = 30  # har 30 daqiqada 1 yurak tiklanadi
+HEART_REFILL_GEMS = 50    # to'liq to'ldirish narxi
+
+
+def _now_iso() -> str:
+    from datetime import datetime
+    return datetime.now().isoformat(timespec="seconds")
+
+
+def get_economy(user_id: int) -> dict:
+    """Gems + vaqt bo'yicha tiklangan yuraklarni qaytaradi."""
+    from datetime import datetime
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT gems, hearts, hearts_at FROM users WHERE id = ?", (user_id,)
+        ).fetchone()
+        if not row:
+            return {"gems": 0, "hearts": MAX_HEARTS}
+        hearts = int(row["hearts"] if row["hearts"] is not None else MAX_HEARTS)
+        hearts_at = row["hearts_at"]
+        if hearts < MAX_HEARTS and hearts_at:
+            try:
+                last = datetime.fromisoformat(hearts_at)
+                regen = int((datetime.now() - last).total_seconds() // 60) // HEART_REGEN_MINUTES
+                if regen > 0:
+                    hearts = min(MAX_HEARTS, hearts + regen)
+                    conn.execute(
+                        "UPDATE users SET hearts = ?, hearts_at = ? WHERE id = ?",
+                        (hearts, _now_iso(), user_id),
+                    )
+            except ValueError:
+                pass
+        return {"gems": int(row["gems"] or 0), "hearts": hearts}
+
+
+def spend_heart(user_id: int) -> int:
+    """Noto'g'ri javobda 1 yurak kamayadi. Qolgan yuraklarni qaytaradi."""
+    eco = get_economy(user_id)  # avval tiklab olamiz
+    hearts = max(0, eco["hearts"] - 1)
+    with get_conn() as conn:
+        conn.execute(
+            "UPDATE users SET hearts = ?, hearts_at = ? WHERE id = ?",
+            (hearts, _now_iso(), user_id),
+        )
+    return hearts
+
+
+def refill_hearts(user_id: int) -> bool:
+    """Gemlar evaziga yuraklarni to'liq to'ldirish.
+    Yuraklar to'liq bo'lsa yoki gem yetmasa — False (gem sarflanmaydi)."""
+    eco = get_economy(user_id)  # vaqt bo'yicha tiklanishni hisobga olamiz
+    if eco["hearts"] >= MAX_HEARTS or eco["gems"] < HEART_REFILL_GEMS:
+        return False
+    with get_conn() as conn:
+        conn.execute(
+            "UPDATE users SET gems = gems - ?, hearts = ?, hearts_at = ? WHERE id = ?",
+            (HEART_REFILL_GEMS, MAX_HEARTS, _now_iso(), user_id),
+        )
+        return True
+
+
+def add_gems(user_id: int, amount: int):
+    amount = max(0, int(amount))
+    with get_conn() as conn:
+        conn.execute("UPDATE users SET gems = gems + ? WHERE id = ?", (amount, user_id))
+
+
+def spend_gems(user_id: int, amount: int) -> bool:
+    amount = max(0, int(amount))
+    with get_conn() as conn:
+        row = conn.execute("SELECT gems FROM users WHERE id = ?", (user_id,)).fetchone()
+        if not row or int(row["gems"] or 0) < amount:
+            return False
+        conn.execute("UPDATE users SET gems = gems - ? WHERE id = ?", (amount, user_id))
+        return True
+
+
+# ---------- Kutubxona ----------
+
+def mark_chapter_read(user_id: int, book_id: str, chapter_idx: int) -> bool:
+    with get_conn() as conn:
+        cur = conn.execute(
+            "INSERT OR IGNORE INTO library_progress (user_id, book_id, chapter_idx) VALUES (?, ?, ?)",
+            (user_id, book_id, chapter_idx),
+        )
+        return cur.rowcount > 0
+
+
+def get_read_chapters(user_id: int, book_id: str) -> set:
+    with get_conn() as conn:
+        rows = conn.execute(
+            "SELECT chapter_idx FROM library_progress WHERE user_id = ? AND book_id = ?",
+            (user_id, book_id),
+        ).fetchall()
+        return {r["chapter_idx"] for r in rows}
+
+
+def library_stats(user_id: int) -> dict:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT COUNT(*) AS chapters, COUNT(DISTINCT book_id) AS books "
+            "FROM library_progress WHERE user_id = ?",
+            (user_id,),
+        ).fetchone()
+        return {"chapters": row["chapters"] or 0, "books": row["books"] or 0}
+
+
+# ---------- Kunlik questlar ----------
+
+def ensure_daily_quests(user_id: int, quests: list):
+    """quests: [{'key','metric','target'}] — bugungi kun uchun yaratadi (mavjudini ushlamaydi)."""
+    today = _today()
+    with get_conn() as conn:
+        for q in quests:
+            conn.execute(
+                """
+                INSERT OR IGNORE INTO user_quests (user_id, quest_date, quest_key, metric, target)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (user_id, today, q["key"], q["metric"], q["target"]),
+            )
+
+
+def bump_quest_metric(user_id: int, metric: str, amount: int = 1):
+    """Bugungi faol questlarning progressini oshiradi."""
+    today = _today()
+    amount = max(0, int(amount))
+    with get_conn() as conn:
+        conn.execute(
+            """
+            UPDATE user_quests
+            SET progress = MIN(target, progress + ?)
+            WHERE user_id = ? AND quest_date = ? AND metric = ? AND claimed = 0
+            """,
+            (amount, user_id, today, metric),
+        )
+
+
+def get_today_quests(user_id: int) -> list:
+    today = _today()
+    with get_conn() as conn:
+        rows = conn.execute(
+            "SELECT quest_key, metric, target, progress, claimed FROM user_quests "
+            "WHERE user_id = ? AND quest_date = ? ORDER BY quest_key",
+            (user_id, today),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def claim_quest(user_id: int, quest_key: str) -> bool:
+    """Faqat bajarilgan va hali olinmagan quest uchun True."""
+    today = _today()
+    with get_conn() as conn:
+        cur = conn.execute(
+            "UPDATE user_quests SET claimed = 1 "
+            "WHERE user_id = ? AND quest_date = ? AND quest_key = ? "
+            "AND claimed = 0 AND progress >= target",
+            (user_id, today, quest_key),
+        )
+        return cur.rowcount > 0
+
+
+# ---------- Ligalar (haftalik XP) ----------
+
+def _week_start() -> str:
+    return (date.today() - timedelta(days=date.today().weekday())).isoformat()
+
+
+def weekly_xp(user_id: int) -> int:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT COALESCE(SUM(xp_earned), 0) AS s FROM daily_activity "
+            "WHERE user_id = ? AND activity_date >= ?",
+            (user_id, _week_start()),
+        ).fetchone()
+        return int(row["s"] or 0)
+
+
+def weekly_leaderboard(limit: int = 15) -> list:
+    with get_conn() as conn:
+        rows = conn.execute(
+            """
+            SELECT u.id, u.full_name, u.username,
+                   COALESCE(SUM(d.xp_earned), 0) AS week_xp
+            FROM users u
+            LEFT JOIN daily_activity d
+                ON d.user_id = u.id AND d.activity_date >= ?
+            GROUP BY u.id
+            HAVING week_xp > 0
+            ORDER BY week_xp DESC
+            LIMIT ?
+            """,
+            (_week_start(), limit),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def weekly_rank(user_id: int) -> Optional[int]:
+    wx = weekly_xp(user_id)
+    if wx <= 0:
+        return None
+    with get_conn() as conn:
+        row = conn.execute(
+            """
+            SELECT COUNT(*) + 1 AS pos FROM (
+                SELECT COALESCE(SUM(xp_earned), 0) AS s
+                FROM daily_activity
+                WHERE activity_date >= ?
+                GROUP BY user_id
+                HAVING s > ?
+            )
+            """,
+            (_week_start(), wx),
+        ).fetchone()
+        return int(row["pos"]) if row else None

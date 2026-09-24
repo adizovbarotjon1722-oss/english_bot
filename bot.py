@@ -152,7 +152,8 @@ class ThrottlingMiddleware(BaseMiddleware):
         return await handler(event, data)
 
 
-SUBJECT_NAMES = {"en": "🇬🇧 Ingliz tili", "ru": "🇷🇺 Rus tili"}
+SUBJECT_NAMES = {"en": "🇬🇧 Ingliz tili"}
+DEFAULT_SUBJECT = "en"
 LEVEL_NAMES = {
     "beginner": "🟢 Boshlang'ich",
     "intermediate": "🟡 O'rta",
@@ -216,7 +217,6 @@ def load_curriculum(subject: str) -> dict:
 
 CURRICULA = {
     "en": load_curriculum("en"),
-    "ru": load_curriculum("ru"),
 }
 
 def load_skills(subject: str) -> dict:
@@ -227,7 +227,7 @@ def load_skills(subject: str) -> dict:
         return json.load(f)
 
 
-SKILLS = {"en": load_skills("en"), "ru": load_skills("ru")}
+SKILLS = {"en": load_skills("en")}
 
 
 def get_skill_units(subject: str, skill: str) -> list:
@@ -249,8 +249,18 @@ def load_stories(subject: str) -> dict:
         return json.load(f)
 
 
-STORIES = {"en": load_stories("en"), "ru": load_stories("ru")}
-SRS_VOCAB = json.loads((BASE_DIR / "srs_vocab.json").read_text(encoding="utf-8")) if (BASE_DIR / "srs_vocab.json").exists() else {"en": [], "ru": []}
+STORIES = {"en": load_stories("en")}
+SRS_VOCAB = json.loads((BASE_DIR / "srs_vocab.json").read_text(encoding="utf-8")) if (BASE_DIR / "srs_vocab.json").exists() else {"en": []}
+
+LIBRARY_PATH = BASE_DIR / "library_en.json"
+LIBRARY = json.loads(LIBRARY_PATH.read_text(encoding="utf-8")) if LIBRARY_PATH.exists() else {"books": []}
+
+
+def get_book(book_id: str) -> Optional[dict]:
+    for b in LIBRARY.get("books", []):
+        if b.get("id") == book_id:
+            return b
+    return None
 
 
 
@@ -333,43 +343,56 @@ class QuizState(StatesGroup):
 
 # ---------- Klaviaturalar ----------
 
-def subjects_kb() -> InlineKeyboardMarkup:
-    rows = [
-        [InlineKeyboardButton(text=name, callback_data=f"subj:{code}")]
-        for code, name in SUBJECT_NAMES.items()
-    ]
-    return InlineKeyboardMarkup(inline_keyboard=rows)
+def status_line(user_id: int) -> str:
+    """Duolingo uslubidagi status paneli: ❤️ 💎 🔥 ⭐"""
+    eco = db.get_economy(user_id)
+    stats = db.get_user_stats(user_id)
+    hearts = "❤️" * eco["hearts"] + "🖤" * max(0, db.MAX_HEARTS - eco["hearts"])
+    return f"{hearts}  💎 {eco['gems']}  🔥 {stats['streak']}  ⭐ {stats['xp']} XP"
+
+
+def award_xp(user_id: int, amount: int):
+    """XP beradi va kunlik quest progressini oshiradi."""
+    db.add_xp(user_id, amount)
+    db.bump_quest_metric(user_id, "xp", amount)
+
+
+def award_gems(user_id: int, amount: int):
+    db.add_gems(user_id, amount)
 
 
 def main_menu_kb() -> InlineKeyboardMarkup:
     rows = [
-        [InlineKeyboardButton(text="📚 Kursim / Grammatika", callback_data="menu:course")],
-        [InlineKeyboardButton(text="🌟 Ko'nikmalar (Read · Listen · Speak)", callback_data="menu:skills")],
+        [InlineKeyboardButton(text="📚 Kurs", callback_data="menu:course")],
         [
-            InlineKeyboardButton(text="🧠 SRS takrorlash", callback_data="menu:srs"),
-            InlineKeyboardButton(text="🎯 Bepul mashq", callback_data="menu:practice"),
+            InlineKeyboardButton(text="📖 Kutubxona", callback_data="menu:library"),
+            InlineKeyboardButton(text="🌟 Ko'nikmalar", callback_data="menu:skills"),
         ],
         [
-            InlineKeyboardButton(text="🔥 Kunlik challenge", callback_data="menu:daily"),
-            InlineKeyboardButton(text="🎮 Mini-o'yinlar", callback_data="menu:games"),
+            InlineKeyboardButton(text="🎯 Questlar", callback_data="menu:quests"),
+            InlineKeyboardButton(text="🏆 Liga", callback_data="menu:league"),
         ],
         [
-            InlineKeyboardButton(text="📖 Hikoyalar", callback_data="menu:story"),
+            InlineKeyboardButton(text="🧠 Takrorlash (SRS)", callback_data="menu:srs"),
+            InlineKeyboardButton(text="🎮 O'yinlar", callback_data="menu:games"),
+        ],
+        [
+            InlineKeyboardButton(text="📚 Hikoyalar", callback_data="menu:story"),
             InlineKeyboardButton(text="👥 Jamoalar", callback_data="menu:team"),
         ],
         [
+            InlineKeyboardButton(text="🎯 Bepul mashq", callback_data="menu:practice"),
+            InlineKeyboardButton(text="🔥 Challenge", callback_data="menu:daily"),
+        ],
+        [
             InlineKeyboardButton(text="📊 Statistika", callback_data="menu:stats"),
-            InlineKeyboardButton(text="🏆 Reyting", callback_data="menu:top"),
-        ],
-        [
             InlineKeyboardButton(text="🏅 Nishonlar", callback_data="menu:badges"),
-            InlineKeyboardButton(text="👥 Do'stni taklif qilish", callback_data="menu:referral"),
         ],
         [
+            InlineKeyboardButton(text="👥 Do'stlar", callback_data="menu:referral"),
             InlineKeyboardButton(text="📜 Sertifikat", callback_data="menu:cert"),
-            InlineKeyboardButton(text="⭐ Premium", callback_data="menu:premium"),
         ],
-        [InlineKeyboardButton(text="🔄 Tilni almashtirish", callback_data="menu:switch")],
+        [InlineKeyboardButton(text="⭐ Premium", callback_data="menu:premium")],
     ]
     if CHANNEL_URL and "your_kun" not in CHANNEL_URL:
         rows.append([InlineKeyboardButton(text=CHANNEL_NAME, url=CHANNEL_URL)])
@@ -467,45 +490,53 @@ async def cmd_start(message: Message, state: FSMContext):
     await state.clear()
     user = db.get_user_by_telegram(message.from_user.id)
     if user and user.get("placement_done"):
+        uid = db.get_or_create_user(
+            message.from_user.id, message.from_user.username, message.from_user.full_name
+        )
         await message.answer(
             f"Yana xush kelibsiz, {esc(message.from_user.full_name)}! 👋\n\n"
-            f"Unvon: {random_title_for(user.get('xp', 0))}\n"
-            f"⭐ XP: {user.get('xp', 0)}  |  🔥 Streak: {user.get('streak', 0)} kun\n\n"
+            f"{status_line(uid)}\n\n"
+            f"Unvon: {random_title_for(user.get('xp', 0))}\n\n"
             "Bugun nimadan boshlaymiz?",
             reply_markup=main_menu_kb(),
             parse_mode="HTML",
         )
         await state.set_state(QuizState.course_menu)
+        await state.update_data(subject=DEFAULT_SUBJECT, owner_id=message.from_user.id)
     else:
-        await message.answer(
+        banner = BASE_DIR / "media" / "images" / "banner.png"
+        text = (
             f"Assalomu alaykum, {esc(message.from_user.full_name)}! 👋\n\n"
-            "<b>Repetitor</b> — ingliz va rus tillarini bosqichma-bosqich "
-            "o'rganish uchun o'quv platformasi.\n\n"
+            "<b>Repetitor</b> — ingliz tilini Duolingo uslubida o'rganish platformasi.\n\n"
             "<b>Sizni nima kutmoqda:</b>\n"
-            "🎬 Video darslar va nazariya\n"
-            "✍️ Amaliy mashqlar va testlar\n"
+            "📚 Bosqichma-bosqich kurs: video → nazariya → mashq\n"
+            "🖼️ Rasmlar bilan so'z o'rganish\n"
             "🌟 Reading · Listening · Speaking ko'nikmalari\n"
-            "🧠 SRS takrorlash — so'zlar xotirada mustahkam qoladi\n"
-            "📊 Progress, reyting va kurs sertifikati\n\n"
-            "Boshlash uchun qisqa <b>placement test</b> ishlaymiz (~3 daqiqa) — "
-            "qaysi darajadan boshlashni aniqlaymiz.\n\n"
-            "Qaysi tilni o'rganmoqchisiz?",
-            reply_markup=subjects_kb(),
-            parse_mode="HTML",
+            "📖 Kutubxona: 7 ta kitob, 30+ bob\n"
+            "❤️ Yuraklar, 💎 gemlar, 🎯 kunlik questlar, 🏆 ligalar\n"
+            "🧠 SRS takrorlash — so'zlar xotirada mustahkam qoladi\n\n"
+            "Boshlash uchun qisqa <b>placement test</b> (~3 daqiqa) ishlaymiz — "
+            "darajangizni aniqlaymiz."
         )
+        kb = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="🚀 Boshlash", callback_data="go:placement")],
+        ])
+        if banner.exists():
+            from aiogram.types import FSInputFile
+            await message.answer_photo(FSInputFile(str(banner)), caption=text,
+                                       parse_mode="HTML", reply_markup=kb)
+        else:
+            await message.answer(text, parse_mode="HTML", reply_markup=kb)
         await state.set_state(QuizState.choosing_subject)
+        await state.update_data(owner_id=message.from_user.id)
 
 
-@router.callback_query(QuizState.choosing_subject, F.data.startswith("subj:"))
-async def choose_subject_placement(callback: CallbackQuery, state: FSMContext):
-    subject = callback.data.split(":")[1]
-    if subject not in SUBJECT_NAMES:
-        await callback.answer("Noto'g'ri tanlov.", show_alert=True)
-        return
+@router.callback_query(QuizState.choosing_subject, F.data == "go:placement")
+async def start_placement(callback: CallbackQuery, state: FSMContext):
+    subject = DEFAULT_SUBJECT
     await state.update_data(subject=subject, owner_id=callback.from_user.id)
 
-    # Placement allaqachon o'tilgan bo'lsa — qayta test majburiy emas,
-    # shunchaki tanlangan tilni saqlaymiz.
+    # Placement allaqachon o'tilgan bo'lsa — qayta test majburiy emas.
     existing = db.get_user_by_telegram(callback.from_user.id)
     if existing and existing.get("placement_done"):
         user_id = db.get_or_create_user(
@@ -517,9 +548,7 @@ async def choose_subject_placement(callback: CallbackQuery, state: FSMContext):
         await state.set_state(QuizState.course_menu)
         await state.update_data(subject=subject, owner_id=callback.from_user.id)
         await callback.message.edit_text(
-            f"{SUBJECT_NAMES[subject]} tanlandi.\n\n"
-            f"Sizning darajangiz: {LEVEL_NAMES.get(level, level)}\n\n"
-            "Asosiy menyu:",
+            f"Xush kelibsiz! Darajangiz: {LEVEL_NAMES.get(level, level)}\n\nAsosiy menyu:",
             reply_markup=main_menu_kb(),
         )
         await callback.answer()
@@ -648,6 +677,13 @@ def check_owner(data: dict, user_id: int) -> bool:
     return int(owner) == int(user_id)
 
 
+def hearts_refill_kb() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="❤️ Yuraklarni to'ldirish — 50 💎", callback_data="hb:refill")],
+        [InlineKeyboardButton(text="🏠 Bosh menyu", callback_data="menu:back")],
+    ])
+
+
 @router.callback_query(F.data.startswith("ans:"))
 async def handle_mcq_answer(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
@@ -681,11 +717,36 @@ async def handle_mcq_answer(callback: CallbackQuery, state: FSMContext):
         f"{random.choice(WRONG_PHRASES)}\nTo'g'ri javob: <b>{correct_option}</b>"
     )
     feedback += f"\n💡 {esc(q.get('explanation', ''))}"
+
+    uid = db.get_or_create_user(callback.from_user.id, None, None)
+    counts_for_hearts = bool(data.get("is_module_quiz") or data.get("is_skill_quiz"))
+    if counts_for_hearts:
+        if is_correct:
+            db.bump_quest_metric(uid, "correct", 1)
+        else:
+            hearts_left = db.spend_heart(uid)
+            feedback += f"\n💔 −1 yurak (qoldi: {'❤️' * hearts_left or '0'})"
+            await safe_edit(callback.message, f"❓ {esc(q['question'])}\n\n{feedback}")
+            if hearts_left <= 0:
+                await state.clear()
+                await state.set_state(QuizState.course_menu)
+                await state.update_data(subject=data.get("subject", "en"), owner_id=callback.from_user.id)
+                await callback.message.answer(
+                    "💔 <b>Yuraklaringiz tugadi!</b>\n\n"
+                    "Har 30 daqiqada 1 yurak avtomatik tiklanadi.\n"
+                    "Yoki 50 💎 evaziga hozir to'ldiring:",
+                    parse_mode="HTML",
+                    reply_markup=hearts_refill_kb(),
+                )
+                await callback.answer("Yuraklar tugadi!", show_alert=True)
+                return
+    elif is_correct:
+        db.bump_quest_metric(uid, "correct", 1)
+
     await safe_edit(callback.message, f"❓ {esc(q['question'])}\n\n{feedback}")
 
     # Seen mark
     if q.get("id"):
-        uid = db.get_or_create_user(callback.from_user.id, None, None)
         db.mark_exercise_seen(uid, data.get("subject", "en"), q["id"])
 
     await advance_quiz(callback.message, state, current + 1, score)
@@ -760,10 +821,36 @@ async def handle_text_answer(message: Message, state: FSMContext):
         f"{random.choice(WRONG_PHRASES)}\nTo'g'ri javob: <b>{correct_option}</b>"
     )
     feedback += f"\n💡 {esc(q.get('explanation', ''))}"
+
+    uid = db.get_or_create_user(message.from_user.id, None, None)
+    counts_for_hearts = bool(data.get("is_module_quiz") or data.get("is_skill_quiz"))
+    if counts_for_hearts:
+        if is_correct:
+            db.bump_quest_metric(uid, "correct", 1)
+        else:
+            hearts_left = db.spend_heart(uid)
+            feedback += f"\n💔 −1 yurak (qoldi: {'❤️' * hearts_left or '0'})"
+    elif is_correct:
+        db.bump_quest_metric(uid, "correct", 1)
+
     await message.answer(feedback, parse_mode="HTML")
 
+    if counts_for_hearts and not is_correct:
+        eco = db.get_economy(uid)
+        if eco["hearts"] <= 0:
+            await state.clear()
+            await state.set_state(QuizState.course_menu)
+            await state.update_data(subject=data.get("subject", "en"), owner_id=message.from_user.id)
+            await message.answer(
+                "💔 <b>Yuraklaringiz tugadi!</b>\n\n"
+                "Har 30 daqiqada 1 yurak avtomatik tiklanadi.\n"
+                "Yoki 50 💎 evaziga hozir to'ldiring:",
+                parse_mode="HTML",
+                reply_markup=hearts_refill_kb(),
+            )
+            return
+
     if q.get("id"):
-        uid = db.get_or_create_user(message.from_user.id, None, None)
         db.mark_exercise_seen(uid, data.get("subject", "en"), q["id"])
 
     await advance_quiz(message, state, current + 1, score)
@@ -812,9 +899,31 @@ async def handle_matching_answer(callback: CallbackQuery, state: FSMContext):
         all_correct = m["errors"] == 0
         score = data["score"] + (1 if all_correct else 0)
         summary = "🎉 Barcha juftliklar to'g'ri!" if all_correct else f"Xatolar: {m['errors']}"
+        uid = db.get_or_create_user(callback.from_user.id, None, None)
+        counts_for_hearts = bool(data.get("is_module_quiz") or data.get("is_skill_quiz"))
+        if counts_for_hearts:
+            if all_correct:
+                db.bump_quest_metric(uid, "correct", 1)
+            else:
+                hearts_left = db.spend_heart(uid)
+                summary += f"\n💔 −1 yurak (qoldi: {'❤️' * hearts_left or '0'})"
+        elif all_correct:
+            db.bump_quest_metric(uid, "correct", 1)
         await callback.message.answer(summary)
+        if counts_for_hearts and not all_correct and db.get_economy(uid)["hearts"] <= 0:
+            await state.clear()
+            await state.set_state(QuizState.course_menu)
+            await state.update_data(subject=data.get("subject", "en"), owner_id=callback.from_user.id)
+            await callback.message.answer(
+                "💔 <b>Yuraklaringiz tugadi!</b>\n\n"
+                "Har 30 daqiqada 1 yurak avtomatik tiklanadi.\n"
+                "Yoki 50 💎 evaziga hozir to'ldiring:",
+                parse_mode="HTML",
+                reply_markup=hearts_refill_kb(),
+            )
+            await callback.answer()
+            return
         if q.get("id") and not data.get("is_game"):
-            uid = db.get_or_create_user(callback.from_user.id, None, None)
             db.mark_exercise_seen(uid, data.get("subject", "en"), q["id"])
         await advance_quiz(callback.message, state, current + 1, score)
     await callback.answer()
@@ -841,6 +950,8 @@ async def advance_quiz(message: Message, state: FSMContext, next_index: int, sco
             await finish_module_quiz(message, state, score, len(quiz))
         elif data.get("is_skill_quiz"):
             await finish_skill_quiz(message, state, score, len(quiz))
+        elif data.get("is_library_quiz"):
+            await finish_library_quiz(message, state, score, len(quiz))
         elif data.get("is_game"):
             await finish_game_match(message, state)
         else:
@@ -916,7 +1027,7 @@ async def finish_placement(message: Message, state: FSMContext, score: int, tota
 
     try:
         db.set_placement_done(user_id, level)
-        db.add_xp(user_id, XP_PLACEMENT)
+        award_xp(user_id, XP_PLACEMENT)
         db.save_result(user_id, subject, "placement", level, score, total)
         ensure_first_module_unlocked(user_id, subject, level)
         if level in ("intermediate", "advanced"):
@@ -950,7 +1061,7 @@ async def finish_skill_quiz(message: Message, state: FSMContext, score: int, tot
     total = max(total, 1)
     pct = round(100 * score / total)
     db.save_result(user_id, subject, f"skill_{skill}", data.get("unit_id") or skill, score, total)
-    db.add_xp(user_id, score * XP_PER_CORRECT)
+    award_xp(user_id, score * XP_PER_CORRECT)
     streak = db.update_streak(user_id)
     stars = "⭐" * min(5, max(1, pct // 20))
     await message.answer(
@@ -988,7 +1099,7 @@ async def finish_module_quiz(message: Message, state: FSMContext, score: int, to
 
     db.save_result(user_id, subject, mod["title"] if mod else module_id, level, score, total)
     streak = db.update_streak(user_id)
-    db.add_xp(user_id, score * XP_PER_CORRECT)
+    award_xp(user_id, score * XP_PER_CORRECT)
 
     lines = [
         "🎉 Modul testi tugadi!",
@@ -1000,10 +1111,15 @@ async def finish_module_quiz(message: Message, state: FSMContext, score: int, to
 
     if pct >= threshold:
         db.complete_module(user_id, subject, module_id, score, total)
-        db.add_xp(user_id, XP_MODULE_COMPLETE)
+        award_xp(user_id, XP_MODULE_COMPLETE)
+        award_gems(user_id, 20)
         db.increment_lessons_done(user_id)
+        db.bump_quest_metric(user_id, "lessons", 1)
         lines.append("")
-        lines.append(f"✅ Modul muvaffaqiyatli yakunlandi! +{XP_MODULE_COMPLETE} XP")
+        lines.append(f"✅ Modul muvaffaqiyatli yakunlandi! +{XP_MODULE_COMPLETE} XP, +20 💎")
+        if pct == 100:
+            award_gems(user_id, 10)
+            lines.append("💯 Mukammal natija — bonus +10 💎")
         # Daraja progressi — o'quvchi yutuqni ko'rsin
         level_mods = get_modules(subject, level)
         prog = db.get_all_module_progress(user_id, subject)
@@ -1088,6 +1204,8 @@ async def finish_game_match(message: Message, state: FSMContext):
     uid = db.get_or_create_user(int(owner_id), data.get("username"), data.get("full_name"))
     db.save_game_score(uid, "match", pts)
     db.add_team_xp(uid, pts)
+    db.bump_quest_metric(uid, "games", 1)
+    award_xp(uid, pts)
     db.update_streak(uid)
     await message.answer(
         f"🏁 <b>Juftlik poygasi tugadi!</b>\n\n"
@@ -1115,7 +1233,7 @@ async def finish_free_practice(message: Message, state: FSMContext, score: int, 
     )
     pct = round(100 * score / total) if total else 0
     db.save_result(user_id, subject, "free_practice", data.get("level", "beginner"), score, total)
-    db.add_xp(user_id, score * XP_PER_CORRECT)
+    award_xp(user_id, score * XP_PER_CORRECT)
     streak = db.update_streak(user_id)
     await message.answer(
         f"🎉 Mashq tugadi!\n\nNatija: <b>{score}/{total}</b> ({pct}%)\n"
@@ -1128,20 +1246,59 @@ async def finish_free_practice(message: Message, state: FSMContext, score: int, 
     await state.update_data(subject=subject, owner_id=data["owner_id"])
 
 
+async def finish_library_quiz(message: Message, state: FSMContext, score: int, total: int):
+    """Kutubxona bobi quizi yakuni."""
+    data = await state.get_data()
+    owner_id = data.get("owner_id")
+    if not owner_id:
+        await message.answer("Sessiya tugagan. /start bosing.", reply_markup=main_menu_kb())
+        await state.clear()
+        return
+    user_id = db.get_or_create_user(int(owner_id), data.get("username"), data.get("full_name"))
+    total = max(int(total or 1), 1)
+    score = int(score or 0)
+    pct = round(100 * score / total)
+    book_id = data.get("lib_book") or "unknown"
+    chap_idx = int(data.get("lib_chap") or 0)
+    db.save_result(user_id, "en", f"library_{book_id}", f"ch{chap_idx}", score, total)
+    award_xp(user_id, score * XP_PER_CORRECT)
+    db.mark_chapter_read(user_id, book_id, chap_idx)
+    lines = [
+        "📚 <b>Kutubxona quizi tugadi!</b>\n",
+        f"Natija: <b>{score}/{total}</b> ({pct}%)",
+        f"⭐ +{score * XP_PER_CORRECT} XP",
+    ]
+    if pct == 100:
+        award_gems(user_id, 10)
+        lines.append("💯 Mukammal — bonus +10 💎")
+    elif pct >= 70:
+        award_gems(user_id, 5)
+        lines.append("🎁 Yaxshi natija — +5 💎")
+    streak = db.update_streak(user_id)
+    lines.append(f"🔥 Streak: {streak} kun")
+    await message.answer("\n".join(lines), parse_mode="HTML", reply_markup=main_menu_kb())
+    await state.clear()
+    await state.set_state(QuizState.course_menu)
+    await state.update_data(subject="en", owner_id=owner_id)
+
+
 # ---------- Menyu handlerlari ----------
 
 @router.callback_query(F.data == "menu:back")
 @router.callback_query(F.data == "menu:course")
 async def menu_course(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
-    subject = data.get("subject")
-    if not subject:
-        await callback.message.edit_text("Avval tilni tanlang:", reply_markup=subjects_kb())
-        await state.set_state(QuizState.choosing_subject)
-        await callback.answer()
-        return
+    subject = data.get("subject") or DEFAULT_SUBJECT
+    if not data.get("subject"):
+        await state.update_data(subject=subject, owner_id=callback.from_user.id)
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
     await callback.message.edit_text(
-        f"{SUBJECT_NAMES[subject]}\nQaysi darajani ko'ramiz?",
+        f"📚 <b>{SUBJECT_NAMES[subject]}</b>\n"
+        f"{status_line(uid)}\n\n"
+        "Darajani tanlang — har bir modul avvalgisini tugatgach ochiladi:",
+        parse_mode="HTML",
         reply_markup=course_levels_kb(subject),
     )
     await callback.answer()
@@ -1300,6 +1457,18 @@ async def start_module_exercises(callback: CallbackQuery, state: FSMContext):
     status = db.get_module_status(user_id, subject, module_id)
     if status not in ("video_done", "completed"):
         await callback.answer("Avval videoni ko'ring va nazariyani o'qing!", show_alert=True)
+        return
+
+    eco = db.get_economy(user_id)
+    if eco["hearts"] <= 0:
+        await callback.answer("💔 Yuraklaringiz tugagan!", show_alert=True)
+        await callback.message.answer(
+            "💔 <b>Yuraklaringiz tugadi!</b>\n\n"
+            "Mashqni boshlash uchun yurak kerak.\n"
+            "Har 30 daqiqada 1 yurak tiklanadi yoki 50 💎 evaziga hozir to'ldiring:",
+            parse_mode="HTML",
+            reply_markup=hearts_refill_kb(),
+        )
         return
 
     exercises = mod.get("exercises", [])
@@ -1489,14 +1658,341 @@ async def menu_top(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
 
 
+LEAGUE_TIERS = [
+    (0, "🥉 Bronza ligasi"),
+    (150, "🥈 Kumush ligasi"),
+    (400, "🥇 Oltin ligasi"),
+    (800, "💎 Almos ligasi"),
+]
+
+
+def league_name(week_xp: int) -> str:
+    name = LEAGUE_TIERS[0][1]
+    for threshold, n in LEAGUE_TIERS:
+        if week_xp >= threshold:
+            name = n
+    return name
+
+
+@router.callback_query(F.data == "menu:league")
+async def menu_league(callback: CallbackQuery, state: FSMContext):
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    wx = db.weekly_xp(uid)
+    rank = db.weekly_rank(uid)
+    leaders = db.weekly_leaderboard(limit=10)
+    text = (
+        f"🏆 <b>Haftalik liga</b>\n\n"
+        f"Sizning ligangiz: {league_name(wx)}\n"
+        f"Haftalik XP: <b>{wx}</b>\n"
+        + (f"O'rningiz: <b>#{rank}</b>\n" if rank else "")
+        + "\n<b>TOP-10 (shu hafta):</b>\n"
+    )
+    medals = ["🥇", "🥈", "🥉"]
+    if leaders:
+        for i, row in enumerate(leaders):
+            medal = medals[i] if i < 3 else f"{i+1}."
+            name = esc(row["full_name"] or row["username"] or "O'quvchi")
+            marker = " ← siz" if row["id"] == uid else ""
+            text += f"{medal} {name} — {row['week_xp']} XP{marker}\n"
+    else:
+        text += "Hali hech kim XP yig'magan. Birinchi bo'ling!\n"
+    text += (
+        "\n💡 Hafta yakunida eng faol o'quvchilar yuqori ligaga ko'tariladi.\n"
+        "Ligalar: 🥉 0+ · 🥈 150+ · 🥇 400+ · 💎 800+ haftalik XP"
+    )
+    await callback.message.edit_text(text, parse_mode="HTML", reply_markup=main_menu_kb())
+    await callback.answer()
+
+
+# ---------- Duolingo: kunlik questlar ----------
+
+QUEST_POOL = [
+    {"key": "xp_40", "metric": "xp", "target": 40, "reward": 15, "title": "40 XP yig'ing"},
+    {"key": "correct_10", "metric": "correct", "target": 10, "reward": 15, "title": "10 ta to'g'ri javob bering"},
+    {"key": "lesson_1", "metric": "lessons", "target": 1, "reward": 20, "title": "1 ta modulni yakunlang"},
+    {"key": "srs_10", "metric": "srs", "target": 10, "reward": 10, "title": "10 ta SRS karta takrorlang"},
+    {"key": "game_1", "metric": "games", "target": 1, "reward": 10, "title": "1 ta mini-o'yin o'ynang"},
+    {"key": "read_1", "metric": "chapters", "target": 1, "reward": 10, "title": "Kutubxonadan 1 bob o'qing"},
+]
+
+
+def todays_quests(user_id: int) -> list:
+    """Har kuni har user uchun tasodifiy 3 ta quest (deterministik)."""
+    rnd = random.Random(f"{date.today().isoformat()}:quests:{user_id}")
+    picks = rnd.sample(QUEST_POOL, 3)
+    db.ensure_daily_quests(user_id, picks)
+    return picks
+
+
+def quests_render(uid: int):
+    todays_quests(uid)
+    rewards = {q["key"]: q["reward"] for q in QUEST_POOL}
+    titles = {q["key"]: q["title"] for q in QUEST_POOL}
+    text = (
+        "🎯 <b>Kunlik questlar</b>\n\n"
+        "Bajaring va 💎 yutib oling. Har kuni yangilanadi!\n\n"
+    )
+    rows = []
+    for r in db.get_today_quests(uid):
+        key = r["quest_key"]
+        title = titles.get(key, key)
+        bar = progress_bar(r["progress"], r["target"])
+        if r["claimed"]:
+            text += f"✅ {title}\n   {bar} {r['progress']}/{r['target']} — mukofot olingan\n"
+        elif r["progress"] >= r["target"]:
+            text += f"🎁 {title}\n   {bar} {r['progress']}/{r['target']} — tayyor!\n"
+            rows.append([InlineKeyboardButton(
+                text=f"🎁 Olish: +{rewards.get(key, 10)} 💎",
+                callback_data=f"qst:{key}"[:64],
+            )])
+        else:
+            text += f"⬜ {title}\n   {bar} {r['progress']}/{r['target']}\n"
+    rows.append([InlineKeyboardButton(text="◀️ Menyu", callback_data="menu:back")])
+    return text, InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+@router.callback_query(F.data == "menu:quests")
+async def menu_quests(callback: CallbackQuery, state: FSMContext):
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    text, kb = quests_render(uid)
+    await callback.message.edit_text(text, parse_mode="HTML", reply_markup=kb)
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("qst:"))
+async def quest_claim(callback: CallbackQuery, state: FSMContext):
+    key = callback.data.split(":", 1)[1]
+    reward = next((q["reward"] for q in QUEST_POOL if q["key"] == key), None)
+    if reward is None:
+        await callback.answer("Noto'g'ri quest.", show_alert=True)
+        return
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    if not db.claim_quest(uid, key):
+        await callback.answer("Bu questni olish mumkin emas.", show_alert=True)
+        return
+    db.add_gems(uid, reward)
+    text, kb = quests_render(uid)
+    try:
+        await callback.message.edit_text(text, parse_mode="HTML", reply_markup=kb)
+    except TelegramBadRequest:
+        pass
+    await callback.answer(f"🎁 +{reward} 💎 olindi!", show_alert=False)
+
+
+# ---------- Duolingo: yuraklar ----------
+
+@router.callback_query(F.data == "hb:refill")
+async def hearts_refill(callback: CallbackQuery, state: FSMContext):
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    if db.refill_hearts(uid):
+        eco = db.get_economy(uid)
+        try:
+            await callback.message.edit_text(
+                f"❤️ <b>Yuraklar to'ldirildi!</b>\n\n"
+                f"{'❤️' * eco['hearts']}  💎 {eco['gems']} gem qoldi.\n\n"
+                "Endi mashqni davom ettirishingiz mumkin.",
+                parse_mode="HTML",
+                reply_markup=main_menu_kb(),
+            )
+        except TelegramBadRequest:
+            pass
+        await callback.answer("❤️ 5 yurak tiklandi!", show_alert=False)
+    else:
+        eco = db.get_economy(uid)
+        if eco["hearts"] >= db.MAX_HEARTS:
+            await callback.answer("Yuraklaringiz allaqachon to'liq.", show_alert=True)
+        else:
+            await callback.answer(
+                f"Yetarli gem yo'q (50 💎 kerak, sizda {eco['gems']} 💎). "
+                "Gemlarni questlar va mashqlardan yutasiz.",
+                show_alert=True,
+            )
+
+
+# ---------- Kutubxona ----------
+
+@router.callback_query(F.data == "menu:library")
+async def menu_library(callback: CallbackQuery, state: FSMContext):
+    books = LIBRARY.get("books", [])
+    if not books:
+        await callback.answer("Kutubxona hozircha bo'sh.", show_alert=True)
+        return
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    rows = []
+    for b in books:
+        total = len(b.get("chapters", []))
+        read = len(db.get_read_chapters(uid, b["id"]))
+        mark = "✅" if total and read >= total else "📖"
+        rows.append([InlineKeyboardButton(
+            text=f"{b.get('emoji', '📚')} {b['title'][:32]} · {read}/{total}",
+            callback_data=f"lib:book:{b['id']}"[:64],
+        )])
+    rows.append([InlineKeyboardButton(text="◀️ Menyu", callback_data="menu:back")])
+    stats = db.library_stats(uid)
+    await callback.message.edit_text(
+        "📚 <b>Kutubxona</b>\n\n"
+        "Qiziqarli kitoblar orqali ingliz tilini o'rganing:\n"
+        "• Har bobni o'qing → ✅ belgilang (+10 XP, +2 💎)\n"
+        "• Tushunish quizini yeching (mukammal natija uchun +10 💎)\n\n"
+        f"Jami o'qilgan: <b>{stats['chapters']}</b> bob\n\n"
+        "Kitobni tanlang:",
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=rows),
+    )
+    await callback.answer()
+
+
+async def render_book_chapters(callback: CallbackQuery, book: dict):
+    uid = db.get_or_create_user(callback.from_user.id, None, None)
+    read = db.get_read_chapters(uid, book["id"])
+    rows = []
+    for i, ch in enumerate(book.get("chapters", [])):
+        mark = "✅" if i in read else "📖"
+        rows.append([InlineKeyboardButton(
+            text=f"{mark} {i + 1}. {ch['title'][:38]}"[:64],
+            callback_data=f"lib:chap:{book['id']}:{i}"[:64],
+        )])
+    rows.append([InlineKeyboardButton(text="◀️ Kutubxona", callback_data="menu:library")])
+    level = LEVEL_NAMES.get(book.get("level", "beginner"), book.get("level", ""))
+    await callback.message.edit_text(
+        f"{book.get('emoji', '📚')} <b>{esc(book['title'])}</b>\n"
+        f"{esc(book.get('description', ''))}\n\n"
+        f"📍 Daraja: {level} · 📖 {len(book.get('chapters', []))} bob\n\n"
+        "Bobni tanlang:",
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=rows),
+    )
+
+
+@router.callback_query(F.data.startswith("lib:book:"))
+async def lib_book(callback: CallbackQuery, state: FSMContext):
+    book_id = callback.data.split(":", 2)[2]
+    book = get_book(book_id)
+    if not book:
+        await callback.answer("Kitob topilmadi.", show_alert=True)
+        return
+    await render_book_chapters(callback, book)
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("lib:chap:"))
+async def lib_chapter(callback: CallbackQuery, state: FSMContext):
+    try:
+        _, _, book_id, idx_str = callback.data.split(":")
+        idx = int(idx_str)
+    except ValueError:
+        await callback.answer("Noto'g'ri so'rov.", show_alert=False)
+        return
+    book = get_book(book_id)
+    chapters = (book or {}).get("chapters", [])
+    if not book or not (0 <= idx < len(chapters)):
+        await callback.answer("Bob topilmadi.", show_alert=True)
+        return
+    ch = chapters[idx]
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="✅ O'qidim (+10 XP)", callback_data=f"lib:done:{book_id}:{idx}"[:64])],
+        [InlineKeyboardButton(text="❓ Tushunish quizi", callback_data=f"lib:quiz:{book_id}:{idx}"[:64])],
+        [InlineKeyboardButton(text="◀️ Boblar", callback_data=f"lib:book:{book_id}"[:64])],
+    ])
+    await callback.message.edit_text(
+        f"📖 <b>{esc(book['title'])} — {esc(ch['title'])}</b>\n\n{esc(ch['text'])}",
+        parse_mode="HTML",
+        reply_markup=kb,
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("lib:done:"))
+async def lib_done(callback: CallbackQuery, state: FSMContext):
+    try:
+        _, _, book_id, idx_str = callback.data.split(":")
+        idx = int(idx_str)
+    except ValueError:
+        await callback.answer("Noto'g'ri so'rov.", show_alert=False)
+        return
+    book = get_book(book_id)
+    if not book or not (0 <= idx < len(book.get("chapters", []))):
+        await callback.answer("Bob topilmadi.", show_alert=True)
+        return
+    uid = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    if db.mark_chapter_read(uid, book_id, idx):
+        award_xp(uid, 10)
+        award_gems(uid, 2)
+        db.bump_quest_metric(uid, "chapters", 1)
+        db.update_streak(uid)
+        await callback.answer("✅ +10 XP, +2 💎", show_alert=False)
+    else:
+        await callback.answer("Bu bobni allaqachon o'qigansiz.", show_alert=False)
+    await render_book_chapters(callback, book)
+
+
+@router.callback_query(F.data.startswith("lib:quiz:"))
+async def lib_quiz_start(callback: CallbackQuery, state: FSMContext):
+    try:
+        _, _, book_id, idx_str = callback.data.split(":")
+        idx = int(idx_str)
+    except ValueError:
+        await callback.answer("Noto'g'ri so'rov.", show_alert=False)
+        return
+    book = get_book(book_id)
+    chapters = (book or {}).get("chapters", [])
+    if not book or not (0 <= idx < len(chapters)):
+        await callback.answer("Bob topilmadi.", show_alert=True)
+        return
+    questions = chapters[idx].get("questions") or []
+    if not questions:
+        await callback.answer("Bu bobda quiz savollari yo'q.", show_alert=True)
+        return
+    quiz = [
+        {
+            "id": f"lib_{book_id}_{idx}_{i}",
+            "type": "mcq",
+            "question": q["question"],
+            "options": q["options"],
+            "correct": int(q["correct"]),
+            "explanation": q.get("explanation", ""),
+        }
+        for i, q in enumerate(questions)
+        if q.get("options") and 0 <= int(q.get("correct", -1)) < len(q["options"])
+    ]
+    if not quiz:
+        await callback.answer("Quiz savollari noto'g'ri.", show_alert=True)
+        return
+    await state.update_data(
+        subject="en",
+        quiz=quiz, current=0, score=0,
+        is_placement=False, is_module_quiz=False, is_skill_quiz=False,
+        is_game=False, is_library_quiz=True,
+        lib_book=book_id, lib_chap=idx,
+        owner_id=callback.from_user.id,
+        username=callback.from_user.username,
+        full_name=callback.from_user.full_name,
+    )
+    await state.set_state(QuizState.answering)
+    await callback.message.edit_text(
+        f"❓ <b>Tushunish quizi</b> — {esc(chapters[idx]['title'])}\n"
+        f"{len(quiz)} ta savol. Omad! 🚀",
+        parse_mode="HTML",
+    )
+    await send_question(callback.message, state)
+    await callback.answer()
+
+
 @router.callback_query(F.data == "menu:switch")
 async def menu_switch(callback: CallbackQuery, state: FSMContext):
-    await callback.message.edit_text(
-        "Qaysi tilga o'tamiz?",
-        reply_markup=subjects_kb(),
-    )
-    await state.set_state(QuizState.choosing_subject)
-    await callback.answer()
+    await callback.answer("Hozircha kurs faqat ingliz tilida.", show_alert=True)
 
 
 @router.message(Command("stats"))
@@ -1505,13 +2001,18 @@ async def cmd_stats(message: Message):
         message.from_user.id, message.from_user.username, message.from_user.full_name
     )
     stats = db.get_user_stats(user_id)
+    eco = db.get_economy(user_id)
+    lib = db.library_stats(user_id)
     title = random_title_for(stats["xp"])
+    hearts = "❤️" * eco["hearts"] + "🖤" * max(0, db.MAX_HEARTS - eco["hearts"])
     text = (
         f"📊 <b>Statistika</b>\n\n{title}\n"
         f"⭐ XP: {stats['xp']} | 🔥 {stats['streak']} kun\n"
+        f"{hearts}  💎 {eco['gems']}\n"
         f"📝 Testlar: {stats['tests_taken']}\n"
         f"✅ {stats['total_score']}/{stats['total_questions']}\n"
-        f"📚 Modullar: {stats['completed_modules']}"
+        f"📚 Modullar: {stats['completed_modules']} | Kutubxona: {lib['chapters']} bob\n"
+        f"🏆 Haftalik XP: {db.weekly_xp(user_id)} ({league_name(db.weekly_xp(user_id))})"
     )
     await message.answer(text, parse_mode="HTML")
 
@@ -1542,7 +2043,15 @@ async def cmd_help(message: Message):
         "2. Modul ochiladi → video ko'rasiz\n"
         "3. Nazariya (yozma + og'zaki)\n"
         "4. Mashq/test → o'tsangiz keyingi modul ochiladi\n"
-        "5. Takrorlanmaslik: savollar aralashib boradi",
+        "5. Savollar aralashib boradi (takrorlanmaydi)\n\n"
+        "<b>Duolingo uslubidagi imkoniyatlar:</b>\n"
+        "❤️ Yuraklar — noto'g'ri javobda kamayadi, 30 daqiqada 1 ta tiklanadi (50 💎 ga to'ldirish mumkin)\n"
+        "💎 Gemlar — questlar, modul va mukammal natijalardan yutiladi\n"
+        "🎯 Kunlik questlar — har kuni 3 ta vazifa, bajarib gem yuting\n"
+        "🏆 Haftalik liga — XP yig'ib ligangizni oshiring (🥉🥈🥇💎)\n"
+        "📚 Kutubxona — kitob boblarini o'qing (+10 XP) va quiz yeching\n"
+        "🧠 SRS — so'zlarni eslab qolish uchun takrorlash\n"
+        "🎮 Mini-o'yinlar, 📖 hikoyalar, 🎤 speaking topshiriqlari",
         parse_mode="HTML",
     )
 
@@ -1711,18 +2220,14 @@ def admin_user_kb(uid: int) -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="📍 Level: beginner", callback_data=f"adm:setlvl:{uid}:beginner")],
         [InlineKeyboardButton(text="📍 Level: intermediate", callback_data=f"adm:setlvl:{uid}:intermediate")],
         [InlineKeyboardButton(text="📍 Level: advanced", callback_data=f"adm:setlvl:{uid}:advanced")],
-        [InlineKeyboardButton(text="🔓 Barcha beginner ochish (EN)", callback_data=f"adm:unlockall:{uid}:en:beginner")],
-        [InlineKeyboardButton(text="🔓 Barcha beginner ochish (RU)", callback_data=f"adm:unlockall:{uid}:ru:beginner")],
+        [InlineKeyboardButton(text="🔓 Barcha beginner modullarni ochish", callback_data=f"adm:unlockall:{uid}:en:beginner")],
         [InlineKeyboardButton(text="◀️ O'quvchilar", callback_data="adm:users:0")],
         [InlineKeyboardButton(text="🏠 Admin", callback_data="adm:home")],
     ])
 
 
 def admin_curr_kb(subject: str) -> InlineKeyboardMarkup:
-    other = "ru" if subject == "en" else "en"
-    rows = [
-        [InlineKeyboardButton(text=f"🔄 {SUBJECT_NAMES[other]}", callback_data=f"adm:curr:{other}")],
-    ]
+    rows = []
     for level in ("beginner", "intermediate", "advanced"):
         rows.append([InlineKeyboardButton(
             text=LEVEL_NAMES[level],
@@ -1920,8 +2425,8 @@ async def adm_set_lvl(callback: CallbackQuery):
     parts = callback.data.split(":")
     uid, level = int(parts[2]), parts[3]
     db.set_user_level(uid, level)
-    # unlock first module of that level for both subjects
-    for subj in ("en", "ru"):
+    # unlock first module of that level
+    for subj in ("en",):
         mods = get_modules(subj, level)
         if mods:
             db.unlock_module(uid, subj, mods[0]["id"])
@@ -2184,12 +2689,9 @@ def skill_units_kb(subject: str, skill: str) -> InlineKeyboardMarkup:
 @router.callback_query(F.data == "menu:skills")
 async def menu_skills(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
-    subject = data.get("subject")
-    if not subject:
-        await callback.message.edit_text("Avval tilni tanlang:", reply_markup=subjects_kb())
-        await state.set_state(QuizState.choosing_subject)
-        await callback.answer()
-        return
+    subject = data.get("subject") or DEFAULT_SUBJECT
+    if not data.get("subject"):
+        await state.update_data(subject=subject, owner_id=callback.from_user.id)
     await callback.message.edit_text(
         f"🌟 <b>Ko'nikmalar — {SUBJECT_NAMES[subject]}</b>\n\n"
         "📖 <b>Reading</b> — matn o'qib tushunish\n"
@@ -2318,6 +2820,16 @@ async def skill_start_quiz(callback: CallbackQuery, state: FSMContext):
     if not unit or not unit.get("questions"):
         await callback.answer("Savollar yo'q", show_alert=True)
         return
+    uid = db.get_or_create_user(callback.from_user.id, None, None)
+    if db.get_economy(uid)["hearts"] <= 0:
+        await callback.answer("💔 Yuraklaringiz tugagan!", show_alert=True)
+        await callback.message.answer(
+            "💔 <b>Yuraklaringiz tugadi!</b>\n\n"
+            "Har 30 daqiqada 1 yurak tiklanadi yoki 50 💎 evaziga to'ldiring:",
+            parse_mode="HTML",
+            reply_markup=hearts_refill_kb(),
+        )
+        return
     quiz = list(unit["questions"])
     random.shuffle(quiz)
     quiz = quiz[: min(5, len(quiz))]
@@ -2389,7 +2901,7 @@ async def handle_speaking_voice(message: Message, state: FSMContext, bot: Bot):
     sid = db.save_speaking(
         user_id, subject, unit_id, file_id, duration, score, feedback
     )
-    db.add_xp(user_id, max(5, score // 5))
+    award_xp(user_id, max(5, score // 5))
     db.update_streak(user_id)
 
     await message.answer(
@@ -2674,7 +3186,8 @@ async def srs_quality(callback: CallbackQuery, state: FSMContext):
     uid = db.get_or_create_user(callback.from_user.id, None, None)
     if word:
         db.srs_review(uid, subject, word, q)
-        db.add_xp(uid, 3 if q >= 3 else 1)
+        award_xp(uid, 3 if q >= 3 else 1)
+        db.bump_quest_metric(uid, "srs", 1)
         db.add_team_xp(uid, 2)
     due = db.srs_count_due(uid, subject)
     if due > 0:
@@ -2766,8 +3279,10 @@ async def game_guess_answer(callback: CallbackQuery, state: FSMContext):
         uid = db.get_or_create_user(callback.from_user.id, None, None)
         db.save_game_score(uid, "guess", score)
         db.add_team_xp(uid, score)
+        db.bump_quest_metric(uid, "games", 1)
+        award_xp(uid, max(1, score))
         await callback.message.edit_text(
-            f"🏁 O'yin tugadi!\nBall: <b>{score}</b>",
+            f"🏁 O'yin tugadi!\nBall: <b>{score}</b>\n⭐ +{max(1, score)} XP",
             parse_mode="HTML",
             reply_markup=main_menu_kb(),
         )
@@ -2885,10 +3400,11 @@ async def story_start(callback: CallbackQuery, state: FSMContext):
     choices = node.get("choices") or []
     if not choices:
         uid = db.get_or_create_user(callback.from_user.id, None, None)
-        db.add_xp(uid, 15)
+        award_xp(uid, 15)
+        award_gems(uid, 5)
         db.add_team_xp(uid, 10)
         await callback.message.edit_text(
-            f"{esc(node['text'])}\n\n⭐ +15 XP",
+            f"{esc(node['text'])}\n\n⭐ +15 XP  ·  💎 +5",
             parse_mode="HTML",
             reply_markup=main_menu_kb(),
         )

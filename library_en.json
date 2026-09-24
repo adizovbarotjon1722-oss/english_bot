@@ -1,0 +1,639 @@
+{
+  "books": [
+    {
+      "id": "aesop",
+      "title": "Aesop's Fables",
+      "author": "Ancient Greece (retold)",
+      "genre": "🦊 Fable / Moral stories",
+      "level": "beginner",
+      "emoji": "🦊",
+      "desc": "Five classic short fables with animals. Each story ends with a moral — a lesson for life. Perfect for beginners: short sentences, simple words.",
+      "chapters": [
+        {
+          "title": "The Fox and the Grapes",
+          "text": "One hot summer day, a fox was walking through the forest. He was hungry and tired. Suddenly, he saw a bunch of grapes hanging from a vine above him. The grapes looked sweet and juicy.\n\n\"Those grapes are exactly what I need,\" said the fox.\n\nHe jumped as high as he could, but he could not reach them. He tried again and again. He ran and jumped, but the grapes were too high.\n\nFinally, the fox gave up. He walked away with his nose in the air and said, \"I am sure those grapes are sour anyway.\"\n\nMoral: It is easy to despise what you cannot have.",
+          "questions": [
+            {
+              "question": "Why did the fox jump many times?",
+              "options": ["He wanted to reach the grapes", "He was playing a game", "He was afraid of something"],
+              "correct": 0,
+              "explanation": "The fox jumped again and again because he wanted to reach the sweet grapes."
+            },
+            {
+              "question": "What did the fox say at the end?",
+              "options": ["The grapes are too sweet", "The grapes are sour anyway", "He will come back tomorrow"],
+              "correct": 1,
+              "explanation": "When the fox could not get the grapes, he said they were sour — a classic excuse."
+            }
+          ]
+        },
+        {
+          "title": "The Tortoise and the Hare",
+          "text": "A hare was making fun of a tortoise for being so slow.\n\n\"You never get anywhere,\" laughed the hare. \"Do you ever arrive?\"\n\n\"Yes,\" said the tortoise calmly. \"And I can beat you in a race.\"\n\nThe hare laughed loudly, but he agreed to race. All the animals of the forest gathered to watch.\n\nThe hare ran fast and was soon far ahead. \"The tortoise will take hours,\" he thought. \"I will sleep under this tree.\"\n\nBut while the hare slept, the tortoise kept walking. Slowly, slowly, step by step, he passed the sleeping hare and reached the finish line.\n\nWhen the hare woke up, it was too late. The slow tortoise had won the race.\n\nMoral: Slow and steady wins the race.",
+          "questions": [
+            {
+              "question": "Why did the hare lose the race?",
+              "options": ["He was injured", "He stopped to sleep", "He ran the wrong way"],
+              "correct": 1,
+              "explanation": "The hare was overconfident and slept under a tree while the tortoise kept going."
+            },
+            {
+              "question": "What is the moral of the story?",
+              "options": ["Fast animals always win", "Slow and steady wins the race", "Never race a tortoise"],
+              "correct": 1,
+              "explanation": "Consistency beats speed when speed is not disciplined."
+            }
+          ]
+        },
+        {
+          "title": "The Lion and the Mouse",
+          "text": "A lion was sleeping in the jungle when a little mouse began running up and down on his body. The lion woke up angrily and caught the mouse in his big paw.\n\n\"Please, let me go!\" begged the mouse. \"One day I may help you.\"\n\nThe lion laughed at the idea, but he let the mouse go.\n\nSome days later, hunters caught the lion in a strong net. The lion roared loudly, but he could not escape.\n\nThe little mouse heard him and ran to help. With her sharp little teeth, she bit through the ropes, one by one. Soon the lion was free.\n\n\"You laughed at me,\" said the mouse, \"but now you see — even a mouse can help a lion.\"\n\nMoral: Small friends can be great friends.",
+          "questions": [
+            {
+              "question": "How did the mouse help the lion?",
+              "options": ["She brought him food", "She bit through the net with her teeth", "She called other animals"],
+              "correct": 1,
+              "explanation": "The mouse used her sharp teeth to cut the ropes of the hunters' net."
+            },
+            {
+              "question": "What does the story teach us?",
+              "options": ["Do not sleep in the jungle", "Even small people can help big people", "Never laugh at mice"],
+              "correct": 1,
+              "explanation": "Never underestimate someone because of their size."
+            }
+          ]
+        },
+        {
+          "title": "The Boy Who Cried Wolf",
+          "text": "A young shepherd boy was watching the village sheep on a hillside. He was bored, so he decided to play a trick.\n\n\"Wolf! Wolf!\" he shouted. \"The wolf is coming!\"\n\nThe villagers dropped their work and ran up the hill with sticks. But when they arrived, they found the boy laughing. There was no wolf.\n\nA few days later, the boy shouted again: \"Wolf! Wolf! Help!\" Again the villagers came running, and again the boy laughed at them.\n\nThen, one evening, a real wolf came out of the forest. The boy screamed: \"Wolf! Wolf! Please help!\"\n\nBut the villagers thought, \"It is another trick. He is lying again.\" Nobody came.\n\nThe wolf scattered the sheep and ran away.\n\nMoral: Nobody believes a liar, even when he tells the truth.",
+          "questions": [
+            {
+              "question": "Why didn't the villagers come the last time?",
+              "options": ["They were too tired", "They thought the boy was lying again", "They did not hear him"],
+              "correct": 1,
+              "explanation": "The boy had tricked them twice, so they no longer trusted him."
+            },
+            {
+              "question": "What is the lesson of this fable?",
+              "options": ["Lying destroys trust", "Sheep are dangerous", "Boys should not work alone"],
+              "correct": 0,
+              "explanation": "Once you lose trust through lies, even your true words are not believed."
+            }
+          ]
+        },
+        {
+          "title": "The Ant and the Grasshopper",
+          "text": "All summer long, the ant worked hard in the fields. She collected grains of wheat, one by one, and carried them to her home. She worked from morning until evening.\n\nThe grasshopper sat in the shade and played his violin. \"Why do you work so hard?\" he asked the ant. \"Come and sing with me!\"\n\n\"I am storing food for the winter,\" said the ant. \"You should do the same.\"\n\n\"Winter is far away,\" laughed the grasshopper. \"There is plenty of food today.\"\n\nBut then winter came. The fields were covered with snow. The grasshopper was cold and hungry. He went to the ant's door and begged for food.\n\n\"I am sorry,\" said the ant. \"I worked all summer, and you played. Now I have food, and you have none.\"\n\nMoral: There is a time for work and a time for play.",
+          "questions": [
+            {
+              "question": "What did the grasshopper do all summer?",
+              "options": ["He worked with the ant", "He played music and relaxed", "He slept all day"],
+              "correct": 1,
+              "explanation": "The grasshopper played his violin instead of preparing for winter."
+            },
+            {
+              "question": "Why was the grasshopper hungry in winter?",
+              "options": ["He lost his food in the snow", "The ant stole his food", "He did not store any food for winter"],
+              "correct": 2,
+              "explanation": "He spent the summer playing, so he had nothing stored when winter came."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alice",
+      "title": "Alice in Wonderland",
+      "author": "Lewis Carroll (adapted)",
+      "genre": "🎩 Classic / Fantasy",
+      "level": "beginner",
+      "emoji": "🎩",
+      "desc": "A girl falls into a magical world of talking animals and strange rules. This famous classic is adapted here in simple English for learners.",
+      "chapters": [
+        {
+          "title": "Down the Rabbit Hole",
+          "text": "Alice was sitting by the river with her sister. She was very bored. Suddenly, a white rabbit with pink eyes ran close to her.\n\n\"Oh dear! Oh dear! I shall be too late!\" said the rabbit. He took a watch out of his pocket, looked at it, and hurried away.\n\nAlice was very surprised. A rabbit with a watch? She ran across the field after him and saw him go down a large rabbit hole.\n\nAlice went down after him — and fell, fell, fell. The hole was very deep. Down, down, down. \"I must be falling through the earth!\" thought Alice.\n\nAt last — bump! She landed on a pile of dry leaves. She was in a long hall with many locked doors. On a glass table, she found a small golden key and a little bottle that said: DRINK ME.",
+          "questions": [
+            {
+              "question": "What was strange about the white rabbit?",
+              "options": ["It could fly", "It had a pocket watch and talked", "It was pink"],
+              "correct": 1,
+              "explanation": "The rabbit spoke and carried a watch — very unusual for a rabbit!"
+            },
+            {
+              "question": "What did Alice find on the glass table?",
+              "options": ["A key and a bottle", "A book and a candle", "A cake and a map"],
+              "correct": 0,
+              "explanation": "She found a small golden key and a bottle labelled 'DRINK ME'."
+            }
+          ]
+        },
+        {
+          "title": "The Pool of Tears",
+          "text": "Alice drank from the bottle and became very small — only ten inches high! But the golden key was now high up on the table, and she could not reach it.\n\nThen she found a small cake that said: EAT ME. She ate it, and — oh no! — she grew bigger and bigger. Now she was nine feet tall!\n\nPoor Alice cried and cried. Her tears made a large pool on the floor.\n\nThe white rabbit came back, saw giant Alice, and ran away in fear, dropping his gloves and fan. Alice picked up the fan and began to shrink again.\n\nShe swam in her own pool of tears. A mouse was swimming next to her. \"Excuse me, do you know the way out?\" asked Alice politely.\n\nThe mouse looked at her, but it did not answer.",
+          "questions": [
+            {
+              "question": "Why did Alice become small again?",
+              "options": ["She drank water", "She used the rabbit's fan", "She ate another cake"],
+              "correct": 1,
+              "explanation": "The magic fan that the rabbit dropped made her shrink."
+            },
+            {
+              "question": "What was the pool made of?",
+              "options": ["River water", "Alice's tears", "Rain"],
+              "correct": 1,
+              "explanation": "When Alice was nine feet tall, she cried so much that her tears formed a pool."
+            }
+          ]
+        },
+        {
+          "title": "A Mad Tea Party",
+          "text": "Alice walked through the forest and came to a house. In front of it, under a tree, there was a table. The March Hare and the Mad Hatter were having tea. A dormouse was sleeping between them.\n\n\"No room! No room!\" they cried when they saw Alice.\n\n\"There is plenty of room!\" said Alice and sat down in a large armchair.\n\nThe Hatter looked at her and asked, \"Why is a raven like a writing desk?\"\n\n\"I don't know,\" said Alice. \"Do you know the answer?\"\n\n\"I haven't the slightest idea,\" said the Hatter.\n\nThey moved around the table, drinking tea and asking impossible questions. Time had stopped, the Hatter explained, so it was always six o'clock — always tea time.\n\nAlice decided this was the maddest tea party she had ever seen, and she walked away.",
+          "questions": [
+            {
+              "question": "Who was sleeping at the tea table?",
+              "options": ["The March Hare", "The Mad Hatter", "The dormouse"],
+              "correct": 2,
+              "explanation": "A small dormouse was sleeping between the Hare and the Hatter."
+            },
+            {
+              "question": "Why was it always tea time for the Hatter?",
+              "options": ["He was very hungry", "Time had stopped at six o'clock", "He forgot his watch"],
+              "correct": 1,
+              "explanation": "The Hatter said he had quarrelled with Time, so the clock stayed at six."
+            }
+          ]
+        },
+        {
+          "title": "The Queen's Garden",
+          "text": "Alice finally reached the beautiful garden she had seen through the little door. There she met the Queen of Hearts — a loud, angry woman with a crown.\n\n\"Who are you?\" shouted the Queen. \"Off with her head!\"\n\nThe Queen invited Alice to play croquet. But this was a very strange game: the balls were live hedgehogs, the clubs were flamingos, and the soldiers made the arches with their bodies.\n\n\"Did you say 'off with her head'?\" Alice asked, braver now. \"Nonsense!\"\n\nThe Queen turned red with anger. But suddenly, the cards flew up into the air and came down all around Alice.\n\n\"Wake up, Alice!\" said her sister. \"You have been sleeping for a long time.\"\n\nAlice opened her eyes. She was back by the river. The wonderful, strange adventure had been only a dream.",
+          "questions": [
+            {
+              "question": "What were the 'balls' in the Queen's croquet game?",
+              "options": ["Hedgehogs", "Roses", "Oranges"],
+              "correct": 0,
+              "explanation": "In Wonderland, the Queen played croquet with live hedgehogs as balls."
+            },
+            {
+              "question": "How did the story end?",
+              "options": ["Alice became queen", "Alice woke up — it was a dream", "Alice stayed in Wonderland"],
+              "correct": 1,
+              "explanation": "Alice woke up by the river; Wonderland had been her dream."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detective",
+      "title": "The Missing Ring",
+      "author": "Original story for learners",
+      "genre": "🕵️ Detective / Mystery",
+      "level": "intermediate",
+      "emoji": "🕵️",
+      "desc": "Detective Maya Stone investigates the theft of a valuable ring at a dinner party. Four suspects, one truth. Can you solve the mystery before the last chapter?",
+      "chapters": [
+        {
+          "title": "A Party, A Theft",
+          "text": "It was a rainy Saturday evening. Detective Maya Stone was drinking tea at home when her phone rang.\n\n\"Detective? This is Mr. Harrison from Green Street. My wife's diamond ring has been stolen! It is worth fifty thousand dollars.\"\n\nMaya arrived at the large house at nine o'clock. The ring had been in a box on the dressing table. Mrs. Harrison had taken it off at seven, before dinner. At half past eight, the box was empty.\n\n\"Who was in the house?\" Maya asked.\n\n\"Only four people,\" said Mr. Harrison. \"My brother Tom, our neighbour Dr. Kelly, the cook Anna, and the young waiter Jack. Nobody left the house during dinner.\"\n\nMaya looked at the four suspects. One of them was lying. She smiled. She loved puzzles like this.",
+          "questions": [
+            {
+              "question": "Where was the ring kept before it was stolen?",
+              "options": ["In a safe", "In a box on the dressing table", "In Mrs. Harrison's pocket"],
+              "correct": 1,
+              "explanation": "The ring was in a box on the dressing table in the bedroom."
+            },
+            {
+              "question": "How many suspects were in the house?",
+              "options": ["Three", "Four", "Five"],
+              "correct": 1,
+              "explanation": "Tom, Dr. Kelly, Anna the cook, and Jack the waiter — four people."
+            }
+          ]
+        },
+        {
+          "title": "Four Stories",
+          "text": "Maya interviewed each suspect alone.\n\nTom, the brother: \"I was in the library all evening. I was reading a book about ships. I didn't even see the bedroom.\"\n\nDr. Kelly, the neighbour: \"I was feeling sick after the soup. I went to my car to get medicine at eight o'clock, then I stayed in the garden until I felt better.\"\n\nAnna, the cook: \"I was in the kitchen the whole time. I was making the chocolate cake for dessert. Ask Jack — he brought the plates to me.\"\n\nJack, the waiter: \"I was serving dinner from eight until quarter past nine. I went to the kitchen twice, but mostly I was in the dining room.\"\n\nMaya wrote everything in her notebook. Then she asked one simple question: \"Mr. Harrison — when exactly did you notice the ring was missing?\"\n\n\"At half past eight,\" he answered.\n\nMaya's eyes shone. She had found the mistake.",
+          "questions": [
+            {
+              "question": "Who claimed to be in the garden at eight o'clock?",
+              "options": ["Tom", "Dr. Kelly", "Jack"],
+              "correct": 1,
+              "explanation": "Dr. Kelly said he went to his car and then stayed in the garden."
+            },
+            {
+              "question": "What detail caught Maya's attention at the end?",
+              "options": ["The chocolate cake", "Mr. Harrison's answer about the time", "Tom's book about ships"],
+              "correct": 1,
+              "explanation": "Something about the time Mr. Harrison mentioned didn't match the others' stories."
+            }
+          ]
+        },
+        {
+          "title": "The Rainy Clue",
+          "text": "Maya stood in the middle of the living room. \"Ladies and gentlemen,\" she began, \"the thief made one small mistake.\"\n\nShe turned to Dr. Kelly. \"Doctor, you said you went to your car in the garden at eight o'clock, and then you 'stayed in the garden until you felt better'. Is that correct?\"\n\n\"Yes,\" said the doctor. \"I needed fresh air.\"\n\nMaya smiled. \"Fresh air? In this weather? It rained heavily from seven until ten tonight. The garden is completely open — there is no roof, no tree cover. If you had stayed in the garden for an hour and a half...\"\n\nShe pointed at the doctor's shoes. They were dry and clean.\n\n\"...your shoes would be wet and dirty. But they are perfect. You were never in the garden tonight, Doctor. You were upstairs — in the bedroom.\"\n\nDr. Kelly's face turned pale. Slowly, he took the diamond ring out of his pocket.",
+          "questions": [
+            {
+              "question": "What proved that Dr. Kelly was lying?",
+              "options": ["His dry, clean shoes", "His car keys", "The medicine box"],
+              "correct": 0,
+              "explanation": "It rained all evening — anyone in the garden would have wet, dirty shoes."
+            },
+            {
+              "question": "Where did Dr. Kelly say he was?",
+              "options": ["In the library", "In the garden after getting medicine", "In the kitchen"],
+              "correct": 1,
+              "explanation": "His story about the garden was his alibi — and it was impossible in the rain."
+            }
+          ]
+        },
+        {
+          "title": "Case Closed",
+          "text": "\"I am sorry,\" said Dr. Kelly quietly. \"I have big debts. When I saw the beautiful ring on the dressing table before dinner, I could not stop myself. I took it and hid it in my pocket.\"\n\nMr. Harrison called the police, and they took the doctor away. The rain had stopped, and the clouds were moving away from the moon.\n\n\"Amazing work, Detective,\" said Mrs. Harrison, holding her shining ring. \"But how did you guess it was the doctor?\"\n\n\"I did not guess,\" said Maya. \"I listened. Everyone told me a story. Three stories were possible. Only one story was impossible — you cannot stand in the garden for an hour in heavy rain and stay dry.\"\n\nShe finished her tea and stood up.\n\n\"Details, madam. Crimes are solved by small details — wet shoes, a watch, a dry garden. Good night.\"",
+          "questions": [
+            {
+              "question": "Why did Dr. Kelly steal the ring?",
+              "options": ["He hated the Harrisons", "He had big debts", "It was an accident"],
+              "correct": 1,
+              "explanation": "The doctor confessed that he stole the ring because of his debts."
+            },
+            {
+              "question": "According to Maya, what solves crimes?",
+              "options": ["Luck and guessing", "Small details", "Fast cars"],
+              "correct": 1,
+              "explanation": "Maya's method is observation of small details, not guessing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mars",
+      "title": "Journey to Mars",
+      "author": "Original story for learners",
+      "genre": "🚀 Science Fiction",
+      "level": "intermediate",
+      "emoji": "🚀",
+      "desc": "Engineer Sara Ahmed joins the first permanent mission to Mars. But a dust storm, a broken antenna, and a difficult choice await her on the red planet.",
+      "chapters": [
+        {
+          "title": "Launch Day",
+          "text": "Sara Ahmed looked up at the rocket. It stood on the launch pad like a white tower, taller than a twenty-storey building. In three hours, she would be inside it.\n\nShe was thirty-two years old, an engineer from Cairo, and one of only six people chosen for the first permanent Mars mission. Seven months of travel. Then two years on the red planet. No chance to come home early.\n\n\"Are you afraid?\" asked Commander Liu, smiling.\n\n\"A little,\" Sara admitted. \"But I have trained for six years for this moment.\"\n\n\"Good,\" said Liu. \"Fear keeps you careful. On Mars, careful people live longer.\"\n\nAt 14:00, the engines started. The rocket shook, fire exploded below, and slowly — then faster and faster — Earth fell away behind them. Sara looked at the small blue planet through the window and whispered, \"Goodbye, home.\"",
+          "questions": [
+            {
+              "question": "How long would the journey to Mars take?",
+              "options": ["Two years", "Six months", "Seven months"],
+              "correct": 2,
+              "explanation": "The text says: seven months of travel, then two years on Mars."
+            },
+            {
+              "question": "What did Commander Liu say about fear?",
+              "options": ["Astronauts should never be afraid", "Fear keeps you careful", "Fear is dangerous on Mars"],
+              "correct": 1,
+              "explanation": "Liu believes fear is useful — careful people survive longer."
+            }
+          ]
+        },
+        {
+          "title": "The Red Planet",
+          "text": "Landing on Mars was the most terrifying ten minutes of Sara's life. The spacecraft entered the thin atmosphere at 20,000 kilometres per hour. The windows turned orange, then red.\n\nThen: three parachutes opened, the rockets fired, and — a soft bump. Silence.\n\n\"Welcome home,\" said Commander Liu.\n\nSara's first step onto the Martian surface felt strange. She weighed only a third of her Earth weight. Every step was a small jump. The sky was pink, the ground was red-orange dust and rock, and the sun looked smaller than on Earth.\n\nTheir base was a group of white domes near a dry river bed. Scientists believe water flowed here millions of years ago. Maybe life existed here once. Finding proof was their main mission.\n\nThat evening, Sara wrote in her journal: \"Today I walked on another planet. Tomorrow I will look for life. I am the luckiest engineer in history.\"",
+          "questions": [
+            {
+              "question": "How did Sara feel walking on Mars?",
+              "options": ["Heavier than usual", "Lighter — every step was like a small jump", "Exactly the same as on Earth"],
+              "correct": 1,
+              "explanation": "Mars gravity is about one third of Earth's, so she weighed less."
+            },
+            {
+              "question": "What was the main goal of the mission?",
+              "options": ["To build a hotel", "To find proof that life existed on Mars", "To bring water to Mars"],
+              "correct": 1,
+              "explanation": "The base was near a dry river bed — scientists hoped to find evidence of ancient life."
+            }
+          ]
+        },
+        {
+          "title": "The Dust Storm",
+          "text": "Four months later, the alarms woke everyone at three in the morning.\n\n\"Global dust storm,\" announced Commander Liu. \"It will reach us in six hours. Everyone, prepare the base.\"\n\nMartian dust storms can cover the whole planet for weeks. The fine dust blocks the sun — without sunlight, the solar panels stop working. No power means no heat, no water production, no oxygen.\n\n\"We have power for ten days,\" said Sara, checking the batteries. \"The storm might last longer.\"\n\nThe team covered the windows, moved inside, and reduced power use to the minimum. For eleven days, the sky was dark orange. The wind screamed outside. The temperature dropped.\n\nOn the twelfth day, the storm finally passed. Weak sunlight touched the dirty solar panels. The batteries began to charge again — slowly.\n\n\"We made it,\" whispered Sara. Her hands were shaking, but she was smiling.",
+          "questions": [
+            {
+              "question": "Why are dust storms so dangerous on Mars?",
+              "options": ["The wind destroys buildings", "They block sunlight, so solar panels stop working", "They bring poisonous gas"],
+              "correct": 1,
+              "explanation": "No sunlight means no electricity — and no heat, water, or oxygen."
+            },
+            {
+              "question": "How long did the storm last?",
+              "options": ["Six days", "Ten days", "Twelve days"],
+              "correct": 2,
+              "explanation": "The storm ended on the twelfth day — one day longer than their power supply."
+            }
+          ]
+        },
+        {
+          "title": "The Choice",
+          "text": "Two weeks after the storm, Sara and Liu were repairing the communications antenna outside the base. Suddenly, Sara saw something in the rock wall of a small canyon: a layer of strange, regular shapes.\n\n\"Commander... look,\" she said quietly.\n\nThey examined the shapes. Fossils. Small, ancient structures that looked exactly like fossilised bacteria — proof that life once existed on Mars. The greatest scientific discovery in human history.\n\nBut the antenna was broken, and Earth had sent an urgent message before the last contact: a rescue mission for a stranded probe needed their landing equipment in two months. They could either carefully collect the fossils over months, or prepare the equipment and leave the canyon for the next crew.\n\n\"The fossils can wait two years,\" said Sara finally. \"But the probe crew cannot.\"\n\nLiu nodded slowly. \"You are right. Discovery is important. People are more important.\"\n\nSix months later, Sara returned to the canyon — with the next mission. The fossils were still there, waiting. And this time, she had all the time in the world.",
+          "questions": [
+            {
+              "question": "What did Sara discover in the canyon?",
+              "options": ["A lost probe", "Fossils of ancient bacteria", "Water"],
+              "correct": 1,
+              "explanation": "She found fossilised structures — proof that life once existed on Mars."
+            },
+            {
+              "question": "Why did Sara decide to delay the discovery?",
+              "options": ["The fossils were not real", "She was afraid of the canyon", "Helping people was more important"],
+              "correct": 2,
+              "explanation": "'Discovery is important. People are more important.' — the rescue equipment came first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "title": "Business English Essentials",
+      "author": "Repetitor Academy",
+      "genre": "💼 Non-fiction / Business",
+      "level": "advanced",
+      "emoji": "💼",
+      "desc": "Practical English for work: emails, meetings, phone calls, small talk and negotiations. Each chapter gives you real phrases you can use tomorrow at the office.",
+      "chapters": [
+        {
+          "title": "Professional Emails",
+          "text": "A good business email is short, clear and polite. Start with a proper greeting: \"Dear Mr. Smith\" (formal) or \"Hi John\" (if you know the person).\n\nIn the first line, explain why you are writing:\n• \"I am writing to follow up on our conversation last week.\"\n• \"I am writing regarding the invoice #4521.\"\n• \"Thank you for your email of 12 March.\"\n\nKeep the body short — one paragraph, one idea. Use bullet points for lists.\n\nFor requests, be polite but direct:\n• \"Could you please send me the report by Friday?\"\n• \"I would appreciate it if you could review the attached document.\"\n\nFinish with a clear action and a professional closing: \"I look forward to hearing from you.\" Then: \"Best regards,\" or \"Kind regards,\" followed by your full name and position.\n\nRemember: in English business culture, long apologies and flowery language are unusual. Clarity is respect.",
+          "questions": [
+            {
+              "question": "What should the first line of a business email do?",
+              "options": ["Tell a personal story", "Explain why you are writing", "Ask about the weather"],
+              "correct": 1,
+              "explanation": "Business emails start directly: 'I am writing to...' or 'Thank you for...'"
+            },
+            {
+              "question": "Which closing is appropriate for a formal email?",
+              "options": ["Bye!", "Best regards,", "See ya,"],
+              "correct": 1,
+              "explanation": "'Best regards' and 'Kind regards' are standard professional closings."
+            }
+          ]
+        },
+        {
+          "title": "Meetings and Discussions",
+          "text": "In international meetings, clear phrases help you participate confidently.\n\nOpening a meeting:\n• \"Thank you all for coming. Let's get started.\"\n• \"The purpose of today's meeting is to discuss...\"\n• \"We have three items on the agenda.\"\n\nGiving your opinion:\n• \"In my opinion, we should focus on...\"\n• \"From my point of view, this plan is too risky.\"\n• \"I believe the best option is...\"\n\nAgreeing and disagreeing politely:\n• \"I completely agree with Anna.\"\n• \"That's a good point, but have you considered...?\"\n• \"I see what you mean, however...\"\n\nNever say \"You are wrong\" directly — it sounds aggressive. Instead, disagree with the idea, not the person.\n\nInterrupting politely: \"Sorry to interrupt, but may I add something?\"\n\nClosing: \"Let's summarise what we have agreed. The action points are...\"",
+          "questions": [
+            {
+              "question": "How should you disagree politely in a meeting?",
+              "options": ["Say 'You are wrong'", "Say 'That's a good point, but...'", "Stay silent forever"],
+              "correct": 1,
+              "explanation": "Disagree with the idea politely, never attack the person."
+            },
+            {
+              "question": "What is the purpose of summarising at the end of a meeting?",
+              "options": ["To fill time", "To confirm agreements and action points", "To repeat everything word by word"],
+              "correct": 1,
+              "explanation": "A summary makes sure everyone knows what was decided and who does what."
+            }
+          ]
+        },
+        {
+          "title": "Phone Calls and Video Calls",
+          "text": "Phone English is difficult — you cannot see faces or gestures. Speak slowly and clearly.\n\nStarting a call:\n• \"Good morning, this is Sara Ahmed from TechCo. May I speak to Mr. Lee, please?\"\n• \"I'm calling about the contract we discussed by email.\"\n\nChecking understanding:\n• \"Sorry, could you repeat that, please? The line is bad.\"\n• \"Just to make sure I understand — you need the documents by Tuesday, correct?\"\n\nCommon problems and solutions:\n• \"You're breaking up\" = I can hear you only sometimes.\n• \"Could you speak up?\" = Please speak louder.\n• \"I think we got cut off\" = the call ended suddenly.\n\nFor video calls: test your camera and microphone before important meetings. Look at the camera, not the screen, when you speak. Mute yourself when you are not speaking.\n\nAlways finish with next steps: \"So, I will send you the proposal today, and we will talk again on Friday. Is that correct?\"",
+          "questions": [
+            {
+              "question": "What does 'You're breaking up' mean?",
+              "options": ["The person is angry", "The sound is coming and going", "The call is too long"],
+              "correct": 1,
+              "explanation": "'Breaking up' means the voice is heard only intermittently — a bad connection."
+            },
+            {
+              "question": "Why should you speak slowly on the phone?",
+              "options": ["To save money", "Because you cannot see faces or gestures", "It is a company rule"],
+              "correct": 1,
+              "explanation": "Without visual information, listeners need more time to understand."
+            }
+          ]
+        },
+        {
+          "title": "Negotiations",
+          "text": "Negotiation is the art of reaching an agreement that both sides can accept. In English business culture, negotiations are usually direct but polite.\n\nMaking a proposal:\n• \"We would like to propose a 10% discount for orders above 1,000 units.\"\n• \"Our offer is $50,000, including delivery.\"\n\nResponding:\n• \"That's an interesting proposal. Could you tell us more about...?\"\n• \"We appreciate the offer, but it is beyond our budget.\"\n• \"Would you be open to...?\"\n\nCounter-offers:\n• \"If you could reduce the price by 5%, we could sign this month.\"\n• \"We could accept your price if you include free training.\"\n\nClosing:\n• \"I think we have a deal.\"\n• \"Let's put everything in writing.\"\n\nImportant: never accept the first offer immediately — but also never be aggressive. The goal is a long-term relationship, not just one deal. Silence is a powerful tool: after you make an offer, stop talking and wait.",
+          "questions": [
+            {
+              "question": "What is the best way to make a counter-offer?",
+              "options": ["Demand a lower price angrily", "Connect it to a condition: 'If you..., we could...'", "Reject and leave"],
+              "correct": 1,
+              "explanation": "Conditional language ('if... we could...') keeps negotiations cooperative."
+            },
+            {
+              "question": "What should you do right after making an offer?",
+              "options": ["Keep talking to fill the silence", "Stop talking and wait", "Lower the price immediately"],
+              "correct": 1,
+              "explanation": "Silence after an offer puts gentle pressure on the other side to respond."
+            }
+          ]
+        },
+        {
+          "title": "Small Talk",
+          "text": "Small talk is light conversation before meetings or at business events. It builds relationships — in many cultures, including British and American, it is an important professional skill.\n\nSafe topics:\n• Weather: \"Lovely day, isn't it?\"\n• Travel: \"Did you have a good trip?\"\n• The event: \"Have you been to this conference before?\"\n• Work in general: \"How is the project going?\"\n\nTopics to avoid: politics, religion, age, salary, and personal problems.\n\nUseful phrases:\n• \"So, how do you know the host?\"\n• \"What line of work are you in?\"\n• \"That sounds interesting. Tell me more.\"\n\nThe golden rule of small talk: ask open questions and listen. People remember those who showed interest in them.\n\nEnding a conversation politely:\n• \"It was great talking to you. Here's my card.\"\n• \"I should let you mingle. See you at the meeting!\"",
+          "questions": [
+            {
+              "question": "Which topic should you AVOID in business small talk?",
+              "options": ["The weather", "Travel", "Politics and salary"],
+              "correct": 2,
+              "explanation": "Politics, religion, age and money are considered inappropriate with new contacts."
+            },
+            {
+              "question": "What is the golden rule of small talk?",
+              "options": ["Talk about yourself as much as possible", "Ask open questions and listen", "Tell funny jokes"],
+              "correct": 1,
+              "explanation": "Showing genuine interest in others is the key to good small talk."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "title": "Around the World in Five Cities",
+      "author": "Repetitor Academy",
+      "genre": "🌍 Non-fiction / Travel & Culture",
+      "level": "intermediate",
+      "emoji": "🌍",
+      "desc": "Short cultural guides to London, Tokyo, Istanbul, New York and Samarkand. Learn about daily life, food and traditions — and the English to talk about them.",
+      "chapters": [
+        {
+          "title": "London: City of History",
+          "text": "London is one of the world's most visited cities. More than eight million people live here, and they speak over 300 languages.\n\nThe city mixes old and new. The Tower of London is almost a thousand years old — it has been a palace, a prison, and a zoo. Today it keeps the Crown Jewels. Not far away, modern glass buildings like The Shard rise above the river Thames.\n\nLondoners love their parks. Hyde Park is so big that you can forget you are in a city. And of course, there is the weather: London rain is famous, but locals rarely use umbrellas — they just walk faster.\n\nUseful travel English:\n• \"Could you tell me the way to...?\"\n• \"Is this seat free?\"\n• \"I'd like a return ticket to Oxford, please.\"\n\nTip: In Britain, people queue politely. Never jump the queue — it is considered very rude.",
+          "questions": [
+            {
+              "question": "What is kept in the Tower of London today?",
+              "options": ["Famous paintings", "The Crown Jewels", "Old books"],
+              "correct": 1,
+              "explanation": "The Tower of London now keeps the Crown Jewels of the monarchy."
+            },
+            {
+              "question": "What does 'jump the queue' mean?",
+              "options": ["To leave the line", "To go in front of other people in the line", "To wait patiently"],
+              "correct": 1,
+              "explanation": "'Jumping the queue' means not waiting your turn — very rude in Britain."
+            }
+          ]
+        },
+        {
+          "title": "Tokyo: City of the Future",
+          "text": "Tokyo is the largest metropolitan area in the world — around 37 million people live in Greater Tokyo. It is also one of the safest and cleanest.\n\nThe trains are legendary for punctuality. If a train is more than five minutes late, the company gives passengers an official apology letter for their boss. Street trains run every two or three minutes.\n\nFood in Tokyo is extraordinary. The city has more Michelin-starred restaurants than Paris. But locals also eat quickly: a bowl of ramen at a small counter takes ten minutes.\n\nJapanese business culture values respect. People bow when greeting, exchange business cards with both hands, and read the card carefully before putting it away.\n\nUseful phrases for travellers:\n• \"Sumimasen\" = Excuse me / Sorry\n• \"Eigo o hanasemasu ka?\" = Do you speak English?\n\nTip: In Japan, it is polite to be quiet on trains — do not talk loudly on the phone.",
+          "questions": [
+            {
+              "question": "What happens when a Tokyo train is very late?",
+              "options": ["The ride becomes free", "Passengers get an official apology letter", "Nothing — trains are never late"],
+              "correct": 1,
+              "explanation": "After a delay of five minutes or more, the company issues an apology certificate."
+            },
+            {
+              "question": "How should you give a business card in Japan?",
+              "options": ["With one hand, quickly", "With both hands, respectfully", "Put it on the table"],
+              "correct": 1,
+              "explanation": "Exchanging cards with both hands shows respect in Japanese business culture."
+            }
+          ]
+        },
+        {
+          "title": "Istanbul: Between Two Continents",
+          "text": "Istanbul is the only city in the world that stands on two continents — Europe and Asia. The Bosphorus strait divides them, and ferries carry hundreds of thousands of passengers across it every day.\n\nFor over two thousand years, this city was the capital of great empires: Roman, Byzantine, Ottoman. Hagia Sophia has been a church, a mosque, a museum, and a mosque again. The Grand Bazaar, with more than 4,000 shops, has welcomed traders for over 550 years.\n\nTea is the fuel of Istanbul. Small tulip-shaped glasses of black tea appear everywhere — in shops, offices, and on ferries. Offering tea is a sign of hospitality; refusing it can seem rude.\n\nUseful travel English:\n• \"How much is this, please?\"\n• \"Could you recommend a local restaurant?\"\n• \"What time does the last ferry leave?\"\n\nTip: When visiting mosques, dress modestly and remove your shoes.",
+          "questions": [
+            {
+              "question": "What makes Istanbul unique geographically?",
+              "options": ["It is the largest city in the world", "It stands on two continents", "It has no rivers"],
+              "correct": 1,
+              "explanation": "The Bosphorus strait divides Istanbul between Europe and Asia."
+            },
+            {
+              "question": "What does offering tea mean in Istanbul?",
+              "options": ["The person wants money", "It is a sign of hospitality", "The meeting is over"],
+              "correct": 1,
+              "explanation": "Tea is a traditional gesture of welcome and friendship."
+            }
+          ]
+        },
+        {
+          "title": "New York: City That Never Sleeps",
+          "text": "New York City has more than eight million residents from every corner of the planet. It is the centre of world finance, fashion, media, and art.\n\nManhattan is the most famous borough. Wall Street, Broadway, Central Park, Times Square — all are on one small island. Yellow taxis race through the streets, but most New Yorkers take the subway, which runs 24 hours a day.\n\nNew Yorkers talk fast, walk fast, and eat fast. Lunch might be a slice of pizza eaten while walking. But the city also has some of the world's best restaurants — you can find food from every country on Earth here.\n\nPeople here value directness. If you ask for help, you will usually get an honest, fast answer.\n\nUseful travel English:\n• \"Does this train go to Brooklyn?\"\n• \"Excuse me, could you take a photo of us?\"\n• \"Is there a pharmacy near here?\"",
+          "questions": [
+            {
+              "question": "When does the New York subway stop running?",
+              "options": ["At midnight", "At 2 a.m.", "Never — it runs 24 hours"],
+              "correct": 2,
+              "explanation": "The NYC subway operates around the clock, every day of the year."
+            },
+            {
+              "question": "What do New Yorkers value in communication?",
+              "options": ["Long, polite speeches", "Directness", "Silence"],
+              "correct": 1,
+              "explanation": "New York communication style is fast and direct — this is normal, not rude."
+            }
+          ]
+        },
+        {
+          "title": "Samarkand: Jewel of the Silk Road",
+          "text": "Samarkand is one of the oldest continuously inhabited cities in Central Asia — more than 2,700 years old. For centuries, it was a key stop on the Great Silk Road between China and Europe.\n\nThe Registan square is its heart: three enormous madrasahs decorated with blue, gold, and turquoise tiles. When Alexander the Great arrived here in 329 BC, he said, \"Everything I have heard about Samarkand is true, except that it is more beautiful than I imagined.\"\n\nThe city is famous for its noni bread, plov (rice with meat and carrots), and hand-made paper. Traditional paper-making, lost for a century, was recently restored by local masters.\n\nUzbek hospitality is legendary. Guests are the most honoured people in the house, and tea is poured again and again.\n\nUseful travel English for guests:\n• \"Thank you for having me.\"\n• \"This is delicious — what is it called?\"\n• \"Could you tell me about the history of this place?\"",
+          "questions": [
+            {
+              "question": "Why was Samarkand important historically?",
+              "options": ["It was a port city", "It was a key stop on the Silk Road", "It was the capital of Russia"],
+              "correct": 1,
+              "explanation": "Samarkand connected China and Europe on the Great Silk Road."
+            },
+            {
+              "question": "What is the Registan?",
+              "options": ["A famous bazaar", "A square with three decorated madrasahs", "An ancient fortress"],
+              "correct": 1,
+              "explanation": "The Registan is Samarkand's central square, surrounded by three magnificent madrasahs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "poems",
+      "title": "Simple English Poems",
+      "author": "Classic poets (public domain)",
+      "genre": "🌙 Poetry",
+      "level": "beginner",
+      "emoji": "🌙",
+      "desc": "Four beautiful classic poems with vocabulary help and questions. Poetry trains your ear for rhythm, rhyme and the music of English.",
+      "chapters": [
+        {
+          "title": "The Swing — R.L. Stevenson",
+          "text": "How do you like to go up in a swing,\nUp in the air so blue?\nOh, I do think it the pleasantest thing\nEver a child can do!\n\nUp in the air and over the wall,\nTill I can see so wide,\nRivers and trees and cattle and all\nOver the countryside—\n\nTill I look down on the garden green,\nDown on the roof so brown—\nUp in the air I go flying again,\nUp in the air and down!\n\nVocabulary: swing = a seat hanging from ropes; cattle = cows and bulls; countryside = land outside the city.\n\nNote: Robert Louis Stevenson wrote this poem for children in 1885. The rhythm copies the movement of a swing — up... and down.",
+          "questions": [
+            {
+              "question": "What can the child see from the swing?",
+              "options": ["Only the garden", "Rivers, trees and cattle", "The sea"],
+              "correct": 1,
+              "explanation": "From high in the air, the child sees rivers, trees, cattle and the whole countryside."
+            },
+            {
+              "question": "What does the rhythm of the poem copy?",
+              "options": ["A train", "The movement of a swing", "Rain"],
+              "correct": 1,
+              "explanation": "The up-and-down rhythm mirrors the swing's motion: 'Up in the air and down!'"
+            }
+          ]
+        },
+        {
+          "title": "The Daffodils — William Wordsworth",
+          "text": "I wandered lonely as a cloud\nThat floats on high o'er vales and hills,\nWhen all at once I saw a crowd,\nA host, of golden daffodils;\nBeside the lake, beneath the trees,\nFluttering and dancing in the breeze.\n\n...For oft, when on my couch I lie\nIn vacant or in pensive mood,\nThey flash upon that inward eye\nWhich is the bliss of solitude;\nAnd then my heart with pleasure fills,\nAnd dances with the daffodils.\n\n(Extracts from the full poem, 1807.)\n\nVocabulary: wandered = walked slowly without direction; daffodils = yellow spring flowers; breeze = light wind; solitude = being alone; pensive = thinking deeply, a little sad.\n\nNote: Wordsworth says that beautiful memories can make us happy again later, when we are alone.",
+          "questions": [
+            {
+              "question": "What did the poet see 'all at once'?",
+              "options": ["A cloud", "Golden daffodils", "A lake without trees"],
+              "correct": 1,
+              "explanation": "Suddenly he saw a whole crowd of golden daffodils beside the lake."
+            },
+            {
+              "question": "When do the flowers 'flash upon the inward eye'?",
+              "options": ["When he is alone and thinking", "When he walks in the hills", "When spring arrives"],
+              "correct": 0,
+              "explanation": "The memory returns later, in quiet moments — and fills his heart with pleasure."
+            }
+          ]
+        },
+        {
+          "title": "Hope is the Thing with Feathers — E. Dickinson",
+          "text": "Hope is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.\n\nI've heard it in the chillest land,\nAnd on the strangest sea;\nYet, never, in extremity,\nIt asked a crumb of me.\n\nVocabulary: feathers = the soft covering of a bird; perches = sits (like a bird); gale = very strong wind; abash = embarrass, silence; extremity = the most difficult moment; crumb = a tiny piece of bread.\n\nNote: Emily Dickinson compares hope to a small bird that sings in every person's heart — even in the worst storms — and asks for nothing.",
+          "questions": [
+            {
+              "question": "What does Dickinson compare hope to?",
+              "options": ["A storm", "A bird", "The sea"],
+              "correct": 1,
+              "explanation": "Hope is 'the thing with feathers' — a bird that perches in the soul and sings."
+            },
+            {
+              "question": "What does hope ask from the poet?",
+              "options": ["Nothing — not even a crumb", "Warmth", "Songs"],
+              "correct": 0,
+              "explanation": "'It asked a crumb of me' — never. Hope gives everything and asks nothing."
+            }
+          ]
+        },
+        {
+          "title": "Sonnet 18 — William Shakespeare",
+          "text": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\n\n...But thy eternal summer shall not fade,\nNor lose possession of that fair thou ow'st;\nNor shall death brag thou wander'st in his shade,\nWhen in eternal lines to time thou grow'st:\n\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.\n\nVocabulary (old → modern): thee/thou = you; art = are; temperate = calm, mild; ow'st = own; shade = darkness.\n\nNote: Written around 1609. Shakespeare promises that his poem will make the person he loves live forever — because as long as people read these lines, the memory survives.",
+          "questions": [
+            {
+              "question": "Why does Shakespeare NOT compare his friend to a summer's day?",
+              "options": ["Summer is too cold", "His friend is 'more lovely and more temperate'", "He dislikes summer"],
+              "correct": 1,
+              "explanation": "Summer has rough winds and ends too soon — the friend is lovelier and calmer."
+            },
+            {
+              "question": "According to the last two lines, what gives eternal life?",
+              "options": ["Money", "The poem itself", "Summer"],
+              "correct": 1,
+              "explanation": "'So long lives this' — as long as people read the poem, the person lives in it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
