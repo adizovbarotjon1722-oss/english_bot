@@ -1,76 +1,186 @@
 {
-  "grammar": [
-    {
-      "id": "ru_basics",
-      "order": 0,
-      "title": "1-bo'lim: Asosiy iboralar va 'быть' fe'li",
-      "text_explanation": "📘 Rus tilida hozirgi zamonda 'быть' (bo'lmoq) fe'li odatda tushiriladi, lekin egalikni bildirishda 'есть' ishlatiladi.\n\n✅ Misol: 'У меня есть брат' — Mening akam bor.\n✅ Sifatlar jinsga qarab o'zgaradi: большой (u.), большая (a.), большое (o'.).",
-      "pass_threshold": 0.7
+  "subject": "ru",
+  "title": "Rus tili kursi",
+  "levels": {
+    "beginner": {
+      "title": "🟢 Boshlang'ich (A1)",
+      "modules": [
+        {
+          "id": "ru_b_01",
+          "order": 1,
+          "title": "Kirish: bo'lish fe'li va egalik",
+          "emoji": "👋",
+          "video_url": "https://www.youtube.com/watch?v=9Q1xY5wZ3kE",
+          "video_title": "Русский язык для начинающих — есть / являюсь",
+          "theory": "<b>Hozirgi zamonda «bo'lish»</b>\n\nRus tilida hozirgi zamonda «быть» odatda tushiriladi:\nЯ студент. (Men talabaman.)\n\nLekin rasmiy uslubda: Я являюсь студентом.\n\n<b>Egalik:</b> У меня есть ...\nУ меня есть брат. — Menda aka/uka bor.\n\nInkor: У меня нет ... (Genitive!)",
+          "theory_oral": "Rus tilida hozirgi zamonda 'bor' degan ma'noda 'есть' ishlatiladi: У меня есть. Oddiy gaplarda 'являться' o'rniga hech narsa qo'yilmaydi. Masalan: Я студент.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "ru_b_01_e1", "type": "mcq", "question": "Я ___ студент.", "options": ["есть", "являюсь", "быть", "бытие"], "correct": 1, "explanation": "Rasmiy variant — являюсь; oddiyda tushiriladi."},
+            {"id": "ru_b_01_e2", "type": "mcq", "question": "У меня ___ брат.", "options": ["есть", "быть", "был", "будет"], "correct": 0, "explanation": "Hozirgi egalik — есть."},
+            {"id": "ru_b_01_e3", "type": "fill_blank", "question": "У меня ___ брат. (bor ma'nosidagi so'z)", "accepted_answers": ["есть"], "explanation": "есть — bor."},
+            {"id": "ru_b_01_e4", "type": "mcq", "question": "'Дом' so'zining tarjimasi:", "options": ["maktab", "uy", "bog'", "ko'cha"], "correct": 1, "explanation": "Дом — uy."}
+          ]
+        },
+        {
+          "id": "ru_b_02",
+          "order": 2,
+          "title": "Jins va egalik olmoshlari",
+          "emoji": "📖",
+          "video_url": "https://www.youtube.com/watch?v=abc123ru02",
+          "video_title": "Род существительных и притяжательные местоимения",
+          "theory": "<b>Otlar jinsi:</b>\n• Erkaklik: дом, стол (-∅ yoki -ь)\n• Ayollik: книга, вода (-а/-я)\n• O'rta: окно, море (-о/-е)\n\n<b>Egalik olmoshlari:</b>\nмой/моя/моё/мои — mening\nтвой/твоя/твоё/твои — sening\nнаш/наша/наше/наши — bizning\n\nКнига — ayollik → моя книга",
+          "theory_oral": "Rus otlari uch jinsda: erkak, ayol, o'rta. Egalik olmoshlari jinsga moslashadi: мой дом, моя книга, моё окно.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "ru_b_02_e1", "type": "mcq", "question": "Это ___ книга.", "options": ["мой", "моя", "моё", "мои"], "correct": 1, "explanation": "Книга — ayollik → моя."},
+            {"id": "ru_b_02_e2", "type": "mcq", "question": "Это ___ дом (katta uy).", "options": ["большой", "большая", "большое", "большие"], "correct": 0, "explanation": "Дом — erkaklik → большой."},
+            {"id": "ru_b_02_e3", "type": "mcq", "question": "'Спасибо' nimani anglatadi?", "options": ["salom", "rahmat", "kechirasiz", "xayr"], "correct": 1, "explanation": "Спасибо — rahmat."},
+            {"id": "ru_b_02_e4", "type": "matching", "question": "So'zlarni tarjimasi bilan mos keltiring:", "pairs": [{"left": "Дом", "right": "Uy"}, {"left": "Вода", "right": "Suv"}, {"left": "Друг", "right": "Do'st"}, {"left": "Книга", "right": "Kitob"}], "explanation": "Asosiy so'zlar."}
+          ]
+        },
+        {
+          "id": "ru_b_03",
+          "order": 3,
+          "title": "Vinitelniy padej (to'g'ridan-to'g'ri to'ldiruvchi)",
+          "emoji": "➡️",
+          "video_url": "https://www.youtube.com/watch?v=ru_vin_01",
+          "video_title": "Винительный падеж — кого? что?",
+          "theory": "<b>Vinitelniy padej</b> — to'g'ridan-to'g'ri to'ldiruvchi va yo'nalish.\n\nSavol: кого? что?\n\n• Ayollik -а/-я → -у/-ю: книга → книгу\n• Erkaklik jonsiz — o'zgarmaydi: стол → стол\n• Erkaklik jonli → -а/-я: брат → брата\n\nЯ иду в школу. (yo'nalish)\nОна читает книгу.",
+          "theory_oral": "Vinitelniy padej — kimni? nima? savollariga javob beradi. Kitob — книгу, maktabga — в школу. Jonli va jonsiz otlarda farq bor.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "ru_b_03_e1", "type": "mcq", "question": "Я иду в ___ (школа).", "options": ["школа", "школе", "школу", "школы"], "correct": 2, "explanation": "Yo'nalish — Vinitelniy: в школу."},
+            {"id": "ru_b_03_e2", "type": "mcq", "question": "Она читает ___ (книга).", "options": ["книга", "книгу", "книге", "книги"], "correct": 1, "explanation": "To'g'ridan-to'g'ri to'ldiruvchi — книгу."},
+            {"id": "ru_b_03_e3", "type": "fill_blank", "question": "Я вижу ___ (друг).", "accepted_answers": ["друга"], "explanation": "Jonli erkaklik — друга."},
+            {"id": "ru_b_03_e4", "type": "mcq", "question": "'Быстро' so'zining ma'nosi:", "options": ["sekin", "tez", "baland", "past"], "correct": 1, "explanation": "Быстро — tez."}
+          ]
+        },
+        {
+          "id": "ru_b_04",
+          "order": 4,
+          "title": "Predlojniy padej (joy)",
+          "emoji": "📍",
+          "video_url": "https://www.youtube.com/watch?v=ru_pred_01",
+          "video_title": "Предложный падеж — где? о ком?",
+          "theory": "<b>Predlojniy padej</b> — joy va mavzu.\n\nSavol: где? о ком? о чём?\n\n• -е / -и: Ташкент → в Ташкенте\n• Книга → о книге\n\nМы живём в Ташкенте.\nЯ думаю о тебе.",
+          "theory_oral": "Predlojniy padej — qayerda? kim haqida? savollariga. В yoki На predlogi bilan joy, О predlogi bilan mavzu bildiriladi. Ташкент — в Ташкенте.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "ru_b_04_e1", "type": "mcq", "question": "Мы живём ___ (Ташкент).", "options": ["Ташкент", "в Ташкенте", "в Ташкент", "Ташкенте"], "correct": 1, "explanation": "Joy — Predlojniy: в Ташкенте."},
+            {"id": "ru_b_04_e2", "type": "mcq", "question": "'Магазин' — bu qayer?", "options": ["do'kon", "maktab", "kasalxona", "bank"], "correct": 0, "explanation": "Магазин — do'kon."},
+            {"id": "ru_b_04_e3", "type": "fill_blank", "question": "Я говорю о ___ (книга).", "accepted_answers": ["книге"], "explanation": "о + Predlojniy — книге."},
+            {"id": "ru_b_04_e4", "type": "mcq", "question": "'Вода' — bu:", "options": ["olov", "suv", "havo", "yer"], "correct": 1, "explanation": "Вода — suv."}
+          ]
+        }
+      ]
     },
-    {
-      "id": "ru_cases_basic",
-      "order": 1,
-      "title": "2-bo'lim: Asosiy padejlar (Винительный, Предложный)",
-      "text_explanation": "📘 <b>Винительный падеж</b> (Vinitelniy) — to'g'ridan-to'g'ri to'ldiruvchi yoki harakat yo'nalishi uchun: 'Я иду в школу.'\n\n📘 <b>Предложный падеж</b> (Predlojniy) — joyni bildirish uchun: 'Я живу в Ташкенте.'",
-      "pass_threshold": 0.7
+    "intermediate": {
+      "title": "🟡 O'rta (A2-B1)",
+      "modules": [
+        {
+          "id": "ru_i_01",
+          "order": 1,
+          "title": "O'tgan zamon (Прошедшее время)",
+          "emoji": "📅",
+          "video_url": "https://www.youtube.com/watch?v=ru_past_01",
+          "video_title": "Прошедшее время глаголов",
+          "theory": "<b>O'tgan zamon:</b> fe'l asosi + -л / -ла / -ло / -ли\n\n• Erkak: ходил\n• Ayol: ходила\n• O'rta: ходило\n• Ko'plik: ходили\n\nВчера я ходил в магазин.\nОна читала книгу.",
+          "theory_oral": "O'tgan zamon jins va songa qarab o'zgaradi: ходил, ходила, ходило, ходили. Fe'l asosiga -л qo'shiladi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "ru_i_01_e1", "type": "mcq", "question": "Вчера я ___ в магазин.", "options": ["иду", "ходил", "пойду", "хожу"], "correct": 1, "explanation": "O'tgan zamon, erkaklik — ходил."},
+            {"id": "ru_i_01_e2", "type": "mcq", "question": "Она вчера ___ книгу.", "options": ["читал", "читала", "читали", "читало"], "correct": 1, "explanation": "Ayollik — читала."},
+            {"id": "ru_i_01_e3", "type": "fill_blank", "question": "Мы ___ (смотреть) фильм.", "accepted_answers": ["смотрели"], "explanation": "Ko'plik — смотрели."}
+          ]
+        },
+        {
+          "id": "ru_i_02",
+          "order": 2,
+          "title": "Kelasi zamon va aspekt",
+          "emoji": "🚀",
+          "video_url": "https://www.youtube.com/watch?v=ru_fut_01",
+          "video_title": "Будущее время и вид глагола",
+          "theory": "<b>Kelasi zamon:</b>\n• Oddiy (perfective): пойду, сделаю\n• Murakkab (imperfective): буду + infinitiv → буду читать\n\nЗавтра мы пойдём на встречу. (bir martalik)\nЯ буду читать каждый день. (takroriy)",
+          "theory_oral": "Kelasi zamonda perfective fe'llar oddiy shaklda (пойду), imperfective esa буду + infinitiv bilan yasalandi. Aspekt — ishning tugagan yoki davomiy ekanligini bildiradi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "ru_i_02_e1", "type": "mcq", "question": "Завтра мы ___ на встречу.", "options": ["идём", "пойдём", "шли", "ходили"], "correct": 1, "explanation": "Bir martalik kelajak — пойдём."},
+            {"id": "ru_i_02_e2", "type": "fill_blank", "question": "Завтра мы ___ (пойти) в кино.", "accepted_answers": ["пойдём", "пойдем"], "explanation": "пойдём."},
+            {"id": "ru_i_02_e3", "type": "mcq", "question": "'Возможность' so'zi ma'nosi:", "options": ["imkoniyat", "muammo", "xato", "qiyinchilik"], "correct": 0, "explanation": "Возможность — imkoniyat."}
+          ]
+        },
+        {
+          "id": "ru_i_03",
+          "order": 3,
+          "title": "Tvoritelniy va boshqa padejlar",
+          "emoji": "🛠️",
+          "video_url": "https://www.youtube.com/watch?v=ru_tv_01",
+          "video_title": "Творительный падеж",
+          "theory": "<b>Tvoritelniy padej</b> — vosita, birga, kasb.\n\nSavol: кем? чем?\n\n• -ом/-ем/-ой/-ей: музыкой, другом\n\nЯ интересуюсь музыкой.\nОн работает врачом.\n\nMajhul: текст был написан писателем. (predlogsiz)",
+          "theory_oral": "Tvoritelniy — kim bilan? nima bilan? Интересоваться fe'li Tvoritelniy talab qiladi: интересуюсь музыкой. Majhul nisbatda ham shu padej ishlatiladi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "ru_i_03_e1", "type": "mcq", "question": "Я интересуюсь ___ (музыка).", "options": ["музыка", "музыку", "музыкой", "музыке"], "correct": 2, "explanation": "интересоваться + Tvoritelniy."},
+            {"id": "ru_i_03_e2", "type": "mcq", "question": "Этот текст был написан ___ известным писателем.", "options": ["-", "с", "от", "за"], "correct": 0, "explanation": "Majhulda predlog yo'q — писателем."},
+            {"id": "ru_i_03_e3", "type": "mcq", "question": "'Опытный' odam qanday odam?", "options": ["tajribali", "yosh", "bilimsiz", "jahldor"], "correct": 0, "explanation": "Опытный — tajribali."}
+          ]
+        },
+        {
+          "id": "ru_i_04",
+          "order": 4,
+          "title": "Shart mayli (бы)",
+          "emoji": "🔀",
+          "video_url": "https://www.youtube.com/watch?v=ru_cond_01",
+          "video_title": "Сослагательное наклонение — бы",
+          "theory": "<b>Shart mayli:</b> fe'l o'tgan zamon + бы\n\nЕсли бы у меня было время, я бы пошёл гулять.\n\n'Бы' zarrachasi shartni bildiradi (real bo'lmagan).",
+          "theory_oral": "Agar ... bo'lsa edi, ... qilgan bo'lardim. O'tgan zamon shakli + бы zarrachasi. Это сослагательное наклонение.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "ru_i_04_e1", "type": "mcq", "question": "Если бы у меня было время, я ___ пошёл гулять.", "options": ["-", "бы", "же", "ли"], "correct": 1, "explanation": "бы zarrachasi kerak."},
+            {"id": "ru_i_04_e2", "type": "mcq", "question": "'Достигать цели' iborasi ma'nosi:", "options": ["maqsaddan voz kechish", "maqsadga erishish", "maqsad qo'yish", "unutish"], "correct": 1, "explanation": "Достигать — erishmoq."},
+            {"id": "ru_i_04_e3", "type": "fill_blank", "question": "'Erishmoq' fe'lining ruscha tarjimasi: дост___ть", "accepted_answers": ["достигать", "достичь"], "explanation": "достигать / достичь."}
+          ]
+        }
+      ]
     },
-    {
-      "id": "ru_past",
-      "order": 2,
-      "title": "3-bo'lim: O'tgan zamon (Прошедшее время)",
-      "text_explanation": "📘 O'tgan zamonda fe'l jinsga qarab o'zgaradi: -л (erkak), -ла (ayol), -ло (o'rta), -ли (ko'plik).\n\n✅ Misol: 'Я ходил в магазин.' (erkak) / 'Она ходила в магазин.' (ayol)",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "ru_future",
-      "order": 3,
-      "title": "4-bo'lim: Kelasi zamon (Будущее время)",
-      "text_explanation": "📘 Tugallanmagan fe'llar uchun: быть + infinitiv (буду делать). Tugallangan fe'llar uchun oddiy o'zgarish: пойду, сделаю.\n\n✅ Misol: 'Завтра мы пойдём в кино.'",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "ru_cases_advanced",
-      "order": 4,
-      "title": "5-bo'lim: Qo'shimcha padejlar (Творительный)",
-      "text_explanation": "📘 <b>Творительный падеж</b> (Tvoritelniy) — vosita yoki hamrohlikni bildiradi, ba'zi fe'llar bilan qo'llanadi (интересоваться музыкой).\n\n✅ Misol: 'Я интересуюсь музыкой.'",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "ru_conditional_passive",
-      "order": 5,
-      "title": "6-bo'lim: Shart mayli va Passive",
-      "text_explanation": "📘 <b>Сослагательное наклонение</b> (shart mayli) — 'бы' zarrachasi bilan: 'Если бы у меня было время...'\n\n📘 <b>Passive (majhul nisbat)</b> — ijrochi Tvoritelniy padejda keladi: 'Текст написан писателем.'",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "ru_advanced_grammar",
-      "order": 6,
-      "title": "7-bo'lim: Murakkab grammatika",
-      "text_explanation": "📘 Bu bo'limda o'rganasiz:\n✅ 'Несмотря на' — qaramasdan\n✅ 'Как будто' — go'yoki\n✅ Kelasi zamonda tugallangan harakat: 'К концу года проект будет завершён.'\n✅ Деепричастие (masalan: читая — o'qiyotib)",
-      "pass_threshold": 0.7
+    "advanced": {
+      "title": "🔴 Qiyin (B2+)",
+      "modules": [
+        {
+          "id": "ru_a_01",
+          "order": 1,
+          "title": "Murakkab bog'lovchilar va debetpričastie",
+          "emoji": "🧠",
+          "video_url": "https://www.youtube.com/watch?v=ru_adv_01",
+          "video_title": "Деепричастия и сложные союзы",
+          "theory": "<b>Несмотря на</b> + Vinitelniy: Несмотря на дождь...\n\n<b>Как будто</b> — go'yoki: Он говорил так, как будто ничего не случилось.\n\n<b>Деепричастие:</b>\n• Nomukammal: читая (o'qiyotib)\n• Mukammal: прочитав (o'qib bo'lib)",
+          "theory_oral": "Несмотря на — qaramasdan. Как будто — go'yoki. Деепричастие — fe'lning maxsus shakli, qo'shimcha harakatni bildiradi: читая — o'qiyotib.",
+          "pass_threshold": 80,
+          "exercises": [
+            {"id": "ru_a_01_e1", "type": "mcq", "question": "Несмотря ___ дождь, мы пошли гулять.", "options": ["на", "от", "из", "с"], "correct": 0, "explanation": "Несмотря на."},
+            {"id": "ru_a_01_e2", "type": "mcq", "question": "Он говорил так, ___ будто ничего не случилось.", "options": ["как", "как будто", "что", "чтобы"], "correct": 1, "explanation": "как будто."},
+            {"id": "ru_a_01_e3", "type": "mcq", "question": "Правильный вариант деепричастия от 'читать':", "options": ["читав", "читая", "прочитав", "читал"], "correct": 1, "explanation": "Nomukammal — читая."}
+          ]
+        },
+        {
+          "id": "ru_a_02",
+          "order": 2,
+          "title": "Kelajakdagi tugallanish va advanced so'zlar",
+          "emoji": "🏆",
+          "video_url": "https://www.youtube.com/watch?v=ru_adv_02",
+          "video_title": "Будущее совершенное и лексика",
+          "theory": "К концу года проект будет завершён. (kelajakda tugallangan)\n\nAdvanced so'zlar:\n• Неоднозначный — ikki xil talqin\n• Усугублять — kuchaytirmoq\n• Скрупулёзный — juda diqqatli\n• Повсеместный — hamma joyda",
+          "theory_oral": "Kelajakda tugallangan ish uchun будет + краткое причастие. Advanced lug'at: неоднозначный, усугублять, скрупулёзный, повсеместный.",
+          "pass_threshold": 80,
+          "exercises": [
+            {"id": "ru_a_02_e1", "type": "mcq", "question": "К концу года проект ___ завершён.", "options": ["будет", "был", "есть", "бывает"], "correct": 0, "explanation": "будет завершён."},
+            {"id": "ru_a_02_e2", "type": "mcq", "question": "'Неоднозначный' so'zi ma'nosi:", "options": ["aniq", "ikki xil talqin qilinadigan", "oddiy", "qisqa"], "correct": 1, "explanation": "Неоднозначный — noaniq."},
+            {"id": "ru_a_02_e3", "type": "mcq", "question": "'Усугублять проблему' — bu:", "options": ["yechish", "kuchaytirish", "yashirish", "unutish"], "correct": 1, "explanation": "Усугублять — kuchaytirmoq."},
+            {"id": "ru_a_02_e4", "type": "mcq", "question": "'Повсеместный' so'zining ma'nosi:", "options": ["kamdan-kam", "hamma joyda mavjud", "qadimiy", "noaniq"], "correct": 1, "explanation": "Повсеместный — hamma yerda."}
+          ]
+        }
+      ]
     }
-  ],
-  "vocabulary": [
-    {
-      "id": "everyday_words",
-      "order": 0,
-      "title": "1-bo'lim: Kundalik so'zlar",
-      "text_explanation": "📗 Kundalik hayotda eng ko'p ishlatiladigan rus so'zlari: дом, вода, друг, магазин va h.k.\n\n💡 Maslahat: har bir yangi so'zni gap ichida yodlang.",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "useful_expressions",
-      "order": 1,
-      "title": "2-bo'lim: Foydali iboralar",
-      "text_explanation": "📗 Kundalik muloqotda foydali so'z va iboralar: возможность, опытный, достигать цели.\n\n💡 Maslahat: sinonim va antonimlarni birga yodlash tezroq eslab qolishga yordam beradi.",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "advanced_vocabulary",
-      "order": 2,
-      "title": "3-bo'lim: Murakkab lug'at",
-      "text_explanation": "📗 Yuqori darajadagi so'zlar: неоднозначный, усугублять, скрупулёзный, повсеместный.\n\n💡 Maslahat: bu so'zlarni rasmiy matn yozishda ishlatishga harakat qiling.",
-      "pass_threshold": 0.7
-    }
-  ]
+  }
 }

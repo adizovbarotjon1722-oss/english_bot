@@ -1,76 +1,226 @@
 {
-  "grammar": [
-    {
-      "id": "present_simple",
-      "order": 0,
-      "title": "1-bo'lim: Present Simple (Hozirgi oddiy zamon)",
-      "text_explanation": "📘 <b>Present Simple</b> — doimiy odat, umumiy haqiqat yoki jadval bo'yicha ishlarni ifodalaydi.\n\n✅ Tuzilishi: I/You/We/They + fe'l (V1); He/She/It + fe'l+s/es\n✅ Misol: 'I work every day.' / 'She works every day.'\n✅ Salbiy: don't/doesn't + V1\n✅ So'roq: Do/Does + ega + V1?\n\n🔑 Belgilovchi so'zlar: always, usually, often, every day/week, on Mondays.",
-      "pass_threshold": 0.7
+  "subject": "en",
+  "title": "Ingliz tili kursi",
+  "levels": {
+    "beginner": {
+      "title": "🟢 Boshlang'ich (A1-A2)",
+      "modules": [
+        {
+          "id": "en_b_01",
+          "order": 1,
+          "title": "Present Simple — Oddiy hozirgi zamon",
+          "emoji": "⏰",
+          "video_url": "https://www.youtube.com/watch?v=or0oXT4YQ3o",
+          "video_title": "Present Simple — English Grammar (eng yaxshi tushuntirish)",
+          "theory": "<b>Present Simple</b> nima uchun ishlatiladi?\n\n1. <b>Odatlar va rutinlar</b>: I wake up at 7 every day.\n2. <b>Faktlar va umumiy haqiqatlar</b>: The sun rises in the east.\n3. <b>Jadvallar</b>: The train leaves at 9.\n\n<b>Qanday yasash:</b>\n• I / You / We / They + V1  → I work\n• He / She / It + V1 + s/es → She works\n\n<b>Inkor:</b> don't / doesn't + V1\n<b>Savol:</b> Do / Does + subject + V1?\n\n💡 <i>Eslatma:</i> -s/-es faqat 3-shaxs birlikda qo'shiladi!",
+          "theory_oral": "Present Simple — oddiy hozirgi zamon. U odatlar, faktlar va jadvallar uchun ishlatiladi. Men, sen, biz, ular bilan fe'l o'zgarmaydi. U, u (qiz), u (narsa) bilan fe'lga -s yoki -es qo'shiladi. Inkor uchun don't yoki doesn't, savol uchun Do yoki Does ishlatiladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "en_b_01_e1", "type": "mcq", "question": "She ___ a teacher.", "options": ["is", "are", "am", "be"], "correct": 0, "explanation": "'She' bilan 'is' ishlatiladi (to be fe'li)."},
+            {"id": "en_b_01_e2", "type": "mcq", "question": "They ___ from Uzbekistan.", "options": ["is", "am", "are", "be"], "correct": 2, "explanation": "'They' bilan 'are'."},
+            {"id": "en_b_01_e3", "type": "mcq", "question": "My father ___ to work by car.", "options": ["go", "goes", "going", "gone"], "correct": 1, "explanation": "3-shaxs birlikda -s/-es qo'shiladi."},
+            {"id": "en_b_01_e4", "type": "mcq", "question": "We ___ TV every evening.", "options": ["watch", "watches", "watching", "watched"], "correct": 0, "explanation": "'We' bilan fe'l o'zgarmaydi."},
+            {"id": "en_b_01_e5", "type": "fill_blank", "question": "I ___ (to be) a student.", "accepted_answers": ["am"], "explanation": "'I' bilan 'am'."},
+            {"id": "en_b_01_e6", "type": "mcq", "question": "He ___ not like coffee. (inkor)", "options": ["do", "does", "is", "are"], "correct": 1, "explanation": "3-shaxs birlik inkor: doesn't."},
+            {"id": "en_b_01_e7", "type": "mcq", "question": "___ you speak English?", "options": ["Do", "Does", "Is", "Are"], "correct": 0, "explanation": "You bilan Do."},
+            {"id": "en_b_01_e8", "type": "fill_blank", "question": "She ___ (work) in a bank.", "accepted_answers": ["works"], "explanation": "3-shaxs birlik + s."}
+          ]
+        },
+        {
+          "id": "en_b_02",
+          "order": 2,
+          "title": "Present Continuous — Davomiy hozirgi zamon",
+          "emoji": "🔄",
+          "video_url": "https://www.youtube.com/watch?v=Wz2qLq5xq3k",
+          "video_title": "Present Continuous — now va at the moment",
+          "theory": "<b>Present Continuous</b> (am/is/are + V-ing)\n\n1. <b>Hozir sodir bo'layotgan harakat</b>: I am reading now.\n2. <b>Vaqtincha holat</b>: She is living in Tashkent this month.\n3. <b>Kelajak rejalari</b> (yaqin): We are meeting tomorrow.\n\n<b>Yasalishi:</b>\n• I am working\n• He/She/It is working\n• You/We/They are working\n\n❌ <b>Statik fe'llar</b> (know, like, want, need...) odatda Continuous'da kelmaydi!",
+          "theory_oral": "Present Continuous — hozir davom etayotgan harakatlar uchun. Am, is yoki are + fe'lning -ing shakli. Masalan: I am studying. Statik fe'llar — bilmoq, yoqtirmoq kabilar — bu zamonda kam ishlatiladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "en_b_02_e1", "type": "mcq", "question": "Look! It ___ outside.", "options": ["rains", "is raining", "rain", "rained"], "correct": 1, "explanation": "Hozir sodir bo'layotgan — Continuous."},
+            {"id": "en_b_02_e2", "type": "mcq", "question": "She ___ her homework right now.", "options": ["does", "is doing", "do", "did"], "correct": 1, "explanation": "right now → Continuous."},
+            {"id": "en_b_02_e3", "type": "fill_blank", "question": "They ___ (play) football at the moment.", "accepted_answers": ["are playing"], "explanation": "are + V-ing."},
+            {"id": "en_b_02_e4", "type": "mcq", "question": "I ___ understand this rule. (statik fe'l)", "options": ["am not", "don't", "doesn't", "isn't"], "correct": 1, "explanation": "understand — statik, Simple ishlatiladi."},
+            {"id": "en_b_02_e5", "type": "mcq", "question": "What ___ you ___ tonight?", "options": ["do / do", "are / doing", "is / doing", "does / do"], "correct": 1, "explanation": "Kelajak rejasi — Continuous."}
+          ]
+        },
+        {
+          "id": "en_b_03",
+          "order": 3,
+          "title": "Past Simple — Oddiy o'tgan zamon",
+          "emoji": "📅",
+          "video_url": "https://www.youtube.com/watch?v=3lInQ5-d2hI",
+          "video_title": "Past Simple — regular va irregular verbs",
+          "theory": "<b>Past Simple</b> — o'tgan zamonda tugagan harakatlar.\n\n• Regular: V + ed → worked, played\n• Irregular: go→went, see→saw, have→had\n\n<b>Inkor:</b> didn't + V1\n<b>Savol:</b> Did + subject + V1?\n\nVaqt belgilari: yesterday, last week, in 2020, ago",
+          "theory_oral": "Past Simple — o'tgan zamonda bo'lib o'tgan va tugagan ishlar. Regular fe'llarga -ed qo'shiladi. Irregular fe'llar esa o'ziga xos shakl oladi: go — went, see — saw. Inkor va savolda did ishlatiladi, fe'l asosiy shaklda qoladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "en_b_03_e1", "type": "mcq", "question": "I ___ to the park yesterday.", "options": ["go", "went", "goes", "going"], "correct": 1, "explanation": "go → went (irregular)."},
+            {"id": "en_b_03_e2", "type": "mcq", "question": "She ___ not come to the party.", "options": ["did", "does", "is", "was"], "correct": 0, "explanation": "didn't + V1."},
+            {"id": "en_b_03_e3", "type": "fill_blank", "question": "They ___ (watch) a movie last night.", "accepted_answers": ["watched"], "explanation": "regular + ed."},
+            {"id": "en_b_03_e4", "type": "mcq", "question": "___ you see him yesterday?", "options": ["Do", "Did", "Does", "Are"], "correct": 1, "explanation": "Past Simple savol — Did."},
+            {"id": "en_b_03_e5", "type": "mcq", "question": "He ___ his keys. (lose)", "options": ["losed", "lost", "lose", "losing"], "correct": 1, "explanation": "lose → lost."}
+          ]
+        },
+        {
+          "id": "en_b_04",
+          "order": 4,
+          "title": "Future Simple & Going to",
+          "emoji": "🚀",
+          "video_url": "https://www.youtube.com/watch?v=ctAcl9m2Y5E",
+          "video_title": "Will vs Going to — kelajak zamonlari",
+          "theory": "<b>Will + V1</b>:\n• Spontán qarorlar: I'll help you!\n• Bashoratlar: It will rain.\n• Va'dalar: I will call you.\n\n<b>Be going to + V1</b>:\n• Oldindan rejalashtirilgan: I'm going to study medicine.\n• Aniq belgilari bor bashorat: Look at those clouds — it's going to rain.\n\nIkkalasi ham kelajakni bildiradi, lekin kontekst farq qiladi.",
+          "theory_oral": "Will — birdan qaror qilganda, va'da berishda yoki umumiy bashoratda. Going to — oldindan reja qilingan ishlar yoki aniq belgilarga asoslangan bashoratda ishlatiladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "en_b_04_e1", "type": "mcq", "question": "I think it ___ rain tomorrow.", "options": ["is going to", "will", "is", "was"], "correct": 1, "explanation": "Umumiy bashorat — will."},
+            {"id": "en_b_04_e2", "type": "mcq", "question": "Look at the sky! It ___ rain.", "options": ["will", "is going to", "goes", "went"], "correct": 1, "explanation": "Aniq belgi (bulut) — going to."},
+            {"id": "en_b_04_e3", "type": "fill_blank", "question": "She ___ (visit) her grandmother next week. (reja)", "accepted_answers": ["is going to visit", "is going to"], "explanation": "Oldindan reja — going to."},
+            {"id": "en_b_04_e4", "type": "mcq", "question": "Don't worry, I ___ help you.", "options": ["am going to", "will", "am", "do"], "correct": 1, "explanation": "Spontán va'da — will."}
+          ]
+        },
+        {
+          "id": "en_b_05",
+          "order": 5,
+          "title": "Asosiy lug'at va artikllar",
+          "emoji": "📚",
+          "video_url": "https://www.youtube.com/watch?v=5mEwhm-1LJA",
+          "video_title": "A / An / The — artikllar",
+          "theory": "<b>A / An</b> — noaniq artikl (birinchi marta tilga olinganda):\n• a book (undosh)\n• an apple (unli tovush)\n\n<b>The</b> — aniq artikl (ma'lum narsa):\n• the book on the table\n\n❌ Artiklsiz: ismlar, ko'plik umumiy ma'noda, tillar, ovqatlar (ba'zida).",
+          "theory_oral": "A va An — noaniq, birinchi marta aytganda. A — undosh bilan, An — unli tovush bilan. The — aniq, allaqachon ma'lum bo'lgan narsa uchun.",
+          "pass_threshold": 70,
+          "exercises": [
+            {"id": "en_b_05_e1", "type": "mcq", "question": "This is ___ book.", "options": ["a", "an", "the", "-"], "correct": 0, "explanation": "book undosh bilan boshlanadi — a."},
+            {"id": "en_b_05_e2", "type": "mcq", "question": "I saw ___ old man.", "options": ["a", "an", "the", "-"], "correct": 1, "explanation": "old unli tovush bilan — an."},
+            {"id": "en_b_05_e3", "type": "mcq", "question": "Opposite of 'hot' is:", "options": ["warm", "cold", "cool", "cloudy"], "correct": 1, "explanation": "hot → cold."},
+            {"id": "en_b_05_e4", "type": "mcq", "question": "A place where you buy bread:", "options": ["hospital", "bakery", "library", "bank"], "correct": 1, "explanation": "bakery — nonvoyxona."},
+            {"id": "en_b_05_e5", "type": "matching", "question": "So'zlarni tarjimasi bilan mos keltiring:", "pairs": [{"left": "Apple", "right": "Olma"}, {"left": "Water", "right": "Suv"}, {"left": "House", "right": "Uy"}, {"left": "Book", "right": "Kitob"}], "explanation": "Asosiy kundalik so'zlar."}
+          ]
+        }
+      ]
     },
-    {
-      "id": "present_continuous",
-      "order": 1,
-      "title": "2-bo'lim: Present Continuous (Hozirgi davom zamon)",
-      "text_explanation": "📘 <b>Present Continuous</b> — hozir, shu daqiqada sodir bo'layotgan harakatni bildiradi.\n\n✅ Tuzilishi: am/is/are + fe'l+ing\n✅ Misol: 'I am reading a book now.'\n✅ Salbiy: am/is/are + not + V-ing\n✅ So'roq: Am/Is/Are + ega + V-ing?\n\n🔑 Belgilovchi so'zlar: now, at the moment, right now, look!, listen!",
-      "pass_threshold": 0.7
+    "intermediate": {
+      "title": "🟡 O'rta (B1)",
+      "modules": [
+        {
+          "id": "en_i_01",
+          "order": 1,
+          "title": "Present Perfect",
+          "emoji": "✅",
+          "video_url": "https://www.youtube.com/watch?v=0Tbyh0J0t1I",
+          "video_title": "Present Perfect — have/has + V3",
+          "theory": "<b>Present Perfect</b> = have/has + V3 (Past Participle)\n\n1. <b>Hayotiy tajriba</b>: I have been to Japan.\n2. <b>Hozirgacha davom etgan</b>: She has lived here since 2015.\n3. <b>Yaqinda sodir bo'lgan, natijasi bor</b>: I have lost my keys (hali topmadim).\n\nBelgilari: ever, never, just, already, yet, since, for",
+          "theory_oral": "Present Perfect — o'tgan bilan hozirni bog'laydi. Have yoki has + fe'lning uchinchi shakli. Tajriba, hozirgacha davom etgan ish yoki natijasi bor yaqin o'tgan uchun ishlatiladi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "en_i_01_e1", "type": "mcq", "question": "I ___ never ___ to Japan.", "options": ["have / been", "has / been", "had / gone", "am / go"], "correct": 0, "explanation": "I have been — tajriba."},
+            {"id": "en_i_01_e2", "type": "fill_blank", "question": "She has ___ (live) here since 2015.", "accepted_answers": ["lived"], "explanation": "has + V3."},
+            {"id": "en_i_01_e3", "type": "mcq", "question": "___ you ever eaten sushi?", "options": ["Do", "Have", "Did", "Are"], "correct": 1, "explanation": "Have you ever — tajriba savoli."},
+            {"id": "en_i_01_e4", "type": "mcq", "question": "He hasn't finished yet. 'Yet' qayerda keladi?", "options": ["inkor va savolda oxirida", "faqat ijobiyda", "boshida", "o'rtasida"], "correct": 0, "explanation": "yet — inkor/savol oxirida."}
+          ]
+        },
+        {
+          "id": "en_i_02",
+          "order": 2,
+          "title": "Past Continuous",
+          "emoji": "⏳",
+          "video_url": "https://www.youtube.com/watch?v=6l9p6pY1f0E",
+          "video_title": "Past Continuous — was/were + V-ing",
+          "theory": "<b>Past Continuous</b> = was/were + V-ing\n\n• O'tgan zamonda davom etayotgan jarayon: I was reading when you called.\n• Parallel harakatlar: While she was cooking, he was watching TV.\n\nKo'pincha Past Simple bilan birga keladi (kesishuvchi harakat).",
+          "theory_oral": "Past Continuous — o'tgan zamonda davom etayotgan ish. Was yoki were + -ing. Bir ish davom etayotganda boshqa ish sodir bo'lganini bildiradi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "en_i_02_e1", "type": "mcq", "question": "She ___ her homework when I called her.", "options": ["does", "did", "was doing", "has done"], "correct": 2, "explanation": "Davom etayotgan jarayon — Past Continuous."},
+            {"id": "en_i_02_e2", "type": "mcq", "question": "While we ___ , it started to rain.", "options": ["walked", "were walking", "walk", "have walked"], "correct": 1, "explanation": "Parallel / kesishuvchi — Continuous."},
+            {"id": "en_i_02_e3", "type": "fill_blank", "question": "They ___ (play) when the lights went out.", "accepted_answers": ["were playing"], "explanation": "were + V-ing."}
+          ]
+        },
+        {
+          "id": "en_i_03",
+          "order": 3,
+          "title": "Conditionals (0 & 1)",
+          "emoji": "🔀",
+          "video_url": "https://www.youtube.com/watch?v=sQJzvpM1bY8",
+          "video_title": "Zero and First Conditional",
+          "theory": "<b>Zero Conditional</b> (umumiy haqiqat):\nIf + Present Simple, Present Simple\nIf you heat water, it boils.\n\n<b>First Conditional</b> (real kelajak):\nIf + Present Simple, will + V1\nIf it rains, I will stay home.",
+          "theory_oral": "Zero Conditional — doimo rost bo'lgan narsalar uchun. First Conditional — kelajakda mumkin bo'lgan shart va uning natijasi uchun. If qismida Present, asosiy qismida will.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "en_i_03_e1", "type": "mcq", "question": "If it rains, I ___ stay home.", "options": ["will", "would", "was", "am"], "correct": 0, "explanation": "First Conditional: will + V1."},
+            {"id": "en_i_03_e2", "type": "mcq", "question": "If you ___ water to 100°C, it boils.", "options": ["will heat", "heat", "heated", "are heating"], "correct": 1, "explanation": "Zero Conditional — Present Simple."},
+            {"id": "en_i_03_e3", "type": "fill_blank", "question": "If she studies hard, she ___ (pass) the exam.", "accepted_answers": ["will pass"], "explanation": "First Conditional."}
+          ]
+        },
+        {
+          "id": "en_i_04",
+          "order": 4,
+          "title": "Passive Voice (asoslari)",
+          "emoji": "🔄",
+          "video_url": "https://www.youtube.com/watch?v=8Q1x9Q5xY5w",
+          "video_title": "Passive Voice — be + V3",
+          "theory": "<b>Passive</b> = be (is/are/was/were...) + V3\n\nActive: Millions of people read the book.\nPassive: The book was read by millions of people.\n\nIjrochi muhim bo'lmasa yoki noma'lum bo'lsa ishlatiladi.",
+          "theory_oral": "Passive Voice — harakatni bajaruvchi emas, harakatning o'zi muhim bo'lganda. Be fe'li + fe'lning uchinchi shakli. Masalan: The house was built in 1990.",
+          "pass_threshold": 75,
+          "exercises": [
+            {"id": "en_i_04_e1", "type": "mcq", "question": "The book ___ by millions of people.", "options": ["read", "reads", "was read", "is reading"], "correct": 2, "explanation": "was + V3 — Passive."},
+            {"id": "en_i_04_e2", "type": "mcq", "question": "This house was built ___ 1990.", "options": ["at", "on", "in", "since"], "correct": 2, "explanation": "Yillar bilan 'in'."},
+            {"id": "en_i_04_e3", "type": "fill_blank", "question": "English ___ (speak) all over the world.", "accepted_answers": ["is spoken"], "explanation": "is + V3."}
+          ]
+        }
+      ]
     },
-    {
-      "id": "past_simple",
-      "order": 2,
-      "title": "3-bo'lim: Past Simple va Past Continuous (O'tgan zamon)",
-      "text_explanation": "📘 <b>Past Simple</b> — o'tgan vaqtda tugallangan harakat.\n✅ Muntazam fe'llar: V+ed (worked); noto'g'ri fe'llar alohida yodlanadi (go→went).\n✅ Misol: 'I worked yesterday.'\n\n📘 <b>Past Continuous</b> — o'tgan vaqtda davom etayotgan harakat.\n✅ Tuzilishi: was/were + V-ing\n✅ Misol: 'I was working when she called.'\n\n🔑 Belgilovchi so'zlar: yesterday, last week, ago, when, while.",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "present_perfect",
-      "order": 3,
-      "title": "4-bo'lim: Present Perfect (Hozirgi tugallangan zamon)",
-      "text_explanation": "📘 <b>Present Perfect</b> — o'tmishda boshlanib hozirgi vaqtga bog'liq bo'lgan yoki tajriba bildiruvchi harakat.\n\n✅ Tuzilishi: have/has + V3 (past participle)\n✅ Misol: 'I have visited London.' / 'She has never been to Japan.'\n\n🔑 Belgilovchi so'zlar: already, just, yet, ever, never, since, for.",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "modals_and_passive",
-      "order": 4,
-      "title": "5-bo'lim: Modal fe'llar va Passive Voice",
-      "text_explanation": "📘 <b>Modal fe'llar</b> (must, have to, should, can) — majburiyat, tavsiya, imkoniyatni bildiradi.\n✅ Misol: 'You must finish this today.'\n\n📘 <b>Passive Voice</b> — harakatni bajaruvchidan ko'ra harakatning o'ziga urg'u berish uchun ishlatiladi.\n✅ Tuzilishi: be + V3\n✅ Misol: 'The book was written by him.'",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "future_simple",
-      "order": 5,
-      "title": "6-bo'lim: Future Simple va Shart gaplar (Conditionals)",
-      "text_explanation": "📘 <b>Future Simple</b> — kelajakdagi harakat, qaror yoki bashorat.\n✅ Tuzilishi: will + V1\n✅ Misol: 'I will call you tomorrow.'\n\n📘 <b>Zero/First Conditional</b> — shart va uning natijasi.\n✅ 'If it rains, I will stay home.' (real shart)\n✅ 'If you heat water, it boils.' (umumiy haqiqat)",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "advanced_grammar",
-      "order": 6,
-      "title": "7-bo'lim: Murakkab grammatika",
-      "text_explanation": "📘 Bu bo'limda quyidagilarni o'rganasiz:\n✅ <b>Third Conditional</b> — o'tmishdagi noreal shart: 'If I had known, I would have acted differently.'\n✅ <b>Inversiya</b>: 'Not only was he late...'\n✅ <b>Future Perfect</b>: 'By next year, she will have worked here for a decade.'\n✅ <b>Wish + Past Perfect</b>: 'I wish I had had more time.'",
-      "pass_threshold": 0.7
+    "advanced": {
+      "title": "🔴 Qiyin (B2+)",
+      "modules": [
+        {
+          "id": "en_a_01",
+          "order": 1,
+          "title": "Third Conditional & Wish",
+          "emoji": "💭",
+          "video_url": "https://www.youtube.com/watch?v=3lZjG1Zq8pE",
+          "video_title": "Third Conditional and Wish",
+          "theory": "<b>Third Conditional</b> (o'tgan haqida afsus):\nIf + Past Perfect, would have + V3\nIf I had known, I would have acted differently.\n\nInversiya: Had I known, I would have...\n\n<b>Wish + Past Perfect</b> — o'tgan haqida afsus:\nI wish I had had more time yesterday.",
+          "theory_oral": "Third Conditional — o'tgan zamonda boshqacha bo'lishi mumkin bo'lgan narsalar haqida. If + had + V3, would have + V3. Wish bilan ham o'tgan uchun Past Perfect ishlatiladi.",
+          "pass_threshold": 80,
+          "exercises": [
+            {"id": "en_a_01_e1", "type": "mcq", "question": "Had I known earlier, I ___ differently.", "options": ["would act", "would have acted", "will act", "acted"], "correct": 1, "explanation": "Third Conditional."},
+            {"id": "en_a_01_e2", "type": "mcq", "question": "I wish I ___ more time yesterday.", "options": ["have", "had", "had had", "would have"], "correct": 2, "explanation": "Wish + Past Perfect (had had)."},
+            {"id": "en_a_01_e3", "type": "fill_blank", "question": "If she had studied, she ___ (pass) the test.", "accepted_answers": ["would have passed"], "explanation": "would have + V3."}
+          ]
+        },
+        {
+          "id": "en_a_02",
+          "order": 2,
+          "title": "Inversion & Advanced structures",
+          "emoji": "🔀",
+          "video_url": "https://www.youtube.com/watch?v=9Q1x9Q5xY5w",
+          "video_title": "Inversion in English",
+          "theory": "<b>Inversion</b> — odatdagi so'z tartibi o'zgaradi (rasmiy/adabiy uslub).\n\nNot only ___ late, but he also forgot the documents. → was he\n\nSeldom / Rarely / Never + yordamchi fe'l + subject\n\nBy next year, she will have worked here for a decade. (Future Perfect)",
+          "theory_oral": "Inversion — Not only, Seldom kabi so'zlar bilan boshlanganda yordamchi fe'l subjectdan oldin keladi. Future Perfect — kelajakda ma'lum vaqtgacha tugagan ish: will have + V3.",
+          "pass_threshold": 80,
+          "exercises": [
+            {"id": "en_a_02_e1", "type": "mcq", "question": "Not only ___ late, but he also forgot the documents.", "options": ["he was", "was he", "he is", "is he"], "correct": 1, "explanation": "Not only + inversiya: was he."},
+            {"id": "en_a_02_e2", "type": "mcq", "question": "By next year, she ___ here for a decade.", "options": ["will work", "will have worked", "works", "worked"], "correct": 1, "explanation": "Future Perfect."},
+            {"id": "en_a_02_e3", "type": "mcq", "question": "'Ambiguous' so'zi ma'nosi:", "options": ["aniq", "ikki xil talqin qilinadigan", "oson", "qisqa"], "correct": 1, "explanation": "Ambiguous — noaniq, ikki ma'noli."}
+          ]
+        },
+        {
+          "id": "en_a_03",
+          "order": 3,
+          "title": "Advanced Vocabulary",
+          "emoji": "🧠",
+          "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "video_title": "Advanced English Vocabulary",
+          "theory": "Yuqori darajadagi so'zlar:\n• <b>Ambiguous</b> — ikki xil talqin qilinadigan\n• <b>Exacerbate</b> — muammoni kuchaytirish\n• <b>Meticulous</b> — juda ehtiyotkor va aniq\n• <b>Ubiquitous</b> — hamma joyda mavjud",
+          "theory_oral": "Advanced vocabulary — noaniq, kuchaytirmoq, juda diqqatli, hamma joyda uchraydigan kabi so'zlarni o'rganamiz. Ular yozma va akademik nutqda ko'p uchraydi.",
+          "pass_threshold": 80,
+          "exercises": [
+            {"id": "en_a_03_e1", "type": "mcq", "question": "'To exacerbate a problem' — bu:", "options": ["muammoni yechish", "muammoni kuchaytirish", "muammoni yashirish", "muammoni unutish"], "correct": 1, "explanation": "Exacerbate — yomonlashtirmoq."},
+            {"id": "en_a_03_e2", "type": "mcq", "question": "'Meticulous' odam qanday ishlaydi?", "options": ["beparvolik bilan", "juda ehtiyotkorlik va aniqlik bilan", "tez, lekin xatolar bilan", "tartibsiz"], "correct": 1, "explanation": "Meticulous — juda diqqatli."},
+            {"id": "en_a_03_e3", "type": "mcq", "question": "'Ubiquitous' so'zining ma'nosi:", "options": ["kamdan-kam", "hamma joyda mavjud", "qadimiy", "noaniq"], "correct": 1, "explanation": "Ubiquitous — hamma yerda."}
+          ]
+        }
+      ]
     }
-  ],
-  "vocabulary": [
-    {
-      "id": "everyday_words",
-      "order": 0,
-      "title": "1-bo'lim: Kundalik so'zlar",
-      "text_explanation": "📗 Kundalik hayotda eng ko'p ishlatiladigan so'zlar: uy-ro'zg'or, oziq-ovqat, oddiy sifatlar (katta/kichik, issiq/sovuq) va boshqalar.\n\n💡 Maslahat: har bir yangi so'zni gap ichida yodlang, yolg'iz so'z sifatida emas.",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "useful_expressions",
-      "order": 1,
-      "title": "2-bo'lim: Foydali iboralar",
-      "text_explanation": "📗 Bu bo'limda kundalik muloqotda va ishda foydali bo'lgan fe'l va iboralarni o'rganasiz (masalan: postpone, achieve, reliable).\n\n💡 Maslahat: sinonim va antonimlarni birga yodlash tezroq eslab qolishga yordam beradi.",
-      "pass_threshold": 0.7
-    },
-    {
-      "id": "advanced_vocabulary",
-      "order": 2,
-      "title": "3-bo'lim: Murakkab lug'at",
-      "text_explanation": "📗 Yuqori darajadagi (C1) so'zlar — ilmiy, rasmiy va nozik ma'noli so'zlar: ambiguous, meticulous, ubiquitous va h.k.\n\n💡 Maslahat: bu so'zlarni maqola o'qishda, IELTS Writing'da ishlatishga harakat qiling.",
-      "pass_threshold": 0.7
-    }
-  ]
+  }
 }

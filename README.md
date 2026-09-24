@@ -1,173 +1,130 @@
-# Repetitorlik Telegram Bot — to'liq kurs tizimi
+# Repetitorlik Telegram Bot — Structured O'quv Tizimi
 
-Ingliz va rus tillaridan **strukturaviy kurs**: har bir zamon/mavzu alohida
-bo'lim (video darslik + matnli/og'zaki tushuntirish + mashqlar), bo'limlar
-**ketma-ket ochiladi** — Duolingo va shunga o'xshash platformalarning asosiy
-tamoyillari asosida qurilgan (moslashuvchan joylashtirish testi, mastery-based
-unlock, takrorlanmaydigan mashqlar, streak/nishon tizimi).
+Ingliz va Rus tillaridan **bosqichma-bosqich** o'rganish boti.
+Duolingo / Babbel / Busuu uslubidagi progressiv ochilish, video darslar,
+nazariya (yozma + og'zaki) va takrorlanmaydigan mashqlar.
+
+## Asosiy imkoniyatlar
+
+1. **Placement test** — yangi o'quvchi avval test ishlaydi, natijaga qarab
+   beginner / intermediate / advanced darajaga joylashadi.
+2. **Progressive unlock** — modulni tugatmasangiz (video + test) keyingisi
+   ochilmaydi. Sakrab o'tib ketib bo'lmaydi.
+3. **Video dars** — har bir modulda o'qituvchi video havolasi; «Ko'rdim»
+   bosilgach mashg'ulotlar ochiladi.
+4. **Nazariya** — yozma tushuntirish + og'zaki (matn ko'rinishida) tushuntirish.
+5. **Mashg'ulotlar** — MCQ, fill-blank, matching; savollar aralashtiriladi va
+   ko'rilganlari qayta takrorlanmasligi uchun kuzatiladi.
+6. **Ikkala til** — Ingliz (zamonlar markazli) va Rus (padejlar + zamonlar).
+7. **Gamification** — XP, unvonlar, streak, nishonlar, reyting.
 
 ## Fayllar tuzilishi
 
 ```
 repetitor_bot/
-├── bot.py               # Asosiy bot logikasi (aiogram 3.x)
-├── database.py          # SQLite bilan ishlash funksiyalari
-├── curriculum_en.json   # Ingliz tili — bo'limlar (modullar) ta'rifi
-├── curriculum_ru.json   # Rus tili — bo'limlar (modullar) ta'rifi
-├── questions_en.json    # Ingliz tili savollar banki (modulga bog'langan)
-├── questions_ru.json    # Rus tili savollar banki (modulga bog'langan)
+├── bot.py                 # Asosiy bot (aiogram 3.x)
+├── database.py            # SQLite: users, progress, modules, seen exercises
+├── curriculum_en.json     # Ingliz tili o'quv dasturi (modullar + nazariya + mashqlar)
+├── curriculum_ru.json     # Rus tili o'quv dasturi
+├── questions_en.json      # (eski) qo'shimcha savollar banki — ixtiyoriy
+├── questions_ru.json
 ├── requirements.txt
 ├── .env.example
+├── .gitignore
 └── README.md
 ```
 
 ## O'rnatish
 
-1. **Python 3.10+**
-2. ```bash
-   pip install -r requirements.txt
-   ```
-3. [@BotFather](https://t.me/BotFather) dan token oling.
-4. ```bash
+1. Python 3.10+
+2. `pip install -r requirements.txt`
+3. `@BotFather` dan token oling
+4. `.env` yarating:
+   ```bash
    cp .env.example .env
-   # .env faylini ochib BOT_TOKEN va ADMIN_IDS ni to'ldiring
+   # BOT_TOKEN=... ni to'ldiring
    ```
-   `ADMIN_IDS` — video/audio darslik yuklay oladigan Telegram ID'lar (o'z
-   ID'ingizni bilish uchun @userinfobot ga yozing).
-5. ```bash
-   python bot.py
-   ```
+5. `python bot.py`
 
-## Tizim qanday ishlaydi
+## Foydalanuvchi oqimi
 
-### 1. Bo'limlar (modullar) — har bir zamon/mavzu uchun
+```
+/start
+  → Til tanlash (en/ru)
+  → Placement test (9 savol)
+  → Daraja aniqlanadi
+  → Kurs menyusi
+       → Daraja tanlash
+       → Modul ro'yxati (🔒/🔓/✅)
+       → Modul ichida:
+            1. Video ko'rish → «Ko'rdim»
+            2. Nazariya (yozma + og'zaki)
+            3. Mashg'ulot/test (≥70–80%)
+            4. Keyingi modul ochiladi
+```
 
-`curriculum_en.json` / `curriculum_ru.json` da har bir bo'lim: `id`, `order`
-(tartib raqami), `title`, `text_explanation` (yozma tushuntirish, HTML bilan),
-`pass_threshold` (bo'lim testidan o'tish uchun kerakli foiz, standart 70%).
+## Buyruqlar
 
-Boshlang'ich to'plam:
-- **Grammatika (EN):** Present Simple → Present Continuous → Past Simple →
-  Present Perfect → Modals/Passive → Future Simple → Murakkab grammatika
-- **Grammatika (RU):** Asosiy iboralar → Asosiy padejlar → O'tgan zamon →
-  Kelasi zamon → Qo'shimcha padejlar → Shart mayli/Passive → Murakkab grammatika
-- **Lug'at (EN/RU):** Kundalik so'zlar → Foydali iboralar → Murakkab lug'at
+- `/start` — bosh menyu yoki placement
+- `/stats` — XP, streak, modullar, kuchsiz tomonlar
+- `/top` — XP bo'yicha TOP-10
+- `/help` — qisqa yo'riqnoma
 
-### 2. Ketma-ket ochilish (mastery-based unlock)
+## Curriculum qanday kengaytiriladi
 
-Har bir (foydalanuvchi, til, bo'lim-turi) uchun `unlocked_order` saqlanadi.
-Faol bo'lim tugallanmaguncha keyingisi **ochilmaydi** — o'quvchi sakrab o'tib
-ketolmaydi. Bo'lim testidan `pass_threshold` dan yuqori ball bilan o'tilsa,
-keyingi bo'lim avtomatik ochiladi.
+`curriculum_en.json` yoki `curriculum_ru.json` ichida yangi modul:
 
-### 3. Video-gating
+```json
+{
+  "id": "en_b_06",
+  "order": 6,
+  "title": "Yangi mavzu",
+  "emoji": "🆕",
+  "video_url": "https://youtube.com/...",
+  "video_title": "Video nomi",
+  "theory": "<b>Yozma tushuntirish</b>...",
+  "theory_oral": "Og'zaki tushuntirish matni...",
+  "pass_threshold": 70,
+  "exercises": [
+    {
+      "id": "en_b_06_e1",
+      "type": "mcq",
+      "question": "...",
+      "options": ["A", "B", "C", "D"],
+      "correct": 0,
+      "explanation": "..."
+    }
+  ]
+}
+```
 
-O'qituvchi (admin) `/setvideo en grammar present_simple` buyrug'i bilan videoni
-shu bo'limga bog'laydi. Video mavjud bo'lgan bo'limda o'quvchi **"✅ Ko'rdim"**
-tugmasini bosmaguncha o'sha bo'limning mashqlari va testi ochilmaydi.
-
-> ⚠️ **Muhim cheklov:** Telegram real vaqtda "video oxirigacha ko'rildimi"
-> degan ma'lumotni bermaydi — shuning uchun bu o'z-o'zini tasdiqlash (self-report)
-> tugmasi orqali amalga oshiriladi. Bu ko'plab ta'lim botlarida qo'llaniladigan
-> standart yechim.
-
-### 4. Joylashtirish testi (placement test)
-
-Yangi o'quvchi bo'lim/til tanlaganda ikkita variant beriladi: joylashtirish
-testini ishlash yoki 1-bo'limdan boshlash. Test har bir bo'limdan bittadan
-savol oladi; natijaga qarab mos bo'limdan boshlanadi (Duolingo'dagi
-soddalashtirilgan versiyasi — to'liq adaptiv IRT algoritmi emas, lekin xuddi
-shu tamoyil: tajribali o'quvchi asosdan boshlamaydi).
-
-### 5. Mashqlar takrorlanmaydi
-
-Har bir savol foydalanuvchi bo'yicha (`seen_questions` jadvalida) kuzatiladi.
-Mashq/bo'lim testi tanlaganda avval **ko'rilmagan** savollar ustunlik qiladi;
-barcha savollar bir marta ko'rilgach, eng kam ko'rilganlari qaytadan
-aralashtirilib beriladi — shu bilan mashqlar doim yangilanib turadi.
-
-### 6. Xatolarni qayta mashq qilish — `/review`
-
-Foydalanuvchi ko'proq xato qilgan savollar alohida to'plamda (barcha
-bo'limlar bo'yicha) qayta beriladi — progressga ta'sir qilmaydi, faqat
-mustahkamlash uchun.
-
-## Bot buyruqlari
-
-- `/start` — kursni boshlash/davom ettirish
-- `/progress` — barcha bo'limlar bo'yicha holat (✅ o'tilgan, 🔓 faol, 🔒 qulf)
-- `/review` — xato qilingan savollarni qayta mashq qilish
-- `/stats` — shaxsiy statistika (unvon, streak, nishonlar soni)
-- `/badges` — qo'lga kiritilgan nishonlar
-- `/top` — barcha vaqt reytingi
-- `/weektop` — so'nggi 7 kunlik reyting
-
-**Admin (o'qituvchi) buyruqlari** (`.env`dagi `ADMIN_IDS`ga kiritilgan bo'lishi kerak):
-- `/modules` — barcha til/bo'lim/modul ID'larini ko'rsatadi
-- `/setvideo <en|ru> <grammar|vocabulary> <module_id>` — keyingi yuborilgan
-  videoni shu modulga bog'laydi
-- `/setaudio <en|ru> <grammar|vocabulary> <module_id>` — keyingi yuborilgan
-  ovozli xabar/audioni shu modulga bog'laydi
-
-## Savol turlari
-
-`questions_*.json`dagi `"type"` maydoni orqali:
-
-1. **`mcq`** (standart) — variantli test
-2. **`fill_blank`** — matnli javob; `accepted_answers` massivida bir nechta
-   to'g'ri yozilish shakli bo'lishi mumkin
-3. **`matching`** — juftliklarni mos keltirish (`pairs` massivi)
-
-Har bir savol `"module"` maydoni orqali tegishli bo'limga bog'langan bo'lishi
-**shart** — aks holda o'sha modulda mashq/test ishlamaydi.
-
-## O'yinlashtirish (gamification)
-
-- **Unvonlar:** 🌱 Yangi boshlovchi → 📖 O'quvchi → 🎯 Bilimdon → 🏅 Usta → 👑 Professor
-- **Nishonlar:** birinchi test, 100% natija, streak bosqichlari (3/7/14/30
-  kun), test soni bosqichlari (10/50/100), **kursni to'liq tugatish**
-  sertifikat-nishoni (har til/bo'lim uchun alohida)
-- **Streak "yumshoq qo'nish"** — 2-3 kun tanaffusdan keyin streak butunlay
-  emas, yarmiga tushadi (Duolingo'dagi streak freeze tamoyiliga yaqin)
-- **Hazil-mutoyibali xabarlar** — har javobdan keyin tasodifiy tanlangan
-  rag'batlantiruvchi ibora
+`type`: `mcq` | `fill_blank` | `matching`
 
 ## Xavfsizlik
 
-Oldingi versiyada qo'shilgan barcha choralar saqlanib qolgan: `.env`-based
-token, HTML-injection himoyasi, faqat shaxsiy chat, sessiya egasini
-tekshirish, anti-flood, callback-data validatsiyasi, xatolarni ushlash,
-parametrlashtirilgan SQL so'rovlari. Admin buyruqlari faqat `ADMIN_IDS`
-ro'yxatidagilar uchun ishlaydi.
+- Token faqat `.env` dan
+- HTML escape (injection himoyasi)
+- Faqat private chat
+- Sessiya egasi tekshiruvi
+- Anti-flood
+- Parametrlangan SQL
 
-## Kengaytirish
+## Keyingi rivojlantirish g'oyalari
 
-### Yangi bo'lim (modul) qo'shish
-1. `curriculum_en.json`/`curriculum_ru.json`ga yangi obyekt qo'shing
-   (`id`, `order` — ketma-ketlikni buzmang, `title`, `text_explanation`).
-2. Shu `module` ID bilan kamida 4-5 ta savol yozing (`questions_*.json`).
-3. `/setvideo` va `/setaudio` bilan video/audio biriktiring (ixtiyoriy).
+- [ ] Haqiqiy ovozli xabarlar (TTS) og'zaki nazariya uchun
+- [ ] Admin panel orqali video/nazariya qo'shish
+- [ ] Kunlik eslatma (reminder)
+- [ ] Referral tizimi
+- [ ] Redis FSM (production)
+- [ ] Ko'proq modullar (150+ mashq)
+- [ ] Speaking practice (voice message + baholash)
 
-### Savol formati
-```json
-{"id":"...", "section":"grammar", "module":"present_simple", "type":"mcq",
- "question":"...", "options":["A","B","C","D"], "correct":0, "explanation":"..."}
+## Pedagogik asos
 
-{"id":"...", "section":"grammar", "module":"...", "type":"fill_blank",
- "question":"...", "accepted_answers":["..."], "explanation":"..."}
+Tizim CEFR va eng yaxshi amaliyotlarga asoslangan:
 
-{"id":"...", "section":"vocabulary", "module":"...", "type":"matching",
- "question":"...", "pairs":[{"left":"...","right":"..."}], "explanation":"..."}
-```
-
-## Keyingi qadamlar (tavsiya)
-
-- [ ] Rasm/audio biriktirilgan savollar (infratuzilma tayyor — `message.answer_photo`
-      qo'shish kifoya, kontentni o'zingiz yuklaysiz)
-- [ ] Production'da `MemoryStorage` o'rniga Redis-based FSM storage
-      (server qayta ishga tushganda sessiyalar yo'qolmasligi uchun)
-- [ ] Har bir bo'lim uchun ko'proq savol qo'shish (hozir 4-8 tadan — real
-      foydalanishda kamida 15-20 ta tavsiya etiladi)
-- [ ] Sentry yoki shunga o'xshash xato kuzatuv tizimi
-- [ ] Placement testni to'liq adaptiv (IRT) qilish — hozirgi versiya
-      soddalashtirilgan (har bo'limdan bittadan savol)
+- **Scaffolding** — oddiydan murakkabga, oldingi bilimsiz keyingisi yopiq
+- **Comprehensible input** — video + yozma + og'zaki
+- **Spaced / varied practice** — savollar aralashadi, takrorlanmaydi
+- **Mastery learning** — minimal foizni topmaguncha keyingi modul ochilmaydi
+- **Gamification** — XP, streak, nishonlar motivatsiyani ushlab turadi
