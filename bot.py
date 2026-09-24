@@ -155,44 +155,44 @@ class ThrottlingMiddleware(BaseMiddleware):
 SUBJECT_NAMES = {"en": "🇬🇧 Ingliz tili"}
 DEFAULT_SUBJECT = "en"
 LEVEL_NAMES = {
-    "beginner": "🟢 Boshlang'ich",
-    "intermediate": "🟡 O'rta",
-    "advanced": "🔴 Qiyin",
+    "beginner": "🟢 Elementary (A1)",
+    "intermediate": "🔵 Intermediate (B1)",
+    "advanced": "🟣 Upper-Intermediate (B2)",
 }
 
 TITLE_THRESHOLDS = [
-    (0, "🌱 Yangi boshlovchi"),
-    (50, "📖 O'quvchi"),
-    (150, "🎯 Bilimdon"),
-    (300, "🏅 Usta"),
-    (500, "👑 Professor"),
+    (0, "Elementary (A1)"),
+    (150, "Pre-Intermediate (A2)"),
+    (350, "Intermediate (B1)"),
+    (600, "Upper-Intermediate (B2)"),
+    (900, "Advanced (C1)"),
 ]
 
 STREAK_BADGES = {
-    3: ("streak_3", "🔥 3 kunlik olov"),
-    7: ("streak_7", "🔥🔥 7 kunlik seriya"),
-    14: ("streak_14", "🔥🔥🔥 2 haftalik mustahkamlik"),
-    30: ("streak_30", "🏆 30 kunlik chempion"),
+    3: ("streak_3", "🔥 3 kunlik izchillik"),
+    7: ("streak_7", "🔥 7 kunlik izchillik"),
+    14: ("streak_14", "🔥 2 haftalik izchillik"),
+    30: ("streak_30", "🏆 30 kunlik izchillik"),
 }
 
 TESTS_TAKEN_BADGES = {
     5: ("tests_5", "📚 5 ta test"),
-    15: ("tests_15", "📚📚 15 ta test"),
-    50: ("tests_50", "🎓 50 ta test — mehnatkash!"),
+    15: ("tests_15", "📚 15 ta test"),
+    50: ("tests_50", "🎓 50 ta test yakunlandi"),
 }
 
 CORRECT_PHRASES = [
-    "✅ To'g'ri! Ajoyib natija.",
-    "✅ To'g'ri javob. Davom eting.",
-    "✅ Zo'r! Xuddi shunday.",
-    "✅ To'g'ri. Bilimingiz mustahkamlanmoqda.",
-    "✅ Muvaffaqiyatli! Keyingisiga o'tamiz.",
+    "✅ To'g'ri javob.",
+    "✅ To'g'ri. Davom etamiz.",
+    "✅ Muvaffaqiyatli.",
+    "✅ Aniq. Bilimingiz mustahkamlanmoqda.",
+    "✅ To'g'ri. Keyingi savolga o'tamiz.",
 ]
 WRONG_PHRASES = [
-    "❌ Noto'g'ri. Xatodan o'rganamiz.",
-    "❌ Deyarli to'g'ri edi. Keyingisida uddalaysiz.",
-    "❌ Afsuski, noto'g'ri. Izohga e'tibor bering.",
-    "❌ To'g'ri javob quyida — tahlilni o'qing.",
+    "❌ Noto'g'ri. Izohni o'qing.",
+    "❌ Xato. To'g'ri javobni ko'rib chiqing.",
+    "❌ Noto'g'ri. Qoidani takrorlang.",
+    "❌ To'g'ri javob quyida keltirilgan.",
 ]
 
 
@@ -369,7 +369,7 @@ def main_menu_kb() -> InlineKeyboardMarkup:
             InlineKeyboardButton(text="🌟 Ko'nikmalar", callback_data="menu:skills"),
         ],
         [
-            InlineKeyboardButton(text="🎯 Questlar", callback_data="menu:quests"),
+            InlineKeyboardButton(text="🎯 Kunlik vazifalar", callback_data="menu:quests"),
             InlineKeyboardButton(text="🏆 Liga", callback_data="menu:league"),
         ],
         [
@@ -382,14 +382,14 @@ def main_menu_kb() -> InlineKeyboardMarkup:
         ],
         [
             InlineKeyboardButton(text="🎯 Bepul mashq", callback_data="menu:practice"),
-            InlineKeyboardButton(text="🔥 Challenge", callback_data="menu:daily"),
+            InlineKeyboardButton(text="🗓️ Kunlik challenge", callback_data="menu:daily"),
         ],
         [
             InlineKeyboardButton(text="📊 Statistika", callback_data="menu:stats"),
             InlineKeyboardButton(text="🏅 Nishonlar", callback_data="menu:badges"),
         ],
         [
-            InlineKeyboardButton(text="👥 Do'stlar", callback_data="menu:referral"),
+            InlineKeyboardButton(text="🤝 Do'stni taklif qilish", callback_data="menu:referral"),
             InlineKeyboardButton(text="📜 Sertifikat", callback_data="menu:cert"),
         ],
         [InlineKeyboardButton(text="⭐ Premium", callback_data="menu:premium")],
@@ -494,10 +494,10 @@ async def cmd_start(message: Message, state: FSMContext):
             message.from_user.id, message.from_user.username, message.from_user.full_name
         )
         await message.answer(
-            f"Yana xush kelibsiz, {esc(message.from_user.full_name)}! 👋\n\n"
+            f"Xush kelibsiz, {esc(message.from_user.full_name)}.\n\n"
             f"{status_line(uid)}\n\n"
-            f"Unvon: {random_title_for(user.get('xp', 0))}\n\n"
-            "Bugun nimadan boshlaymiz?",
+            f"Darajangiz: {random_title_for(user.get('xp', 0))}\n\n"
+            "O'qishni davom ettirish uchun quyidagi bo'limlardan foydalaning:",
             reply_markup=main_menu_kb(),
             parse_mode="HTML",
         )
@@ -506,20 +506,22 @@ async def cmd_start(message: Message, state: FSMContext):
     else:
         banner = BASE_DIR / "media" / "images" / "banner.png"
         text = (
-            f"Assalomu alaykum, {esc(message.from_user.full_name)}! 👋\n\n"
-            "<b>Repetitor</b> — ingliz tilini Duolingo uslubida o'rganish platformasi.\n\n"
-            "<b>Sizni nima kutmoqda:</b>\n"
-            "📚 Bosqichma-bosqich kurs: video → nazariya → mashq\n"
-            "🖼️ Rasmlar bilan so'z o'rganish\n"
+            f"Assalomu alaykum, {esc(message.from_user.full_name)}.\n\n"
+            "<b>Repetitor</b> — ingliz tilini bosqichma-bosqich o'rganish platformasi.\n"
+            "Dastur yetakchi o'quv markazlar metodikasi asosida qurilgan.\n\n"
+            "<b>Dastur tarkibi:</b>\n"
+            "🎓 Elementary (A1) → Intermediate (B1) → Upper-Intermediate (B2)\n"
+            "📘 Ingliz tilidagi barcha 12 zamon — to'liq nazariya va mashg'ulotlar\n"
+            "🗣️ Modal fe'llar, Conditionals, Passive Voice, Reported Speech\n"
             "🌟 Reading · Listening · Speaking ko'nikmalari\n"
-            "📖 Kutubxona: 7 ta kitob, 30+ bob\n"
-            "❤️ Yuraklar, 💎 gemlar, 🎯 kunlik questlar, 🏆 ligalar\n"
-            "🧠 SRS takrorlash — so'zlar xotirada mustahkam qoladi\n\n"
-            "Boshlash uchun qisqa <b>placement test</b> (~3 daqiqa) ishlaymiz — "
-            "darajangizni aniqlaymiz."
+            "📚 Kutubxona: 7 ta kitob, 30+ bob — tushunish savollari bilan\n"
+            "🧠 SRS takrorlash — so'zlar xotirada mustahkam saqlanadi\n"
+            "📊 Progress nazorati: XP, izchillik (streak), kunlik maqsadlar, haftalik liga\n\n"
+            "O'qishni boshlashdan oldin <b>placement test</b> (~3 daqiqa) orqali "
+            "darajangiz aniqlanadi."
         )
         kb = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🚀 Boshlash", callback_data="go:placement")],
+            [InlineKeyboardButton(text="▶️ Placement testni boshlash", callback_data="go:placement")],
         ])
         if banner.exists():
             from aiogram.types import FSInputFile
@@ -898,7 +900,7 @@ async def handle_matching_answer(callback: CallbackQuery, state: FSMContext):
     else:
         all_correct = m["errors"] == 0
         score = data["score"] + (1 if all_correct else 0)
-        summary = "🎉 Barcha juftliklar to'g'ri!" if all_correct else f"Xatolar: {m['errors']}"
+        summary = "✅ Barcha juftliklar to'g'ri." if all_correct else f"Xatolar: {m['errors']}"
         uid = db.get_or_create_user(callback.from_user.id, None, None)
         counts_for_hearts = bool(data.get("is_module_quiz") or data.get("is_skill_quiz"))
         if counts_for_hearts:
@@ -1000,19 +1002,19 @@ async def finish_placement(message: Message, state: FSMContext, score: int, tota
 
     if pct >= 75:
         level = "advanced"
-        level_hint = "Yuqori daraja — murakkab mavzular siz uchun ochiq."
+        level_hint = "Upper-Intermediate (B2) — Reported Speech, murakkab Passive Voice, Inversion va boshqa akademik mavzular siz uchun ochiq."
     elif pct >= 45:
         level = "intermediate"
-        level_hint = "O'rta daraja — asoslarni mustahkamlab, yangi mavzularni o'rganasiz."
+        level_hint = "Intermediate (B1) — Perfect zamonlar, modal fe'llar va Conditionals dan boshlab, darajangizni mustahkamlaysiz."
     else:
         level = "beginner"
-        level_hint = "Boshlang'ich daraja — oddiy va tushunarli asoslardan boshlaymiz."
+        level_hint = "Elementary (A1) — asosiy zamonlar va grammatikadan bosqichma-bosqich boshlaysiz."
 
     level_title = LEVEL_NAMES.get(level, level)
 
     # AVVAL natijani yuboramiz (DB xatosi bo'lsa ham ko'rinadi)
     result_text = (
-        "🎉 <b>Placement test tugadi!</b>\n\n"
+        "📊 <b>Placement test yakunlandi</b>\n\n"
         f"📊 Natija: <b>{score}/{total}</b> ({pct}%)\n"
         f"📍 Sizning darajangiz: <b>{level_title}</b>\n"
         f"💡 {level_hint}\n\n"
@@ -1065,7 +1067,7 @@ async def finish_skill_quiz(message: Message, state: FSMContext, score: int, tot
     streak = db.update_streak(user_id)
     stars = "⭐" * min(5, max(1, pct // 20))
     await message.answer(
-        f"🎉 Ko'nikma mashqi tugadi!\n\n"
+        f"✅ Ko'nikma mashqi yakunlandi\n\n"
         f"{stars}\n"
         f"Natija: <b>{score}/{total}</b> ({pct}%)\n"
         f"🔥 Streak: {streak}\n"
@@ -1102,7 +1104,7 @@ async def finish_module_quiz(message: Message, state: FSMContext, score: int, to
     award_xp(user_id, score * XP_PER_CORRECT)
 
     lines = [
-        "🎉 Modul testi tugadi!",
+        "📋 Modul testi yakunlandi",
         "",
         f"Natija: <b>{score}/{total}</b> ({pct}%)",
         f"Kerakli minimum: {threshold}%",
@@ -1156,7 +1158,7 @@ async def finish_module_quiz(message: Message, state: FSMContext, score: int, to
     stats = db.get_user_stats(user_id)
     new_badges = []
     if stats["tests_taken"] == 1 and db.award_badge(user_id, "first_quiz"):
-        new_badges.append("🎉 Birinchi test")
+        new_badges.append("🎖 Birinchi test")
     if pct == 100 and db.award_badge(user_id, "perfect_score"):
         new_badges.append("💯 Mukammal natija")
     if streak in STREAK_BADGES:
@@ -1236,7 +1238,7 @@ async def finish_free_practice(message: Message, state: FSMContext, score: int, 
     award_xp(user_id, score * XP_PER_CORRECT)
     streak = db.update_streak(user_id)
     await message.answer(
-        f"🎉 Mashq tugadi!\n\nNatija: <b>{score}/{total}</b> ({pct}%)\n"
+        f"✅ Bepul mashq yakunlandi\n\nNatija: <b>{score}/{total}</b> ({pct}%)\n"
         f"🔥 Streak: {streak} kun\n+{score * XP_PER_CORRECT} XP",
         parse_mode="HTML",
         reply_markup=main_menu_kb(),
@@ -1503,7 +1505,7 @@ async def start_module_exercises(callback: CallbackQuery, state: FSMContext):
     await state.set_state(QuizState.answering)
     await callback.message.edit_text(
         f"✍️ <b>{esc(mod['title'])}</b> — mashg'ulot\n"
-        f"{len(quiz)} ta savol. Omad! 🚀",
+        f"{len(quiz)} ta savol. Boshlang.",
         parse_mode="HTML",
     )
     await send_question(callback.message, state)
@@ -1619,14 +1621,14 @@ async def menu_badges(callback: CallbackQuery, state: FSMContext):
     )
     earned = set(db.get_user_badges(user_id))
     ALL = {
-        "first_quiz": "🎉 Birinchi test",
+        "first_quiz": "🎖 Birinchi test",
         "perfect_score": "💯 Mukammal natija",
         **{c: l for c, l in STREAK_BADGES.values()},
         **{c: l for c, l in TESTS_TAKEN_BADGES.values()},
     }
     if not earned:
         await callback.message.edit_text(
-            "Hali nishonlaringiz yo'q. Birinchi testni yakunlang! 🎉",
+            "Hali nishonlaringiz yo'q. Birinchi testni yakunlab, nishonlarni qo'lga kiriting.",
             reply_markup=main_menu_kb(),
         )
     else:
@@ -1983,7 +1985,7 @@ async def lib_quiz_start(callback: CallbackQuery, state: FSMContext):
     await state.set_state(QuizState.answering)
     await callback.message.edit_text(
         f"❓ <b>Tushunish quizi</b> — {esc(chapters[idx]['title'])}\n"
-        f"{len(quiz)} ta savol. Omad! 🚀",
+        f"{len(quiz)} ta savol. Boshlang.",
         parse_mode="HTML",
     )
     await send_question(callback.message, state)
@@ -2677,7 +2679,7 @@ def skill_units_kb(subject: str, skill: str) -> InlineKeyboardMarkup:
     rows = []
     for u in get_skill_units(subject, skill):
         lvl = u.get("level", "")
-        emoji = {"beginner": "🟢", "intermediate": "🟡", "advanced": "🔴"}.get(lvl, "📘")
+        emoji = {"beginner": "🟢", "intermediate": "🔵", "advanced": "🟣"}.get(lvl, "📘")
         rows.append([InlineKeyboardButton(
             text=f"{emoji} {u['title'][:40]}",
             callback_data=f"skunit:{subject}:{skill}:{u['id']}",
@@ -2842,7 +2844,7 @@ async def skill_start_quiz(callback: CallbackQuery, state: FSMContext):
         full_name=callback.from_user.full_name,
     )
     await state.set_state(QuizState.skill_quiz)
-    await callback.message.edit_text(f"✍️ {esc(unit['title'])} — savollar\nOmad!")
+    await callback.message.edit_text(f"✍️ {esc(unit['title'])} — savollar\nBoshlang.")
     await send_question(callback.message, state)
     await callback.answer()
 
@@ -3027,7 +3029,7 @@ async def adm_speaking_review(callback: CallbackQuery, bot: Bot):
     await callback.answer(f"Status: {status}", show_alert=True)
     if s and s.get("telegram_id"):
         try:
-            msg = "✅ Speaking qabul qilindi! Zo'r!" if status == "approved" else "🔄 Speakingni qayta yuboring — yaxshilash mumkin."
+            msg = "✅ Speaking qabul qilindi va tasdiqlandi." if status == "approved" else "🔄 Speakingni qayta yuboring — yaxshilash mumkin."
             await bot.send_message(s["telegram_id"], msg)
         except Exception:
             pass
@@ -3197,7 +3199,7 @@ async def srs_quality(callback: CallbackQuery, state: FSMContext):
         await srs_go(callback, state)
     else:
         await callback.message.edit_text(
-            "🎉 Bugungi SRS tugadi! Ajoyib odat.",
+            "✅ Bugungi SRS takrorlash yakunlandi. Izchillik — natija kaliti.",
             reply_markup=main_menu_kb(),
         )
         await state.clear()

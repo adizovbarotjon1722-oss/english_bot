@@ -1,9 +1,9 @@
 {
   "subject": "en",
-  "title": "Ingliz tili kursi",
+  "title": "Ingliz tili kursi — Elementary (A1) → Upper-Intermediate (B2)",
   "levels": {
     "beginner": {
-      "title": "🟢 Boshlang'ich (A1-A2)",
+      "title": "Elementary (A1)",
       "modules": [
         {
           "id": "en_b_01",
@@ -1197,11 +1197,164 @@
       ]
     },
     "intermediate": {
-      "title": "🟡 O'rta (B1)",
+      "title": "Intermediate (B1)",
       "modules": [
         {
-          "id": "en_i_01",
+          "id": "en_i_02",
           "order": 1,
+          "title": "Past Continuous",
+          "emoji": "⏳",
+          "video_url": "https://www.youtube.com/watch?v=6l9p6pY1f0E",
+          "video_title": "Past Continuous — was/were + V-ing",
+          "theory": "<b>Past Continuous</b> = was/were + V-ing\n\n• O'tgan zamonda davom etayotgan jarayon: I was reading when you called.\n• Parallel harakatlar: While she was cooking, he was watching TV.\n\nKo'pincha Past Simple bilan birga keladi (kesishuvchi harakat).",
+          "theory_oral": "Past Continuous — o'tgan zamonda davom etayotgan ish. Was yoki were + -ing. Bir ish davom etayotganda boshqa ish sodir bo'lganini bildiradi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {
+              "id": "en_i_02_e1",
+              "type": "mcq",
+              "question": "She ___ her homework when I called her.",
+              "options": [
+                "does",
+                "did",
+                "was doing",
+                "has done"
+              ],
+              "correct": 2,
+              "explanation": "Davom etayotgan jarayon — Past Continuous."
+            },
+            {
+              "id": "en_i_02_e2",
+              "type": "mcq",
+              "question": "While we ___ , it started to rain.",
+              "options": [
+                "walked",
+                "were walking",
+                "walk",
+                "have walked"
+              ],
+              "correct": 1,
+              "explanation": "Parallel / kesishuvchi — Continuous."
+            },
+            {
+              "id": "en_i_02_e3",
+              "type": "fill_blank",
+              "question": "They ___ (play) when the lights went out.",
+              "accepted_answers": [
+                "were playing"
+              ],
+              "explanation": "were + V-ing."
+            },
+            {
+              "id": "en_i_02_e4",
+              "type": "mcq",
+              "question": "At 8 pm yesterday I ___ TV.",
+              "options": [
+                "watched",
+                "was watching",
+                "watch",
+                "have watched"
+              ],
+              "correct": 1,
+              "explanation": "Ongoing at a past time."
+            },
+            {
+              "id": "en_i_02_e5",
+              "type": "fill_blank",
+              "question": "While he ___ (drive), he saw an accident.",
+              "accepted_answers": [
+                "was driving"
+              ],
+              "explanation": "was driving."
+            },
+            {
+              "id": "en_i_02_e6",
+              "type": "mcq",
+              "question": "They ___ not listening when the teacher explained.",
+              "options": [
+                "was",
+                "were",
+                "did",
+                "are"
+              ],
+              "correct": 1,
+              "explanation": "were not listening."
+            },
+            {
+              "id": "en_i_02_e7",
+              "type": "mcq",
+              "question": "What ___ you ___ at this time last Friday?",
+              "options": [
+                "did / do",
+                "were / doing",
+                "have / done",
+                "are / doing"
+              ],
+              "correct": 1,
+              "explanation": "were you doing."
+            },
+            {
+              "id": "en_i_02_e8",
+              "type": "fill_blank",
+              "question": "She ___ (cook) when the phone rang.",
+              "accepted_answers": [
+                "was cooking"
+              ],
+              "explanation": "was cooking."
+            },
+            {
+              "id": "en_i_02_e9",
+              "type": "mcq",
+              "question": "I ___ home when it started to snow.",
+              "options": [
+                "walked",
+                "was walking",
+                "walk",
+                "have walked"
+              ],
+              "correct": 1,
+              "explanation": "Background action — Continuous."
+            },
+            {
+              "id": "en_i_02_e10",
+              "type": "mcq",
+              "question": "While we were talking, the lights ___.",
+              "options": [
+                "went out",
+                "were going out",
+                "go out",
+                "have gone"
+              ],
+              "correct": 0,
+              "explanation": "Interrupting action — Simple."
+            },
+            {
+              "id": "en_i_02_e11",
+              "type": "fill_blank",
+              "question": "The children ___ (play) in the garden all afternoon.",
+              "accepted_answers": [
+                "were playing"
+              ],
+              "explanation": "were playing."
+            },
+            {
+              "id": "en_i_02_e12",
+              "type": "mcq",
+              "question": "He ___ a book when I entered the room.",
+              "options": [
+                "read",
+                "was reading",
+                "reads",
+                "has read"
+              ],
+              "correct": 1,
+              "explanation": "was reading."
+            }
+          ]
+        },
+        {
+          "id": "en_i_01",
+          "order": 2,
           "title": "Present Perfect",
           "emoji": "✅",
           "video_url": "https://www.youtube.com/watch?v=0Tbyh0J0t1I",
@@ -1379,161 +1532,680 @@
           ]
         },
         {
-          "id": "en_i_02",
-          "order": 2,
-          "title": "Past Continuous",
+          "id": "en_i_05",
+          "order": 3,
+          "title": "Present Perfect Continuous — Hozirgi tugallangan davomiy zamon",
           "emoji": "⏳",
-          "video_url": "https://www.youtube.com/watch?v=6l9p6pY1f0E",
-          "video_title": "Past Continuous — was/were + V-ing",
-          "theory": "<b>Past Continuous</b> = was/were + V-ing\n\n• O'tgan zamonda davom etayotgan jarayon: I was reading when you called.\n• Parallel harakatlar: While she was cooking, he was watching TV.\n\nKo'pincha Past Simple bilan birga keladi (kesishuvchi harakat).",
-          "theory_oral": "Past Continuous — o'tgan zamonda davom etayotgan ish. Was yoki were + -ing. Bir ish davom etayotganda boshqa ish sodir bo'lganini bildiradi.",
-          "pass_threshold": 75,
+          "video_url": "https://www.youtube.com/results?search_query=present+perfect+continuous+tense+lesson",
+          "video_title": "Present Perfect Continuous — video dars",
+          "theory": "<b>Present Perfect Continuous (PPC)</b>\n\n<b>1. Yasalishi:</b>\n• Darak: S + have/has been + V-ing → <i>She has been studying for 2 hours.</i>\n• Inkor: S + haven't/hasn't been + V-ing → <i>We haven't been sleeping well lately.</i>\n• So'roq: Have/Has + S + been + V-ing? → <i>Have you been waiting long?</i>\n\n<b>2. Qo'llanilishi:</b>\n① O'tmishda boshlanib, hozirgacha davom etayotgan harakat (davomiylik urg'ulanadi):\n   <i>I have been learning English for three years.</i>\n② Yaqinda tugagan, lekin natijasi ko'rinib turgan harakat:\n   <i>You look tired. Have you been running?</i>\n③ Takrorlanib turayotgan harakat (all day, this week bilan):\n   <i>He has been calling her all morning.</i>\n\n<b>3. Signal so'zlar:</b> for, since, all day/week/morning, lately, recently, how long\n\n<b>4. Present Perfect bilan farqi:</b>\n• PPC — <b>jarayon</b> va davomiylik: <i>I have been reading this book for a week.</i> (hali o'qiyapman)\n• Present Perfect — <b>natija</b> va tugallanish: <i>I have read three books this month.</i> (bajarildi)\n• Miqdor/sanoq bo'lsa PPC ishlatilmaydi: <i>She has written five letters.</i> (NOT has been writing)\n\n<b>5. Muhim istisno — state (holat) fe'llari:</b>\nknow, like, love, believe, understand, want, remember bilan PPC ishlatilmaydi:\n<i>I have known him for five years.</i> (NOT: have been knowing)",
+          "theory_oral": "Present Perfect Continuous — harakat o'tmishda boshlangan, hozirgacha davom etayotgan yoki yaqindagina tugagan bo'lsa ishlatiladi. Yasalishi: have yoki has, keyin been, keyin fe'lning ing shakli. Asosiy signal so'zlar: for, since, all day, lately, recently. Bu zamon jarayonni ko'rsatadi; agar natija yoki miqdor aytilsa, Present Simple Perfect ishlatiladi. State fe'llar — know, like, believe — bilan bu zamon ishlatilmaydi.",
+          "pass_threshold": 70,
           "exercises": [
             {
-              "id": "en_i_02_e1",
+              "id": "en_i_05_e1",
               "type": "mcq",
-              "question": "She ___ her homework when I called her.",
+              "question": "She ___ for two hours — she is still reading.",
               "options": [
-                "does",
-                "did",
-                "was doing",
-                "has done"
-              ],
-              "correct": 2,
-              "explanation": "Davom etayotgan jarayon — Past Continuous."
-            },
-            {
-              "id": "en_i_02_e2",
-              "type": "mcq",
-              "question": "While we ___ , it started to rain.",
-              "options": [
-                "walked",
-                "were walking",
-                "walk",
-                "have walked"
-              ],
-              "correct": 1,
-              "explanation": "Parallel / kesishuvchi — Continuous."
-            },
-            {
-              "id": "en_i_02_e3",
-              "type": "fill_blank",
-              "question": "They ___ (play) when the lights went out.",
-              "accepted_answers": [
-                "were playing"
-              ],
-              "explanation": "were + V-ing."
-            },
-            {
-              "id": "en_i_02_e4",
-              "type": "mcq",
-              "question": "At 8 pm yesterday I ___ TV.",
-              "options": [
-                "watched",
-                "was watching",
-                "watch",
-                "have watched"
-              ],
-              "correct": 1,
-              "explanation": "Ongoing at a past time."
-            },
-            {
-              "id": "en_i_02_e5",
-              "type": "fill_blank",
-              "question": "While he ___ (drive), he saw an accident.",
-              "accepted_answers": [
-                "was driving"
-              ],
-              "explanation": "was driving."
-            },
-            {
-              "id": "en_i_02_e6",
-              "type": "mcq",
-              "question": "They ___ not listening when the teacher explained.",
-              "options": [
-                "was",
-                "were",
-                "did",
-                "are"
-              ],
-              "correct": 1,
-              "explanation": "were not listening."
-            },
-            {
-              "id": "en_i_02_e7",
-              "type": "mcq",
-              "question": "What ___ you ___ at this time last Friday?",
-              "options": [
-                "did / do",
-                "were / doing",
-                "have / done",
-                "are / doing"
-              ],
-              "correct": 1,
-              "explanation": "were you doing."
-            },
-            {
-              "id": "en_i_02_e8",
-              "type": "fill_blank",
-              "question": "She ___ (cook) when the phone rang.",
-              "accepted_answers": [
-                "was cooking"
-              ],
-              "explanation": "was cooking."
-            },
-            {
-              "id": "en_i_02_e9",
-              "type": "mcq",
-              "question": "I ___ home when it started to snow.",
-              "options": [
-                "walked",
-                "was walking",
-                "walk",
-                "have walked"
-              ],
-              "correct": 1,
-              "explanation": "Background action — Continuous."
-            },
-            {
-              "id": "en_i_02_e10",
-              "type": "mcq",
-              "question": "While we were talking, the lights ___.",
-              "options": [
-                "went out",
-                "were going out",
-                "go out",
-                "have gone"
+                "has been reading",
+                "has read",
+                "is reading",
+                "reads"
               ],
               "correct": 0,
-              "explanation": "Interrupting action — Simple."
+              "explanation": "Harakat 2 soat oldin boshlangan va hali davom etmoqda → PPC: has been reading."
             },
             {
-              "id": "en_i_02_e11",
-              "type": "fill_blank",
-              "question": "The children ___ (play) in the garden all afternoon.",
-              "accepted_answers": [
-                "were playing"
-              ],
-              "explanation": "were playing."
-            },
-            {
-              "id": "en_i_02_e12",
+              "id": "en_i_05_e2",
               "type": "mcq",
-              "question": "He ___ a book when I entered the room.",
+              "question": "You're covered in paint! ___ the flat?",
               "options": [
-                "read",
-                "was reading",
-                "reads",
-                "has read"
+                "Have you been painting",
+                "Did you paint",
+                "Do you paint",
+                "Are you painting"
               ],
-              "correct": 1,
-              "explanation": "was reading."
+              "correct": 0,
+              "explanation": "Yaqinda tugagan, natijasi ko'rinib turgan harakat → PPC so'rog'i."
+            },
+            {
+              "id": "en_i_05_e3",
+              "type": "fill_blank",
+              "question": "I (wait) ___ for you since 9 o'clock.",
+              "accepted_answers": [
+                "have been waiting"
+              ],
+              "explanation": "'Since' — aniq boshlanish nuqtasi; harakat hozirgacha davom etmoqda → have been waiting."
+            },
+            {
+              "id": "en_i_05_e4",
+              "type": "mcq",
+              "question": "They ___ in Tashkent since 2015.",
+              "options": [
+                "have been living",
+                "are living",
+                "lived",
+                "live"
+              ],
+              "correct": 0,
+              "explanation": "'Since 2015' — o'tmishdan hozirgacha davom etayotgan holat → PPC (yoki Present Perfect)."
+            },
+            {
+              "id": "en_i_05_e5",
+              "type": "mcq",
+              "question": "I ___ my English teacher for five years. (state verb)",
+              "options": [
+                "have known",
+                "have been knowing",
+                "am knowing",
+                "know"
+              ],
+              "correct": 0,
+              "explanation": "'Know' — state fe'l, PPC bilan ishlatilmaydi → Present Perfect: have known."
+            },
+            {
+              "id": "en_i_05_e6",
+              "type": "fill_blank",
+              "question": "He is exhausted because he (work) ___ in the garden all day.",
+              "accepted_answers": [
+                "has been working"
+              ],
+              "explanation": "'All day' + ko'rinib turgan natija (exhausted) → has been working."
+            },
+            {
+              "id": "en_i_05_e7",
+              "type": "mcq",
+              "question": "We ___ well lately because of the exams.",
+              "options": [
+                "haven't been sleeping",
+                "don't sleep",
+                "aren't sleeping",
+                "didn't sleep"
+              ],
+              "correct": 0,
+              "explanation": "'Lately' — yaqin davrda davom etayotgan holat → PPC inkor shakli."
+            },
+            {
+              "id": "en_i_05_e8",
+              "type": "mcq",
+              "question": "She ___ three books this month.",
+              "options": [
+                "has read",
+                "has been reading",
+                "is reading",
+                "was reading"
+              ],
+              "correct": 0,
+              "explanation": "Miqdor (three books) aytilganda PPC emas, Present Perfect ishlatiladi."
+            },
+            {
+              "id": "en_i_05_e9",
+              "type": "mcq",
+              "question": "It ___ all morning — the streets are wet.",
+              "options": [
+                "has been raining",
+                "rains",
+                "rained",
+                "is raining"
+              ],
+              "correct": 0,
+              "explanation": "Yaqinda tugagan, natijasi ko'rinib turgan harakat → has been raining."
+            },
+            {
+              "id": "en_i_05_e10",
+              "type": "fill_blank",
+              "question": "How long ___ you ___ (learn) English? (ikki bo'shliqni to'ldiring)",
+              "accepted_answers": [
+                "have you been learning"
+              ],
+              "explanation": "'How long' — davomiylik so'rog'i → Have you been learning...?"
+            },
+            {
+              "id": "en_i_05_e11",
+              "type": "mcq",
+              "question": "Qaysi gap grammatik jihatdan TO'G'RI?",
+              "options": [
+                "I have been waiting for this bus for 40 minutes.",
+                "I have been knowing him since 2010.",
+                "She has been writing ten pages.",
+                "They has been playing since morning."
+              ],
+              "correct": 0,
+              "explanation": "B: know — state fe'l; C: miqdor bilan PPC bo'lmaydi; D: They → have, has emas."
+            },
+            {
+              "id": "en_i_05_e12",
+              "type": "mcq",
+              "question": "Your eyes are red. ___ ?",
+              "options": [
+                "Have you been crying",
+                "Did you cry",
+                "Do you cry",
+                "Had you cried"
+              ],
+              "correct": 0,
+              "explanation": "Hozir ko'rinib turgan natija (red eyes) yaqindagi davomiy harakatni ko'rsatadi → PPC."
+            }
+          ]
+        },
+        {
+          "id": "en_i_06",
+          "order": 4,
+          "title": "Past Perfect — Oldindan o'tgan zamon",
+          "emoji": "🕰️",
+          "video_url": "https://www.youtube.com/results?search_query=past+perfect+tense+lesson",
+          "video_title": "Past Perfect — video dars",
+          "theory": "<b>Past Perfect (Past Simple'dan oldingi o'tmish)</b>\n\n<b>1. Yasalishi:</b>\n• Darak: S + had + V3 → <i>The film had already started.</i>\n• Inkor: S + hadn't + V3 → <i>I hadn't finished my homework.</i>\n• So'roq: Had + S + V3? → <i>Had they left before you arrived?</i>\nBarcha shaxslar uchun bir xil: <b>had</b>.\n\n<b>2. Qo'llanilishi:</b>\n① O'tmishdagi bir harakatdan <b>oldinroq</b> sodir bo'lgan harakat:\n   <i>When I arrived at the station, the train had left.</i>\n   (avval poyezd ketdi → keyin men keldim)\n② 'By the time' / 'before' / 'after' bilan ketma-ketlik:\n   <i>By the time we got home, it had stopped raining.</i>\n③ O'tmishda tajriba (hech qachon ... qilmagan edi):\n   <i>It was the best meal I had ever eaten.</i>\n\n<b>3. Signal so'zlar:</b> by the time, before, after, already, just, never ... until, when, by 5 o'clock\n\n<b>4. Past Simple bilan taqqoslash:</b>\n• Ketma-ket harakatlar (birin-ketin) → Past Simple:\n   <i>I woke up, washed my face and left.</i>\n• Biri <b>oldinroq</b> bo'lsa → oldingisi Past Perfect:\n   <i>She had cooked dinner before her husband came.</i>\n\n<b>5. Tipik xato:</b>\n'When' bilan ikkala harakat ham ketma-ket bo'lsa, Past Perfect shart emas:\n<i>When he finished work, he went home.</i> (oddiy ketma-ketlik)",
+          "theory_oral": "Past Perfect — o'tmishdagi bir voqeadan oldinroq sodir bo'lgan harakatni bildiradi. Yasalishi: had va fe'lning uchinchi shakli, barcha shaxslar uchun bir xil. Asosiy signal so'zlar: by the time, before, after, already. Misol: When I arrived, the train had left — avval poyezd ketgan, keyin men yetib borganman.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_i_06_e1",
+              "type": "mcq",
+              "question": "When I got to the cinema, the film ___ .",
+              "options": [
+                "had already started",
+                "already started",
+                "has already started",
+                "was already start"
+              ],
+              "correct": 0,
+              "explanation": "Film kelishdan OLDIN boshlangan → Past Perfect: had already started."
+            },
+            {
+              "id": "en_i_06_e2",
+              "type": "mcq",
+              "question": "She ___ dinner before her husband came home.",
+              "options": [
+                "had cooked",
+                "has cooked",
+                "cooks",
+                "is cooking"
+              ],
+              "correct": 0,
+              "explanation": "'Before' — eri kelishidan oldin tugagan harakat → had cooked."
+            },
+            {
+              "id": "en_i_06_e3",
+              "type": "fill_blank",
+              "question": "By the time we arrived, the match (finish) ___ .",
+              "accepted_answers": [
+                "had finished"
+              ],
+              "explanation": "'By the time' + o'tmish → oldingi harakat Past Perfect: had finished."
+            },
+            {
+              "id": "en_i_06_e4",
+              "type": "mcq",
+              "question": "It was the most delicious meal I ___ ever ___ .",
+              "options": [
+                "had ... eaten",
+                "have ... eaten",
+                "was ... eating",
+                "did ... eat"
+              ],
+              "correct": 0,
+              "explanation": "O'tmishdagi nuqtagacha bo'lgan tajriba → Past Perfect: had ever eaten."
+            },
+            {
+              "id": "en_i_06_e5",
+              "type": "mcq",
+              "question": "The streets were wet because it ___ at night.",
+              "options": [
+                "had rained",
+                "has rained",
+                "rains",
+                "would rain"
+              ],
+              "correct": 0,
+              "explanation": "Sabab (yomg'ir) o'tmishdagi holatdan (wet streets) oldin bo'lgan → had rained."
+            },
+            {
+              "id": "en_i_06_e6",
+              "type": "mcq",
+              "question": "I ___ him before — he was a complete stranger.",
+              "options": [
+                "had never seen",
+                "have never seen",
+                "never see",
+                "was never seeing"
+              ],
+              "correct": 0,
+              "explanation": "Tanishuvdan oldingi tajriba yo'qligi → Past Perfect inkor: had never seen."
+            },
+            {
+              "id": "en_i_06_e7",
+              "type": "fill_blank",
+              "question": "He (live) ___ in London for ten years before he moved to Paris.",
+              "accepted_answers": [
+                "had lived"
+              ],
+              "explanation": "Ko'chishdan oldingi 10 yillik davr → had lived."
+            },
+            {
+              "id": "en_i_06_e8",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "After she had finished the report, she went home.",
+                "After she has finished the report, she went home.",
+                "After she finish the report, she had gone home.",
+                "After had she finished the report, she went home."
+              ],
+              "correct": 0,
+              "explanation": "'After' + oldingi harakat Past Perfect, keyingi harakat Past Simple."
+            },
+            {
+              "id": "en_i_06_e9",
+              "type": "mcq",
+              "question": "___ they ___ the tickets before the price went up?",
+              "options": [
+                "Had ... bought",
+                "Have ... bought",
+                "Did ... bought",
+                "Were ... buying"
+              ],
+              "correct": 0,
+              "explanation": "Narx oshishidan OLDIN sotib olishganmi → Past Perfect so'rog'i: Had they bought...?"
+            },
+            {
+              "id": "en_i_06_e10",
+              "type": "mcq",
+              "question": "He failed the test because he ___ enough.",
+              "options": [
+                "hadn't revised",
+                "hasn't revised",
+                "didn't revise enough before",
+                "wasn't revising"
+              ],
+              "correct": 0,
+              "explanation": "Testdan oldin tayyorgarlik ko'rmagani → hadn't revised."
+            },
+            {
+              "id": "en_i_06_e11",
+              "type": "mcq",
+              "question": "When the police arrived, the thief ___ .",
+              "options": [
+                "had escaped",
+                "has escaped",
+                "escapes",
+                "would escape"
+              ],
+              "correct": 0,
+              "explanation": "Politsiya kelishidan oldin qochib ulgurgan → had escaped."
+            },
+            {
+              "id": "en_i_06_e12",
+              "type": "fill_blank",
+              "question": "She was tired because she (not/sleep) ___ well the night before.",
+              "accepted_answers": [
+                "had not slept",
+                "hadn't slept"
+              ],
+              "explanation": "O'tgan kechadagi sabab → Past Perfect inkor: hadn't slept."
+            }
+          ]
+        },
+        {
+          "id": "en_i_07",
+          "order": 5,
+          "title": "Future Continuous, Future Perfect & Future Perfect Continuous",
+          "emoji": "🔮",
+          "video_url": "https://www.youtube.com/results?search_query=future+continuous+future+perfect+tense+lesson",
+          "video_title": "Future Continuous & Future Perfect — video dars",
+          "theory": "<b>A. Future Continuous (Kelasi davomiy zamon)</b>\n\n<b>Yasalishi:</b> S + will be + V-ing\n• <i>At 8 pm tomorrow I will be flying to London.</i>\n• Inkor: won't be + V-ing · So'roq: Will + S + be + V-ing?\n\n<b>Qo'llanilishi:</b>\n① Kelajakdagi aniq vaqtda <b>jarayonda</b> bo'ladigan harakat:\n   <i>This time next week we will be lying on the beach.</i>\n② Xushmuomalalik so'rog'i (rejangizni so'rash):\n   <i>Will you be using the car tonight?</i>\n\n<b>Signal so'zlar:</b> at this time tomorrow, this time next week, at 8 pm, all day tomorrow\n\n——————\n\n<b>B. Future Perfect (Kelasi tugallangan zamon)</b>\n\n<b>Yasalishi:</b> S + will have + V3\n• <i>By 2030 scientists will have found a cure.</i>\n• Inkor: won't have + V3 · So'roq: Will + S + have + V3?\n\n<b>Qo'llanilishi:</b>\nKelajakdagi ma'lum nuqtaga <b>qadar tugallanadigan</b> harakat:\n   <i>By the time you arrive, I will have finished the report.</i>\n\n<b>Signal so'zlar:</b> by, by the time, by next year, by 5 o'clock, before\n\n——————\n\n<b>Taqqoslash:</b>\n• Future Continuous — jarayon: <i>At 9 I will be having breakfast.</i> (9 da nonushta qilayotgan bo'laman)\n• Future Perfect — natija: <i>By 9 I will have had breakfast.</i> (9 gacha nonushtani tugatgan bo'laman)\n\n——————\n\n<b>C. Future Perfect Continuous</b>\n\n<b>Yasalishi:</b> S + will have been + V-ing\n• <i>By 2027 I will have been teaching for twenty years.</i>\n\n<b>Qo'llanilishi:</b>\nKelajakdagi ma'lum nuqtaga qadar <b>qancha vaqt davom etgan bo'ladi</b>:\n   <i>In March we will have been living here for five years.</i>\n\n<b>Signal so'zlar:</b> by, for + davr, by the end of, by the time\n\n<b>Uch zamonni taqqoslash:</b>\n• At 9 pm I <b>will be watching</b> TV. (jarayon)\n• By 9 pm I <b>will have watched</b> two films. (natija)\n• By 9 pm I <b>will have been watching</b> TV for three hours. (davomiylik)",
+          "theory_oral": "Future Continuous — kelajakdagi aniq vaqtda jarayonda bo'ladigan harakat: will be va fe'lning ing shakli. Future Perfect — kelajakdagi ma'lum nuqtaga qadar tugallanadigan harakat: will have va fe'lning uchinchi shakli. Asosiy signal so'z: by — gacha, qadar degan ma'noni beradi va Future Perfect bilan ishlatiladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_i_07_e1",
+              "type": "mcq",
+              "question": "At 8 pm tonight I ___ at the conference.",
+              "options": [
+                "will be speaking",
+                "will have speaking",
+                "am speaking be",
+                "will speak be"
+              ],
+              "correct": 0,
+              "explanation": "Aniq vaqtda jarayon → Future Continuous: will be speaking."
+            },
+            {
+              "id": "en_i_07_e2",
+              "type": "mcq",
+              "question": "By next June she ___ from university.",
+              "options": [
+                "will have graduated",
+                "will be graduating",
+                "graduates",
+                "is graduating"
+              ],
+              "correct": 0,
+              "explanation": "'By next June' — nuqtaga qadar tugallanadi → Future Perfect."
+            },
+            {
+              "id": "en_i_07_e3",
+              "type": "fill_blank",
+              "question": "This time tomorrow we (fly) ___ to New York.",
+              "accepted_answers": [
+                "will be flying"
+              ],
+              "explanation": "'This time tomorrow' — jarayon → will be flying."
+            },
+            {
+              "id": "en_i_07_e4",
+              "type": "mcq",
+              "question": "___ you ___ the car tonight? I need it for an hour.",
+              "options": [
+                "Will ... be using",
+                "Will ... have used",
+                "Do ... use",
+                "Have ... used"
+              ],
+              "correct": 0,
+              "explanation": "Xushmuomalalik bilan rejani so'rash → Future Continuous so'rog'i."
+            },
+            {
+              "id": "en_i_07_e5",
+              "type": "mcq",
+              "question": "By the time you wake up, I ___ for work.",
+              "options": [
+                "will have left",
+                "will be leaving",
+                "am leaving",
+                "left"
+              ],
+              "correct": 0,
+              "explanation": "'By the time' + kelajak → Future Perfect: will have left."
+            },
+            {
+              "id": "en_i_07_e6",
+              "type": "fill_blank",
+              "question": "In December I (work) ___ here for ten years.",
+              "accepted_answers": [
+                "will have worked"
+              ],
+              "explanation": "Dekabrga qadar 10 yillik davr tugallanadi → Future Perfect."
+            },
+            {
+              "id": "en_i_07_e7",
+              "type": "mcq",
+              "question": "Don't call at 9 — the baby ___ then.",
+              "options": [
+                "will be sleeping",
+                "will have slept",
+                "sleeps",
+                "slept"
+              ],
+              "correct": 0,
+              "explanation": "Aniq vaqtda (9 da) jarayon davom etadi → Future Continuous."
+            },
+            {
+              "id": "en_i_07_e8",
+              "type": "mcq",
+              "question": "Scientists ___ a solution to the problem by 2035.",
+              "options": [
+                "will have found",
+                "will be finding",
+                "are finding",
+                "found"
+              ],
+              "correct": 0,
+              "explanation": "'By 2035' — muddatgacha tugallanadigan natija → Future Perfect."
+            },
+            {
+              "id": "en_i_07_e9",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "By midnight I will have finished the project.",
+                "By midnight I will be finish the project.",
+                "At midnight I will have slept already for hours — wrong form.",
+                "I will been working at 10 am."
+              ],
+              "correct": 0,
+              "explanation": "Future Perfect: will have + V3. B: be + V3 emas; D: will been — mavjud emas."
+            },
+            {
+              "id": "en_i_07_e10",
+              "type": "fill_blank",
+              "question": "She is busy now, but she (call) ___ you back in an hour.",
+              "accepted_answers": [
+                "will call",
+                "will be calling"
+              ],
+              "explanation": "Oddiy va'da → will call; aniq vaqtda jarayon ma'nosida will be calling ham mumkin."
+            },
+            {
+              "id": "en_i_07_e11",
+              "type": "mcq",
+              "question": "Next year at this time, they ___ their new house.",
+              "options": [
+                "will be building",
+                "will have build",
+                "are building",
+                "built"
+              ],
+              "correct": 0,
+              "explanation": "'Next year at this time' — aniq nuqtada jarayon → Future Continuous."
+            },
+            {
+              "id": "en_i_07_e12",
+              "type": "mcq",
+              "question": "___ he ___ the report before the meeting starts?",
+              "options": [
+                "Will ... have prepared",
+                "Will ... be preparing",
+                "Does ... prepare",
+                "Is ... preparing"
+              ],
+              "correct": 0,
+              "explanation": "Yig'ilish boshlanishidan oldin tugallanishi so'ralmoqda → Future Perfect so'rog'i."
+            },
+            {
+              "id": "en_i_07_e13",
+              "type": "mcq",
+              "question": "By December she ___ at this company for ten years.",
+              "options": [
+                "will have been working",
+                "will work",
+                "is working",
+                "will be work"
+              ],
+              "correct": 0,
+              "explanation": "Kelajakdagi nuqtagacha davomiylik (for ten years) → Future Perfect Continuous."
+            },
+            {
+              "id": "en_i_07_e14",
+              "type": "fill_blank",
+              "question": "In May we (live) ___ here for five years. (Future Perfect Continuous)",
+              "accepted_answers": [
+                "will have been living"
+              ],
+              "explanation": "will have been + V-ing — davomiylikni ko'rsatadi."
+            },
+            {
+              "id": "en_i_07_e15",
+              "type": "mcq",
+              "question": "By the time you arrive, I ___ for two hours.",
+              "options": [
+                "will have been cooking",
+                "will cook",
+                "am cooking",
+                "cooked"
+              ],
+              "correct": 0,
+              "explanation": "'By the time' + davomiylik (for two hours) → Future Perfect Continuous."
+            }
+          ]
+        },
+        {
+          "id": "en_i_08",
+          "order": 6,
+          "title": "Modal verbs — Qo'shimcha fe'llar (can, must, should...)",
+          "emoji": "🛠️",
+          "video_url": "https://www.youtube.com/results?search_query=modal+verbs+lesson+must+should+can",
+          "video_title": "Modal verbs — video dars",
+          "theory": "<b>Modal verbs — qo'shimcha fe'llar</b>\n\nModal fe'llar harakatga munosabat bildiradi: imkoniyat, majburiyat, ruxsat, maslahat, ehtimol.\n\n<b>Umumiy qoida:</b> modal + V1 (infinitiv, 'to'siz). Ular -s, -ing, -ed olmaydi.\n<i>She can swim. He must go.</i> (NOT: cans, musts)\n\n<b>1. Imkoniyat (ability):</b>\n• can — hozirgi: <i>I can speak English.</i>\n• could — o'tmishdagi: <i>She could run fast when she was young.</i>\n• be able to — boshqa zamonlarda: <i>You will be able to enter tomorrow.</i>\n\n<b>2. Ruxsat (permission):</b> can (norasmiy), may (rasmiy)\n<i>May I come in? You can use my phone.</i>\n\n<b>3. Majburiyat (obligation):</b>\n• must — ichki majburiyat, kuchli: <i>I must finish this today.</i>\n• have to — tashqi qoida/majburiyat: <i>We have to wear a uniform.</i>\n• <b>mustn't = taqiq</b> (mumkin emas): <i>You mustn't smoke here.</i>\n• <b>don't have to = shart emas</b>: <i>You don't have to come early.</i>\n⚠️ mustn't va don't have to — butunlay boshqa ma'no!\n\n<b>4. Maslahat (advice):</b> should / ought to\n<i>You should see a doctor. You ought to rest.</i>\n\n<b>5. Ehtimol (possibility):</b> may, might, could (50% → 30%)\n<i>He might be late. It could rain.</i>\n\n<b>6. Xulosa (deduction):</b>\n• must — 90% ishonch: <i>He isn't answering. He must be asleep.</i>\n• can't — imkonsiz degan xulosa: <i>That can't be true!</i>",
+          "theory_oral": "Modal fe'llar harakatga munosabat bildiradi va doim fe'lning birinchi shakli bilan ishlatiladi. Can — imkoniyat, may — ruxsat, must — kuchli majburiyat, have to — tashqi qoida, should — maslahat, might — ehtimol. Eng muhim farq: mustn't — taqiq, don't have to esa — shart emas degan ma'noni bildiradi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_i_08_e1",
+              "type": "mcq",
+              "question": "You ___ touch this wire — it's dangerous! (taqiq)",
+              "options": [
+                "mustn't",
+                "don't have to",
+                "shouldn't to",
+                "can to not"
+              ],
+              "correct": 0,
+              "explanation": "Qat'iy taqiq → mustn't. 'don't have to' — shart emas, degan ma'no."
+            },
+            {
+              "id": "en_i_08_e2",
+              "type": "mcq",
+              "question": "Tomorrow is Sunday. You ___ get up early. (shart emas)",
+              "options": [
+                "don't have to",
+                "mustn't",
+                "can't",
+                "shouldn't"
+              ],
+              "correct": 0,
+              "explanation": "Majburiyat yo'qligi → don't have to."
+            },
+            {
+              "id": "en_i_08_e3",
+              "type": "mcq",
+              "question": "You look ill. You ___ see a doctor. (maslahat)",
+              "options": [
+                "should",
+                "must to",
+                "can to",
+                "might to"
+              ],
+              "correct": 0,
+              "explanation": "Maslahat → should + V1. Modallardan keyin 'to' qo'yilmaydi."
+            },
+            {
+              "id": "en_i_08_e4",
+              "type": "fill_blank",
+              "question": "___ I use your phone, please? (rasmiy ruxsat so'rash)",
+              "accepted_answers": [
+                "may",
+                "can",
+                "could"
+              ],
+              "explanation": "Rasmiy ruxsat → May I...? (Can/Could ham mumkin, kamroq rasmiy.)"
+            },
+            {
+              "id": "en_i_08_e5",
+              "type": "mcq",
+              "question": "When I was five, I ___ already read.",
+              "options": [
+                "could",
+                "can",
+                "must",
+                "should"
+              ],
+              "correct": 0,
+              "explanation": "O'tmishdagi imkoniyat → could."
+            },
+            {
+              "id": "en_i_08_e6",
+              "type": "mcq",
+              "question": "He's not answering his phone. He ___ be asleep.",
+              "options": [
+                "must",
+                "can't",
+                "mustn't",
+                "shouldn't"
+              ],
+              "correct": 0,
+              "explanation": "Kuchli ishonch bilan xulosa (deduction) → must."
+            },
+            {
+              "id": "en_i_08_e7",
+              "type": "mcq",
+              "question": "She's been studying all day. She ___ be tired.",
+              "options": [
+                "must",
+                "can",
+                "may to",
+                "have to"
+              ],
+              "correct": 0,
+              "explanation": "Darslik mantiqiy xulosa → must be."
+            },
+            {
+              "id": "en_i_08_e8",
+              "type": "mcq",
+              "question": "That ___ be Sarah — she's in London right now!",
+              "options": [
+                "can't",
+                "mustn't",
+                "shouldn't",
+                "needn't"
+              ],
+              "correct": 0,
+              "explanation": "Imkonsiz degan xulosa → can't. (mustn't — taqiq, xulosa emas.)"
+            },
+            {
+              "id": "en_i_08_e9",
+              "type": "fill_blank",
+              "question": "Students ___ wear a uniform at this school — it's a rule. (tashqi qoida)",
+              "accepted_answers": [
+                "have to",
+                "must"
+              ],
+              "explanation": "Maktab qoidasi (tashqi majburiyat) → have to; must ham qabul qilinadi."
+            },
+            {
+              "id": "en_i_08_e10",
+              "type": "mcq",
+              "question": "Take an umbrella — it ___ rain later.",
+              "options": [
+                "might",
+                "must to",
+                "can to",
+                "should to"
+              ],
+              "correct": 0,
+              "explanation": "Ehtimol → might + V1."
+            },
+            {
+              "id": "en_i_08_e11",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "You ought to apologize.",
+                "You ought apologize.",
+                "You must to apologize.",
+                "You should apologizing."
+              ],
+              "correct": 0,
+              "explanation": "'Ought' doim 'to' bilan: ought to + V1. Must/should dan keyin 'to' qo'yilmaydi."
+            },
+            {
+              "id": "en_i_08_e12",
+              "type": "mcq",
+              "question": "I ___ finish the report yesterday, but I ran out of time.",
+              "options": [
+                "couldn't",
+                "mustn't",
+                "shouldn't",
+                "can't"
+              ],
+              "correct": 0,
+              "explanation": "O'tmishdagi imkonsizlik → couldn't."
             }
           ]
         },
         {
           "id": "en_i_03",
-          "order": 3,
+          "order": 7,
           "title": "Conditionals (0 & 1)",
           "emoji": "🔀",
           "video_url": "https://www.youtube.com/watch?v=sQJzvpM1bY8",
@@ -1672,8 +2344,169 @@
           ]
         },
         {
+          "id": "en_i_09",
+          "order": 8,
+          "title": "Second Conditional — Ikkinchi shartli gap",
+          "emoji": "💭",
+          "video_url": "https://www.youtube.com/results?search_query=second+conditional+lesson",
+          "video_title": "Second Conditional — video dars",
+          "theory": "<b>Second Conditional — hozirgi/kelasi haqidagi xayoliy shart</b>\n\n<b>1. Yasalishi:</b>\nIf + Past Simple, ... would + V1\n<i>If I had more time, I would travel the world.</i>\nBog'lovchi o'rtada ham kelishi mumkin:\n<i>I would travel the world if I had more time.</i>\n\n<b>2. Qo'llanilishi:</b>\n① Hozirgi yoki kelajakdagi <b>noreal / xayoliy</b> vaziyat:\n   <i>If I won the lottery, I would buy a house.</i> (lekin yutmayman)\n② Maslahat berish: <b>If I were you, I would...</b>\n   <i>If I were you, I would apologize.</i>\n   ⚠️ Rasmiy tilda 'I' bilan ham <b>were</b> ishlatiladi (was emas).\n\n<b>3. First Conditional bilan farqi:</b>\n• 1st — real ehtimol: <i>If it rains, I will stay home.</i> (yomg'ir yog'ishi mumkin)\n• 2nd — xayoliy: <i>If it rained money, I would be rich.</i> (bu hech qachon bo'lmaydi)\n\n<b>4. Variantlar:</b>\n• would o'rniga: could, might\n   <i>If I spoke French, I could work in Paris.</i>\n• Inkor: wouldn't + V1\n   <i>If I knew the answer, I wouldn't be silent.</i>\n\n<b>5. Tipik xatolar:</b>\n• If-qismida 'would' ishlatilmaydi: <s>If I would have...</s> → If I had...\n• 'were' barcha shaxslar bilan: <s>If he was rich</s> → If he were rich (rasmiy)",
+          "theory_oral": "Second Conditional — hozirgi yoki kelajakdagi noreal, xayoliy vaziyatlar uchun ishlatiladi. Yasalishi: If va Past Simple, keyin would va fe'lning birinchi shakli. Eng mashhur ibora: If I were you — senning o'rningda bo'lganimda. If-qismida would ishlatilmaydi, bu eng ko'p uchraydigan xato.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_i_09_e1",
+              "type": "mcq",
+              "question": "If I ___ rich, I would help my village.",
+              "options": [
+                "were",
+                "would be",
+                "am",
+                "will be"
+              ],
+              "correct": 0,
+              "explanation": "Second Conditional: If + Past Simple. 'I' bilan rasmiy shakl — were."
+            },
+            {
+              "id": "en_i_09_e2",
+              "type": "mcq",
+              "question": "If she studied harder, she ___ the exam.",
+              "options": [
+                "would pass",
+                "will pass",
+                "passes",
+                "passed"
+              ],
+              "correct": 0,
+              "explanation": "Natija qismi: would + V1."
+            },
+            {
+              "id": "en_i_09_e3",
+              "type": "fill_blank",
+              "question": "If I (be) ___ you, I would tell the truth.",
+              "accepted_answers": [
+                "were"
+              ],
+              "explanation": "If I were you — maslahat beruvchi barqaror ibora."
+            },
+            {
+              "id": "en_i_09_e4",
+              "type": "mcq",
+              "question": "We ___ around the world if we had enough money.",
+              "options": [
+                "would travel",
+                "will travel",
+                "traveled",
+                "would have traveled"
+              ],
+              "correct": 0,
+              "explanation": "Xayoliy hozirgi vaziyat → would travel."
+            },
+            {
+              "id": "en_i_09_e5",
+              "type": "mcq",
+              "question": "If I ___ his number, I could call him.",
+              "options": [
+                "knew",
+                "would know",
+                "know",
+                "will know"
+              ],
+              "correct": 0,
+              "explanation": "If-qismi Past Simple → knew."
+            },
+            {
+              "id": "en_i_09_e6",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "If I lived in London, I would visit museums every week.",
+                "If I would live in London, I visited museums.",
+                "If I live in London, I would visit museums.",
+                "If I lived in London, I will visit museums."
+              ],
+              "correct": 0,
+              "explanation": "If-qismida would bo'lmaydi; natija qismi would + V1."
+            },
+            {
+              "id": "en_i_09_e7",
+              "type": "mcq",
+              "question": "If it ___ snow, we would go skiing. (lekin qor yog'ishi dargumon)",
+              "options": [
+                "did",
+                "does",
+                "will",
+                "would"
+              ],
+              "correct": 0,
+              "explanation": "Noreal shart → Past Simple: did."
+            },
+            {
+              "id": "en_i_09_e8",
+              "type": "fill_blank",
+              "question": "He wouldn't be late if he (leave) ___ earlier.",
+              "accepted_answers": [
+                "left"
+              ],
+              "explanation": "If-qismi Past Simple → left."
+            },
+            {
+              "id": "en_i_09_e9",
+              "type": "mcq",
+              "question": "If I had wings, I ___ to school every day.",
+              "options": [
+                "could fly",
+                "can fly",
+                "will fly",
+                "would flying"
+              ],
+              "correct": 0,
+              "explanation": "would o'rniga could ham ishlatiladi; 'would flying' — grammatik xato."
+            },
+            {
+              "id": "en_i_09_e10",
+              "type": "mcq",
+              "question": "I ___ a new laptop if I saved enough money.",
+              "options": [
+                "would buy",
+                "will buy",
+                "buy",
+                "bought"
+              ],
+              "correct": 0,
+              "explanation": "Xayoliy kelajak → would buy."
+            },
+            {
+              "id": "en_i_09_e11",
+              "type": "mcq",
+              "question": "What ___ if you lost your job?",
+              "options": [
+                "would you do",
+                "will you do",
+                "do you do",
+                "did you"
+              ],
+              "correct": 0,
+              "explanation": "Xayoliy savol → What would you do...?"
+            },
+            {
+              "id": "en_i_09_e12",
+              "type": "mcq",
+              "question": "If everyone ___ honest, the world would be a better place.",
+              "options": [
+                "were",
+                "is",
+                "will be",
+                "would be"
+              ],
+              "correct": 0,
+              "explanation": "Noreal vaziyat, 'everyone' bilan rasmiy shakl — were."
+            }
+          ]
+        },
+        {
           "id": "en_i_04",
-          "order": 4,
+          "order": 9,
           "title": "Passive Voice (asoslari)",
           "emoji": "🔄",
           "video_url": "https://www.youtube.com/watch?v=8Q1x9Q5xY5w",
@@ -1814,7 +2647,7 @@
       ]
     },
     "advanced": {
-      "title": "🔴 Qiyin (B2+)",
+      "title": "Upper-Intermediate (B2)",
       "modules": [
         {
           "id": "en_a_01",
@@ -1949,8 +2782,465 @@
           ]
         },
         {
-          "id": "en_a_02",
+          "id": "en_a_04",
           "order": 2,
+          "title": "Past Perfect Continuous — Oldindan o'tgan davomiy zamon",
+          "emoji": "⌛",
+          "video_url": "https://www.youtube.com/results?search_query=past+perfect+continuous+tense+lesson",
+          "video_title": "Past Perfect Continuous — video dars",
+          "theory": "<b>Past Perfect Continuous (Past Perfect Continuous)</b>\n\n<b>1. Yasalishi:</b>\nS + had been + V-ing\n• Darak: <i>She had been waiting for an hour when the bus finally came.</i>\n• Inkor: <i>They hadn't been paying attention.</i>\n• So'roq: <i>Had you been working long before you took a break?</i>\n\n<b>2. Qo'llanilishi:</b>\n① O'tmishdagi bir nuqtagacha <b>davom etgan</b> jarayon (davomiylik urg'ulanadi):\n   <i>His eyes were red because he had been crying.</i>\n② O'tmishdagi harakatdan oldin uzoq davom etgan jarayon:\n   <i>We had been driving for six hours before we found a hotel.</i>\n\n<b>3. Signal so'zlar:</b> for, since, all day, how long, before, when\n\n<b>4. Past Perfect bilan farqi:</b>\n• Past Perfect Continuous — <b>jarayon</b>: <i>She had been cooking for hours.</i> (uzoq davom etgani muhim)\n• Past Perfect — <b>natija/tugallanish</b>: <i>She had cooked dinner by 7 pm.</i> (tayyorlangani muhim)\n• Miqdor bilan Past Perfect: <i>He had written three letters before lunch.</i>\n\n<b>5. State fe'llar bilan PPC bo'lmaydi:</b>\n<i>I had known her for years.</i> (NOT: had been knowing)\n\n<b>6. Zamonlar zanjiri (bitta gapda):</b>\nhozirgacha: have been · o'tmish nuqtagacha: had been\n<i>By the time he turned 30, he had been playing football for 15 years.</i>",
+          "theory_oral": "Past Perfect Continuous — o'tmishdagi bir voqeadan oldin uzoq davom etgan jarayonni ko'rsatadi. Yasalishi: had been va fe'lning ing shakli. Signal so'zlar: for, since, all day, before. Masalan: His eyes were red because he had been crying — ko'zlari qizargan, chunki u undan oldin uzoq yig'lagan edi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_a_04_e1",
+              "type": "mcq",
+              "question": "She was exhausted because she ___ all day.",
+              "options": [
+                "had been working",
+                "has been working",
+                "was working",
+                "had worked"
+              ],
+              "correct": 0,
+              "explanation": "O'tmishdagi holatdan (was exhausted) oldingi uzoq jarayon → Past Perfect Continuous."
+            },
+            {
+              "id": "en_a_04_e2",
+              "type": "mcq",
+              "question": "By the time we arrived, they ___ for two hours.",
+              "options": [
+                "had been waiting",
+                "have been waiting",
+                "were waiting",
+                "waited"
+              ],
+              "correct": 0,
+              "explanation": "'By the time' + o'tmish + davomiylik (for two hours) → had been waiting."
+            },
+            {
+              "id": "en_a_04_e3",
+              "type": "fill_blank",
+              "question": "The ground was wet because it (rain) ___ all night.",
+              "accepted_answers": [
+                "had been raining"
+              ],
+              "explanation": "Natija o'tmishda, sabab undan oldingi uzoq jarayon → had been raining."
+            },
+            {
+              "id": "en_a_04_e4",
+              "type": "mcq",
+              "question": "He ___ three chapters before he took a break.",
+              "options": [
+                "had written",
+                "had been writing",
+                "has written",
+                "was writing"
+              ],
+              "correct": 0,
+              "explanation": "Miqdor (three chapters) aytilganda jarayon emas, natija → Past Perfect: had written."
+            },
+            {
+              "id": "en_a_04_e5",
+              "type": "mcq",
+              "question": "Her eyes were red. ___ ?",
+              "options": [
+                "Had she been crying",
+                "Has she cried",
+                "Was she cry",
+                "Did she crying"
+              ],
+              "correct": 0,
+              "explanation": "Ko'rinib turgan o'tmishdagi sabab → PPC so'rog'i: Had she been crying?"
+            },
+            {
+              "id": "en_a_04_e6",
+              "type": "mcq",
+              "question": "I ___ him for years before we finally became friends.",
+              "options": [
+                "had known",
+                "had been knowing",
+                "have known",
+                "was knowing"
+              ],
+              "correct": 0,
+              "explanation": "'Know' — state fe'l, PPC bilan ishlatilmaydi → Past Perfect: had known."
+            },
+            {
+              "id": "en_a_04_e7",
+              "type": "fill_blank",
+              "question": "They (drive) ___ for six hours before they found a hotel.",
+              "accepted_answers": [
+                "had been driving"
+              ],
+              "explanation": "Oldingi uzoq jarayon → had been driving."
+            },
+            {
+              "id": "en_a_04_e8",
+              "type": "mcq",
+              "question": "How long ___ at the company before she was promoted?",
+              "options": [
+                "had she been working",
+                "has she worked",
+                "was she working",
+                "did she work"
+              ],
+              "correct": 0,
+              "explanation": "'How long' + o'tmishdagi nuqtagacha davomiylik → had she been working."
+            },
+            {
+              "id": "en_a_04_e9",
+              "type": "mcq",
+              "question": "We ___ dinner when the lights went out.",
+              "options": [
+                "had been preparing",
+                "have prepared",
+                "prepare",
+                "has been preparing"
+              ],
+              "correct": 0,
+              "explanation": "Chiroq o'chishidan oldin davom etayotgan jarayon → had been preparing."
+            },
+            {
+              "id": "en_a_04_e10",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "He had been studying English for five years before he moved to London.",
+                "He had been knowing her for five years.",
+                "He has been finishing the work before we came.",
+                "He had study English before he moved."
+              ],
+              "correct": 0,
+              "explanation": "B: state fe'l PPC bo'lmaydi; C: zamonlar mos emas; D: had + V3 kerak."
+            }
+          ]
+        },
+        {
+          "id": "en_a_05",
+          "order": 3,
+          "title": "Reported Speech — Egitilgan nutq",
+          "emoji": "🗣️",
+          "video_url": "https://www.youtube.com/results?search_query=reported+speech+indirect+speech+lesson",
+          "video_title": "Reported Speech — video dars",
+          "theory": "<b>Reported Speech (Indirect Speech)</b> — birovning gapini qayta aytib berish.\n\n<b>1. Zamon siljishi (backshift):</b>\nBir qadam orqaga:\n• Present Simple → Past Simple: <i>\"I work hard.\" → He said he worked hard.</i>\n• Present Continuous → Past Continuous: <i>\"I am reading.\" → She said she was reading.</i>\n• Present Perfect → Past Perfect: <i>\"I have seen it.\" → He said he had seen it.</i>\n• Past Simple → Past Perfect: <i>\"I went.\" → She said she had gone.</i>\n• will → would: <i>\"I will help.\" → He said he would help.</i>\n• can → could · may → might · must → had to\n\n<b>2. Olmosh va payt ko'rsatkichlari o'zgaradi:</b>\nI → he/she · my → his/her · we → they\nnow → then · today → that day · tomorrow → the next day · yesterday → the day before\nhere → there · this → that\n\n<b>3. So'roq gaplar:</b>\n• Umumiy so'roq → <b>if / whether</b>:\n   <i>\"Do you like tea?\" → He asked if I liked tea.</i>\n• Maxsus so'roq → so'roq so'zi saqlanadi, <b>to'g'ri so'z tartibi</b> (subject + verb):\n   <i>\"Where do you live?\" → She asked where I lived.</i>\n   ⚠️ <s>where did I live</s> emas!\n\n<b>4. Buyruq va iltimos:</b>\nto + V1 / not to + V1:\n<i>\"Open the window.\" → He told me to open the window.</i>\n<i>\"Don't be late.\" → She asked us not to be late.</i>\n\n<b>5. Reporting verbs:</b> say → said · tell + kishiga → told me · ask → asked · advise, warn, promise, explain",
+          "theory_oral": "Reported Speech — birovning gapini qayta aytib berish. Qoida: zamoni bir qadam orqaga siljiydi, olmoshlar va payt ko'rsatkichlari o'zgaradi. So'roq gaplarda to'g'ri so'z tartibi saqlanadi, buyruqlar esa to infinitiv bilan beriladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_a_05_e1",
+              "type": "mcq",
+              "question": "\"I am very busy,\" she said. → She said she ___ very busy.",
+              "options": [
+                "was",
+                "is",
+                "has been",
+                "were"
+              ],
+              "correct": 0,
+              "explanation": "Present Continuous/am → Past: was."
+            },
+            {
+              "id": "en_a_05_e2",
+              "type": "mcq",
+              "question": "\"I will call you tomorrow,\" he said. → He said he ___ me the next day.",
+              "options": [
+                "would call",
+                "will call",
+                "called",
+                "calls"
+              ],
+              "correct": 0,
+              "explanation": "will → would; tomorrow → the next day."
+            },
+            {
+              "id": "en_a_05_e3",
+              "type": "mcq",
+              "question": "\"Where do you live?\" → She asked me where I ___ .",
+              "options": [
+                "lived",
+                "live",
+                "did live",
+                "do live"
+              ],
+              "correct": 0,
+              "explanation": "So'roq so'zi saqlanadi, so'z tartibi to'g'ri (subject + verb), zamon siljiydi."
+            },
+            {
+              "id": "en_a_05_e4",
+              "type": "mcq",
+              "question": "\"Do you speak English?\" → He asked ___ English.",
+              "options": [
+                "if I spoke",
+                "did I speak",
+                "that I spoke",
+                "do I speak"
+              ],
+              "correct": 0,
+              "explanation": "Umumiy so'roq → if/whether + to'g'ri so'z tartibi."
+            },
+            {
+              "id": "en_a_05_e5",
+              "type": "mcq",
+              "question": "\"Don't touch it!\" → She told me ___ it.",
+              "options": [
+                "not to touch",
+                "don't touch",
+                "to not touching",
+                "not touching"
+              ],
+              "correct": 0,
+              "explanation": "Buyruq inkori: not to + V1."
+            },
+            {
+              "id": "en_a_05_e6",
+              "type": "fill_blank",
+              "question": "\"I have finished my work,\" he said. → He said he ___ his work. (finish — Past Perfect yozing)",
+              "accepted_answers": [
+                "had finished"
+              ],
+              "explanation": "Present Perfect → Past Perfect: had finished."
+            },
+            {
+              "id": "en_a_05_e7",
+              "type": "mcq",
+              "question": "\"I saw her yesterday,\" he said. → He said he ___ her the day before.",
+              "options": [
+                "had seen",
+                "saw",
+                "has seen",
+                "sees"
+              ],
+              "correct": 0,
+              "explanation": "Past Simple → Past Perfect: had seen."
+            },
+            {
+              "id": "en_a_05_e8",
+              "type": "mcq",
+              "question": "\"You must leave now,\" she said. → She said I ___ leave then.",
+              "options": [
+                "had to",
+                "must",
+                "have to",
+                "should to"
+              ],
+              "correct": 0,
+              "explanation": "must → had to; now → then."
+            },
+            {
+              "id": "en_a_05_e9",
+              "type": "mcq",
+              "question": "\"Can you help me?\" → She asked if ___ help her.",
+              "options": [
+                "I could",
+                "could I",
+                "I can",
+                "can I"
+              ],
+              "correct": 0,
+              "explanation": "can → could; so'z tartibi to'g'ri: I could (could I emas)."
+            },
+            {
+              "id": "en_a_05_e10",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "He said that he was tired.",
+                "He said that he is tired yesterday.",
+                "He told that he was tired.",
+                "He asked me where did I live."
+              ],
+              "correct": 0,
+              "explanation": "'Tell' dan keyin shaxs kerak (told ME); so'roqda 'where did I' — xato tartib."
+            },
+            {
+              "id": "en_a_05_e11",
+              "type": "fill_blank",
+              "question": "\"Please open the door,\" she said. → She asked me ___ the door.",
+              "accepted_answers": [
+                "to open"
+              ],
+              "explanation": "Iltimos → ask + kishi + to V1."
+            },
+            {
+              "id": "en_a_05_e12",
+              "type": "mcq",
+              "question": "\"We are going home today,\" they said. → They said they ___ home that day.",
+              "options": [
+                "were going",
+                "are going",
+                "have gone",
+                "go"
+              ],
+              "correct": 0,
+              "explanation": "Present Continuous → Past Continuous: were going."
+            }
+          ]
+        },
+        {
+          "id": "en_a_06",
+          "order": 4,
+          "title": "Passive Voice in all tenses — Majhul nisbat (barcha zamonlarda)",
+          "emoji": "🔄",
+          "video_url": "https://www.youtube.com/results?search_query=passive+voice+all+tenses+lesson",
+          "video_title": "Passive Voice (all tenses) — video dars",
+          "theory": "<b>Passive Voice — majhul nisbat (barcha zamonlarda)</b>\n\n<b>Formula:</b> be (kerakli zamonda) + V3\nIshni KIM qilgani muhim bo'lmaganda yoki bajaruvchi noma'lum bo'lganda ishlatiladi.\n\n<b>1. Zamonlar jadvali:</b>\n• Present Simple: <i>Letters are delivered every day.</i>\n• Present Continuous: <i>The house is being painted now.</i>\n• Present Perfect: <i>The work has been finished.</i>\n• Present Perfect Continuous: <b>ishlatilmaydi</b> (juda og'ir)\n• Past Simple: <i>The bridge was built in 1900.</i>\n• Past Continuous: <i>Dinner was being cooked when I arrived.</i>\n• Past Perfect: <i>The report had been written before the meeting.</i>\n• Future Simple: <i>The results will be announced tomorrow.</i>\n• Future Perfect: <i>The project will have been completed by June.</i>\n• Modals: <i>It must be done. This can be fixed.</i>\n\n<b>2. Bajaruvchini ko'rsatish:</b> by + agent\n<i>The novel was written by Chingiz Aitmatov.</i>\n\n<b>3. Ikki to'ldiruvchili fe'llar (berish/aitish):</b>\n<i>They gave him a prize. → He was given a prize. / A prize was given to him.</i>\n\n<b>4. Rasmiy uslubda Passive (markaziy iboralar):</b>\n• It is said that... — Aytilishicha...\n• It is believed that... — Ishonilishicha...\n• He is known to be... — U ... ekanligi ma'lum\n\n<b>5. Tipik xato:</b>\n'be' fe'lini tushirib qoldirish:\n<s>The house built in 1990.</s> → The house <b>was</b> built in 1990.",
+          "theory_oral": "Passive Voice — ishning bajaruvchisi emas, o'zi muhim bo'lganda ishlatiladi. Formula: be fe'li kerakli zamonda va fe'lning uchinchi shakli. Eng ko'p uchraydigan xato — be fe'lini tushirib qoldirish. Rasmiy ingliz tilida It is said that, It is believed that kabi qoliplar juda ko'p ishlatiladi.",
+          "pass_threshold": 70,
+          "exercises": [
+            {
+              "id": "en_a_06_e1",
+              "type": "mcq",
+              "question": "The Mona Lisa ___ by Leonardo da Vinci.",
+              "options": [
+                "was painted",
+                "painted",
+                "is painting",
+                "has painting"
+              ],
+              "correct": 0,
+              "explanation": "O'tmishdagi bajarilgan ish + bajaruvchi (by) → Past Simple Passive: was painted."
+            },
+            {
+              "id": "en_a_06_e2",
+              "type": "mcq",
+              "question": "A new hospital ___ in our city right now.",
+              "options": [
+                "is being built",
+                "is built",
+                "was built",
+                "has built"
+              ],
+              "correct": 0,
+              "explanation": "'Right now' — hozir davom etayotgan → Present Continuous Passive."
+            },
+            {
+              "id": "en_a_06_e3",
+              "type": "fill_blank",
+              "question": "The results (announce) ___ tomorrow. (Future Simple Passive)",
+              "accepted_answers": [
+                "will be announced"
+              ],
+              "explanation": "Future Simple Passive: will be + V3."
+            },
+            {
+              "id": "en_a_06_e4",
+              "type": "mcq",
+              "question": "By the time we arrived, the room ___ .",
+              "options": [
+                "had been cleaned",
+                "has been cleaned",
+                "was cleaning",
+                "is cleaned"
+              ],
+              "correct": 0,
+              "explanation": "Kelishimizdan oldin tugallangan → Past Perfect Passive: had been cleaned."
+            },
+            {
+              "id": "en_a_06_e5",
+              "type": "mcq",
+              "question": "This task ___ before Friday. (majburiyat + passive)",
+              "options": [
+                "must be done",
+                "must do",
+                "must been done",
+                "must doing"
+              ],
+              "correct": 0,
+              "explanation": "Modal + be + V3: must be done."
+            },
+            {
+              "id": "en_a_06_e6",
+              "type": "mcq",
+              "question": "The project ___ by next month.",
+              "options": [
+                "will have been completed",
+                "will be completing",
+                "has completed",
+                "is completing"
+              ],
+              "correct": 0,
+              "explanation": "'By next month' + kelajakdagi tugallanish → Future Perfect Passive."
+            },
+            {
+              "id": "en_a_06_e7",
+              "type": "mcq",
+              "question": "They gave him a medal. → He ___ a medal.",
+              "options": [
+                "was given",
+                "gave",
+                "was gave",
+                "is giving"
+              ],
+              "correct": 0,
+              "explanation": "Ikki to'ldiruvchili fe'l: He was given a medal."
+            },
+            {
+              "id": "en_a_06_e8",
+              "type": "fill_blank",
+              "question": "Dinner (cook) ___ when the guests arrived. (Past Continuous Passive)",
+              "accepted_answers": [
+                "was being cooked"
+              ],
+              "explanation": "O'tmishda davom etayotgan jarayon + passive → was being cooked."
+            },
+            {
+              "id": "en_a_06_e9",
+              "type": "mcq",
+              "question": "___ that the company will expand next year.",
+              "options": [
+                "It is said",
+                "It says",
+                "Is said it",
+                "It said"
+              ],
+              "correct": 0,
+              "explanation": "Rasmiy qolip: It is said that... — Aytilishicha..."
+            },
+            {
+              "id": "en_a_06_e10",
+              "type": "mcq",
+              "question": "English ___ all over the world.",
+              "options": [
+                "is spoken",
+                "speaks",
+                "is speaking",
+                "spoke"
+              ],
+              "correct": 0,
+              "explanation": "Umumiy fakt + bajaruvchi muhim emas → Present Simple Passive: is spoken."
+            },
+            {
+              "id": "en_a_06_e11",
+              "type": "mcq",
+              "question": "The report ___ yet — we are still working on it.",
+              "options": [
+                "hasn't been finished",
+                "didn't finish",
+                "is not finishing",
+                "has not finish"
+              ],
+              "correct": 0,
+              "explanation": "'Yet' → Present Perfect Passive inkor: hasn't been finished."
+            },
+            {
+              "id": "en_a_06_e12",
+              "type": "mcq",
+              "question": "Qaysi gap TO'G'RI?",
+              "options": [
+                "The letter was sent yesterday.",
+                "The letter sent yesterday.",
+                "The letter was send yesterday.",
+                "The letter is sent yesterday."
+              ],
+              "correct": 0,
+              "explanation": "Passive = be + V3 (sent). B: 'was' yo'q; C: send emas sent; D: yesterday bilan Present bo'lmaydi."
+            }
+          ]
+        },
+        {
+          "id": "en_a_02",
+          "order": 5,
           "title": "Inversion & Advanced structures",
           "emoji": "🔀",
           "video_url": "https://www.youtube.com/watch?v=9Q1x9Q5xY5w",
@@ -2072,7 +3362,7 @@
         },
         {
           "id": "en_a_03",
-          "order": 3,
+          "order": 6,
           "title": "Advanced Vocabulary",
           "emoji": "🧠",
           "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -2206,6 +3496,171 @@
               ],
               "correct": 1,
               "explanation": "meticulous."
+            }
+          ]
+        },
+        {
+          "id": "en_a_07",
+          "order": 7,
+          "title": "Barcha 12 zamon — Yakuniy takrorlash (Master Review)",
+          "emoji": "🎓",
+          "video_url": "https://www.youtube.com/results?search_query=12+english+tenses+summary+lesson",
+          "video_title": "12 Tenses — umumiy takrorlash video darsi",
+          "theory": "<b>Ingliz tilidagi 12 zamonning to'liq jadvali</b>\n\n<b>PRESENT (Hozirgi)</b>\n• Simple: V1 / V1+s → <i>She works.</i> — odat, fakt\n• Continuous: am/is/are + V-ing → <i>She is working.</i> — hozir jarayonda\n• Perfect: have/has + V3 → <i>She has worked.</i> — natija, tajriba\n• Perfect Continuous: have/has been + V-ing → <i>She has been working.</i> — davomiylik\n\n<b>PAST (O'tgan)</b>\n• Simple: V2 → <i>She worked.</i> — tugagan o'tmish\n• Continuous: was/were + V-ing → <i>She was working.</i> — o'tmishda jarayonda\n• Perfect: had + V3 → <i>She had worked.</i> — o'tmishdan oldinroq\n• Perfect Continuous: had been + V-ing → <i>She had been working.</i> — o'tmish nuqtagacha davomiylik\n\n<b>FUTURE (Kelasi)</b>\n• Simple: will + V1 → <i>She will work.</i> — va'da, qaror\n• Continuous: will be + V-ing → <i>She will be working.</i> — kelajakda jarayonda\n• Perfect: will have + V3 → <i>She will have worked.</i> — nuqtagacha tugallanadi\n• Perfect Continuous: will have been + V-ing → <i>She will have been working.</i> — nuqtagacha davomiylik\n\n<b>Zamonni tanlash algoritmi:</b>\n1. Harakat qachon? (hozir / o'tmish / kelajak)\n2. Jarayonmi, faktmi, natijami yoki davomiylikmi?\n3. Signal so'zlar: every day (Simple) · now (Continuous) · already/just/yet (Perfect) · for/since/lately (Perfect Continuous) · by/by the time (Perfect zamonlar)",
+          "theory_oral": "Ingliz tilida o'n ikkita zamon bor: har birida Simple, Continuous, Perfect va Perfect Continuous shakllari mavjud. Zamonni tanlash uchun ikki savol bering: harakat qachon sodir bo'lmoqda va u jarayonmi, faktmi, natijami yoki davomiylikmi. Signal so'zlar to'g'ri zamonga yetaklaydi.",
+          "pass_threshold": 75,
+          "exercises": [
+            {
+              "id": "en_a_07_e1",
+              "type": "mcq",
+              "question": "Look! It ___ outside.",
+              "options": [
+                "is raining",
+                "rains",
+                "rained",
+                "has been rain"
+              ],
+              "correct": 0,
+              "explanation": "'Look!' — hozir ko'z oldimizdagi jarayon → Present Continuous."
+            },
+            {
+              "id": "en_a_07_e2",
+              "type": "mcq",
+              "question": "Water ___ at 100 degrees Celsius.",
+              "options": [
+                "boils",
+                "is boiling",
+                "boiled",
+                "has been boiling"
+              ],
+              "correct": 0,
+              "explanation": "Umumiy fakt → Present Simple."
+            },
+            {
+              "id": "en_a_07_e3",
+              "type": "mcq",
+              "question": "I ___ my keys — I can't open the door.",
+              "options": [
+                "have lost",
+                "lost",
+                "was losing",
+                "am losing"
+              ],
+              "correct": 0,
+              "explanation": "Hozirga ta'sir qiluvchi natija → Present Perfect."
+            },
+            {
+              "id": "en_a_07_e4",
+              "type": "mcq",
+              "question": "She ___ in this school since 2018.",
+              "options": [
+                "has been teaching",
+                "teaches",
+                "is teaching",
+                "had teach"
+              ],
+              "correct": 0,
+              "explanation": "'Since 2018' — hozirgacha davom etayotgan jarayon → Present Perfect Continuous."
+            },
+            {
+              "id": "en_a_07_e5",
+              "type": "mcq",
+              "question": "While I ___ dinner, the phone rang.",
+              "options": [
+                "was cooking",
+                "cooked",
+                "have cooked",
+                "am cooking"
+              ],
+              "correct": 0,
+              "explanation": "Uzoq jarayon ichida qisqa voqea → Past Continuous + Past Simple."
+            },
+            {
+              "id": "en_a_07_e6",
+              "type": "mcq",
+              "question": "By 2030 they ___ the new airport.",
+              "options": [
+                "will have built",
+                "will build",
+                "are building",
+                "built"
+              ],
+              "correct": 0,
+              "explanation": "'By 2030' — nuqtagacha tugallanish → Future Perfect."
+            },
+            {
+              "id": "en_a_07_e7",
+              "type": "mcq",
+              "question": "This time next week I ___ on the beach.",
+              "options": [
+                "will be lying",
+                "will lie",
+                "lie",
+                "have lain"
+              ],
+              "correct": 0,
+              "explanation": "'This time next week' — aniq nuqtada jarayon → Future Continuous."
+            },
+            {
+              "id": "en_a_07_e8",
+              "type": "fill_blank",
+              "question": "He (work) ___ here for ten years before he retired.",
+              "accepted_answers": [
+                "had been working"
+              ],
+              "explanation": "O'tmishdagi nuqtagacha davomiylik → Past Perfect Continuous."
+            },
+            {
+              "id": "en_a_07_e9",
+              "type": "mcq",
+              "question": "When we got to the party, most guests ___ already ___ .",
+              "options": [
+                "had ... left",
+                "have ... left",
+                "were ... leaving",
+                "did ... leave"
+              ],
+              "correct": 0,
+              "explanation": "Kelishdan oldinroq tugagan → Past Perfect."
+            },
+            {
+              "id": "en_a_07_e10",
+              "type": "mcq",
+              "question": "My brother ___ football every Saturday.",
+              "options": [
+                "plays",
+                "is playing",
+                "played",
+                "has been playing"
+              ],
+              "correct": 0,
+              "explanation": "'Every Saturday' — takrorlanuvchi odat → Present Simple."
+            },
+            {
+              "id": "en_a_07_e11",
+              "type": "mcq",
+              "question": "Don't disturb him — he ___ for his exams all morning and still has two subjects.",
+              "options": [
+                "has been preparing",
+                "prepares",
+                "had prepared",
+                "will prepare"
+              ],
+              "correct": 0,
+              "explanation": "Ertalabdan beri davom etayotgan jarayon → Present Perfect Continuous."
+            },
+            {
+              "id": "en_a_07_e12",
+              "type": "mcq",
+              "question": "Shakespeare ___ 37 plays and 154 sonnets.",
+              "options": [
+                "wrote",
+                "has written",
+                "was writing",
+                "had been writing"
+              ],
+              "correct": 0,
+              "explanation": "Tarixiy, tugallangan fakt (muallif vafot etgan) → Past Simple."
             }
           ]
         }

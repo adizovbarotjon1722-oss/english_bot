@@ -5,7 +5,17 @@ Duolingo uslubidagi gamification: ❤️ yuraklar, 💎 gemlar, 🎯 kunlik ques
 
 ## So'nggi yangilanish (24.09.2026)
 
-### Duolingo dizayni (shu versiya)
+### Professional o'quv markazi dasturi (shu versiya)
+- **Barcha 12 zamon** to'liq qamrab olindi: har biriga alohida modul (nazariya + mashq)
+- Yangi modullar: Present Perfect Continuous, Past Perfect, Future Continuous/Perfect/
+  Perfect Continuous, Modal verbs, Second Conditional, Past Perfect Continuous,
+  Reported Speech, Passive Voice (barcha zamonlar), 12 zamon Master Review
+- Darajalar CEFR standartida: **Elementary (A1) → Intermediate (B1) → Upper-Intermediate (B2)**
+- Modullar pedagogik ketma-ketlikda qayta tizildi
+- Matnlar akademik ohangda qayta yozildi (ortiqcha emojilar va o'yinboz iboralar olib tashlandi)
+- Jami: **22 modul · 275 mashq**
+
+### Duolingo dizayni
 - **Rus tili kursi o'chirildi** — faqat ingliz tili, mukammal darajada
 - **❤️ Yuraklar**: 5 ta maksimum; noto'g'ri javobda −1 (modul va ko'nikma testlarida);
   har 30 daqiqada 1 ta tiklanadi; 50 💎 evaziga to'liq to'ldirish
@@ -46,13 +56,33 @@ python bot.py
 
 ## Kontent
 
+| Daraja | Modullar | Qamrov |
+|--------|----------|--------|
+| 🟢 Elementary (A1) | 6 | Present Simple, Present Continuous, Past Simple, Future Simple & Going to, lug'at/artikllar, rasmli mashqlar |
+| 🔵 Intermediate (B1) | 9 | Past Continuous, Present Perfect, Present Perfect Continuous, Past Perfect, Future Continuous/Perfect/Perfect Continuous, Modal verbs, Conditionals 0/1/2, Passive Voice (asoslari) |
+| 🟣 Upper-Intermediate (B2) | 7 | Third Conditional & Wish, Past Perfect Continuous, Reported Speech, Passive Voice (barcha zamonlar), Inversion, Advanced Vocabulary, 12 zamon Master Review |
+
+**Jami: 22 modul · 275 mashq** — ingliz tilidagi **barcha 12 zamon** to'liq qamrab olingan
+(har biri: nazariya + signal so'zlar + tipik xatolar + mashg'ulotlar).
+
 | Bo'lim | Miqdor |
 |--------|--------|
-| Modullar (EN) | 13 ta (6 beginner · 4 intermediate · 3 advanced) |
-| Mashqlar | 166 ta (mcq, fill_blank, matching, rasmli) |
+| Mashq turlari | mcq, fill_blank, matching, rasmli |
 | Kutubxona | 7 kitob · 31 bob · 62 savol |
 | Ko'nikmalar | Reading, Listening, Speaking, kunlik challenge |
 | Boshqa | SRS takrorlash, 2 mini-o'yin, hikoya rejimi, jamoalar |
+
+## Zamonlar jadvali (12 zamon)
+
+| | Simple | Continuous | Perfect | Perfect Continuous |
+|---|--------|-----------|---------|-------------------|
+| **Present** | en_b_01 | en_b_02 | en_i_01 | en_i_05 |
+| **Past** | en_b_03 | en_i_02 | en_i_06 | en_a_04 |
+| **Future** | en_b_04 | en_i_07 | en_i_07 | en_i_07 |
+
+Har modulda: video → yozma nazariya → og'zaki tushuntirish → mashq (pass_threshold%).
+Darajalar CEFR bo'yicha nomlangan (A1 · B1 · B2), XP bo'yicha unvonlar: A1 → A2 → B1 → B2 → C1.
+
 
 ## Duolingo mexanikasi qanday ishlaydi
 
