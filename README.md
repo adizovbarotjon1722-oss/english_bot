@@ -1,130 +1,124 @@
-# Repetitorlik Telegram Bot — Structured O'quv Tizimi
+# Repetitorlik Telegram Bot — Full Structured Course
 
-Ingliz va Rus tillaridan **bosqichma-bosqich** o'rganish boti.
-Duolingo / Babbel / Busuu uslubidagi progressiv ochilish, video darslar,
-nazariya (yozma + og'zaki) va takrorlanmaydigan mashqlar.
+Ingliz va Rus tillari: placement → video → nazariya → mashq → unlock.
+Savollar ko'paytirilgan, rasm/audio, referral, premium, sertifikat, Sentry, backup.
 
-## Asosiy imkoniyatlar
+## Tezkor start
 
-1. **Placement test** — yangi o'quvchi avval test ishlaydi, natijaga qarab
-   beginner / intermediate / advanced darajaga joylashadi.
-2. **Progressive unlock** — modulni tugatmasangiz (video + test) keyingisi
-   ochilmaydi. Sakrab o'tib ketib bo'lmaydi.
-3. **Video dars** — har bir modulda o'qituvchi video havolasi; «Ko'rdim»
-   bosilgach mashg'ulotlar ochiladi.
-4. **Nazariya** — yozma tushuntirish + og'zaki (matn ko'rinishida) tushuntirish.
-5. **Mashg'ulotlar** — MCQ, fill-blank, matching; savollar aralashtiriladi va
-   ko'rilganlari qayta takrorlanmasligi uchun kuzatiladi.
-6. **Ikkala til** — Ingliz (zamonlar markazli) va Rus (padejlar + zamonlar).
-7. **Gamification** — XP, unvonlar, streak, nishonlar, reyting.
+```bash
+pip install -r requirements.txt
+cp .env.example .env   # BOT_TOKEN=...
+python bot.py
+```
 
-## Fayllar tuzilishi
+## Yangi imkoniyatlar (shu versiya)
+
+### Kontent
+| Til | Modullar | Mashqlar (taxminan) |
+|-----|----------|---------------------|
+| EN  | 12       | 150+                |
+| RU  | 10       | 100+                |
+
+- Har modulda **12–18** ta mashq (takrorlanmaslik uchun yetarli)
+- **Rasm savollar**: `image_file` yoki `image_url` maydoni
+- **Audio talaffuz**: `audio_file` yoki `audio_url`
+  - Fayllar: `media/images/`, `media/audio/`
+
+### O'sish
+- **Referral**: `/start REFCODE` yoki menyu → Do'stni taklif
+  - Referrer +50 XP, yangi user +30 XP + nishonlar
+- **Kanal**: `CHANNEL_URL` — menyuda tugma
+- **BOT_USERNAME** — deep-link havola uchun
+
+### Monetizatsiya
+- **Premium**: cheksiz mashq, sertifikat
+  - Demo: `/premium` (o'zingizga 30 kun)
+  - Admin: `/premium <telegram_id> [days]` (`ADMIN_IDS`)
+- **Sertifikat**: darajadagi barcha modullar tugagach PDF (reportlab)
+
+### Texnik
+- **Sentry**: `SENTRY_DSN` bo'lsa avtomatik ulanadi
+- **Backup**: `./backup.sh` — `backups/` ga nusxa (cron: `0 3 * * *`)
+- SQLite: referral, premium, certificates jadvallari
+
+## Fayllar
 
 ```
 repetitor_bot/
-├── bot.py                 # Asosiy bot (aiogram 3.x)
-├── database.py            # SQLite: users, progress, modules, seen exercises
-├── curriculum_en.json     # Ingliz tili o'quv dasturi (modullar + nazariya + mashqlar)
-├── curriculum_ru.json     # Rus tili o'quv dasturi
-├── questions_en.json      # (eski) qo'shimcha savollar banki — ixtiyoriy
-├── questions_ru.json
+├── bot.py
+├── database.py
+├── certificate.py
+├── curriculum_en.json / curriculum_ru.json
+├── backup.sh
+├── media/images/  media/audio/
+├── certificates/   (avtomatik)
 ├── requirements.txt
 ├── .env.example
-├── .gitignore
 └── README.md
 ```
 
-## O'rnatish
-
-1. Python 3.10+
-2. `pip install -r requirements.txt`
-3. `@BotFather` dan token oling
-4. `.env` yarating:
-   ```bash
-   cp .env.example .env
-   # BOT_TOKEN=... ni to'ldiring
-   ```
-5. `python bot.py`
-
-## Foydalanuvchi oqimi
-
-```
-/start
-  → Til tanlash (en/ru)
-  → Placement test (9 savol)
-  → Daraja aniqlanadi
-  → Kurs menyusi
-       → Daraja tanlash
-       → Modul ro'yxati (🔒/🔓/✅)
-       → Modul ichida:
-            1. Video ko'rish → «Ko'rdim»
-            2. Nazariya (yozma + og'zaki)
-            3. Mashg'ulot/test (≥70–80%)
-            4. Keyingi modul ochiladi
-```
-
-## Buyruqlar
-
-- `/start` — bosh menyu yoki placement
-- `/stats` — XP, streak, modullar, kuchsiz tomonlar
-- `/top` — XP bo'yicha TOP-10
-- `/help` — qisqa yo'riqnoma
-
-## Curriculum qanday kengaytiriladi
-
-`curriculum_en.json` yoki `curriculum_ru.json` ichida yangi modul:
+## Curriculumga rasm/audio qo'shish
 
 ```json
 {
-  "id": "en_b_06",
-  "order": 6,
-  "title": "Yangi mavzu",
-  "emoji": "🆕",
-  "video_url": "https://youtube.com/...",
-  "video_title": "Video nomi",
-  "theory": "<b>Yozma tushuntirish</b>...",
-  "theory_oral": "Og'zaki tushuntirish matni...",
-  "pass_threshold": 70,
-  "exercises": [
-    {
-      "id": "en_b_06_e1",
-      "type": "mcq",
-      "question": "...",
-      "options": ["A", "B", "C", "D"],
-      "correct": 0,
-      "explanation": "..."
-    }
-  ]
+  "id": "en_b_05_img1",
+  "type": "mcq",
+  "question": "Bu nima?",
+  "image_file": "apple.jpg",
+  "options": ["Apple", "Banana"],
+  "correct": 0,
+  "explanation": "..."
 }
 ```
 
-`type`: `mcq` | `fill_blank` | `matching`
+`media/images/apple.jpg` qo'ying. URL uchun `image_url` ishlating.
 
-## Xavfsizlik
 
-- Token faqat `.env` dan
-- HTML escape (injection himoyasi)
-- Faqat private chat
-- Sessiya egasi tekshiruvi
-- Anti-flood
-- Parametrlangan SQL
+## Admin panel
 
-## Keyingi rivojlantirish g'oyalari
+`.env` da `ADMIN_IDS=123456789` (Telegram ID, vergul bilan bir nechta).
 
-- [ ] Haqiqiy ovozli xabarlar (TTS) og'zaki nazariya uchun
-- [ ] Admin panel orqali video/nazariya qo'shish
-- [ ] Kunlik eslatma (reminder)
-- [ ] Referral tizimi
-- [ ] Redis FSM (production)
-- [ ] Ko'proq modullar (150+ mashq)
-- [ ] Speaking practice (voice message + baholash)
+| Buyruq / menyu | Vazifa |
+|----------------|--------|
+| `/admin` | Admin bosh menyu |
+| Umumiy statistika | Users, premium, testlar, faollik |
+| O'quvchilar | Ro'yxat, sahifalash, batafsil kartochka |
+| `/find <id\|@user\|id:N>` | Qidiruv |
+| Darsliklar | EN/RU modullar + mashqlar soni/ko'rinishi |
+| Premium berish | Kartochkadan yoki `/premium <tg_id> [days]` |
+| `/broadcast matn` | Barcha userlarga xabar |
+| Level o'zgartirish | beginner/intermediate/advanced |
+| Modul ochish | Foydalanuvchi uchun butun darajani unlock |
 
-## Pedagogik asos
+O'quvchi kartochkasida: XP, streak, premium, referral, modul progress, so'nggi testlar.
 
-Tizim CEFR va eng yaxshi amaliyotlarga asoslangan:
 
-- **Scaffolding** — oddiydan murakkabga, oldingi bilimsiz keyingisi yopiq
-- **Comprehensible input** — video + yozma + og'zaki
-- **Spaced / varied practice** — savollar aralashadi, takrorlanmaydi
-- **Mastery learning** — minimal foizni topmaguncha keyingi modul ochilmaydi
-- **Gamification** — XP, streak, nishonlar motivatsiyani ushlab turadi
+## Production
+
+1. VPS (Ubuntu) yoki Railway/Render
+2. `.env` da token, SENTRY_DSN, BOT_USERNAME, CHANNEL_URL
+3. systemd yoki `screen`/`tmux`:
+   ```bash
+   python bot.py
+   ```
+4. Cron backup:
+   ```
+   0 3 * * * /path/to/repetitor_bot/backup.sh
+   ```
+5. MemoryStorage o'rniga Redis (ko'p foydalanuvchi uchun)
+
+## Pedagogika
+
+- Placement → to'g'ri daraja
+- Video majburiy → nazariya → test (mastery)
+- Progressive unlock (sakrash yo'q)
+- Varied practice (seen exercises)
+- Gamification: XP, streak, badges, referral
+
+## Keyingi qadamlar
+
+- [ ] Haqiqiy YouTube videolarini o'zingizniki bilan almashtirish
+- [ ] media/ ga rasm va ovoz fayllari
+- [ ] Telegram Stars / to'lov
+- [ ] TTS og'zaki nazariya
+- [ ] Kunlik eslatma (reminder job)

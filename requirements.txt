@@ -1,2 +1,5 @@
 aiogram==3.13.1
 python-dotenv==1.0.1
+reportlab==4.5.1
+Pillow>=10.0.0
+sentry-sdk>=2.0.0

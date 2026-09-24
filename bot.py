@@ -35,9 +35,20 @@ except ImportError:
     pass
 
 import database as db
+from certificate import generate_certificate
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("repetitor_bot")
+
+# Optional Sentry
+SENTRY_DSN = os.getenv("SENTRY_DSN", "").strip()
+if SENTRY_DSN:
+    try:
+        import sentry_sdk
+        sentry_sdk.init(dsn=SENTRY_DSN, traces_sample_rate=0.1)
+        logger.info("Sentry ulandi")
+    except ImportError:
+        logger.warning("sentry-sdk o'rnatilmagan — pip install sentry-sdk")
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
@@ -45,6 +56,22 @@ if not BOT_TOKEN:
         "BOT_TOKEN topilmadi. .env faylida yoki muhit o'zgaruvchisida "
         "BOT_TOKEN='...' ko'rsating (README.md'ga qarang)."
     )
+
+# Marketing / kanal
+CHANNEL_URL = os.getenv("CHANNEL_URL", "https://t.me/your_kun_sozi_channel")
+CHANNEL_NAME = os.getenv("CHANNEL_NAME", "📢 Kun so'zi kanali")
+BOT_USERNAME = os.getenv("BOT_USERNAME", "")  # masalan: MyRepetitorBot (deep link uchun)
+FREE_PRACTICE_LIMIT = 3  # kuniga bepul mashq (premiumda cheksiz)
+
+
+def get_admin_ids() -> set:
+    return {int(x) for x in os.getenv("ADMIN_IDS", "").split(",") if x.strip().isdigit()}
+
+
+def is_admin(user_id: int) -> bool:
+    ids = get_admin_ids()
+    return bool(ids) and user_id in ids
+
 
 QUESTIONS_PER_QUIZ = 5
 PASS_DEFAULT = 70
@@ -233,14 +260,22 @@ def subjects_kb() -> InlineKeyboardMarkup:
 
 
 def main_menu_kb() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(inline_keyboard=[
+    rows = [
         [InlineKeyboardButton(text="📖 Kursim / Darslar", callback_data="menu:course")],
-        [InlineKeyboardButton(text="🎯 Bepul mashq (Free practice)", callback_data="menu:practice")],
+        [InlineKeyboardButton(text="🎯 Bepul mashq", callback_data="menu:practice")],
         [InlineKeyboardButton(text="📊 Statistika", callback_data="menu:stats")],
-        [InlineKeyboardButton(text="🏅 Nishonlar", callback_data="menu:badges")],
-        [InlineKeyboardButton(text="🏆 Reyting", callback_data="menu:top")],
+        [
+            InlineKeyboardButton(text="🏅 Nishonlar", callback_data="menu:badges"),
+            InlineKeyboardButton(text="🏆 Reyting", callback_data="menu:top"),
+        ],
+        [InlineKeyboardButton(text="👥 Do'stni taklif qilish", callback_data="menu:referral")],
+        [InlineKeyboardButton(text="📜 Sertifikat", callback_data="menu:cert")],
+        [InlineKeyboardButton(text="⭐ Premium", callback_data="menu:premium")],
         [InlineKeyboardButton(text="🔄 Tilni almashtirish", callback_data="menu:switch")],
-    ])
+    ]
+    if CHANNEL_URL and "your_kun" not in CHANNEL_URL:
+        rows.insert(-1, [InlineKeyboardButton(text=CHANNEL_NAME, url=CHANNEL_URL)])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
 def course_levels_kb(subject: str) -> InlineKeyboardMarkup:
@@ -304,9 +339,23 @@ def skip_kb(q_index: int) -> InlineKeyboardMarkup:
 
 @router.message(CommandStart())
 async def cmd_start(message: Message, state: FSMContext):
+    # Deep link: /start REFCODE
+    ref_code = None
+    if message.text and len(message.text.split()) > 1:
+        ref_code = message.text.split(maxsplit=1)[1].strip().upper()
+
     user_id = db.get_or_create_user(
-        message.from_user.id, message.from_user.username, message.from_user.full_name
+        message.from_user.id,
+        message.from_user.username,
+        message.from_user.full_name,
+        referral_code_used=ref_code,
     )
+    # Referral bonus (agar yangi va kod to'g'ri)
+    if ref_code:
+        u = db.get_user_by_telegram(message.from_user.id)
+        if u and u.get("referred_by"):
+            db.apply_referral_bonus(u["referred_by"], user_id)
+
     await state.clear()
     user = db.get_user_by_telegram(message.from_user.id)
     if user and user.get("placement_done"):
@@ -382,6 +431,31 @@ async def send_question(message: Message, state: FSMContext):
     q = quiz[idx]
     qtype = q.get("type", "mcq")
     header = f"❓ Savol {idx + 1}/{len(quiz)}"
+
+    # Rasm / audio (media/ papkasidan yoki URL)
+    media_dir = BASE_DIR / "media"
+    if q.get("image_file"):
+        img_path = media_dir / "images" / q["image_file"]
+        if img_path.exists():
+            from aiogram.types import FSInputFile
+            await message.answer_photo(FSInputFile(str(img_path)), caption=header)
+        elif q.get("image_url"):
+            await message.answer_photo(q["image_url"], caption=header)
+    elif q.get("image_url"):
+        try:
+            await message.answer_photo(q["image_url"], caption=header)
+        except Exception:
+            pass
+    if q.get("audio_file"):
+        aud_path = media_dir / "audio" / q["audio_file"]
+        if aud_path.exists():
+            from aiogram.types import FSInputFile
+            await message.answer_audio(FSInputFile(str(aud_path)), caption="🔊 Talaffuz")
+    elif q.get("audio_url"):
+        try:
+            await message.answer_audio(q["audio_url"], caption="🔊 Talaffuz")
+        except Exception:
+            pass
 
     if qtype == "fill_blank":
         await message.answer(
@@ -1149,6 +1223,589 @@ async def cmd_help(message: Message):
         "5. Takrorlanmaslik: savollar aralashib boradi",
         parse_mode="HTML",
     )
+
+
+
+# ---------- Referral / Premium / Certificate ----------
+
+@router.callback_query(F.data == "menu:referral")
+async def menu_referral(callback: CallbackQuery, state: FSMContext):
+    user_id = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    code = db.get_referral_code(user_id)
+    stats = db.get_user_stats(user_id)
+    link = f"https://t.me/{BOT_USERNAME}?start={code}" if BOT_USERNAME else f"Kod: {code}"
+    text = (
+        "👥 <b>Do'stni taklif qilish</b>\n\n"
+        f"Sizning kodngiz: <code>{code}</code>\n"
+        f"Taklif havolasi: {link}\n\n"
+        f"Taklif qilganlar: <b>{stats['referral_count']}</b> kishi\n\n"
+        "Do'stingiz shu havola orqali kirsа:\n"
+        "• Sizga +50 XP va nishon\n"
+        "• Unga +30 XP va maxsus nishon\n\n"
+        "Kodni do'stlaringizga ulashing!"
+    )
+    await callback.message.edit_text(text, parse_mode="HTML", reply_markup=main_menu_kb())
+    await callback.answer()
+
+
+@router.callback_query(F.data == "menu:premium")
+async def menu_premium(callback: CallbackQuery, state: FSMContext):
+    user_id = db.get_or_create_user(callback.from_user.id, None, None)
+    prem = db.is_premium(user_id)
+    if prem:
+        msg = (
+            "⭐ <b>Premium faol!</b>\n\n"
+            "Sizda:\n"
+            "• Cheksiz bepul mashq\n"
+            "• Sertifikat yuklab olish\n"
+            "• Ustuvor yordam\n\n"
+            "Rahmat! 💙"
+        )
+    else:
+        msg = (
+            "⭐ <b>Premium reja</b>\n\n"
+            "Nima beradi:\n"
+            "• Kuniga cheklovsiz mashq\n"
+            "• Rasmiy PDF sertifikat\n"
+            "• Qo'shimcha bonuslar\n\n"
+            "Demo: /premium buyrug'i bilan o'zingizga yoqing.\n"
+            "To'lov (Stars/Payme) keyingi versiyada."
+        )
+    await callback.message.edit_text(msg, parse_mode="HTML", reply_markup=main_menu_kb())
+    await callback.answer()
+
+
+@router.callback_query(F.data == "menu:cert")
+async def menu_cert(callback: CallbackQuery, state: FSMContext):
+    user_id = db.get_or_create_user(
+        callback.from_user.id, callback.from_user.username, callback.from_user.full_name
+    )
+    data = await state.get_data()
+    subject = data.get("subject", "en")
+    stats = db.get_user_stats(user_id)
+    level = stats["current_level"]
+    mods = get_modules(subject, level)
+    progress = db.get_all_module_progress(user_id, subject)
+    completed = sum(1 for m in mods if progress.get(m["id"], {}).get("status") == "completed")
+    need = len(mods)
+
+    if need == 0 or completed < need:
+        await callback.message.edit_text(
+            f"📜 Sertifikat uchun joriy darajadagi barcha modullarni tugating.\n\n"
+            f"Holat: {completed}/{need} modul\n"
+            f"Daraja: {LEVEL_NAMES.get(level, level)}",
+            reply_markup=main_menu_kb(),
+        )
+        await callback.answer()
+        return
+
+    name = callback.from_user.full_name or "Student"
+    try:
+        pdf_path = generate_certificate(name, subject, level, user_id)
+        db.save_certificate(user_id, subject, level, str(pdf_path))
+        from aiogram.types import FSInputFile
+        await callback.message.answer_document(
+            document=FSInputFile(str(pdf_path)),
+            caption=f"🎓 Tabriklaymiz! {LEVEL_NAMES.get(level, level)} sertifikatingiz.",
+        )
+        await callback.message.answer("Asosiy menyu:", reply_markup=main_menu_kb())
+    except Exception as e:
+        logger.exception("Sertifikat xatosi: %s", e)
+        await callback.message.edit_text(
+            "Sertifikat yaratishda xato. Keyinroq urinib ko'ring.",
+            reply_markup=main_menu_kb(),
+        )
+    await callback.answer()
+
+
+@router.message(Command("premium"))
+async def cmd_premium_admin(message: Message):
+    parts = (message.text or "").split()
+    if not is_admin(message.from_user.id):
+        if len(parts) >= 2:
+            await message.answer("Ruxsat yo'q.")
+            return
+    if len(parts) < 2:
+        uid = db.get_or_create_user(message.from_user.id, None, None)
+        db.set_premium(uid, 30)
+        await message.answer("⭐ Sizga 30 kunlik Premium yoqildi (demo).")
+        return
+    try:
+        tg_id = int(parts[1])
+        days = int(parts[2]) if len(parts) > 2 else 30
+    except ValueError:
+        await message.answer("Format: /premium <telegram_id> [days]")
+        return
+    uid = db.get_or_create_user(tg_id, None, None)
+    db.set_premium(uid, days)
+    await message.answer(f"Premium {days} kun (user_id={uid}).")
+
+
+
+
+# ==================== ADMIN PANEL ====================
+
+def admin_main_kb() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="📊 Umumiy statistika", callback_data="adm:stats")],
+        [InlineKeyboardButton(text="👥 O'quvchilar", callback_data="adm:users:0")],
+        [InlineKeyboardButton(text="📚 Darsliklar (modullar)", callback_data="adm:curr:en")],
+        [InlineKeyboardButton(text="🔍 O'quvchi qidirish", callback_data="adm:search")],
+        [InlineKeyboardButton(text="⭐ Premium berish", callback_data="adm:prem_help")],
+        [InlineKeyboardButton(text="📢 Broadcast (yordam)", callback_data="adm:bc_help")],
+        [InlineKeyboardButton(text="◀️ Foydalanuvchi menyusi", callback_data="menu:back")],
+    ])
+
+
+def admin_users_kb(offset: int, has_more: bool) -> InlineKeyboardMarkup:
+    rows = []
+    nav = []
+    if offset > 0:
+        nav.append(InlineKeyboardButton(text="⬅️", callback_data=f"adm:users:{max(0, offset-20)}"))
+    if has_more:
+        nav.append(InlineKeyboardButton(text="➡️", callback_data=f"adm:users:{offset+20}"))
+    if nav:
+        rows.append(nav)
+    rows.append([InlineKeyboardButton(text="◀️ Admin menyu", callback_data="adm:home")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def admin_user_kb(uid: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="⭐ Premium 30 kun", callback_data=f"adm:setprem:{uid}:30")],
+        [InlineKeyboardButton(text="📍 Level: beginner", callback_data=f"adm:setlvl:{uid}:beginner")],
+        [InlineKeyboardButton(text="📍 Level: intermediate", callback_data=f"adm:setlvl:{uid}:intermediate")],
+        [InlineKeyboardButton(text="📍 Level: advanced", callback_data=f"adm:setlvl:{uid}:advanced")],
+        [InlineKeyboardButton(text="🔓 Barcha beginner ochish (EN)", callback_data=f"adm:unlockall:{uid}:en:beginner")],
+        [InlineKeyboardButton(text="🔓 Barcha beginner ochish (RU)", callback_data=f"adm:unlockall:{uid}:ru:beginner")],
+        [InlineKeyboardButton(text="◀️ O'quvchilar", callback_data="adm:users:0")],
+        [InlineKeyboardButton(text="🏠 Admin", callback_data="adm:home")],
+    ])
+
+
+def admin_curr_kb(subject: str) -> InlineKeyboardMarkup:
+    other = "ru" if subject == "en" else "en"
+    rows = [
+        [InlineKeyboardButton(text=f"🔄 {SUBJECT_NAMES[other]}", callback_data=f"adm:curr:{other}")],
+    ]
+    for level in ("beginner", "intermediate", "advanced"):
+        rows.append([InlineKeyboardButton(
+            text=LEVEL_NAMES[level],
+            callback_data=f"adm:mods:{subject}:{level}",
+        )])
+    rows.append([InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def admin_mods_kb(subject: str, level: str) -> InlineKeyboardMarkup:
+    rows = []
+    for m in get_modules(subject, level):
+        n = len(m.get("exercises", []))
+        rows.append([InlineKeyboardButton(
+            text=f"{m.get('emoji','📘')} {m['title'][:35]} ({n})",
+            callback_data=f"adm:mod:{subject}:{m['id']}",
+        )])
+    rows.append([InlineKeyboardButton(text="◀️ Darsliklar", callback_data=f"adm:curr:{subject}")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+@router.message(Command("admin"))
+async def cmd_admin(message: Message, state: FSMContext):
+    if not is_admin(message.from_user.id):
+        await message.answer("⛔ Bu buyruq faqat adminlar uchun.")
+        return
+    await state.clear()
+    overview = db.admin_stats_overview()
+    text = (
+        "🛠 <b>Admin panel</b>\n\n"
+        f"👥 Foydalanuvchilar: <b>{overview['users']}</b>\n"
+        f"⭐ Premium: <b>{overview['premium']}</b>\n"
+        f"📝 Testlar: <b>{overview['tests']}</b>\n"
+        f"✅ Tugatilgan modullar: <b>{overview['completed_modules']}</b>\n"
+        f"🟢 Bugun faol: <b>{overview['active_today']}</b>\n\n"
+        "Quyidan bo'lim tanlang:"
+    )
+    await message.answer(text, parse_mode="HTML", reply_markup=admin_main_kb())
+
+
+@router.callback_query(F.data == "adm:home")
+async def adm_home(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    overview = db.admin_stats_overview()
+    text = (
+        "🛠 <b>Admin panel</b>\n\n"
+        f"👥 {overview['users']} | ⭐ {overview['premium']} | "
+        f"📝 {overview['tests']} | ✅ {overview['completed_modules']}\n"
+        f"🟢 Bugun: {overview['active_today']}"
+    )
+    await callback.message.edit_text(text, parse_mode="HTML", reply_markup=admin_main_kb())
+    await callback.answer()
+
+
+@router.callback_query(F.data == "adm:stats")
+async def adm_stats(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    overview = db.admin_stats_overview()
+    # Curriculum counts
+    lines = ["📊 <b>Batafsil statistika</b>\n"]
+    lines.append(f"Foydalanuvchilar: {overview['users']}")
+    lines.append(f"Premium: {overview['premium']}")
+    lines.append(f"Jami testlar: {overview['tests']}")
+    lines.append(f"Tugatilgan modullar: {overview['completed_modules']}")
+    lines.append(f"Bugun faol: {overview['active_today']}\n")
+    lines.append("<b>Curriculum:</b>")
+    for subj, name in SUBJECT_NAMES.items():
+        total_m = total_e = 0
+        for lv in ("beginner", "intermediate", "advanced"):
+            mods = get_modules(subj, lv)
+            total_m += len(mods)
+            total_e += sum(len(m.get("exercises", [])) for m in mods)
+        lines.append(f"  {name}: {total_m} modul, {total_e} mashq")
+    await callback.message.edit_text(
+        "\n".join(lines), parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")]
+        ]),
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("adm:users:"))
+async def adm_users(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    offset = int(callback.data.split(":")[2])
+    users = db.list_users(limit=20, offset=offset)
+    has_more = len(users) == 20
+    if not users:
+        await callback.message.edit_text(
+            "O'quvchilar yo'q.",
+            reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")]
+            ]),
+        )
+        await callback.answer()
+        return
+    lines = [f"👥 <b>O'quvchilar</b> (offset {offset})\n"]
+    rows = []
+    for u in users:
+        name = esc(u.get("full_name") or u.get("username") or str(u["telegram_id"]))
+        prem = "⭐" if u.get("is_premium") else ""
+        lines.append(
+            f"• {name} {prem}\n"
+            f"  id={u['id']} tg={u['telegram_id']} XP={u.get('xp',0)} "
+            f"lvl={u.get('current_level','?')}"
+        )
+        rows.append([InlineKeyboardButton(
+            text=f"👤 {name[:28]}",
+            callback_data=f"adm:user:{u['id']}",
+        )])
+    nav = []
+    if offset > 0:
+        nav.append(InlineKeyboardButton(text="⬅️", callback_data=f"adm:users:{max(0,offset-20)}"))
+    if has_more:
+        nav.append(InlineKeyboardButton(text="➡️", callback_data=f"adm:users:{offset+20}"))
+    if nav:
+        rows.append(nav)
+    rows.append([InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")])
+    await callback.message.edit_text(
+        "\n".join(lines)[:3500],
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=rows),
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("adm:user:"))
+async def adm_user_detail(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    uid = int(callback.data.split(":")[2])
+    u = db.get_user_detail(uid)
+    if not u:
+        await callback.answer("Topilmadi", show_alert=True)
+        return
+    name = esc(u.get("full_name") or u.get("username") or "?")
+    lines = [
+        f"👤 <b>{name}</b>",
+        f"DB id: {u['id']} | TG: <code>{u['telegram_id']}</code>",
+        f"Username: @{esc(u.get('username') or '-')}",
+        f"XP: {u.get('xp',0)} | Streak: {u.get('streak',0)}",
+        f"Level: {u.get('current_level')} | Placement: {bool(u.get('placement_done'))}",
+        f"Premium: {bool(u.get('is_premium'))} until {u.get('premium_until') or '-'}",
+        f"Referral code: {u.get('referral_code')} | invited: {u.get('referral_count',0)}",
+        f"Ro'yxat: {u.get('created_at')}",
+        "",
+        f"<b>Modullar ({len(u.get('modules',[]))}):</b>",
+    ]
+    for m in u.get("modules", [])[:15]:
+        lines.append(
+            f"  • {m['subject']}/{m['module_id']}: {m['status']} "
+            f"({m.get('quiz_score',0)}/{m.get('quiz_total',0)})"
+        )
+    if u.get("recent_results"):
+        lines.append("\n<b>So'nggi testlar:</b>")
+        for r in u["recent_results"][:5]:
+            lines.append(
+                f"  • {r['subject']} {r['level']}: {r['score']}/{r['total']} ({r['created_at']})"
+            )
+    await callback.message.edit_text(
+        "\n".join(lines)[:4000],
+        parse_mode="HTML",
+        reply_markup=admin_user_kb(uid),
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("adm:setprem:"))
+async def adm_set_prem(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    _, _, uid_s, days_s = callback.data.split(":")
+    uid, days = int(uid_s), int(days_s)
+    db.set_premium(uid, days)
+    await callback.answer(f"Premium {days} kun berildi!", show_alert=True)
+    # refresh
+    callback.data = f"adm:user:{uid}"
+    await adm_user_detail(callback)
+
+
+@router.callback_query(F.data.startswith("adm:setlvl:"))
+async def adm_set_lvl(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    parts = callback.data.split(":")
+    uid, level = int(parts[2]), parts[3]
+    db.set_user_level(uid, level)
+    # unlock first module of that level for both subjects
+    for subj in ("en", "ru"):
+        mods = get_modules(subj, level)
+        if mods:
+            db.unlock_module(uid, subj, mods[0]["id"])
+    await callback.answer(f"Level → {level}", show_alert=True)
+    callback.data = f"adm:user:{uid}"
+    await adm_user_detail(callback)
+
+
+@router.callback_query(F.data.startswith("adm:unlockall:"))
+async def adm_unlock_all(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    parts = callback.data.split(":")
+    uid, subject, level = int(parts[2]), parts[3], parts[4]
+    for m in get_modules(subject, level):
+        db.unlock_module(uid, subject, m["id"])
+        db.mark_video_watched(uid, subject, m["id"])
+    await callback.answer(f"{subject}/{level} ochildi", show_alert=True)
+    callback.data = f"adm:user:{uid}"
+    await adm_user_detail(callback)
+
+
+@router.callback_query(F.data.startswith("adm:curr:"))
+async def adm_curriculum(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    subject = callback.data.split(":")[2]
+    lines = [f"📚 <b>{SUBJECT_NAMES[subject]}</b> — darsliklar\n"]
+    for level in ("beginner", "intermediate", "advanced"):
+        mods = get_modules(subject, level)
+        ex = sum(len(m.get("exercises", [])) for m in mods)
+        lines.append(f"{LEVEL_NAMES[level]}: {len(mods)} modul, {ex} mashq")
+    await callback.message.edit_text(
+        "\n".join(lines),
+        parse_mode="HTML",
+        reply_markup=admin_curr_kb(subject),
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("adm:mods:"))
+async def adm_modules_list(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    _, _, subject, level = callback.data.split(":")
+    mods = get_modules(subject, level)
+    lines = [f"📘 <b>{LEVEL_NAMES[level]}</b> modullari\n"]
+    for m in mods:
+        n = len(m.get("exercises", []))
+        lines.append(f"{m.get('emoji','')} {m['title']} — {n} mashq")
+    await callback.message.edit_text(
+        "\n".join(lines),
+        parse_mode="HTML",
+        reply_markup=admin_mods_kb(subject, level),
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data.startswith("adm:mod:"))
+async def adm_module_detail(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    _, _, subject, module_id = callback.data.split(":", 3)
+    mod = get_module(subject, module_id)
+    if not mod:
+        await callback.answer("Topilmadi", show_alert=True)
+        return
+    level = get_level_of_module(subject, module_id) or "?"
+    exercises = mod.get("exercises", [])
+    lines = [
+        f"{mod.get('emoji','📘')} <b>{esc(mod['title'])}</b>",
+        f"ID: <code>{module_id}</code> | Level: {level}",
+        f"Video: {mod.get('video_url', '-')[:60]}",
+        f"Pass: {mod.get('pass_threshold', 70)}%",
+        f"Mashqlar: <b>{len(exercises)}</b>\n",
+    ]
+    for i, ex in enumerate(exercises[:20], 1):
+        q = esc(ex.get("question", "")[:50])
+        t = ex.get("type", "mcq")
+        media = ""
+        if ex.get("image_file") or ex.get("image_url"):
+            media = "🖼"
+        if ex.get("audio_file") or ex.get("audio_url"):
+            media += "🔊"
+        lines.append(f"{i}. [{t}]{media} {q}")
+    if len(exercises) > 20:
+        lines.append(f"... va yana {len(exercises)-20} ta")
+    lines.append("\n💡 Yangi mashq qo'shish: curriculum_*.json ni tahrirlang.")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="◀️ Modullar", callback_data=f"adm:mods:{subject}:{level}")],
+        [InlineKeyboardButton(text="🏠 Admin", callback_data="adm:home")],
+    ])
+    await callback.message.edit_text("\n".join(lines)[:4000], parse_mode="HTML", reply_markup=kb)
+    await callback.answer()
+
+
+@router.callback_query(F.data == "adm:search")
+async def adm_search_help(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    await state.set_state(None)  # clear
+    await callback.message.edit_text(
+        "🔍 <b>O'quvchi qidirish</b>\n\n"
+        "Yuboring:\n"
+        "• <code>/find 123456789</code> — telegram_id\n"
+        "• <code>/find @username</code> — username\n"
+        "• <code>/find id:5</code> — ichki DB id",
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")]
+        ]),
+    )
+    await callback.answer()
+
+
+@router.message(Command("find"))
+async def cmd_find(message: Message):
+    if not is_admin(message.from_user.id):
+        return
+    parts = (message.text or "").split(maxsplit=1)
+    if len(parts) < 2:
+        await message.answer("Format: /find <telegram_id|@user|id:N>")
+        return
+    q = parts[1].strip()
+    u = None
+    if q.startswith("id:"):
+        try:
+            u = db.get_user_detail(int(q[3:]))
+        except ValueError:
+            pass
+    elif q.isdigit():
+        u = db.find_user_by_telegram(int(q))
+        if u:
+            u = db.get_user_detail(u["id"])
+    else:
+        u = db.find_user_by_username(q)
+        if u:
+            u = db.get_user_detail(u["id"])
+    if not u:
+        await message.answer("Topilmadi.")
+        return
+    name = esc(u.get("full_name") or u.get("username") or "?")
+    text = (
+        f"👤 <b>{name}</b>\n"
+        f"id={u['id']} tg=<code>{u['telegram_id']}</code>\n"
+        f"XP={u.get('xp')} level={u.get('current_level')} premium={bool(u.get('is_premium'))}"
+    )
+    await message.answer(text, parse_mode="HTML", reply_markup=admin_user_kb(u["id"]))
+
+
+@router.callback_query(F.data == "adm:prem_help")
+async def adm_prem_help(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    await callback.message.edit_text(
+        "⭐ <b>Premium</b>\n\n"
+        "1. O'quvchilar ro'yxatidan foydalanuvchini oching → «Premium 30 kun»\n"
+        "2. Yoki: <code>/premium &lt;telegram_id&gt; [days]</code>\n"
+        "3. O'zingizga: <code>/premium</code>",
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")]
+        ]),
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "adm:bc_help")
+async def adm_bc_help(callback: CallbackQuery):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("Ruxsat yo'q", show_alert=True)
+        return
+    await callback.message.edit_text(
+        "📢 <b>Broadcast</b>\n\n"
+        "Hozircha: <code>/broadcast Xabar matni</code>\n"
+        "Barcha foydalanuvchilarga yuboriladi (sekin, flood limitcha).\n"
+        "Faqat admin.",
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="◀️ Admin", callback_data="adm:home")]
+        ]),
+    )
+    await callback.answer()
+
+
+@router.message(Command("broadcast"))
+async def cmd_broadcast(message: Message, bot: Bot):
+    if not is_admin(message.from_user.id):
+        return
+    parts = (message.text or "").split(maxsplit=1)
+    if len(parts) < 2:
+        await message.answer("Format: /broadcast Xabar matni")
+        return
+    body = parts[1]
+    users = db.list_users(limit=500, offset=0)
+    ok = fail = 0
+    status = await message.answer(f"Yuborilmoqda: 0/{len(users)}...")
+    for i, u in enumerate(users, 1):
+        try:
+            await bot.send_message(u["telegram_id"], f"📢 <b>Admin xabari</b>\n\n{esc(body)}", parse_mode="HTML")
+            ok += 1
+        except Exception:
+            fail += 1
+        if i % 20 == 0:
+            try:
+                await status.edit_text(f"Yuborilmoqda: {i}/{len(users)} (ok={ok}, fail={fail})")
+            except Exception:
+                pass
+        await asyncio.sleep(0.05)
+    await status.edit_text(f"✅ Tugadi. Muvaffaqiyat: {ok}, xato: {fail}")
+
 
 
 async def on_unhandled_error(event, exception):

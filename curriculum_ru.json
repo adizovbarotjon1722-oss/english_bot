@@ -16,10 +16,152 @@
           "theory_oral": "Rus tilida hozirgi zamonda 'bor' degan ma'noda 'есть' ishlatiladi: У меня есть. Oddiy gaplarda 'являться' o'rniga hech narsa qo'yilmaydi. Masalan: Я студент.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "ru_b_01_e1", "type": "mcq", "question": "Я ___ студент.", "options": ["есть", "являюсь", "быть", "бытие"], "correct": 1, "explanation": "Rasmiy variant — являюсь; oddiyda tushiriladi."},
-            {"id": "ru_b_01_e2", "type": "mcq", "question": "У меня ___ брат.", "options": ["есть", "быть", "был", "будет"], "correct": 0, "explanation": "Hozirgi egalik — есть."},
-            {"id": "ru_b_01_e3", "type": "fill_blank", "question": "У меня ___ брат. (bor ma'nosidagi so'z)", "accepted_answers": ["есть"], "explanation": "есть — bor."},
-            {"id": "ru_b_01_e4", "type": "mcq", "question": "'Дом' so'zining tarjimasi:", "options": ["maktab", "uy", "bog'", "ko'cha"], "correct": 1, "explanation": "Дом — uy."}
+            {
+              "id": "ru_b_01_e1",
+              "type": "mcq",
+              "question": "Я ___ студент.",
+              "options": [
+                "есть",
+                "являюсь",
+                "быть",
+                "бытие"
+              ],
+              "correct": 1,
+              "explanation": "Rasmiy variant — являюсь; oddiyda tushiriladi."
+            },
+            {
+              "id": "ru_b_01_e2",
+              "type": "mcq",
+              "question": "У меня ___ брат.",
+              "options": [
+                "есть",
+                "быть",
+                "был",
+                "будет"
+              ],
+              "correct": 0,
+              "explanation": "Hozirgi egalik — есть."
+            },
+            {
+              "id": "ru_b_01_e3",
+              "type": "fill_blank",
+              "question": "У меня ___ брат. (bor ma'nosidagi so'z)",
+              "accepted_answers": [
+                "есть"
+              ],
+              "explanation": "есть — bor."
+            },
+            {
+              "id": "ru_b_01_e4",
+              "type": "mcq",
+              "question": "'Дом' so'zining tarjimasi:",
+              "options": [
+                "maktab",
+                "uy",
+                "bog'",
+                "ko'cha"
+              ],
+              "correct": 1,
+              "explanation": "Дом — uy."
+            },
+            {
+              "id": "ru_b_01_e5",
+              "type": "mcq",
+              "question": "У неё ___ сестра.",
+              "options": [
+                "есть",
+                "быть",
+                "был",
+                "будет"
+              ],
+              "correct": 0,
+              "explanation": "есть."
+            },
+            {
+              "id": "ru_b_01_e6",
+              "type": "mcq",
+              "question": "Я ___ врач. (rasmiy)",
+              "options": [
+                "есть",
+                "являюсь",
+                "быть",
+                "был"
+              ],
+              "correct": 1,
+              "explanation": "являюсь."
+            },
+            {
+              "id": "ru_b_01_e7",
+              "type": "fill_blank",
+              "question": "У нас ___ машина.",
+              "accepted_answers": [
+                "есть"
+              ],
+              "explanation": "есть."
+            },
+            {
+              "id": "ru_b_01_e8",
+              "type": "mcq",
+              "question": "'Друг' so'zi tarjimasi:",
+              "options": [
+                "dushman",
+                "do'st",
+                "begona",
+                "qo'shni"
+              ],
+              "correct": 1,
+              "explanation": "do'st."
+            },
+            {
+              "id": "ru_b_01_e9",
+              "type": "mcq",
+              "question": "У меня нет ___ (брат → Genitive).",
+              "options": [
+                "брат",
+                "брата",
+                "брату",
+                "братом"
+              ],
+              "correct": 1,
+              "explanation": "нет + Genitive — брата."
+            },
+            {
+              "id": "ru_b_01_e10",
+              "type": "mcq",
+              "question": "Это ___ (mening kitobim — ayollik).",
+              "options": [
+                "мой книга",
+                "моя книга",
+                "моё книга",
+                "мои книга"
+              ],
+              "correct": 1,
+              "explanation": "моя книга."
+            },
+            {
+              "id": "ru_b_01_e11",
+              "type": "fill_blank",
+              "question": "Он ___ студент. (bo'sh yoki являюсь)",
+              "accepted_answers": [
+                "",
+                "является",
+                "являюсь"
+              ],
+              "explanation": "Oddiyda tushiriladi."
+            },
+            {
+              "id": "ru_b_01_e12",
+              "type": "mcq",
+              "question": "'Вода' — bu:",
+              "options": [
+                "olov",
+                "suv",
+                "havo",
+                "yer"
+              ],
+              "correct": 1,
+              "explanation": "suv."
+            }
           ]
         },
         {
@@ -33,10 +175,166 @@
           "theory_oral": "Rus otlari uch jinsda: erkak, ayol, o'rta. Egalik olmoshlari jinsga moslashadi: мой дом, моя книга, моё окно.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "ru_b_02_e1", "type": "mcq", "question": "Это ___ книга.", "options": ["мой", "моя", "моё", "мои"], "correct": 1, "explanation": "Книга — ayollik → моя."},
-            {"id": "ru_b_02_e2", "type": "mcq", "question": "Это ___ дом (katta uy).", "options": ["большой", "большая", "большое", "большие"], "correct": 0, "explanation": "Дом — erkaklik → большой."},
-            {"id": "ru_b_02_e3", "type": "mcq", "question": "'Спасибо' nimani anglatadi?", "options": ["salom", "rahmat", "kechirasiz", "xayr"], "correct": 1, "explanation": "Спасибо — rahmat."},
-            {"id": "ru_b_02_e4", "type": "matching", "question": "So'zlarni tarjimasi bilan mos keltiring:", "pairs": [{"left": "Дом", "right": "Uy"}, {"left": "Вода", "right": "Suv"}, {"left": "Друг", "right": "Do'st"}, {"left": "Книга", "right": "Kitob"}], "explanation": "Asosiy so'zlar."}
+            {
+              "id": "ru_b_02_e1",
+              "type": "mcq",
+              "question": "Это ___ книга.",
+              "options": [
+                "мой",
+                "моя",
+                "моё",
+                "мои"
+              ],
+              "correct": 1,
+              "explanation": "Книга — ayollik → моя."
+            },
+            {
+              "id": "ru_b_02_e2",
+              "type": "mcq",
+              "question": "Это ___ дом (katta uy).",
+              "options": [
+                "большой",
+                "большая",
+                "большое",
+                "большие"
+              ],
+              "correct": 0,
+              "explanation": "Дом — erkaklik → большой."
+            },
+            {
+              "id": "ru_b_02_e3",
+              "type": "mcq",
+              "question": "'Спасибо' nimani anglatadi?",
+              "options": [
+                "salom",
+                "rahmat",
+                "kechirasiz",
+                "xayr"
+              ],
+              "correct": 1,
+              "explanation": "Спасибо — rahmat."
+            },
+            {
+              "id": "ru_b_02_e4",
+              "type": "matching",
+              "question": "So'zlarni tarjimasi bilan mos keltiring:",
+              "pairs": [
+                {
+                  "left": "Дом",
+                  "right": "Uy"
+                },
+                {
+                  "left": "Вода",
+                  "right": "Suv"
+                },
+                {
+                  "left": "Друг",
+                  "right": "Do'st"
+                },
+                {
+                  "left": "Книга",
+                  "right": "Kitob"
+                }
+              ],
+              "explanation": "Asosiy so'zlar."
+            },
+            {
+              "id": "ru_b_02_e5",
+              "type": "mcq",
+              "question": "Это ___ окно.",
+              "options": [
+                "мой",
+                "моя",
+                "моё",
+                "мои"
+              ],
+              "correct": 2,
+              "explanation": "окно — o'rta → моё."
+            },
+            {
+              "id": "ru_b_02_e6",
+              "type": "mcq",
+              "question": "___ дом большой.",
+              "options": [
+                "Этот",
+                "Эта",
+                "Это",
+                "Эти"
+              ],
+              "correct": 0,
+              "explanation": "дом — erkak → Этот."
+            },
+            {
+              "id": "ru_b_02_e7",
+              "type": "mcq",
+              "question": "___ книга интересная.",
+              "options": [
+                "Этот",
+                "Эта",
+                "Это",
+                "Эти"
+              ],
+              "correct": 1,
+              "explanation": "книга — ayol → Эта."
+            },
+            {
+              "id": "ru_b_02_e8",
+              "type": "fill_blank",
+              "question": "Это ___ (твой) ручка.",
+              "accepted_answers": [
+                "твоя"
+              ],
+              "explanation": "ручка — ayol → твоя."
+            },
+            {
+              "id": "ru_b_02_e9",
+              "type": "mcq",
+              "question": "'Быстро' antonimi:",
+              "options": [
+                "медленно",
+                "громко",
+                "тихо",
+                "далеко"
+              ],
+              "correct": 0,
+              "explanation": "медленно."
+            },
+            {
+              "id": "ru_b_02_e10",
+              "type": "mcq",
+              "question": "Наш ___ (город) красивый.",
+              "options": [
+                "город",
+                "города",
+                "городу",
+                "городом"
+              ],
+              "correct": 0,
+              "explanation": "Nominative."
+            },
+            {
+              "id": "ru_b_02_e11",
+              "type": "mcq",
+              "question": "'Магазин' — bu:",
+              "options": [
+                "do'kon",
+                "maktab",
+                "kasalxona",
+                "bank"
+              ],
+              "correct": 0,
+              "explanation": "do'kon."
+            },
+            {
+              "id": "ru_b_02_e12",
+              "type": "fill_blank",
+              "question": "'Спасибо' = ___",
+              "accepted_answers": [
+                "rahmat",
+                "спасибо"
+              ],
+              "explanation": "rahmat."
+            }
           ]
         },
         {
@@ -50,10 +348,150 @@
           "theory_oral": "Vinitelniy padej — kimni? nima? savollariga javob beradi. Kitob — книгу, maktabga — в школу. Jonli va jonsiz otlarda farq bor.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "ru_b_03_e1", "type": "mcq", "question": "Я иду в ___ (школа).", "options": ["школа", "школе", "школу", "школы"], "correct": 2, "explanation": "Yo'nalish — Vinitelniy: в школу."},
-            {"id": "ru_b_03_e2", "type": "mcq", "question": "Она читает ___ (книга).", "options": ["книга", "книгу", "книге", "книги"], "correct": 1, "explanation": "To'g'ridan-to'g'ri to'ldiruvchi — книгу."},
-            {"id": "ru_b_03_e3", "type": "fill_blank", "question": "Я вижу ___ (друг).", "accepted_answers": ["друга"], "explanation": "Jonli erkaklik — друга."},
-            {"id": "ru_b_03_e4", "type": "mcq", "question": "'Быстро' so'zining ma'nosi:", "options": ["sekin", "tez", "baland", "past"], "correct": 1, "explanation": "Быстро — tez."}
+            {
+              "id": "ru_b_03_e1",
+              "type": "mcq",
+              "question": "Я иду в ___ (школа).",
+              "options": [
+                "школа",
+                "школе",
+                "школу",
+                "школы"
+              ],
+              "correct": 2,
+              "explanation": "Yo'nalish — Vinitelniy: в школу."
+            },
+            {
+              "id": "ru_b_03_e2",
+              "type": "mcq",
+              "question": "Она читает ___ (книга).",
+              "options": [
+                "книга",
+                "книгу",
+                "книге",
+                "книги"
+              ],
+              "correct": 1,
+              "explanation": "To'g'ridan-to'g'ri to'ldiruvchi — книгу."
+            },
+            {
+              "id": "ru_b_03_e3",
+              "type": "fill_blank",
+              "question": "Я вижу ___ (друг).",
+              "accepted_answers": [
+                "друга"
+              ],
+              "explanation": "Jonli erkaklik — друга."
+            },
+            {
+              "id": "ru_b_03_e4",
+              "type": "mcq",
+              "question": "'Быстро' so'zining ma'nosi:",
+              "options": [
+                "sekin",
+                "tez",
+                "baland",
+                "past"
+              ],
+              "correct": 1,
+              "explanation": "Быстро — tez."
+            },
+            {
+              "id": "ru_b_03_e5",
+              "type": "mcq",
+              "question": "Я вижу ___ (стол).",
+              "options": [
+                "стол",
+                "стола",
+                "столу",
+                "столом"
+              ],
+              "correct": 0,
+              "explanation": "Jonsiz erkak — o'zgarmaydi."
+            },
+            {
+              "id": "ru_b_03_e6",
+              "type": "mcq",
+              "question": "Она любит ___ (музыка).",
+              "options": [
+                "музыка",
+                "музыку",
+                "музыке",
+                "музыкой"
+              ],
+              "correct": 1,
+              "explanation": "музыку."
+            },
+            {
+              "id": "ru_b_03_e7",
+              "type": "fill_blank",
+              "question": "Я иду в ___ (парк).",
+              "accepted_answers": [
+                "парк"
+              ],
+              "explanation": "в парк."
+            },
+            {
+              "id": "ru_b_03_e8",
+              "type": "mcq",
+              "question": "Мы читаем ___ (газета).",
+              "options": [
+                "газета",
+                "газету",
+                "газете",
+                "газетой"
+              ],
+              "correct": 1,
+              "explanation": "газету."
+            },
+            {
+              "id": "ru_b_03_e9",
+              "type": "mcq",
+              "question": "Он встречает ___ (друг).",
+              "options": [
+                "друг",
+                "друга",
+                "другу",
+                "другом"
+              ],
+              "correct": 1,
+              "explanation": "Jonli — друга."
+            },
+            {
+              "id": "ru_b_03_e10",
+              "type": "fill_blank",
+              "question": "Купи ___ (хлеб).",
+              "accepted_answers": [
+                "хлеб"
+              ],
+              "explanation": "хлеб."
+            },
+            {
+              "id": "ru_b_03_e11",
+              "type": "mcq",
+              "question": "Я пишу ___ (письмо).",
+              "options": [
+                "письмо",
+                "письма",
+                "письму",
+                "письмом"
+              ],
+              "correct": 0,
+              "explanation": "письмо."
+            },
+            {
+              "id": "ru_b_03_e12",
+              "type": "mcq",
+              "question": "Они смотрят ___ (фильм).",
+              "options": [
+                "фильм",
+                "фильма",
+                "фильму",
+                "фильмом"
+              ],
+              "correct": 0,
+              "explanation": "фильм."
+            }
           ]
         },
         {
@@ -67,10 +505,150 @@
           "theory_oral": "Predlojniy padej — qayerda? kim haqida? savollariga. В yoki На predlogi bilan joy, О predlogi bilan mavzu bildiriladi. Ташкент — в Ташкенте.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "ru_b_04_e1", "type": "mcq", "question": "Мы живём ___ (Ташкент).", "options": ["Ташкент", "в Ташкенте", "в Ташкент", "Ташкенте"], "correct": 1, "explanation": "Joy — Predlojniy: в Ташкенте."},
-            {"id": "ru_b_04_e2", "type": "mcq", "question": "'Магазин' — bu qayer?", "options": ["do'kon", "maktab", "kasalxona", "bank"], "correct": 0, "explanation": "Магазин — do'kon."},
-            {"id": "ru_b_04_e3", "type": "fill_blank", "question": "Я говорю о ___ (книга).", "accepted_answers": ["книге"], "explanation": "о + Predlojniy — книге."},
-            {"id": "ru_b_04_e4", "type": "mcq", "question": "'Вода' — bu:", "options": ["olov", "suv", "havo", "yer"], "correct": 1, "explanation": "Вода — suv."}
+            {
+              "id": "ru_b_04_e1",
+              "type": "mcq",
+              "question": "Мы живём ___ (Ташкент).",
+              "options": [
+                "Ташкент",
+                "в Ташкенте",
+                "в Ташкент",
+                "Ташкенте"
+              ],
+              "correct": 1,
+              "explanation": "Joy — Predlojniy: в Ташкенте."
+            },
+            {
+              "id": "ru_b_04_e2",
+              "type": "mcq",
+              "question": "'Магазин' — bu qayer?",
+              "options": [
+                "do'kon",
+                "maktab",
+                "kasalxona",
+                "bank"
+              ],
+              "correct": 0,
+              "explanation": "Магазин — do'kon."
+            },
+            {
+              "id": "ru_b_04_e3",
+              "type": "fill_blank",
+              "question": "Я говорю о ___ (книга).",
+              "accepted_answers": [
+                "книге"
+              ],
+              "explanation": "о + Predlojniy — книге."
+            },
+            {
+              "id": "ru_b_04_e4",
+              "type": "mcq",
+              "question": "'Вода' — bu:",
+              "options": [
+                "olov",
+                "suv",
+                "havo",
+                "yer"
+              ],
+              "correct": 1,
+              "explanation": "Вода — suv."
+            },
+            {
+              "id": "ru_b_04_e5",
+              "type": "mcq",
+              "question": "Книга лежит на ___ (стол).",
+              "options": [
+                "стол",
+                "стола",
+                "столе",
+                "столом"
+              ],
+              "correct": 2,
+              "explanation": "на столе."
+            },
+            {
+              "id": "ru_b_04_e6",
+              "type": "mcq",
+              "question": "Мы говорим о ___ (погода).",
+              "options": [
+                "погода",
+                "погоду",
+                "погоде",
+                "погодой"
+              ],
+              "correct": 2,
+              "explanation": "о погоде."
+            },
+            {
+              "id": "ru_b_04_e7",
+              "type": "fill_blank",
+              "question": "Я живу в ___ (Москва).",
+              "accepted_answers": [
+                "Москве"
+              ],
+              "explanation": "в Москве."
+            },
+            {
+              "id": "ru_b_04_e8",
+              "type": "mcq",
+              "question": "Он думает о ___ (работа).",
+              "options": [
+                "работа",
+                "работу",
+                "работе",
+                "работой"
+              ],
+              "correct": 2,
+              "explanation": "о работе."
+            },
+            {
+              "id": "ru_b_04_e9",
+              "type": "mcq",
+              "question": "Цветы стоят в ___ (ваза).",
+              "options": [
+                "ваза",
+                "вазу",
+                "вазе",
+                "вазой"
+              ],
+              "correct": 2,
+              "explanation": "в вазе."
+            },
+            {
+              "id": "ru_b_04_e10",
+              "type": "fill_blank",
+              "question": "Урок в ___ (школа).",
+              "accepted_answers": [
+                "школе"
+              ],
+              "explanation": "в школе."
+            },
+            {
+              "id": "ru_b_04_e11",
+              "type": "mcq",
+              "question": "Я мечтаю о ___ (путешествие).",
+              "options": [
+                "путешествие",
+                "путешествия",
+                "путешествии",
+                "путешествием"
+              ],
+              "correct": 2,
+              "explanation": "о путешествии."
+            },
+            {
+              "id": "ru_b_04_e12",
+              "type": "mcq",
+              "question": "Машина стоит около ___ (дом).",
+              "options": [
+                "дом",
+                "дома",
+                "дому",
+                "домом"
+              ],
+              "correct": 1,
+              "explanation": "около + Genitive — дома."
+            }
           ]
         }
       ]
@@ -89,9 +667,125 @@
           "theory_oral": "O'tgan zamon jins va songa qarab o'zgaradi: ходил, ходила, ходило, ходили. Fe'l asosiga -л qo'shiladi.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "ru_i_01_e1", "type": "mcq", "question": "Вчера я ___ в магазин.", "options": ["иду", "ходил", "пойду", "хожу"], "correct": 1, "explanation": "O'tgan zamon, erkaklik — ходил."},
-            {"id": "ru_i_01_e2", "type": "mcq", "question": "Она вчера ___ книгу.", "options": ["читал", "читала", "читали", "читало"], "correct": 1, "explanation": "Ayollik — читала."},
-            {"id": "ru_i_01_e3", "type": "fill_blank", "question": "Мы ___ (смотреть) фильм.", "accepted_answers": ["смотрели"], "explanation": "Ko'plik — смотрели."}
+            {
+              "id": "ru_i_01_e1",
+              "type": "mcq",
+              "question": "Вчера я ___ в магазин.",
+              "options": [
+                "иду",
+                "ходил",
+                "пойду",
+                "хожу"
+              ],
+              "correct": 1,
+              "explanation": "O'tgan zamon, erkaklik — ходил."
+            },
+            {
+              "id": "ru_i_01_e2",
+              "type": "mcq",
+              "question": "Она вчера ___ книгу.",
+              "options": [
+                "читал",
+                "читала",
+                "читали",
+                "читало"
+              ],
+              "correct": 1,
+              "explanation": "Ayollik — читала."
+            },
+            {
+              "id": "ru_i_01_e3",
+              "type": "fill_blank",
+              "question": "Мы ___ (смотреть) фильм.",
+              "accepted_answers": [
+                "смотрели"
+              ],
+              "explanation": "Ko'plik — смотрели."
+            },
+            {
+              "id": "ru_i_01_e4",
+              "type": "mcq",
+              "question": "Вчера она ___ в кино.",
+              "options": [
+                "ходил",
+                "ходила",
+                "ходили",
+                "ходило"
+              ],
+              "correct": 1,
+              "explanation": "ходила."
+            },
+            {
+              "id": "ru_i_01_e5",
+              "type": "fill_blank",
+              "question": "Мы ___ (читать) книгу.",
+              "accepted_answers": [
+                "читали"
+              ],
+              "explanation": "читали."
+            },
+            {
+              "id": "ru_i_01_e6",
+              "type": "mcq",
+              "question": "Он ___ письмо.",
+              "options": [
+                "писал",
+                "писала",
+                "писали",
+                "писало"
+              ],
+              "correct": 0,
+              "explanation": "писал."
+            },
+            {
+              "id": "ru_i_01_e7",
+              "type": "mcq",
+              "question": "Дети ___ во дворе.",
+              "options": [
+                "играл",
+                "играла",
+                "играли",
+                "играло"
+              ],
+              "correct": 2,
+              "explanation": "играли."
+            },
+            {
+              "id": "ru_i_01_e8",
+              "type": "fill_blank",
+              "question": "Я ___ (видеть) его вчера.",
+              "accepted_answers": [
+                "видел",
+                "видела"
+              ],
+              "explanation": "видел/видела."
+            },
+            {
+              "id": "ru_i_01_e9",
+              "type": "mcq",
+              "question": "Солнце ___ ярко.",
+              "options": [
+                "светил",
+                "светила",
+                "светило",
+                "светили"
+              ],
+              "correct": 2,
+              "explanation": "светило."
+            },
+            {
+              "id": "ru_i_01_e10",
+              "type": "mcq",
+              "question": "Ты ___ домой поздно.",
+              "options": [
+                "пришёл",
+                "пришла",
+                "пришли",
+                "пришло"
+              ],
+              "correct": 0,
+              "explanation": "Depends on gender; common default пришёл."
+            }
           ]
         },
         {
@@ -105,9 +799,125 @@
           "theory_oral": "Kelasi zamonda perfective fe'llar oddiy shaklda (пойду), imperfective esa буду + infinitiv bilan yasalandi. Aspekt — ishning tugagan yoki davomiy ekanligini bildiradi.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "ru_i_02_e1", "type": "mcq", "question": "Завтра мы ___ на встречу.", "options": ["идём", "пойдём", "шли", "ходили"], "correct": 1, "explanation": "Bir martalik kelajak — пойдём."},
-            {"id": "ru_i_02_e2", "type": "fill_blank", "question": "Завтра мы ___ (пойти) в кино.", "accepted_answers": ["пойдём", "пойдем"], "explanation": "пойдём."},
-            {"id": "ru_i_02_e3", "type": "mcq", "question": "'Возможность' so'zi ma'nosi:", "options": ["imkoniyat", "muammo", "xato", "qiyinchilik"], "correct": 0, "explanation": "Возможность — imkoniyat."}
+            {
+              "id": "ru_i_02_e1",
+              "type": "mcq",
+              "question": "Завтра мы ___ на встречу.",
+              "options": [
+                "идём",
+                "пойдём",
+                "шли",
+                "ходили"
+              ],
+              "correct": 1,
+              "explanation": "Bir martalik kelajak — пойдём."
+            },
+            {
+              "id": "ru_i_02_e2",
+              "type": "fill_blank",
+              "question": "Завтра мы ___ (пойти) в кино.",
+              "accepted_answers": [
+                "пойдём",
+                "пойдем"
+              ],
+              "explanation": "пойдём."
+            },
+            {
+              "id": "ru_i_02_e3",
+              "type": "mcq",
+              "question": "'Возможность' so'zi ma'nosi:",
+              "options": [
+                "imkoniyat",
+                "muammo",
+                "xato",
+                "qiyinchilik"
+              ],
+              "correct": 0,
+              "explanation": "Возможность — imkoniyat."
+            },
+            {
+              "id": "ru_i_02_e4",
+              "type": "mcq",
+              "question": "Завтра я ___ работать.",
+              "options": [
+                "буду",
+                "пойду",
+                "шёл",
+                "хожу"
+              ],
+              "correct": 0,
+              "explanation": "буду работать — imperfective future."
+            },
+            {
+              "id": "ru_i_02_e5",
+              "type": "fill_blank",
+              "question": "Она ___ (сделать) это завтра.",
+              "accepted_answers": [
+                "сделает"
+              ],
+              "explanation": "сделает — perfective."
+            },
+            {
+              "id": "ru_i_02_e6",
+              "type": "mcq",
+              "question": "Мы ___ читать каждый вечер.",
+              "options": [
+                "будем",
+                "прочитаем",
+                "читали",
+                "читаем"
+              ],
+              "correct": 0,
+              "explanation": "будем читать."
+            },
+            {
+              "id": "ru_i_02_e7",
+              "type": "mcq",
+              "question": "'Опытный' means:",
+              "options": [
+                "tajribali",
+                "yosh",
+                "bilimsiz",
+                "tez"
+              ],
+              "correct": 0,
+              "explanation": "tajribali."
+            },
+            {
+              "id": "ru_i_02_e8",
+              "type": "fill_blank",
+              "question": "Они ___ (поехать) в Самарканд.",
+              "accepted_answers": [
+                "поедут"
+              ],
+              "explanation": "поедут."
+            },
+            {
+              "id": "ru_i_02_e9",
+              "type": "mcq",
+              "question": "Я ___ писать письмо (davomiy kelajak).",
+              "options": [
+                "напишу",
+                "буду писать",
+                "писал",
+                "пишу"
+              ],
+              "correct": 1,
+              "explanation": "буду писать."
+            },
+            {
+              "id": "ru_i_02_e10",
+              "type": "mcq",
+              "question": "Antonym of 'увеличивать':",
+              "options": [
+                "расти",
+                "уменьшать",
+                "повышать",
+                "расширять"
+              ],
+              "correct": 1,
+              "explanation": "уменьшать."
+            }
           ]
         },
         {
@@ -121,9 +931,115 @@
           "theory_oral": "Tvoritelniy — kim bilan? nima bilan? Интересоваться fe'li Tvoritelniy talab qiladi: интересуюсь музыкой. Majhul nisbatda ham shu padej ishlatiladi.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "ru_i_03_e1", "type": "mcq", "question": "Я интересуюсь ___ (музыка).", "options": ["музыка", "музыку", "музыкой", "музыке"], "correct": 2, "explanation": "интересоваться + Tvoritelniy."},
-            {"id": "ru_i_03_e2", "type": "mcq", "question": "Этот текст был написан ___ известным писателем.", "options": ["-", "с", "от", "за"], "correct": 0, "explanation": "Majhulda predlog yo'q — писателем."},
-            {"id": "ru_i_03_e3", "type": "mcq", "question": "'Опытный' odam qanday odam?", "options": ["tajribali", "yosh", "bilimsiz", "jahldor"], "correct": 0, "explanation": "Опытный — tajribali."}
+            {
+              "id": "ru_i_03_e1",
+              "type": "mcq",
+              "question": "Я интересуюсь ___ (музыка).",
+              "options": [
+                "музыка",
+                "музыку",
+                "музыкой",
+                "музыке"
+              ],
+              "correct": 2,
+              "explanation": "интересоваться + Tvoritelniy."
+            },
+            {
+              "id": "ru_i_03_e2",
+              "type": "mcq",
+              "question": "Этот текст был написан ___ известным писателем.",
+              "options": [
+                "-",
+                "с",
+                "от",
+                "за"
+              ],
+              "correct": 0,
+              "explanation": "Majhulda predlog yo'q — писателем."
+            },
+            {
+              "id": "ru_i_03_e3",
+              "type": "mcq",
+              "question": "'Опытный' odam qanday odam?",
+              "options": [
+                "tajribali",
+                "yosh",
+                "bilimsiz",
+                "jahldor"
+              ],
+              "correct": 0,
+              "explanation": "Опытный — tajribali."
+            },
+            {
+              "id": "ru_i_03_e4",
+              "type": "mcq",
+              "question": "Он работает ___ (врач).",
+              "options": [
+                "врач",
+                "врача",
+                "врачу",
+                "врачом"
+              ],
+              "correct": 3,
+              "explanation": "врачом — Tvoritelniy of role."
+            },
+            {
+              "id": "ru_i_03_e5",
+              "type": "fill_blank",
+              "question": "Я горжусь ___ (сын).",
+              "accepted_answers": [
+                "сыном"
+              ],
+              "explanation": "сыном."
+            },
+            {
+              "id": "ru_i_03_e6",
+              "type": "mcq",
+              "question": "Письмо написано ___ (ручка).",
+              "options": [
+                "ручка",
+                "ручку",
+                "ручке",
+                "ручкой"
+              ],
+              "correct": 3,
+              "explanation": "ручкой."
+            },
+            {
+              "id": "ru_i_03_e7",
+              "type": "mcq",
+              "question": "Мы идём с ___ (друг).",
+              "options": [
+                "друг",
+                "друга",
+                "другу",
+                "другом"
+              ],
+              "correct": 3,
+              "explanation": "с другом."
+            },
+            {
+              "id": "ru_i_03_e8",
+              "type": "fill_blank",
+              "question": "Она интересуется ___ (спорт).",
+              "accepted_answers": [
+                "спортом"
+              ],
+              "explanation": "спортом."
+            },
+            {
+              "id": "ru_i_03_e9",
+              "type": "mcq",
+              "question": "'Достигать цели' means:",
+              "options": [
+                "voz kechish",
+                "erishish",
+                "qo'yish",
+                "unutish"
+              ],
+              "correct": 1,
+              "explanation": "erishish."
+            }
           ]
         },
         {
@@ -137,9 +1053,101 @@
           "theory_oral": "Agar ... bo'lsa edi, ... qilgan bo'lardim. O'tgan zamon shakli + бы zarrachasi. Это сослагательное наклонение.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "ru_i_04_e1", "type": "mcq", "question": "Если бы у меня было время, я ___ пошёл гулять.", "options": ["-", "бы", "же", "ли"], "correct": 1, "explanation": "бы zarrachasi kerak."},
-            {"id": "ru_i_04_e2", "type": "mcq", "question": "'Достигать цели' iborasi ma'nosi:", "options": ["maqsaddan voz kechish", "maqsadga erishish", "maqsad qo'yish", "unutish"], "correct": 1, "explanation": "Достигать — erishmoq."},
-            {"id": "ru_i_04_e3", "type": "fill_blank", "question": "'Erishmoq' fe'lining ruscha tarjimasi: дост___ть", "accepted_answers": ["достигать", "достичь"], "explanation": "достигать / достичь."}
+            {
+              "id": "ru_i_04_e1",
+              "type": "mcq",
+              "question": "Если бы у меня было время, я ___ пошёл гулять.",
+              "options": [
+                "-",
+                "бы",
+                "же",
+                "ли"
+              ],
+              "correct": 1,
+              "explanation": "бы zarrachasi kerak."
+            },
+            {
+              "id": "ru_i_04_e2",
+              "type": "mcq",
+              "question": "'Достигать цели' iborasi ma'nosi:",
+              "options": [
+                "maqsaddan voz kechish",
+                "maqsadga erishish",
+                "maqsad qo'yish",
+                "unutish"
+              ],
+              "correct": 1,
+              "explanation": "Достигать — erishmoq."
+            },
+            {
+              "id": "ru_i_04_e3",
+              "type": "fill_blank",
+              "question": "'Erishmoq' fe'lining ruscha tarjimasi: дост___ть",
+              "accepted_answers": [
+                "достигать",
+                "достичь"
+              ],
+              "explanation": "достигать / достичь."
+            },
+            {
+              "id": "ru_i_04_e4",
+              "type": "mcq",
+              "question": "Если бы я знал, я ___ пришёл.",
+              "options": [
+                "бы",
+                "же",
+                "ли",
+                "-"
+              ],
+              "correct": 0,
+              "explanation": "бы."
+            },
+            {
+              "id": "ru_i_04_e5",
+              "type": "fill_blank",
+              "question": "Я ___ (хотеть) поехать. (shart)",
+              "accepted_answers": [
+                "хотел бы",
+                "хотела бы"
+              ],
+              "explanation": "хотел бы."
+            },
+            {
+              "id": "ru_i_04_e6",
+              "type": "mcq",
+              "question": "Если бы не дождь, мы ___ гулять.",
+              "options": [
+                "пошли бы",
+                "идём",
+                "пошли",
+                "пойдём"
+              ],
+              "correct": 0,
+              "explanation": "пошли бы."
+            },
+            {
+              "id": "ru_i_04_e7",
+              "type": "mcq",
+              "question": "'Возможность' means:",
+              "options": [
+                "imkoniyat",
+                "muammo",
+                "xato",
+                "qiyin"
+              ],
+              "correct": 0,
+              "explanation": "imkoniyat."
+            },
+            {
+              "id": "ru_i_04_e8",
+              "type": "fill_blank",
+              "question": "Он сказал, что ___ (прийти).",
+              "accepted_answers": [
+                "придёт",
+                "пришел бы"
+              ],
+              "explanation": "Context dependent."
+            }
           ]
         }
       ]
@@ -158,9 +1166,102 @@
           "theory_oral": "Несмотря на — qaramasdan. Как будто — go'yoki. Деепричастие — fe'lning maxsus shakli, qo'shimcha harakatni bildiradi: читая — o'qiyotib.",
           "pass_threshold": 80,
           "exercises": [
-            {"id": "ru_a_01_e1", "type": "mcq", "question": "Несмотря ___ дождь, мы пошли гулять.", "options": ["на", "от", "из", "с"], "correct": 0, "explanation": "Несмотря на."},
-            {"id": "ru_a_01_e2", "type": "mcq", "question": "Он говорил так, ___ будто ничего не случилось.", "options": ["как", "как будто", "что", "чтобы"], "correct": 1, "explanation": "как будто."},
-            {"id": "ru_a_01_e3", "type": "mcq", "question": "Правильный вариант деепричастия от 'читать':", "options": ["читав", "читая", "прочитав", "читал"], "correct": 1, "explanation": "Nomukammal — читая."}
+            {
+              "id": "ru_a_01_e1",
+              "type": "mcq",
+              "question": "Несмотря ___ дождь, мы пошли гулять.",
+              "options": [
+                "на",
+                "от",
+                "из",
+                "с"
+              ],
+              "correct": 0,
+              "explanation": "Несмотря на."
+            },
+            {
+              "id": "ru_a_01_e2",
+              "type": "mcq",
+              "question": "Он говорил так, ___ будто ничего не случилось.",
+              "options": [
+                "как",
+                "как будто",
+                "что",
+                "чтобы"
+              ],
+              "correct": 1,
+              "explanation": "как будто."
+            },
+            {
+              "id": "ru_a_01_e3",
+              "type": "mcq",
+              "question": "Правильный вариант деепричастия от 'читать':",
+              "options": [
+                "читав",
+                "читая",
+                "прочитав",
+                "читал"
+              ],
+              "correct": 1,
+              "explanation": "Nomukammal — читая."
+            },
+            {
+              "id": "ru_a_01_e4",
+              "type": "mcq",
+              "question": "___ на усталость, он продолжал работать.",
+              "options": [
+                "Несмотря",
+                "Несмотря на",
+                "Не смотря",
+                "Несмотря от"
+              ],
+              "correct": 1,
+              "explanation": "Несмотря на."
+            },
+            {
+              "id": "ru_a_01_e5",
+              "type": "fill_blank",
+              "question": "Читая книгу, он ___ (делать) заметки.",
+              "accepted_answers": [
+                "делал"
+              ],
+              "explanation": "делал."
+            },
+            {
+              "id": "ru_a_01_e6",
+              "type": "mcq",
+              "question": "Прочитав письмо, она ___.",
+              "options": [
+                "улыбнулась",
+                "улыбаясь",
+                "улыбка",
+                "улыбнуться"
+              ],
+              "correct": 0,
+              "explanation": "Прочитав → ulg'aygan harakat."
+            },
+            {
+              "id": "ru_a_01_e7",
+              "type": "mcq",
+              "question": "Он вёл себя, ___ ничего не знал.",
+              "options": [
+                "как",
+                "как будто",
+                "что",
+                "чтобы"
+              ],
+              "correct": 1,
+              "explanation": "как будто."
+            },
+            {
+              "id": "ru_a_01_e8",
+              "type": "fill_blank",
+              "question": "Правильное деепричастие: ___ (говорить)",
+              "accepted_answers": [
+                "говоря"
+              ],
+              "explanation": "говоря."
+            }
           ]
         },
         {
@@ -174,10 +1275,121 @@
           "theory_oral": "Kelajakda tugallangan ish uchun будет + краткое причастие. Advanced lug'at: неоднозначный, усугублять, скрупулёзный, повсеместный.",
           "pass_threshold": 80,
           "exercises": [
-            {"id": "ru_a_02_e1", "type": "mcq", "question": "К концу года проект ___ завершён.", "options": ["будет", "был", "есть", "бывает"], "correct": 0, "explanation": "будет завершён."},
-            {"id": "ru_a_02_e2", "type": "mcq", "question": "'Неоднозначный' so'zi ma'nosi:", "options": ["aniq", "ikki xil talqin qilinadigan", "oddiy", "qisqa"], "correct": 1, "explanation": "Неоднозначный — noaniq."},
-            {"id": "ru_a_02_e3", "type": "mcq", "question": "'Усугублять проблему' — bu:", "options": ["yechish", "kuchaytirish", "yashirish", "unutish"], "correct": 1, "explanation": "Усугублять — kuchaytirmoq."},
-            {"id": "ru_a_02_e4", "type": "mcq", "question": "'Повсеместный' so'zining ma'nosi:", "options": ["kamdan-kam", "hamma joyda mavjud", "qadimiy", "noaniq"], "correct": 1, "explanation": "Повсеместный — hamma yerda."}
+            {
+              "id": "ru_a_02_e1",
+              "type": "mcq",
+              "question": "К концу года проект ___ завершён.",
+              "options": [
+                "будет",
+                "был",
+                "есть",
+                "бывает"
+              ],
+              "correct": 0,
+              "explanation": "будет завершён."
+            },
+            {
+              "id": "ru_a_02_e2",
+              "type": "mcq",
+              "question": "'Неоднозначный' so'zi ma'nosi:",
+              "options": [
+                "aniq",
+                "ikki xil talqin qilinadigan",
+                "oddiy",
+                "qisqa"
+              ],
+              "correct": 1,
+              "explanation": "Неоднозначный — noaniq."
+            },
+            {
+              "id": "ru_a_02_e3",
+              "type": "mcq",
+              "question": "'Усугублять проблему' — bu:",
+              "options": [
+                "yechish",
+                "kuchaytirish",
+                "yashirish",
+                "unutish"
+              ],
+              "correct": 1,
+              "explanation": "Усугублять — kuchaytirmoq."
+            },
+            {
+              "id": "ru_a_02_e4",
+              "type": "mcq",
+              "question": "'Повсеместный' so'zining ma'nosi:",
+              "options": [
+                "kamdan-kam",
+                "hamma joyda mavjud",
+                "qadimiy",
+                "noaniq"
+              ],
+              "correct": 1,
+              "explanation": "Повсеместный — hamma yerda."
+            },
+            {
+              "id": "ru_a_02_e5",
+              "type": "mcq",
+              "question": "'Скрупулёзный' means:",
+              "options": [
+                "beparvo",
+                "juda diqqatli",
+                "tez",
+                "tartibsiz"
+              ],
+              "correct": 1,
+              "explanation": "juda diqqatli."
+            },
+            {
+              "id": "ru_a_02_e6",
+              "type": "mcq",
+              "question": "К завтрашнему дню работа ___ закончена.",
+              "options": [
+                "будет",
+                "была",
+                "есть",
+                "бывает"
+              ],
+              "correct": 0,
+              "explanation": "будет закончена."
+            },
+            {
+              "id": "ru_a_02_e7",
+              "type": "mcq",
+              "question": "'Усугублять' means:",
+              "options": [
+                "yechish",
+                "kuchaytirish",
+                "yashirish",
+                "unutish"
+              ],
+              "correct": 1,
+              "explanation": "kuchaytirish."
+            },
+            {
+              "id": "ru_a_02_e8",
+              "type": "fill_blank",
+              "question": "'Неоднозначный' = ___",
+              "accepted_answers": [
+                "ikki xil talqin",
+                "noaniq",
+                "ambiguous"
+              ],
+              "explanation": "ikki xil talqin."
+            },
+            {
+              "id": "ru_a_02_e9",
+              "type": "mcq",
+              "question": "'Повсеместный' means:",
+              "options": [
+                "kamdan-kam",
+                "hamma joyda",
+                "qadimiy",
+                "noaniq"
+              ],
+              "correct": 1,
+              "explanation": "hamma joyda."
+            }
           ]
         }
       ]

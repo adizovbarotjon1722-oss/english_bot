@@ -1,9 +1,9 @@
 """
-database.py — SQLite ma'lumotlar bazasi qatlami.
-Repetitorlik Telegram bot: foydalanuvchilar, progress, natijalar, nishonlar.
+database.py — SQLite qatlami: users, progress, referral, premium, certificates.
 """
 
 import sqlite3
+import secrets
 from datetime import date, timedelta
 from contextlib import contextmanager
 from typing import Optional
@@ -24,7 +24,6 @@ def get_conn():
 
 
 def init_db():
-    """Barcha jadvallarni yaratadi (agar mavjud bo'lmasa)."""
     with get_conn() as conn:
         conn.executescript(
             """
@@ -38,7 +37,12 @@ def init_db():
                 last_active_date TEXT,
                 placement_done INTEGER DEFAULT 0,
                 current_level TEXT DEFAULT 'beginner',
-                xp INTEGER DEFAULT 0
+                xp INTEGER DEFAULT 0,
+                is_premium INTEGER DEFAULT 0,
+                premium_until TEXT,
+                referral_code TEXT UNIQUE,
+                referred_by INTEGER REFERENCES users(id),
+                referral_count INTEGER DEFAULT 0
             );
 
             CREATE TABLE IF NOT EXISTS results (
@@ -95,26 +99,114 @@ def init_db():
                 lessons_done INTEGER DEFAULT 0,
                 PRIMARY KEY (user_id, activity_date)
             );
+
+            CREATE TABLE IF NOT EXISTS certificates (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                subject TEXT NOT NULL,
+                level TEXT NOT NULL,
+                issued_at TEXT DEFAULT (datetime('now')),
+                file_path TEXT
+            );
             """
         )
+        # Migratsiya: eski jadvalga yangi ustunlar
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(users)").fetchall()}
+        for col, typ in [
+            ("is_premium", "INTEGER DEFAULT 0"),
+            ("premium_until", "TEXT"),
+            ("referral_code", "TEXT"),
+            ("referred_by", "INTEGER"),
+            ("referral_count", "INTEGER DEFAULT 0"),
+        ]:
+            if col not in cols:
+                try:
+                    conn.execute(f"ALTER TABLE users ADD COLUMN {col} {typ}")
+                except sqlite3.OperationalError:
+                    pass
 
 
-def get_or_create_user(telegram_id: int, username: str | None, full_name: str | None) -> int:
+def _gen_ref_code() -> str:
+    return secrets.token_hex(3).upper()  # 6 belgi
+
+
+def get_or_create_user(
+    telegram_id: int,
+    username: str | None,
+    full_name: str | None,
+    referral_code_used: str | None = None,
+) -> int:
     with get_conn() as conn:
         row = conn.execute(
-            "SELECT id FROM users WHERE telegram_id = ?", (telegram_id,)
+            "SELECT id, referral_code FROM users WHERE telegram_id = ?", (telegram_id,)
         ).fetchone()
         if row:
             conn.execute(
                 "UPDATE users SET username = ?, full_name = ? WHERE id = ?",
                 (username, full_name, row["id"]),
             )
+            if not row["referral_code"]:
+                code = _gen_ref_code()
+                while conn.execute(
+                    "SELECT 1 FROM users WHERE referral_code = ?", (code,)
+                ).fetchone():
+                    code = _gen_ref_code()
+                conn.execute(
+                    "UPDATE users SET referral_code = ? WHERE id = ?", (code, row["id"])
+                )
             return row["id"]
+
+        code = _gen_ref_code()
+        while conn.execute(
+            "SELECT 1 FROM users WHERE referral_code = ?", (code,)
+        ).fetchone():
+            code = _gen_ref_code()
+
+        referred_by = None
+        if referral_code_used:
+            ref = conn.execute(
+                "SELECT id FROM users WHERE referral_code = ?",
+                (referral_code_used.upper(),),
+            ).fetchone()
+            if ref:
+                referred_by = ref["id"]
+
         cur = conn.execute(
-            "INSERT INTO users (telegram_id, username, full_name) VALUES (?, ?, ?)",
-            (telegram_id, username, full_name),
+            """
+            INSERT INTO users (telegram_id, username, full_name, referral_code, referred_by)
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            (telegram_id, username, full_name, code, referred_by),
         )
-        return cur.lastrowid
+        new_id = cur.lastrowid
+        if referred_by:
+            conn.execute(
+                "UPDATE users SET referral_count = referral_count + 1 WHERE id = ?",
+                (referred_by,),
+            )
+        return new_id
+
+
+def apply_referral_bonus(referrer_id: int, new_user_id: int) -> bool:
+    """Referrer va yangi user uchun bonus nishon / XP."""
+    with get_conn() as conn:
+        # Faqat bir marta
+        if conn.execute(
+            "SELECT 1 FROM badges WHERE user_id = ? AND code = ?",
+            (referrer_id, f"ref_{new_user_id}"),
+        ).fetchone():
+            return False
+        conn.execute(
+            "INSERT OR IGNORE INTO badges (user_id, code) VALUES (?, ?)",
+            (referrer_id, "referral_friend"),
+        )
+        conn.execute(
+            "INSERT OR IGNORE INTO badges (user_id, code) VALUES (?, ?)",
+            (new_user_id, "joined_via_referral"),
+        )
+        conn.execute("UPDATE users SET xp = xp + 50 WHERE id = ?", (referrer_id,))
+        conn.execute("UPDATE users SET xp = xp + 30 WHERE id = ?", (new_user_id,))
+        return True
 
 
 def get_user_by_telegram(telegram_id: int) -> Optional[dict]:
@@ -123,6 +215,50 @@ def get_user_by_telegram(telegram_id: int) -> Optional[dict]:
             "SELECT * FROM users WHERE telegram_id = ?", (telegram_id,)
         ).fetchone()
         return dict(row) if row else None
+
+
+def get_referral_code(user_id: int) -> str:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT referral_code FROM users WHERE id = ?", (user_id,)
+        ).fetchone()
+        if row and row["referral_code"]:
+            return row["referral_code"]
+        code = _gen_ref_code()
+        conn.execute(
+            "UPDATE users SET referral_code = ? WHERE id = ?", (code, user_id)
+        )
+        return code
+
+
+def is_premium(user_id: int) -> bool:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT is_premium, premium_until FROM users WHERE id = ?", (user_id,)
+        ).fetchone()
+        if not row or not row["is_premium"]:
+            return False
+        if row["premium_until"]:
+            try:
+                from datetime import datetime
+                until = datetime.fromisoformat(row["premium_until"])
+                if until.date() < date.today():
+                    conn.execute(
+                        "UPDATE users SET is_premium = 0 WHERE id = ?", (user_id,)
+                    )
+                    return False
+            except ValueError:
+                pass
+        return True
+
+
+def set_premium(user_id: int, days: int = 30):
+    until = (date.today() + timedelta(days=days)).isoformat()
+    with get_conn() as conn:
+        conn.execute(
+            "UPDATE users SET is_premium = 1, premium_until = ? WHERE id = ?",
+            (until, user_id),
+        )
 
 
 def set_placement_done(user_id: int, level: str):
@@ -197,10 +333,7 @@ def unlock_module(user_id: int, subject: str, module_id: str):
             INSERT INTO module_progress (user_id, subject, module_id, status)
             VALUES (?, ?, ?, 'unlocked')
             ON CONFLICT(user_id, subject, module_id)
-            DO UPDATE SET status = CASE
-                WHEN status = 'locked' THEN 'unlocked'
-                ELSE status
-            END
+            DO UPDATE SET status = CASE WHEN status = 'locked' THEN 'unlocked' ELSE status END
             """,
             (user_id, subject, module_id),
         )
@@ -228,11 +361,8 @@ def complete_module(user_id: int, subject: str, module_id: str, quiz_score: int,
                 (user_id, subject, module_id, status, video_watched, quiz_score, quiz_total, completed_at)
             VALUES (?, ?, ?, 'completed', 1, ?, ?, datetime('now'))
             ON CONFLICT(user_id, subject, module_id)
-            DO UPDATE SET
-                status = 'completed',
-                quiz_score = excluded.quiz_score,
-                quiz_total = excluded.quiz_total,
-                completed_at = datetime('now')
+            DO UPDATE SET status = 'completed', quiz_score = excluded.quiz_score,
+                quiz_total = excluded.quiz_total, completed_at = datetime('now')
             """,
             (user_id, subject, module_id, quiz_score, quiz_total),
         )
@@ -256,8 +386,16 @@ def get_all_module_progress(user_id: int, subject: str) -> dict:
         }
 
 
-def is_module_completed(user_id: int, subject: str, module_id: str) -> bool:
-    return get_module_status(user_id, subject, module_id) == "completed"
+def count_completed_modules(user_id: int, subject: str, level: str = None) -> int:
+    with get_conn() as conn:
+        if level:
+            # level filter qilinmaydi — bot tomonida
+            pass
+        row = conn.execute(
+            "SELECT COUNT(*) AS cnt FROM module_progress WHERE user_id = ? AND subject = ? AND status = 'completed'",
+            (user_id, subject),
+        ).fetchone()
+        return row["cnt"] if row else 0
 
 
 def mark_exercise_seen(user_id: int, subject: str, exercise_id: str):
@@ -291,8 +429,7 @@ def clear_seen_for_module(user_id: int, subject: str, exercise_ids: list):
 def save_result(user_id: int, subject: str, section: str, level: str, score: int, total: int):
     with get_conn() as conn:
         conn.execute(
-            "INSERT INTO results (user_id, subject, section, level, score, total) "
-            "VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO results (user_id, subject, section, level, score, total) VALUES (?, ?, ?, ?, ?, ?)",
             (user_id, subject, section, level, score, total),
         )
         conn.execute(
@@ -300,8 +437,7 @@ def save_result(user_id: int, subject: str, section: str, level: str, score: int
             INSERT INTO progress (user_id, subject, section, correct_count, total_count)
             VALUES (?, ?, ?, ?, ?)
             ON CONFLICT(user_id, subject, section)
-            DO UPDATE SET
-                correct_count = correct_count + excluded.correct_count,
+            DO UPDATE SET correct_count = correct_count + excluded.correct_count,
                 total_count = total_count + excluded.total_count
             """,
             (user_id, subject, section, score, total),
@@ -311,7 +447,8 @@ def save_result(user_id: int, subject: str, section: str, level: str, score: int
 def get_user_stats(user_id: int):
     with get_conn() as conn:
         user = conn.execute(
-            "SELECT streak, full_name, xp, current_level, placement_done FROM users WHERE id = ?",
+            "SELECT streak, full_name, xp, current_level, placement_done, is_premium, "
+            "referral_code, referral_count FROM users WHERE id = ?",
             (user_id,),
         ).fetchone()
         tests = conn.execute(
@@ -337,11 +474,15 @@ def get_user_stats(user_id: int):
             "xp": user["xp"] if user else 0,
             "current_level": user["current_level"] if user else "beginner",
             "placement_done": bool(user["placement_done"]) if user else False,
+            "is_premium": bool(user["is_premium"]) if user else False,
+            "referral_code": user["referral_code"] if user else "",
+            "referral_count": user["referral_count"] if user else 0,
             "tests_taken": tests["cnt"],
             "total_score": tests["total_score"],
             "total_questions": tests["total_q"],
             "completed_modules": completed_modules["cnt"] if completed_modules else 0,
             "weak_areas": [dict(w) for w in weak],
+            "full_name": user["full_name"] if user else "",
         }
 
 
@@ -378,3 +519,127 @@ def get_user_badges(user_id: int):
             "SELECT code FROM badges WHERE user_id = ? ORDER BY earned_at", (user_id,)
         ).fetchall()
         return [r["code"] for r in rows]
+
+
+def save_certificate(user_id: int, subject: str, level: str, file_path: str):
+    with get_conn() as conn:
+        conn.execute(
+            "INSERT INTO certificates (user_id, subject, level, file_path) VALUES (?, ?, ?, ?)",
+            (user_id, subject, level, file_path),
+        )
+
+
+def has_certificate(user_id: int, subject: str, level: str) -> bool:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT 1 FROM certificates WHERE user_id = ? AND subject = ? AND level = ?",
+            (user_id, subject, level),
+        ).fetchone()
+        return row is not None
+
+
+# ---------- Admin helpers ----------
+
+def count_users() -> int:
+    with get_conn() as conn:
+        return conn.execute("SELECT COUNT(*) AS c FROM users").fetchone()["c"]
+
+
+def list_users(limit: int = 20, offset: int = 0) -> list:
+    with get_conn() as conn:
+        rows = conn.execute(
+            """
+            SELECT id, telegram_id, username, full_name, xp, streak, current_level,
+                   is_premium, placement_done, referral_count, created_at
+            FROM users
+            ORDER BY id DESC
+            LIMIT ? OFFSET ?
+            """,
+            (limit, offset),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def get_user_detail(user_id: int) -> Optional[dict]:
+    with get_conn() as conn:
+        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
+        if not row:
+            return None
+        u = dict(row)
+        mods = conn.execute(
+            "SELECT subject, module_id, status, quiz_score, quiz_total, completed_at "
+            "FROM module_progress WHERE user_id = ? ORDER BY subject, module_id",
+            (user_id,),
+        ).fetchall()
+        u["modules"] = [dict(m) for m in mods]
+        recent = conn.execute(
+            "SELECT subject, section, level, score, total, created_at FROM results "
+            "WHERE user_id = ? ORDER BY id DESC LIMIT 10",
+            (user_id,),
+        ).fetchall()
+        u["recent_results"] = [dict(r) for r in recent]
+        return u
+
+
+def find_user_by_telegram(telegram_id: int) -> Optional[dict]:
+    return get_user_by_telegram(telegram_id)
+
+
+def find_user_by_username(username: str) -> Optional[dict]:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT * FROM users WHERE LOWER(username) = LOWER(?)",
+            (username.lstrip("@"),),
+        ).fetchone()
+        return dict(row) if row else None
+
+
+def admin_stats_overview() -> dict:
+    with get_conn() as conn:
+        users = conn.execute("SELECT COUNT(*) AS c FROM users").fetchone()["c"]
+        premium = conn.execute(
+            "SELECT COUNT(*) AS c FROM users WHERE is_premium = 1"
+        ).fetchone()["c"]
+        tests = conn.execute("SELECT COUNT(*) AS c FROM results").fetchone()["c"]
+        completed_mods = conn.execute(
+            "SELECT COUNT(*) AS c FROM module_progress WHERE status = 'completed'"
+        ).fetchone()["c"]
+        today = date.today().isoformat()
+        active_today = conn.execute(
+            "SELECT COUNT(*) AS c FROM users WHERE last_active_date = ?", (today,)
+        ).fetchone()["c"]
+        return {
+            "users": users,
+            "premium": premium,
+            "tests": tests,
+            "completed_modules": completed_mods,
+            "active_today": active_today,
+        }
+
+
+def reset_user_module(user_id: int, subject: str, module_id: str):
+    with get_conn() as conn:
+        conn.execute(
+            "DELETE FROM module_progress WHERE user_id = ? AND subject = ? AND module_id = ?",
+            (user_id, subject, module_id),
+        )
+
+
+def force_complete_module(user_id: int, subject: str, module_id: str):
+    complete_module(user_id, subject, module_id, 100, 100)
+
+
+def force_unlock_module(user_id: int, subject: str, module_id: str):
+    unlock_module(user_id, subject, module_id)
+
+
+def set_user_level(user_id: int, level: str):
+    with get_conn() as conn:
+        conn.execute(
+            "UPDATE users SET current_level = ?, placement_done = 1 WHERE id = ?",
+            (level, user_id),
+        )
+
+
+def ban_note_placeholder():
+    pass  # kelajakda ban jadvali

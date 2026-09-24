@@ -16,14 +16,221 @@
           "theory_oral": "Present Simple — oddiy hozirgi zamon. U odatlar, faktlar va jadvallar uchun ishlatiladi. Men, sen, biz, ular bilan fe'l o'zgarmaydi. U, u (qiz), u (narsa) bilan fe'lga -s yoki -es qo'shiladi. Inkor uchun don't yoki doesn't, savol uchun Do yoki Does ishlatiladi.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "en_b_01_e1", "type": "mcq", "question": "She ___ a teacher.", "options": ["is", "are", "am", "be"], "correct": 0, "explanation": "'She' bilan 'is' ishlatiladi (to be fe'li)."},
-            {"id": "en_b_01_e2", "type": "mcq", "question": "They ___ from Uzbekistan.", "options": ["is", "am", "are", "be"], "correct": 2, "explanation": "'They' bilan 'are'."},
-            {"id": "en_b_01_e3", "type": "mcq", "question": "My father ___ to work by car.", "options": ["go", "goes", "going", "gone"], "correct": 1, "explanation": "3-shaxs birlikda -s/-es qo'shiladi."},
-            {"id": "en_b_01_e4", "type": "mcq", "question": "We ___ TV every evening.", "options": ["watch", "watches", "watching", "watched"], "correct": 0, "explanation": "'We' bilan fe'l o'zgarmaydi."},
-            {"id": "en_b_01_e5", "type": "fill_blank", "question": "I ___ (to be) a student.", "accepted_answers": ["am"], "explanation": "'I' bilan 'am'."},
-            {"id": "en_b_01_e6", "type": "mcq", "question": "He ___ not like coffee. (inkor)", "options": ["do", "does", "is", "are"], "correct": 1, "explanation": "3-shaxs birlik inkor: doesn't."},
-            {"id": "en_b_01_e7", "type": "mcq", "question": "___ you speak English?", "options": ["Do", "Does", "Is", "Are"], "correct": 0, "explanation": "You bilan Do."},
-            {"id": "en_b_01_e8", "type": "fill_blank", "question": "She ___ (work) in a bank.", "accepted_answers": ["works"], "explanation": "3-shaxs birlik + s."}
+            {
+              "id": "en_b_01_e1",
+              "type": "mcq",
+              "question": "She ___ a teacher.",
+              "options": [
+                "is",
+                "are",
+                "am",
+                "be"
+              ],
+              "correct": 0,
+              "explanation": "'She' bilan 'is' ishlatiladi (to be fe'li)."
+            },
+            {
+              "id": "en_b_01_e2",
+              "type": "mcq",
+              "question": "They ___ from Uzbekistan.",
+              "options": [
+                "is",
+                "am",
+                "are",
+                "be"
+              ],
+              "correct": 2,
+              "explanation": "'They' bilan 'are'."
+            },
+            {
+              "id": "en_b_01_e3",
+              "type": "mcq",
+              "question": "My father ___ to work by car.",
+              "options": [
+                "go",
+                "goes",
+                "going",
+                "gone"
+              ],
+              "correct": 1,
+              "explanation": "3-shaxs birlikda -s/-es qo'shiladi."
+            },
+            {
+              "id": "en_b_01_e4",
+              "type": "mcq",
+              "question": "We ___ TV every evening.",
+              "options": [
+                "watch",
+                "watches",
+                "watching",
+                "watched"
+              ],
+              "correct": 0,
+              "explanation": "'We' bilan fe'l o'zgarmaydi."
+            },
+            {
+              "id": "en_b_01_e5",
+              "type": "fill_blank",
+              "question": "I ___ (to be) a student.",
+              "accepted_answers": [
+                "am"
+              ],
+              "explanation": "'I' bilan 'am'."
+            },
+            {
+              "id": "en_b_01_e6",
+              "type": "mcq",
+              "question": "He ___ not like coffee. (inkor)",
+              "options": [
+                "do",
+                "does",
+                "is",
+                "are"
+              ],
+              "correct": 1,
+              "explanation": "3-shaxs birlik inkor: doesn't."
+            },
+            {
+              "id": "en_b_01_e7",
+              "type": "mcq",
+              "question": "___ you speak English?",
+              "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+              ],
+              "correct": 0,
+              "explanation": "You bilan Do."
+            },
+            {
+              "id": "en_b_01_e8",
+              "type": "fill_blank",
+              "question": "She ___ (work) in a bank.",
+              "accepted_answers": [
+                "works"
+              ],
+              "explanation": "3-shaxs birlik + s."
+            },
+            {
+              "id": "en_b_01_e9",
+              "type": "mcq",
+              "question": "The sun ___ in the east.",
+              "options": [
+                "rise",
+                "rises",
+                "rising",
+                "rose"
+              ],
+              "correct": 1,
+              "explanation": "Fact — Present Simple, 3rd person +s."
+            },
+            {
+              "id": "en_b_01_e10",
+              "type": "mcq",
+              "question": "___ she work here?",
+              "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+              ],
+              "correct": 1,
+              "explanation": "3rd person question — Does."
+            },
+            {
+              "id": "en_b_01_e11",
+              "type": "fill_blank",
+              "question": "They ___ (not / like) spicy food.",
+              "accepted_answers": [
+                "don't like",
+                "do not like"
+              ],
+              "explanation": "don't + V1."
+            },
+            {
+              "id": "en_b_01_e12",
+              "type": "mcq",
+              "question": "Water ___ at 100°C.",
+              "options": [
+                "boil",
+                "boils",
+                "boiling",
+                "boiled"
+              ],
+              "correct": 1,
+              "explanation": "General truth — boils."
+            },
+            {
+              "id": "en_b_01_e13",
+              "type": "mcq",
+              "question": "I ___ coffee every morning.",
+              "options": [
+                "drinks",
+                "drink",
+                "drinking",
+                "drank"
+              ],
+              "correct": 1,
+              "explanation": "I + V1."
+            },
+            {
+              "id": "en_b_01_e14",
+              "type": "fill_blank",
+              "question": "He ___ (go) to school by bus.",
+              "accepted_answers": [
+                "goes"
+              ],
+              "explanation": "3rd person +es."
+            },
+            {
+              "id": "en_b_01_e15",
+              "type": "mcq",
+              "question": "We ___ not watch TV at night.",
+              "options": [
+                "does",
+                "do",
+                "is",
+                "are"
+              ],
+              "correct": 1,
+              "explanation": "We + do not."
+            },
+            {
+              "id": "en_b_01_e16",
+              "type": "mcq",
+              "question": "___ it rain a lot in spring?",
+              "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+              ],
+              "correct": 1,
+              "explanation": "It — Does."
+            },
+            {
+              "id": "en_b_01_e17",
+              "type": "fill_blank",
+              "question": "She ___ (teach) English.",
+              "accepted_answers": [
+                "teaches"
+              ],
+              "explanation": "teach + es."
+            },
+            {
+              "id": "en_b_01_e18",
+              "type": "mcq",
+              "question": "Cats ___ milk.",
+              "options": [
+                "likes",
+                "like",
+                "liking",
+                "liked"
+              ],
+              "correct": 1,
+              "explanation": "Plural — like."
+            }
           ]
         },
         {
@@ -37,11 +244,185 @@
           "theory_oral": "Present Continuous — hozir davom etayotgan harakatlar uchun. Am, is yoki are + fe'lning -ing shakli. Masalan: I am studying. Statik fe'llar — bilmoq, yoqtirmoq kabilar — bu zamonda kam ishlatiladi.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "en_b_02_e1", "type": "mcq", "question": "Look! It ___ outside.", "options": ["rains", "is raining", "rain", "rained"], "correct": 1, "explanation": "Hozir sodir bo'layotgan — Continuous."},
-            {"id": "en_b_02_e2", "type": "mcq", "question": "She ___ her homework right now.", "options": ["does", "is doing", "do", "did"], "correct": 1, "explanation": "right now → Continuous."},
-            {"id": "en_b_02_e3", "type": "fill_blank", "question": "They ___ (play) football at the moment.", "accepted_answers": ["are playing"], "explanation": "are + V-ing."},
-            {"id": "en_b_02_e4", "type": "mcq", "question": "I ___ understand this rule. (statik fe'l)", "options": ["am not", "don't", "doesn't", "isn't"], "correct": 1, "explanation": "understand — statik, Simple ishlatiladi."},
-            {"id": "en_b_02_e5", "type": "mcq", "question": "What ___ you ___ tonight?", "options": ["do / do", "are / doing", "is / doing", "does / do"], "correct": 1, "explanation": "Kelajak rejasi — Continuous."}
+            {
+              "id": "en_b_02_e1",
+              "type": "mcq",
+              "question": "Look! It ___ outside.",
+              "options": [
+                "rains",
+                "is raining",
+                "rain",
+                "rained"
+              ],
+              "correct": 1,
+              "explanation": "Hozir sodir bo'layotgan — Continuous."
+            },
+            {
+              "id": "en_b_02_e2",
+              "type": "mcq",
+              "question": "She ___ her homework right now.",
+              "options": [
+                "does",
+                "is doing",
+                "do",
+                "did"
+              ],
+              "correct": 1,
+              "explanation": "right now → Continuous."
+            },
+            {
+              "id": "en_b_02_e3",
+              "type": "fill_blank",
+              "question": "They ___ (play) football at the moment.",
+              "accepted_answers": [
+                "are playing"
+              ],
+              "explanation": "are + V-ing."
+            },
+            {
+              "id": "en_b_02_e4",
+              "type": "mcq",
+              "question": "I ___ understand this rule. (statik fe'l)",
+              "options": [
+                "am not",
+                "don't",
+                "doesn't",
+                "isn't"
+              ],
+              "correct": 1,
+              "explanation": "understand — statik, Simple ishlatiladi."
+            },
+            {
+              "id": "en_b_02_e5",
+              "type": "mcq",
+              "question": "What ___ you ___ tonight?",
+              "options": [
+                "do / do",
+                "are / doing",
+                "is / doing",
+                "does / do"
+              ],
+              "correct": 1,
+              "explanation": "Kelajak rejasi — Continuous."
+            },
+            {
+              "id": "en_b_02_e6",
+              "type": "mcq",
+              "question": "Listen! Someone ___ at the door.",
+              "options": [
+                "knocks",
+                "is knocking",
+                "knock",
+                "knocked"
+              ],
+              "correct": 1,
+              "explanation": "Now — Continuous."
+            },
+            {
+              "id": "en_b_02_e7",
+              "type": "fill_blank",
+              "question": "I ___ (write) an email now.",
+              "accepted_answers": [
+                "am writing"
+              ],
+              "explanation": "am + V-ing."
+            },
+            {
+              "id": "en_b_02_e8",
+              "type": "mcq",
+              "question": "They ___ not sleeping. They are talking.",
+              "options": [
+                "is",
+                "are",
+                "do",
+                "does"
+              ],
+              "correct": 1,
+              "explanation": "are not + V-ing."
+            },
+            {
+              "id": "en_b_02_e9",
+              "type": "mcq",
+              "question": "What ___ she ___ at the moment?",
+              "options": [
+                "does / do",
+                "is / doing",
+                "do / doing",
+                "are / do"
+              ],
+              "correct": 1,
+              "explanation": "is she doing."
+            },
+            {
+              "id": "en_b_02_e10",
+              "type": "fill_blank",
+              "question": "We ___ (have) a meeting right now.",
+              "accepted_answers": [
+                "are having"
+              ],
+              "explanation": "are having."
+            },
+            {
+              "id": "en_b_02_e11",
+              "type": "mcq",
+              "question": "He ___ to music while working.",
+              "options": [
+                "listens",
+                "is listening",
+                "listen",
+                "listened"
+              ],
+              "correct": 1,
+              "explanation": "Parallel now — Continuous."
+            },
+            {
+              "id": "en_b_02_e12",
+              "type": "mcq",
+              "question": "I ___ this rule. (know — stative)",
+              "options": [
+                "am knowing",
+                "know",
+                "knows",
+                "knowing"
+              ],
+              "correct": 1,
+              "explanation": "Stative verb — Simple."
+            },
+            {
+              "id": "en_b_02_e13",
+              "type": "fill_blank",
+              "question": "The baby ___ (cry). Can you hear?",
+              "accepted_answers": [
+                "is crying"
+              ],
+              "explanation": "is crying."
+            },
+            {
+              "id": "en_b_02_e14",
+              "type": "mcq",
+              "question": "___ you ___ anything tomorrow evening?",
+              "options": [
+                "Do / do",
+                "Are / doing",
+                "Is / doing",
+                "Does / do"
+              ],
+              "correct": 1,
+              "explanation": "Future arrangement — Continuous."
+            },
+            {
+              "id": "en_b_02_e15",
+              "type": "mcq",
+              "question": "She usually ___ tea, but today she ___ coffee.",
+              "options": [
+                "drinks / is drinking",
+                "is drinking / drinks",
+                "drink / drinks",
+                "drinks / drinks"
+              ],
+              "correct": 0,
+              "explanation": "Habit vs temporary."
+            }
           ]
         },
         {
@@ -55,11 +436,186 @@
           "theory_oral": "Past Simple — o'tgan zamonda bo'lib o'tgan va tugagan ishlar. Regular fe'llarga -ed qo'shiladi. Irregular fe'llar esa o'ziga xos shakl oladi: go — went, see — saw. Inkor va savolda did ishlatiladi, fe'l asosiy shaklda qoladi.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "en_b_03_e1", "type": "mcq", "question": "I ___ to the park yesterday.", "options": ["go", "went", "goes", "going"], "correct": 1, "explanation": "go → went (irregular)."},
-            {"id": "en_b_03_e2", "type": "mcq", "question": "She ___ not come to the party.", "options": ["did", "does", "is", "was"], "correct": 0, "explanation": "didn't + V1."},
-            {"id": "en_b_03_e3", "type": "fill_blank", "question": "They ___ (watch) a movie last night.", "accepted_answers": ["watched"], "explanation": "regular + ed."},
-            {"id": "en_b_03_e4", "type": "mcq", "question": "___ you see him yesterday?", "options": ["Do", "Did", "Does", "Are"], "correct": 1, "explanation": "Past Simple savol — Did."},
-            {"id": "en_b_03_e5", "type": "mcq", "question": "He ___ his keys. (lose)", "options": ["losed", "lost", "lose", "losing"], "correct": 1, "explanation": "lose → lost."}
+            {
+              "id": "en_b_03_e1",
+              "type": "mcq",
+              "question": "I ___ to the park yesterday.",
+              "options": [
+                "go",
+                "went",
+                "goes",
+                "going"
+              ],
+              "correct": 1,
+              "explanation": "go → went (irregular)."
+            },
+            {
+              "id": "en_b_03_e2",
+              "type": "mcq",
+              "question": "She ___ not come to the party.",
+              "options": [
+                "did",
+                "does",
+                "is",
+                "was"
+              ],
+              "correct": 0,
+              "explanation": "didn't + V1."
+            },
+            {
+              "id": "en_b_03_e3",
+              "type": "fill_blank",
+              "question": "They ___ (watch) a movie last night.",
+              "accepted_answers": [
+                "watched"
+              ],
+              "explanation": "regular + ed."
+            },
+            {
+              "id": "en_b_03_e4",
+              "type": "mcq",
+              "question": "___ you see him yesterday?",
+              "options": [
+                "Do",
+                "Did",
+                "Does",
+                "Are"
+              ],
+              "correct": 1,
+              "explanation": "Past Simple savol — Did."
+            },
+            {
+              "id": "en_b_03_e5",
+              "type": "mcq",
+              "question": "He ___ his keys. (lose)",
+              "options": [
+                "losed",
+                "lost",
+                "lose",
+                "losing"
+              ],
+              "correct": 1,
+              "explanation": "lose → lost."
+            },
+            {
+              "id": "en_b_03_e6",
+              "type": "mcq",
+              "question": "We ___ a great film last weekend.",
+              "options": [
+                "see",
+                "saw",
+                "seen",
+                "seeing"
+              ],
+              "correct": 1,
+              "explanation": "see → saw."
+            },
+            {
+              "id": "en_b_03_e7",
+              "type": "fill_blank",
+              "question": "She ___ (finish) her homework an hour ago.",
+              "accepted_answers": [
+                "finished"
+              ],
+              "explanation": "regular +ed."
+            },
+            {
+              "id": "en_b_03_e8",
+              "type": "mcq",
+              "question": "___ they visit Paris in 2019?",
+              "options": [
+                "Do",
+                "Did",
+                "Does",
+                "Are"
+              ],
+              "correct": 1,
+              "explanation": "Past question — Did."
+            },
+            {
+              "id": "en_b_03_e9",
+              "type": "mcq",
+              "question": "I ___ not understand the question.",
+              "options": [
+                "did",
+                "do",
+                "does",
+                "was"
+              ],
+              "correct": 0,
+              "explanation": "didn't + V1."
+            },
+            {
+              "id": "en_b_03_e10",
+              "type": "fill_blank",
+              "question": "He ___ (buy) a new phone yesterday.",
+              "accepted_answers": [
+                "bought"
+              ],
+              "explanation": "buy → bought."
+            },
+            {
+              "id": "en_b_03_e11",
+              "type": "mcq",
+              "question": "The train ___ on time.",
+              "options": [
+                "arrive",
+                "arrived",
+                "arrives",
+                "arriving"
+              ],
+              "correct": 1,
+              "explanation": "Past fact."
+            },
+            {
+              "id": "en_b_03_e12",
+              "type": "mcq",
+              "question": "Where ___ you go last summer?",
+              "options": [
+                "do",
+                "did",
+                "does",
+                "are"
+              ],
+              "correct": 1,
+              "explanation": "Did you go."
+            },
+            {
+              "id": "en_b_03_e13",
+              "type": "fill_blank",
+              "question": "They ___ (not / come) to the party.",
+              "accepted_answers": [
+                "didn't come",
+                "did not come"
+              ],
+              "explanation": "didn't + V1."
+            },
+            {
+              "id": "en_b_03_e14",
+              "type": "mcq",
+              "question": "She ___ her keys at home.",
+              "options": [
+                "leaved",
+                "left",
+                "leave",
+                "leaves"
+              ],
+              "correct": 1,
+              "explanation": "leave → left."
+            },
+            {
+              "id": "en_b_03_e15",
+              "type": "mcq",
+              "question": "I ___ born in 2005.",
+              "options": [
+                "am",
+                "was",
+                "were",
+                "be"
+              ],
+              "correct": 1,
+              "explanation": "was born."
+            }
           ]
         },
         {
@@ -73,10 +629,174 @@
           "theory_oral": "Will — birdan qaror qilganda, va'da berishda yoki umumiy bashoratda. Going to — oldindan reja qilingan ishlar yoki aniq belgilarga asoslangan bashoratda ishlatiladi.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "en_b_04_e1", "type": "mcq", "question": "I think it ___ rain tomorrow.", "options": ["is going to", "will", "is", "was"], "correct": 1, "explanation": "Umumiy bashorat — will."},
-            {"id": "en_b_04_e2", "type": "mcq", "question": "Look at the sky! It ___ rain.", "options": ["will", "is going to", "goes", "went"], "correct": 1, "explanation": "Aniq belgi (bulut) — going to."},
-            {"id": "en_b_04_e3", "type": "fill_blank", "question": "She ___ (visit) her grandmother next week. (reja)", "accepted_answers": ["is going to visit", "is going to"], "explanation": "Oldindan reja — going to."},
-            {"id": "en_b_04_e4", "type": "mcq", "question": "Don't worry, I ___ help you.", "options": ["am going to", "will", "am", "do"], "correct": 1, "explanation": "Spontán va'da — will."}
+            {
+              "id": "en_b_04_e1",
+              "type": "mcq",
+              "question": "I think it ___ rain tomorrow.",
+              "options": [
+                "is going to",
+                "will",
+                "is",
+                "was"
+              ],
+              "correct": 1,
+              "explanation": "Umumiy bashorat — will."
+            },
+            {
+              "id": "en_b_04_e2",
+              "type": "mcq",
+              "question": "Look at the sky! It ___ rain.",
+              "options": [
+                "will",
+                "is going to",
+                "goes",
+                "went"
+              ],
+              "correct": 1,
+              "explanation": "Aniq belgi (bulut) — going to."
+            },
+            {
+              "id": "en_b_04_e3",
+              "type": "fill_blank",
+              "question": "She ___ (visit) her grandmother next week. (reja)",
+              "accepted_answers": [
+                "is going to visit",
+                "is going to"
+              ],
+              "explanation": "Oldindan reja — going to."
+            },
+            {
+              "id": "en_b_04_e4",
+              "type": "mcq",
+              "question": "Don't worry, I ___ help you.",
+              "options": [
+                "am going to",
+                "will",
+                "am",
+                "do"
+              ],
+              "correct": 1,
+              "explanation": "Spontán va'da — will."
+            },
+            {
+              "id": "en_b_04_e5",
+              "type": "mcq",
+              "question": "I promise I ___ call you tonight.",
+              "options": [
+                "am going to",
+                "will",
+                "am",
+                "do"
+              ],
+              "correct": 1,
+              "explanation": "Promise — will."
+            },
+            {
+              "id": "en_b_04_e6",
+              "type": "fill_blank",
+              "question": "We ___ (move) to a new flat next month. (plan)",
+              "accepted_answers": [
+                "are going to move",
+                "are going to"
+              ],
+              "explanation": "Planned — going to."
+            },
+            {
+              "id": "en_b_04_e7",
+              "type": "mcq",
+              "question": "Careful! You ___ fall!",
+              "options": [
+                "will",
+                "are going to",
+                "go",
+                "went"
+              ],
+              "correct": 1,
+              "explanation": "Evidence — going to."
+            },
+            {
+              "id": "en_b_04_e8",
+              "type": "mcq",
+              "question": "___ you help me with this bag?",
+              "options": [
+                "Will",
+                "Are",
+                "Do",
+                "Did"
+              ],
+              "correct": 0,
+              "explanation": "Request — Will you."
+            },
+            {
+              "id": "en_b_04_e9",
+              "type": "fill_blank",
+              "question": "He ___ (be) 20 next year.",
+              "accepted_answers": [
+                "will be"
+              ],
+              "explanation": "will be."
+            },
+            {
+              "id": "en_b_04_e10",
+              "type": "mcq",
+              "question": "They have tickets. They ___ travel to Samarkand.",
+              "options": [
+                "will",
+                "are going to",
+                "go",
+                "went"
+              ],
+              "correct": 1,
+              "explanation": "Intention with evidence."
+            },
+            {
+              "id": "en_b_04_e11",
+              "type": "mcq",
+              "question": "I think she ___ pass the exam.",
+              "options": [
+                "is going to",
+                "will",
+                "goes",
+                "went"
+              ],
+              "correct": 1,
+              "explanation": "Opinion — will."
+            },
+            {
+              "id": "en_b_04_e12",
+              "type": "fill_blank",
+              "question": "Look at those dark clouds! It ___ (rain).",
+              "accepted_answers": [
+                "is going to rain"
+              ],
+              "explanation": "Evidence — going to."
+            },
+            {
+              "id": "en_b_04_e13",
+              "type": "mcq",
+              "question": "Don't worry, everything ___ be fine.",
+              "options": [
+                "is going to",
+                "will",
+                "is",
+                "does"
+              ],
+              "correct": 1,
+              "explanation": "Reassurance — will."
+            },
+            {
+              "id": "en_b_04_e14",
+              "type": "mcq",
+              "question": "We ___ have a party on Saturday. (already decided)",
+              "options": [
+                "will",
+                "are going to",
+                "go",
+                "went"
+              ],
+              "correct": 1,
+              "explanation": "Prior decision — going to."
+            }
           ]
         },
         {
@@ -90,11 +810,233 @@
           "theory_oral": "A va An — noaniq, birinchi marta aytganda. A — undosh bilan, An — unli tovush bilan. The — aniq, allaqachon ma'lum bo'lgan narsa uchun.",
           "pass_threshold": 70,
           "exercises": [
-            {"id": "en_b_05_e1", "type": "mcq", "question": "This is ___ book.", "options": ["a", "an", "the", "-"], "correct": 0, "explanation": "book undosh bilan boshlanadi — a."},
-            {"id": "en_b_05_e2", "type": "mcq", "question": "I saw ___ old man.", "options": ["a", "an", "the", "-"], "correct": 1, "explanation": "old unli tovush bilan — an."},
-            {"id": "en_b_05_e3", "type": "mcq", "question": "Opposite of 'hot' is:", "options": ["warm", "cold", "cool", "cloudy"], "correct": 1, "explanation": "hot → cold."},
-            {"id": "en_b_05_e4", "type": "mcq", "question": "A place where you buy bread:", "options": ["hospital", "bakery", "library", "bank"], "correct": 1, "explanation": "bakery — nonvoyxona."},
-            {"id": "en_b_05_e5", "type": "matching", "question": "So'zlarni tarjimasi bilan mos keltiring:", "pairs": [{"left": "Apple", "right": "Olma"}, {"left": "Water", "right": "Suv"}, {"left": "House", "right": "Uy"}, {"left": "Book", "right": "Kitob"}], "explanation": "Asosiy kundalik so'zlar."}
+            {
+              "id": "en_b_05_e1",
+              "type": "mcq",
+              "question": "This is ___ book.",
+              "options": [
+                "a",
+                "an",
+                "the",
+                "-"
+              ],
+              "correct": 0,
+              "explanation": "book undosh bilan boshlanadi — a."
+            },
+            {
+              "id": "en_b_05_e2",
+              "type": "mcq",
+              "question": "I saw ___ old man.",
+              "options": [
+                "a",
+                "an",
+                "the",
+                "-"
+              ],
+              "correct": 1,
+              "explanation": "old unli tovush bilan — an."
+            },
+            {
+              "id": "en_b_05_e3",
+              "type": "mcq",
+              "question": "Opposite of 'hot' is:",
+              "options": [
+                "warm",
+                "cold",
+                "cool",
+                "cloudy"
+              ],
+              "correct": 1,
+              "explanation": "hot → cold."
+            },
+            {
+              "id": "en_b_05_e4",
+              "type": "mcq",
+              "question": "A place where you buy bread:",
+              "options": [
+                "hospital",
+                "bakery",
+                "library",
+                "bank"
+              ],
+              "correct": 1,
+              "explanation": "bakery — nonvoyxona."
+            },
+            {
+              "id": "en_b_05_e5",
+              "type": "matching",
+              "question": "So'zlarni tarjimasi bilan mos keltiring:",
+              "pairs": [
+                {
+                  "left": "Apple",
+                  "right": "Olma"
+                },
+                {
+                  "left": "Water",
+                  "right": "Suv"
+                },
+                {
+                  "left": "House",
+                  "right": "Uy"
+                },
+                {
+                  "left": "Book",
+                  "right": "Kitob"
+                }
+              ],
+              "explanation": "Asosiy kundalik so'zlar."
+            },
+            {
+              "id": "en_b_05_e6",
+              "type": "mcq",
+              "question": "I need ___ umbrella.",
+              "options": [
+                "a",
+                "an",
+                "the",
+                "-"
+              ],
+              "correct": 1,
+              "explanation": "umbrella — vowel sound — an."
+            },
+            {
+              "id": "en_b_05_e7",
+              "type": "mcq",
+              "question": "___ Moon is bright tonight.",
+              "options": [
+                "A",
+                "An",
+                "The",
+                "-"
+              ],
+              "correct": 2,
+              "explanation": "Unique — The."
+            },
+            {
+              "id": "en_b_05_e8",
+              "type": "mcq",
+              "question": "Synonym of 'big':",
+              "options": [
+                "small",
+                "large",
+                "tiny",
+                "short"
+              ],
+              "correct": 1,
+              "explanation": "large = big."
+            },
+            {
+              "id": "en_b_05_e9",
+              "type": "mcq",
+              "question": "Which is a fruit?",
+              "options": [
+                "carrot",
+                "potato",
+                "apple",
+                "onion"
+              ],
+              "correct": 2,
+              "explanation": "apple — fruit."
+            },
+            {
+              "id": "en_b_05_e10",
+              "type": "fill_blank",
+              "question": "Opposite of 'up' is ___.",
+              "accepted_answers": [
+                "down"
+              ],
+              "explanation": "up ↔ down."
+            },
+            {
+              "id": "en_b_05_e11",
+              "type": "mcq",
+              "question": "A person who teaches is a:",
+              "options": [
+                "student",
+                "teacher",
+                "doctor",
+                "driver"
+              ],
+              "correct": 1,
+              "explanation": "teacher."
+            },
+            {
+              "id": "en_b_05_e12",
+              "type": "mcq",
+              "question": "In the kitchen we do:",
+              "options": [
+                "sleeping",
+                "cooking",
+                "studying",
+                "driving"
+              ],
+              "correct": 1,
+              "explanation": "cooking."
+            },
+            {
+              "id": "en_b_05_e13",
+              "type": "mcq",
+              "question": "She bought ___ honest answer. (h silent)",
+              "options": [
+                "a",
+                "an",
+                "the",
+                "-"
+              ],
+              "correct": 1,
+              "explanation": "honest — vowel sound — an."
+            },
+            {
+              "id": "en_b_05_e14",
+              "type": "fill_blank",
+              "question": "I live in ___ (city name article often the for unique). Open answer: the or -",
+              "accepted_answers": [
+                "the",
+                "-"
+              ],
+              "explanation": "Depends on context."
+            },
+            {
+              "id": "en_b_05_e15",
+              "type": "mcq",
+              "question": "Close the ___ please. (door — known)",
+              "options": [
+                "a door",
+                "an door",
+                "the door",
+                "door"
+              ],
+              "correct": 2,
+              "explanation": "Specific — the."
+            },
+            {
+              "id": "en_b_05_img1",
+              "type": "mcq",
+              "question": "Bu rasmda nima? (image_file qo'yilganda rasm chiqadi)",
+              "image_file": "example_apple.jpg",
+              "options": [
+                "Banana",
+                "Apple",
+                "Orange",
+                "Grape"
+              ],
+              "correct": 1,
+              "explanation": "Apple — olma. media/images/example_apple.jpg qo'ying."
+            },
+            {
+              "id": "en_b_05_aud1",
+              "type": "mcq",
+              "question": "Eshitgan so'zingiz nima? (audio_file)",
+              "audio_file": "hello.ogg",
+              "options": [
+                "Hello",
+                "Goodbye",
+                "Thanks",
+                "Please"
+              ],
+              "correct": 0,
+              "explanation": "Hello. media/audio/hello.ogg qo'ying."
+            }
           ]
         }
       ]
@@ -113,10 +1055,172 @@
           "theory_oral": "Present Perfect — o'tgan bilan hozirni bog'laydi. Have yoki has + fe'lning uchinchi shakli. Tajriba, hozirgacha davom etgan ish yoki natijasi bor yaqin o'tgan uchun ishlatiladi.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "en_i_01_e1", "type": "mcq", "question": "I ___ never ___ to Japan.", "options": ["have / been", "has / been", "had / gone", "am / go"], "correct": 0, "explanation": "I have been — tajriba."},
-            {"id": "en_i_01_e2", "type": "fill_blank", "question": "She has ___ (live) here since 2015.", "accepted_answers": ["lived"], "explanation": "has + V3."},
-            {"id": "en_i_01_e3", "type": "mcq", "question": "___ you ever eaten sushi?", "options": ["Do", "Have", "Did", "Are"], "correct": 1, "explanation": "Have you ever — tajriba savoli."},
-            {"id": "en_i_01_e4", "type": "mcq", "question": "He hasn't finished yet. 'Yet' qayerda keladi?", "options": ["inkor va savolda oxirida", "faqat ijobiyda", "boshida", "o'rtasida"], "correct": 0, "explanation": "yet — inkor/savol oxirida."}
+            {
+              "id": "en_i_01_e1",
+              "type": "mcq",
+              "question": "I ___ never ___ to Japan.",
+              "options": [
+                "have / been",
+                "has / been",
+                "had / gone",
+                "am / go"
+              ],
+              "correct": 0,
+              "explanation": "I have been — tajriba."
+            },
+            {
+              "id": "en_i_01_e2",
+              "type": "fill_blank",
+              "question": "She has ___ (live) here since 2015.",
+              "accepted_answers": [
+                "lived"
+              ],
+              "explanation": "has + V3."
+            },
+            {
+              "id": "en_i_01_e3",
+              "type": "mcq",
+              "question": "___ you ever eaten sushi?",
+              "options": [
+                "Do",
+                "Have",
+                "Did",
+                "Are"
+              ],
+              "correct": 1,
+              "explanation": "Have you ever — tajriba savoli."
+            },
+            {
+              "id": "en_i_01_e4",
+              "type": "mcq",
+              "question": "He hasn't finished yet. 'Yet' qayerda keladi?",
+              "options": [
+                "inkor va savolda oxirida",
+                "faqat ijobiyda",
+                "boshida",
+                "o'rtasida"
+              ],
+              "correct": 0,
+              "explanation": "yet — inkor/savol oxirida."
+            },
+            {
+              "id": "en_i_01_e5",
+              "type": "mcq",
+              "question": "She ___ just ___ home.",
+              "options": [
+                "has / arrived",
+                "have / arrived",
+                "had / arrived",
+                "is / arriving"
+              ],
+              "correct": 0,
+              "explanation": "has just arrived."
+            },
+            {
+              "id": "en_i_01_e6",
+              "type": "fill_blank",
+              "question": "I ___ (never / see) such a beautiful place.",
+              "accepted_answers": [
+                "have never seen"
+              ],
+              "explanation": "have never seen."
+            },
+            {
+              "id": "en_i_01_e7",
+              "type": "mcq",
+              "question": "How long ___ you ___ English?",
+              "options": [
+                "do / study",
+                "have / studied",
+                "did / study",
+                "are / studying"
+              ],
+              "correct": 1,
+              "explanation": "have you studied — duration to now."
+            },
+            {
+              "id": "en_i_01_e8",
+              "type": "mcq",
+              "question": "He hasn't called ___.",
+              "options": [
+                "already",
+                "yet",
+                "just",
+                "ever"
+              ],
+              "correct": 1,
+              "explanation": "yet in negative."
+            },
+            {
+              "id": "en_i_01_e9",
+              "type": "fill_blank",
+              "question": "We ___ (know) each other for 10 years.",
+              "accepted_answers": [
+                "have known"
+              ],
+              "explanation": "have known."
+            },
+            {
+              "id": "en_i_01_e10",
+              "type": "mcq",
+              "question": "___ she ever been abroad?",
+              "options": [
+                "Does",
+                "Has",
+                "Did",
+                "Is"
+              ],
+              "correct": 1,
+              "explanation": "Has she ever."
+            },
+            {
+              "id": "en_i_01_e11",
+              "type": "mcq",
+              "question": "I ___ already ___ lunch.",
+              "options": [
+                "have / had",
+                "has / had",
+                "had / had",
+                "am / having"
+              ],
+              "correct": 0,
+              "explanation": "have already had."
+            },
+            {
+              "id": "en_i_01_e12",
+              "type": "fill_blank",
+              "question": "They ___ (live) here since 2018.",
+              "accepted_answers": [
+                "have lived"
+              ],
+              "explanation": "have lived."
+            },
+            {
+              "id": "en_i_01_e13",
+              "type": "mcq",
+              "question": "Present Perfect vs Past Simple: 'I ___ him yesterday.'",
+              "options": [
+                "have seen",
+                "saw",
+                "see",
+                "seeing"
+              ],
+              "correct": 1,
+              "explanation": "Finished time — Past Simple."
+            },
+            {
+              "id": "en_i_01_e14",
+              "type": "mcq",
+              "question": "'For' is used with:",
+              "options": [
+                "a point in time",
+                "a period of time",
+                "never",
+                "already"
+              ],
+              "correct": 1,
+              "explanation": "for + duration."
+            }
           ]
         },
         {
@@ -130,9 +1234,146 @@
           "theory_oral": "Past Continuous — o'tgan zamonda davom etayotgan ish. Was yoki were + -ing. Bir ish davom etayotganda boshqa ish sodir bo'lganini bildiradi.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "en_i_02_e1", "type": "mcq", "question": "She ___ her homework when I called her.", "options": ["does", "did", "was doing", "has done"], "correct": 2, "explanation": "Davom etayotgan jarayon — Past Continuous."},
-            {"id": "en_i_02_e2", "type": "mcq", "question": "While we ___ , it started to rain.", "options": ["walked", "were walking", "walk", "have walked"], "correct": 1, "explanation": "Parallel / kesishuvchi — Continuous."},
-            {"id": "en_i_02_e3", "type": "fill_blank", "question": "They ___ (play) when the lights went out.", "accepted_answers": ["were playing"], "explanation": "were + V-ing."}
+            {
+              "id": "en_i_02_e1",
+              "type": "mcq",
+              "question": "She ___ her homework when I called her.",
+              "options": [
+                "does",
+                "did",
+                "was doing",
+                "has done"
+              ],
+              "correct": 2,
+              "explanation": "Davom etayotgan jarayon — Past Continuous."
+            },
+            {
+              "id": "en_i_02_e2",
+              "type": "mcq",
+              "question": "While we ___ , it started to rain.",
+              "options": [
+                "walked",
+                "were walking",
+                "walk",
+                "have walked"
+              ],
+              "correct": 1,
+              "explanation": "Parallel / kesishuvchi — Continuous."
+            },
+            {
+              "id": "en_i_02_e3",
+              "type": "fill_blank",
+              "question": "They ___ (play) when the lights went out.",
+              "accepted_answers": [
+                "were playing"
+              ],
+              "explanation": "were + V-ing."
+            },
+            {
+              "id": "en_i_02_e4",
+              "type": "mcq",
+              "question": "At 8 pm yesterday I ___ TV.",
+              "options": [
+                "watched",
+                "was watching",
+                "watch",
+                "have watched"
+              ],
+              "correct": 1,
+              "explanation": "Ongoing at a past time."
+            },
+            {
+              "id": "en_i_02_e5",
+              "type": "fill_blank",
+              "question": "While he ___ (drive), he saw an accident.",
+              "accepted_answers": [
+                "was driving"
+              ],
+              "explanation": "was driving."
+            },
+            {
+              "id": "en_i_02_e6",
+              "type": "mcq",
+              "question": "They ___ not listening when the teacher explained.",
+              "options": [
+                "was",
+                "were",
+                "did",
+                "are"
+              ],
+              "correct": 1,
+              "explanation": "were not listening."
+            },
+            {
+              "id": "en_i_02_e7",
+              "type": "mcq",
+              "question": "What ___ you ___ at this time last Friday?",
+              "options": [
+                "did / do",
+                "were / doing",
+                "have / done",
+                "are / doing"
+              ],
+              "correct": 1,
+              "explanation": "were you doing."
+            },
+            {
+              "id": "en_i_02_e8",
+              "type": "fill_blank",
+              "question": "She ___ (cook) when the phone rang.",
+              "accepted_answers": [
+                "was cooking"
+              ],
+              "explanation": "was cooking."
+            },
+            {
+              "id": "en_i_02_e9",
+              "type": "mcq",
+              "question": "I ___ home when it started to snow.",
+              "options": [
+                "walked",
+                "was walking",
+                "walk",
+                "have walked"
+              ],
+              "correct": 1,
+              "explanation": "Background action — Continuous."
+            },
+            {
+              "id": "en_i_02_e10",
+              "type": "mcq",
+              "question": "While we were talking, the lights ___.",
+              "options": [
+                "went out",
+                "were going out",
+                "go out",
+                "have gone"
+              ],
+              "correct": 0,
+              "explanation": "Interrupting action — Simple."
+            },
+            {
+              "id": "en_i_02_e11",
+              "type": "fill_blank",
+              "question": "The children ___ (play) in the garden all afternoon.",
+              "accepted_answers": [
+                "were playing"
+              ],
+              "explanation": "were playing."
+            },
+            {
+              "id": "en_i_02_e12",
+              "type": "mcq",
+              "question": "He ___ a book when I entered the room.",
+              "options": [
+                "read",
+                "was reading",
+                "reads",
+                "has read"
+              ],
+              "correct": 1,
+              "explanation": "was reading."
+            }
           ]
         },
         {
@@ -146,9 +1387,133 @@
           "theory_oral": "Zero Conditional — doimo rost bo'lgan narsalar uchun. First Conditional — kelajakda mumkin bo'lgan shart va uning natijasi uchun. If qismida Present, asosiy qismida will.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "en_i_03_e1", "type": "mcq", "question": "If it rains, I ___ stay home.", "options": ["will", "would", "was", "am"], "correct": 0, "explanation": "First Conditional: will + V1."},
-            {"id": "en_i_03_e2", "type": "mcq", "question": "If you ___ water to 100°C, it boils.", "options": ["will heat", "heat", "heated", "are heating"], "correct": 1, "explanation": "Zero Conditional — Present Simple."},
-            {"id": "en_i_03_e3", "type": "fill_blank", "question": "If she studies hard, she ___ (pass) the exam.", "accepted_answers": ["will pass"], "explanation": "First Conditional."}
+            {
+              "id": "en_i_03_e1",
+              "type": "mcq",
+              "question": "If it rains, I ___ stay home.",
+              "options": [
+                "will",
+                "would",
+                "was",
+                "am"
+              ],
+              "correct": 0,
+              "explanation": "First Conditional: will + V1."
+            },
+            {
+              "id": "en_i_03_e2",
+              "type": "mcq",
+              "question": "If you ___ water to 100°C, it boils.",
+              "options": [
+                "will heat",
+                "heat",
+                "heated",
+                "are heating"
+              ],
+              "correct": 1,
+              "explanation": "Zero Conditional — Present Simple."
+            },
+            {
+              "id": "en_i_03_e3",
+              "type": "fill_blank",
+              "question": "If she studies hard, she ___ (pass) the exam.",
+              "accepted_answers": [
+                "will pass"
+              ],
+              "explanation": "First Conditional."
+            },
+            {
+              "id": "en_i_03_e4",
+              "type": "mcq",
+              "question": "If you don't water plants, they ___.",
+              "options": [
+                "will die",
+                "die",
+                "would die",
+                "died"
+              ],
+              "correct": 1,
+              "explanation": "Zero — general truth, Present."
+            },
+            {
+              "id": "en_i_03_e5",
+              "type": "fill_blank",
+              "question": "If it ___ (be) sunny tomorrow, we will go to the park.",
+              "accepted_answers": [
+                "is"
+              ],
+              "explanation": "If + Present."
+            },
+            {
+              "id": "en_i_03_e6",
+              "type": "mcq",
+              "question": "If I ___ time, I will help you.",
+              "options": [
+                "will have",
+                "have",
+                "had",
+                "has"
+              ],
+              "correct": 1,
+              "explanation": "If + Present, will."
+            },
+            {
+              "id": "en_i_03_e7",
+              "type": "mcq",
+              "question": "Ice ___ if you heat it.",
+              "options": [
+                "will melt",
+                "melts",
+                "melted",
+                "would melt"
+              ],
+              "correct": 1,
+              "explanation": "Zero Conditional."
+            },
+            {
+              "id": "en_i_03_e8",
+              "type": "fill_blank",
+              "question": "If she ___ (call), tell her I'm busy.",
+              "accepted_answers": [
+                "calls"
+              ],
+              "explanation": "If + Present."
+            },
+            {
+              "id": "en_i_03_e9",
+              "type": "mcq",
+              "question": "We ___ miss the bus if we don't hurry.",
+              "options": [
+                "will",
+                "would",
+                "are",
+                "do"
+              ],
+              "correct": 0,
+              "explanation": "First Conditional — will."
+            },
+            {
+              "id": "en_i_03_e10",
+              "type": "mcq",
+              "question": "If you mix red and blue, you ___ purple.",
+              "options": [
+                "will get",
+                "get",
+                "got",
+                "would get"
+              ],
+              "correct": 1,
+              "explanation": "Zero — get."
+            },
+            {
+              "id": "en_i_03_e11",
+              "type": "fill_blank",
+              "question": "If he studies, he ___ (pass).",
+              "accepted_answers": [
+                "will pass"
+              ],
+              "explanation": "will pass."
+            }
           ]
         },
         {
@@ -162,9 +1527,133 @@
           "theory_oral": "Passive Voice — harakatni bajaruvchi emas, harakatning o'zi muhim bo'lganda. Be fe'li + fe'lning uchinchi shakli. Masalan: The house was built in 1990.",
           "pass_threshold": 75,
           "exercises": [
-            {"id": "en_i_04_e1", "type": "mcq", "question": "The book ___ by millions of people.", "options": ["read", "reads", "was read", "is reading"], "correct": 2, "explanation": "was + V3 — Passive."},
-            {"id": "en_i_04_e2", "type": "mcq", "question": "This house was built ___ 1990.", "options": ["at", "on", "in", "since"], "correct": 2, "explanation": "Yillar bilan 'in'."},
-            {"id": "en_i_04_e3", "type": "fill_blank", "question": "English ___ (speak) all over the world.", "accepted_answers": ["is spoken"], "explanation": "is + V3."}
+            {
+              "id": "en_i_04_e1",
+              "type": "mcq",
+              "question": "The book ___ by millions of people.",
+              "options": [
+                "read",
+                "reads",
+                "was read",
+                "is reading"
+              ],
+              "correct": 2,
+              "explanation": "was + V3 — Passive."
+            },
+            {
+              "id": "en_i_04_e2",
+              "type": "mcq",
+              "question": "This house was built ___ 1990.",
+              "options": [
+                "at",
+                "on",
+                "in",
+                "since"
+              ],
+              "correct": 2,
+              "explanation": "Yillar bilan 'in'."
+            },
+            {
+              "id": "en_i_04_e3",
+              "type": "fill_blank",
+              "question": "English ___ (speak) all over the world.",
+              "accepted_answers": [
+                "is spoken"
+              ],
+              "explanation": "is + V3."
+            },
+            {
+              "id": "en_i_04_e4",
+              "type": "mcq",
+              "question": "This letter ___ yesterday.",
+              "options": [
+                "wrote",
+                "was written",
+                "is written",
+                "writes"
+              ],
+              "correct": 1,
+              "explanation": "was written — Passive past."
+            },
+            {
+              "id": "en_i_04_e5",
+              "type": "fill_blank",
+              "question": "Rice ___ (grow) in many countries.",
+              "accepted_answers": [
+                "is grown"
+              ],
+              "explanation": "is grown."
+            },
+            {
+              "id": "en_i_04_e6",
+              "type": "mcq",
+              "question": "The windows ___ cleaned every week.",
+              "options": [
+                "is",
+                "are",
+                "was",
+                "were"
+              ],
+              "correct": 1,
+              "explanation": "are cleaned."
+            },
+            {
+              "id": "en_i_04_e7",
+              "type": "mcq",
+              "question": "Active: 'Someone stole my bike.' Passive:",
+              "options": [
+                "My bike stole",
+                "My bike was stolen",
+                "My bike is stole",
+                "My bike stolen"
+              ],
+              "correct": 1,
+              "explanation": "was stolen."
+            },
+            {
+              "id": "en_i_04_e8",
+              "type": "fill_blank",
+              "question": "The film ___ (direct) by Nolan.",
+              "accepted_answers": [
+                "was directed"
+              ],
+              "explanation": "was directed."
+            },
+            {
+              "id": "en_i_04_e9",
+              "type": "mcq",
+              "question": "Spanish ___ in many countries.",
+              "options": [
+                "speaks",
+                "is spoken",
+                "spoke",
+                "speaking"
+              ],
+              "correct": 1,
+              "explanation": "is spoken."
+            },
+            {
+              "id": "en_i_04_e10",
+              "type": "mcq",
+              "question": "The results ___ announced tomorrow.",
+              "options": [
+                "will be",
+                "are",
+                "were",
+                "be"
+              ],
+              "correct": 0,
+              "explanation": "will be announced."
+            },
+            {
+              "id": "en_i_04_e11",
+              "type": "fill_blank",
+              "question": "This song ___ (write) in 1990.",
+              "accepted_answers": [
+                "was written"
+              ],
+              "explanation": "was written."
+            }
           ]
         }
       ]
@@ -183,9 +1672,125 @@
           "theory_oral": "Third Conditional — o'tgan zamonda boshqacha bo'lishi mumkin bo'lgan narsalar haqida. If + had + V3, would have + V3. Wish bilan ham o'tgan uchun Past Perfect ishlatiladi.",
           "pass_threshold": 80,
           "exercises": [
-            {"id": "en_a_01_e1", "type": "mcq", "question": "Had I known earlier, I ___ differently.", "options": ["would act", "would have acted", "will act", "acted"], "correct": 1, "explanation": "Third Conditional."},
-            {"id": "en_a_01_e2", "type": "mcq", "question": "I wish I ___ more time yesterday.", "options": ["have", "had", "had had", "would have"], "correct": 2, "explanation": "Wish + Past Perfect (had had)."},
-            {"id": "en_a_01_e3", "type": "fill_blank", "question": "If she had studied, she ___ (pass) the test.", "accepted_answers": ["would have passed"], "explanation": "would have + V3."}
+            {
+              "id": "en_a_01_e1",
+              "type": "mcq",
+              "question": "Had I known earlier, I ___ differently.",
+              "options": [
+                "would act",
+                "would have acted",
+                "will act",
+                "acted"
+              ],
+              "correct": 1,
+              "explanation": "Third Conditional."
+            },
+            {
+              "id": "en_a_01_e2",
+              "type": "mcq",
+              "question": "I wish I ___ more time yesterday.",
+              "options": [
+                "have",
+                "had",
+                "had had",
+                "would have"
+              ],
+              "correct": 2,
+              "explanation": "Wish + Past Perfect (had had)."
+            },
+            {
+              "id": "en_a_01_e3",
+              "type": "fill_blank",
+              "question": "If she had studied, she ___ (pass) the test.",
+              "accepted_answers": [
+                "would have passed"
+              ],
+              "explanation": "would have + V3."
+            },
+            {
+              "id": "en_a_01_e4",
+              "type": "mcq",
+              "question": "If I had known, I ___ come earlier.",
+              "options": [
+                "would",
+                "would have",
+                "will",
+                "had"
+              ],
+              "correct": 1,
+              "explanation": "would have come."
+            },
+            {
+              "id": "en_a_01_e5",
+              "type": "fill_blank",
+              "question": "I wish I ___ (not / say) that.",
+              "accepted_answers": [
+                "had not said",
+                "hadn't said"
+              ],
+              "explanation": "wish + Past Perfect."
+            },
+            {
+              "id": "en_a_01_e6",
+              "type": "mcq",
+              "question": "If she had left earlier, she ___ the train.",
+              "options": [
+                "caught",
+                "would catch",
+                "would have caught",
+                "will catch"
+              ],
+              "correct": 2,
+              "explanation": "Third Conditional."
+            },
+            {
+              "id": "en_a_01_e7",
+              "type": "mcq",
+              "question": "I wish it ___ raining. (now)",
+              "options": [
+                "stops",
+                "stopped",
+                "had stopped",
+                "would stop"
+              ],
+              "correct": 1,
+              "explanation": "Wish present → Past Simple."
+            },
+            {
+              "id": "en_a_01_e8",
+              "type": "fill_blank",
+              "question": "Had we known, we ___ (change) our plans.",
+              "accepted_answers": [
+                "would have changed"
+              ],
+              "explanation": "would have changed."
+            },
+            {
+              "id": "en_a_01_e9",
+              "type": "mcq",
+              "question": "She wishes she ___ harder at school.",
+              "options": [
+                "studies",
+                "studied",
+                "had studied",
+                "will study"
+              ],
+              "correct": 2,
+              "explanation": "Past regret — had studied."
+            },
+            {
+              "id": "en_a_01_e10",
+              "type": "mcq",
+              "question": "If you had told me, I ___ helped.",
+              "options": [
+                "would",
+                "would have",
+                "will",
+                "had"
+              ],
+              "correct": 1,
+              "explanation": "would have helped."
+            }
           ]
         },
         {
@@ -199,9 +1804,115 @@
           "theory_oral": "Inversion — Not only, Seldom kabi so'zlar bilan boshlanganda yordamchi fe'l subjectdan oldin keladi. Future Perfect — kelajakda ma'lum vaqtgacha tugagan ish: will have + V3.",
           "pass_threshold": 80,
           "exercises": [
-            {"id": "en_a_02_e1", "type": "mcq", "question": "Not only ___ late, but he also forgot the documents.", "options": ["he was", "was he", "he is", "is he"], "correct": 1, "explanation": "Not only + inversiya: was he."},
-            {"id": "en_a_02_e2", "type": "mcq", "question": "By next year, she ___ here for a decade.", "options": ["will work", "will have worked", "works", "worked"], "correct": 1, "explanation": "Future Perfect."},
-            {"id": "en_a_02_e3", "type": "mcq", "question": "'Ambiguous' so'zi ma'nosi:", "options": ["aniq", "ikki xil talqin qilinadigan", "oson", "qisqa"], "correct": 1, "explanation": "Ambiguous — noaniq, ikki ma'noli."}
+            {
+              "id": "en_a_02_e1",
+              "type": "mcq",
+              "question": "Not only ___ late, but he also forgot the documents.",
+              "options": [
+                "he was",
+                "was he",
+                "he is",
+                "is he"
+              ],
+              "correct": 1,
+              "explanation": "Not only + inversiya: was he."
+            },
+            {
+              "id": "en_a_02_e2",
+              "type": "mcq",
+              "question": "By next year, she ___ here for a decade.",
+              "options": [
+                "will work",
+                "will have worked",
+                "works",
+                "worked"
+              ],
+              "correct": 1,
+              "explanation": "Future Perfect."
+            },
+            {
+              "id": "en_a_02_e3",
+              "type": "mcq",
+              "question": "'Ambiguous' so'zi ma'nosi:",
+              "options": [
+                "aniq",
+                "ikki xil talqin qilinadigan",
+                "oson",
+                "qisqa"
+              ],
+              "correct": 1,
+              "explanation": "Ambiguous — noaniq, ikki ma'noli."
+            },
+            {
+              "id": "en_a_02_e4",
+              "type": "mcq",
+              "question": "Seldom ___ such kindness.",
+              "options": [
+                "I have seen",
+                "have I seen",
+                "I saw",
+                "did I saw"
+              ],
+              "correct": 1,
+              "explanation": "Inversion after Seldom."
+            },
+            {
+              "id": "en_a_02_e5",
+              "type": "fill_blank",
+              "question": "By 2030, scientists ___ (find) a solution.",
+              "accepted_answers": [
+                "will have found"
+              ],
+              "explanation": "Future Perfect."
+            },
+            {
+              "id": "en_a_02_e6",
+              "type": "mcq",
+              "question": "Not until midnight ___ the truth.",
+              "options": [
+                "he realized",
+                "did he realize",
+                "he did realize",
+                "realized he"
+              ],
+              "correct": 1,
+              "explanation": "Inversion after Not until."
+            },
+            {
+              "id": "en_a_02_e7",
+              "type": "mcq",
+              "question": "Only then ___ understand the problem.",
+              "options": [
+                "I did",
+                "did I",
+                "I",
+                "do I"
+              ],
+              "correct": 1,
+              "explanation": "Only then + inversion."
+            },
+            {
+              "id": "en_a_02_e8",
+              "type": "fill_blank",
+              "question": "Never ___ (I / see) such chaos.",
+              "accepted_answers": [
+                "have I seen"
+              ],
+              "explanation": "Never have I seen."
+            },
+            {
+              "id": "en_a_02_e9",
+              "type": "mcq",
+              "question": "By the time you arrive, we ___ dinner.",
+              "options": [
+                "will finish",
+                "will have finished",
+                "finish",
+                "finished"
+              ],
+              "correct": 1,
+              "explanation": "Future Perfect."
+            }
           ]
         },
         {
@@ -215,9 +1926,132 @@
           "theory_oral": "Advanced vocabulary — noaniq, kuchaytirmoq, juda diqqatli, hamma joyda uchraydigan kabi so'zlarni o'rganamiz. Ular yozma va akademik nutqda ko'p uchraydi.",
           "pass_threshold": 80,
           "exercises": [
-            {"id": "en_a_03_e1", "type": "mcq", "question": "'To exacerbate a problem' — bu:", "options": ["muammoni yechish", "muammoni kuchaytirish", "muammoni yashirish", "muammoni unutish"], "correct": 1, "explanation": "Exacerbate — yomonlashtirmoq."},
-            {"id": "en_a_03_e2", "type": "mcq", "question": "'Meticulous' odam qanday ishlaydi?", "options": ["beparvolik bilan", "juda ehtiyotkorlik va aniqlik bilan", "tez, lekin xatolar bilan", "tartibsiz"], "correct": 1, "explanation": "Meticulous — juda diqqatli."},
-            {"id": "en_a_03_e3", "type": "mcq", "question": "'Ubiquitous' so'zining ma'nosi:", "options": ["kamdan-kam", "hamma joyda mavjud", "qadimiy", "noaniq"], "correct": 1, "explanation": "Ubiquitous — hamma yerda."}
+            {
+              "id": "en_a_03_e1",
+              "type": "mcq",
+              "question": "'To exacerbate a problem' — bu:",
+              "options": [
+                "muammoni yechish",
+                "muammoni kuchaytirish",
+                "muammoni yashirish",
+                "muammoni unutish"
+              ],
+              "correct": 1,
+              "explanation": "Exacerbate — yomonlashtirmoq."
+            },
+            {
+              "id": "en_a_03_e2",
+              "type": "mcq",
+              "question": "'Meticulous' odam qanday ishlaydi?",
+              "options": [
+                "beparvolik bilan",
+                "juda ehtiyotkorlik va aniqlik bilan",
+                "tez, lekin xatolar bilan",
+                "tartibsiz"
+              ],
+              "correct": 1,
+              "explanation": "Meticulous — juda diqqatli."
+            },
+            {
+              "id": "en_a_03_e3",
+              "type": "mcq",
+              "question": "'Ubiquitous' so'zining ma'nosi:",
+              "options": [
+                "kamdan-kam",
+                "hamma joyda mavjud",
+                "qadimiy",
+                "noaniq"
+              ],
+              "correct": 1,
+              "explanation": "Ubiquitous — hamma yerda."
+            },
+            {
+              "id": "en_a_03_e4",
+              "type": "mcq",
+              "question": "'To postpone' means:",
+              "options": [
+                "to cancel",
+                "to delay",
+                "to finish",
+                "to start"
+              ],
+              "correct": 1,
+              "explanation": "postpone = delay."
+            },
+            {
+              "id": "en_a_03_e5",
+              "type": "mcq",
+              "question": "'Generous' person is:",
+              "options": [
+                "stingy",
+                "open-handed",
+                "angry",
+                "lazy"
+              ],
+              "correct": 1,
+              "explanation": "generous = open-handed."
+            },
+            {
+              "id": "en_a_03_e6",
+              "type": "mcq",
+              "question": "Antonym of 'increase':",
+              "options": [
+                "raise",
+                "decrease",
+                "grow",
+                "expand"
+              ],
+              "correct": 1,
+              "explanation": "decrease."
+            },
+            {
+              "id": "en_a_03_e7",
+              "type": "mcq",
+              "question": "'Reliable' means:",
+              "options": [
+                "doubtful",
+                "trustworthy",
+                "difficult",
+                "easy"
+              ],
+              "correct": 1,
+              "explanation": "reliable = trustworthy."
+            },
+            {
+              "id": "en_a_03_e8",
+              "type": "fill_blank",
+              "question": "'To make something better' verb: i___e",
+              "accepted_answers": [
+                "improve"
+              ],
+              "explanation": "improve."
+            },
+            {
+              "id": "en_a_03_e9",
+              "type": "mcq",
+              "question": "'Achieve a goal' means:",
+              "options": [
+                "give up",
+                "reach the goal",
+                "set a goal",
+                "forget"
+              ],
+              "correct": 1,
+              "explanation": "achieve = reach."
+            },
+            {
+              "id": "en_a_03_e10",
+              "type": "mcq",
+              "question": "A meticulous worker is:",
+              "options": [
+                "careless",
+                "very careful and precise",
+                "fast but wrong",
+                "disorganized"
+              ],
+              "correct": 1,
+              "explanation": "meticulous."
+            }
           ]
         }
       ]
