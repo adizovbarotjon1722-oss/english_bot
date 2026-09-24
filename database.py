@@ -13,12 +13,20 @@ DB_PATH = "repetitor.db"
 
 @contextmanager
 def get_conn():
-    conn = sqlite3.connect(DB_PATH)
+    # timeout=30 — bir vaqtda ko'p yozishda "database is locked" kamayadi
+    conn = sqlite3.connect(DB_PATH, timeout=30.0, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA journal_mode = WAL")       # parallel o'qish/yozish
+    conn.execute("PRAGMA synchronous = NORMAL")     # tezlik + yetarli xavfsizlik
+    conn.execute("PRAGMA busy_timeout = 30000")
+    conn.execute("PRAGMA temp_store = MEMORY")
     try:
         yield conn
         conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
     finally:
         conn.close()
 
@@ -108,6 +116,16 @@ def init_db():
                 issued_at TEXT DEFAULT (datetime('now')),
                 file_path TEXT
             );
+
+            -- Indekslar (minglab user uchun tezlik)
+            CREATE INDEX IF NOT EXISTS idx_users_telegram ON users(telegram_id);
+            CREATE INDEX IF NOT EXISTS idx_users_referral ON users(referral_code);
+            CREATE INDEX IF NOT EXISTS idx_results_user ON results(user_id);
+            CREATE INDEX IF NOT EXISTS idx_results_created ON results(created_at);
+            CREATE INDEX IF NOT EXISTS idx_module_progress_user ON module_progress(user_id, subject);
+            CREATE INDEX IF NOT EXISTS idx_seen_user ON seen_exercises(user_id, subject);
+            CREATE INDEX IF NOT EXISTS idx_badges_user ON badges(user_id);
+            CREATE INDEX IF NOT EXISTS idx_daily_user ON daily_activity(user_id, activity_date);
             """
         )
         # Migratsiya: eski jadvalga yangi ustunlar

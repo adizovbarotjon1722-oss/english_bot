@@ -73,6 +73,24 @@ def is_admin(user_id: int) -> bool:
     return bool(ids) and user_id in ids
 
 
+class AdminGuardMiddleware(BaseMiddleware):
+    """adm:* callback va /admin buyruqlarini faqat ADMIN_IDS ga ochadi."""
+
+    async def __call__(self, handler, event, data):
+        user = data.get("event_from_user")
+        if user is None:
+            return await handler(event, data)
+        # Callback
+        if isinstance(event, CallbackQuery) and event.data and event.data.startswith("adm:"):
+            if not is_admin(user.id):
+                await event.answer("⛔ Admin emas.", show_alert=True)
+                return
+        return await handler(event, data)
+
+
+
+
+
 QUESTIONS_PER_QUIZ = 5
 PASS_DEFAULT = 70
 MIN_SECONDS_BETWEEN_ACTIONS = 0.6
@@ -502,12 +520,19 @@ async def send_matching_step(message: Message, state: FSMContext):
 
 
 def check_owner(data: dict, user_id: int) -> bool:
-    return data.get("owner_id") == user_id
+    """Sessiya egasi tekshiruvi — begona odam boshqa user testiga aralasha olmaydi."""
+    owner = data.get("owner_id")
+    if owner is None:
+        return False
+    return int(owner) == int(user_id)
 
 
 @router.callback_query(F.data.startswith("ans:"))
 async def handle_mcq_answer(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
+    if not data.get("quiz"):
+        await callback.answer("Sessiya tugagan. /start bosing.", show_alert=True)
+        return
     if not check_owner(data, callback.from_user.id):
         await callback.answer("Bu sizning testingiz emas.", show_alert=True)
         return
@@ -549,6 +574,9 @@ async def handle_mcq_answer(callback: CallbackQuery, state: FSMContext):
 @router.callback_query(F.data.startswith("skip:"))
 async def handle_skip(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
+    if not data.get("quiz"):
+        await callback.answer("Sessiya tugagan. /start bosing.", show_alert=True)
+        return
     if not check_owner(data, callback.from_user.id):
         await callback.answer("Bu sizning testingiz emas.", show_alert=True)
         return
@@ -617,6 +645,9 @@ async def handle_text_answer(message: Message, state: FSMContext):
 @router.callback_query(F.data.startswith("match:"))
 async def handle_matching_answer(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()
+    if not data.get("quiz"):
+        await callback.answer("Sessiya tugagan. /start bosing.", show_alert=True)
+        return
     if not check_owner(data, callback.from_user.id):
         await callback.answer("Bu sizning testingiz emas.", show_alert=True)
         return
@@ -671,62 +702,103 @@ async def safe_edit(message: Message, text: str):
 
 async def advance_quiz(message: Message, state: FSMContext, next_index: int, score: int):
     data = await state.get_data()
-    quiz = data["quiz"]
+    quiz = data.get("quiz") or []
     await state.update_data(current=next_index, score=score, match=None)
     if next_index < len(quiz):
         await send_question(message, state)
-    else:
+        return
+    try:
         if data.get("is_placement"):
             await finish_placement(message, state, score, len(quiz))
         elif data.get("is_module_quiz"):
             await finish_module_quiz(message, state, score, len(quiz))
         else:
             await finish_free_practice(message, state, score, len(quiz))
+    except Exception as e:
+        logger.exception("Quiz yakunlash xatosi: %s", e)
+        try:
+            await message.answer(
+                f"⚠️ Test yakunlandi, lekin natijani saqlashda xato.\n"
+                f"Ball: <b>{score}/{len(quiz)}</b>\n"
+                f"/start bosing yoki admin bilan bog'laning.",
+                parse_mode="HTML",
+                reply_markup=main_menu_kb(),
+            )
+        except Exception:
+            pass
+        await state.clear()
 
 
 async def finish_placement(message: Message, state: FSMContext, score: int, total: int):
+    """Placement test yakuni — natija va daraja HAR DOIM ko'rsatiladi."""
     data = await state.get_data()
-    subject = data["subject"]
+    subject = data.get("subject") or "en"
+    owner_id = data.get("owner_id")
+    tg_user = message.from_user
+    if owner_id is None and tg_user:
+        owner_id = tg_user.id
+    if tg_user and owner_id and tg_user.id != owner_id:
+        logger.warning("Placement owner mismatch %s != %s", tg_user.id, owner_id)
+        await message.answer("Bu sizning testingiz emas.")
+        await state.clear()
+        return
+
     user_id = db.get_or_create_user(
-        data["owner_id"], data.get("username"), data.get("full_name")
+        owner_id,
+        data.get("username") or (tg_user.username if tg_user else None),
+        data.get("full_name") or (tg_user.full_name if tg_user else None),
     )
-    pct = round(100 * score / total) if total else 0
+    total = max(int(total or 1), 1)
+    score = int(score or 0)
+    pct = round(100 * score / total)
 
     if pct >= 75:
         level = "advanced"
+        level_hint = "Yuqori daraja — murakkab mavzular siz uchun ochiq."
     elif pct >= 45:
         level = "intermediate"
+        level_hint = "O'rta daraja — asoslarni mustahkamlab, yangi mavzularni o'rganasiz."
     else:
         level = "beginner"
+        level_hint = "Boshlang'ich daraja — oddiy va tushunarli asoslardan boshlaymiz."
 
-    db.set_placement_done(user_id, level)
-    db.add_xp(user_id, XP_PLACEMENT)
-    ensure_first_module_unlocked(user_id, subject, level)
-    # Intermediate/advanced uchun oldingi level modullarini ham ochib qo'yamiz (ixtiyoriy)
-    if level in ("intermediate", "advanced"):
-        for m in get_modules(subject, "beginner"):
-            db.unlock_module(user_id, subject, m["id"])
-            db.complete_module(user_id, subject, m["id"], 0, 0)  # skip qilingan deb belgilash
-        if level == "advanced":
-            for m in get_modules(subject, "intermediate"):
+    level_title = LEVEL_NAMES.get(level, level)
+
+    # AVVAL natijani yuboramiz (DB xatosi bo'lsa ham ko'rinadi)
+    result_text = (
+        "🎉 <b>Placement test tugadi!</b>\n\n"
+        f"📊 Natija: <b>{score}/{total}</b> ({pct}%)\n"
+        f"📍 Sizning darajangiz: <b>{level_title}</b>\n"
+        f"💡 {level_hint}\n\n"
+        f"⭐ +{XP_PLACEMENT} XP\n\n"
+        "——————\n"
+        "<b>Keyingi qadamlar:</b>\n"
+        "1️⃣ «Kursim / Darslar» tugmasini bosing\n"
+        "2️⃣ Modul → video → nazariya → mashq\n"
+        "3️⃣ Testdan o'tsangiz keyingi modul ochiladi"
+    )
+    await message.answer(result_text, parse_mode="HTML", reply_markup=main_menu_kb())
+
+    try:
+        db.set_placement_done(user_id, level)
+        db.add_xp(user_id, XP_PLACEMENT)
+        db.save_result(user_id, subject, "placement", level, score, total)
+        ensure_first_module_unlocked(user_id, subject, level)
+        if level in ("intermediate", "advanced"):
+            for m in get_modules(subject, "beginner"):
                 db.unlock_module(user_id, subject, m["id"])
                 db.complete_module(user_id, subject, m["id"], 0, 0)
+            if level == "advanced":
+                for m in get_modules(subject, "intermediate"):
+                    db.unlock_module(user_id, subject, m["id"])
+                    db.complete_module(user_id, subject, m["id"], 0, 0)
+        db.update_streak(user_id)
+    except Exception as e:
+        logger.exception("Placement DB xatosi: %s", e)
 
-    level_title = LEVEL_NAMES[level]
-    await message.answer(
-        f"🎉 Placement test tugadi!\n\n"
-        f"Natija: <b>{score}/{total}</b> ({pct}%)\n"
-        f"Sizning darajangiz: <b>{level_title}</b>\n\n"
-        f"+{XP_PLACEMENT} XP\n\n"
-        "Endi kurs bo'yicha darslarni boshlashingiz mumkin.\n"
-        "Har bir modulda: video → nazariya → mashq/test.\n"
-        "Testni muvaffaqiyatli topsangiz keyingi modul ochiladi.",
-        parse_mode="HTML",
-        reply_markup=main_menu_kb(),
-    )
     await state.clear()
     await state.set_state(QuizState.course_menu)
-    await state.update_data(subject=subject, owner_id=data["owner_id"])
+    await state.update_data(subject=subject, owner_id=owner_id)
 
 
 async def finish_module_quiz(message: Message, state: FSMContext, score: int, total: int):
@@ -1820,6 +1892,8 @@ async def main():
     throttle = ThrottlingMiddleware()
     dp.message.middleware(throttle)
     dp.callback_query.middleware(throttle)
+    admin_guard = AdminGuardMiddleware()
+    dp.callback_query.middleware(admin_guard)
     dp.errors.register(on_unhandled_error)
     dp.include_router(router)
     await bot.delete_webhook(drop_pending_updates=True)

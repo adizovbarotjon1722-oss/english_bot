@@ -1,0 +1,5 @@
+e_mode="HTML")
+    except TelegramBadRequest:
+        logger.warning("edit_text muvaffaqiyatsiz")
+
+
