@@ -730,23 +730,27 @@ async def advance_quiz(message: Message, state: FSMContext, next_index: int, sco
 
 
 async def finish_placement(message: Message, state: FSMContext, score: int, total: int):
-    """Placement test yakuni — natija va daraja HAR DOIM ko'rsatiladi."""
+    """Placement test yakuni — natija va daraja HAR DOIM ko'rsatiladi.
+
+    Muhim: callback.message.from_user = BOT (foydalanuvchi emas).
+    Shuning uchun owner_id faqat FSM state dan olinadi (javob handlerlarda allaqachon tekshirilgan).
+    """
     data = await state.get_data()
     subject = data.get("subject") or "en"
     owner_id = data.get("owner_id")
-    tg_user = message.from_user
-    if owner_id is None and tg_user:
-        owner_id = tg_user.id
-    if tg_user and owner_id and tg_user.id != owner_id:
-        logger.warning("Placement owner mismatch %s != %s", tg_user.id, owner_id)
-        await message.answer("Bu sizning testingiz emas.")
+    if owner_id is None:
+        logger.error("Placement: owner_id yo'q — state yo'qolgan")
+        await message.answer(
+            "⚠️ Sessiya yo'qoldi. Iltimos /start bosing va testni qayta boshlang.",
+            reply_markup=main_menu_kb(),
+        )
         await state.clear()
         return
 
     user_id = db.get_or_create_user(
-        owner_id,
-        data.get("username") or (tg_user.username if tg_user else None),
-        data.get("full_name") or (tg_user.full_name if tg_user else None),
+        int(owner_id),
+        data.get("username"),
+        data.get("full_name"),
     )
     total = max(int(total or 1), 1)
     score = int(score or 0)
