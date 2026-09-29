@@ -1,13 +1,8 @@
-# Maxfiy ma'lumotlar
 .env
-repetitor.db
-repetitor.db-wal
-repetitor.db-shm
-
-# Avtomatik yaratiladigan fayllar
-certificates/
-backups/
-media/audio/spk_*
+.venv/
 __pycache__/
-*.pyc
-.spyproject/
+*.py[cod]
+*.db
+*.db-shm
+*.db-wal
+.pytest_cache/

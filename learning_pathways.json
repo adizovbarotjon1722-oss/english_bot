@@ -1,0 +1,54 @@
+{
+  "framework": "CEFR Companion Volume; IELTS official test format and public assessment criteria",
+  "principles": [
+    "Learning outcomes are written as observable can-do tasks.",
+    "Each course develops listening, reading, spoken interaction, spoken production, and writing.",
+    "Grammar and vocabulary are taught as tools for completing real communication tasks.",
+    "A learner target is a goal, not an official CEFR certificate or IELTS score prediction."
+  ],
+  "cefr_route": [
+    {"level":"A1","status":"active","lessons":40,"units":10,"exit":"Handle familiar everyday exchanges: introduce yourself, ask and answer simple questions, describe routine and familiar places, give basic past and future information. Pass the A1 skill check in all four skills and complete a teacher-reviewed speaking task."},
+    {"level":"A2","status":"planned","lessons":40,"units":10,"entry":"A1 skill check passed","exit":"Understand frequently used expressions; communicate in routine tasks; describe background and immediate needs; complete an integrated four-skill check.","syllabus":["People, family, and descriptions","Home, furniture, and neighbourhood","Daily routine, work, and study","Food, shopping, and quantities","Health, advice, and appointments","Past holidays and experiences","Travel, directions, and transport","Comparisons, preferences, and plans","Invitations, arrangements, and messages","Integrated everyday tasks and A2 checkpoint"]},
+    {"level":"B1","status":"planned","lessons":48,"units":12,"entry":"A2 skill check passed","exit":"Understand the main points of clear standard input, manage familiar situations, produce connected text, and explain plans and opinions with reasons.","syllabus":["Personal identity and life changes","Education, work, and goals","Travel problems and solutions","Stories, memories, and sequencing","Health, lifestyle, and advice","Technology and communication","Culture, media, and recommendations","Environment and local action","Opinions, reasons, and discussion","Plans, predictions, and decisions","Formal and informal writing","Integrated B1 project and four-skill check"]},
+    {"level":"B2","status":"planned","lessons":48,"units":12,"entry":"B1 skill check passed","exit":"Interact with greater fluency, understand more complex texts, and write clear, developed responses across familiar and academic topics.","syllabus":["Complex narratives and viewpoint","Current affairs and source reliability","Education and research","Workplace communication and negotiation","Science, technology, and ethics","Environment and evidence","Arts, culture, and criticism","Cause, effect, and problem solving","Argument, counterargument, and examples","Presentations and seminar discussion","Reports, proposals, and formal correspondence","Integrated B2 project and four-skill check"]},
+    {"level":"C1","status":"planned","lessons":48,"units":12,"entry":"B2 skill check passed","exit":"Use English flexibly and effectively for academic, professional, and social purposes; complete a calibrated four-skill assessment.","syllabus":["Register, tone, and audience","Critical reading and synthesis","Academic lectures and note-making","Nuanced argument and counterargument","Idiomatic language and collocation","Professional meetings and negotiation","Research evidence and evaluation","Abstract themes and interpretation","Long-form analytical writing","Fluent discussion and presentation","Editing for precision and style","Integrated C1 portfolio and four-skill check"]},
+    {"level":"C2","status":"planned","lessons":48,"units":12,"entry":"C1 skill check passed","exit":"Understand virtually everything heard or read and communicate precisely, fluently, and flexibly across complex contexts.","syllabus":["Register shifts and rhetorical effect","Dense texts and implicit meaning","Synthesis across multiple sources","Nuanced listening and speaker stance","Advanced argument and rebuttal","Metaphor, idiom, and lexical precision","Specialist and interdisciplinary discourse","Persuasive speaking for varied audiences","Complex reports and policy writing","Literary and cultural interpretation","Editing for accuracy and impact","Integrated C2 capstone and calibrated assessment"]}
+  ],
+  "ielts_route": {
+    "status":"planned",
+    "entry":"Complete A1 and A2, then pass a teacher-reviewed B1 readiness check. Build broad language ability before intensive exam practice; no CEFR level is presented as a guaranteed IELTS band.",
+    "choice":"At IELTS entry, learner chooses Academic or General Training according to their institution, work, or migration requirement. Listening and Speaking preparation is shared; Reading and Writing preparation follows the chosen test type.",
+    "stages":[
+      {"name":"IELTS Foundation","focus":"diagnostic across four skills; core vocabulary and grammar gaps; listening for gist and detail; reading strategies; paragraph structure; speaking fluency and pronunciation"},
+      {"name":"IELTS Skills","focus":"official task types; timing; note completion and matching; reading question strategies; Writing Task 1 and Task 2; Speaking Parts 1–3; feedback using public criteria"},
+      {"name":"IELTS Practice","focus":"timed section practice; full-length mock tests; error logs; targeted revision; teacher-reviewed speaking and writing"}
+    ],
+    "twelve_week_plan":["1 · Placement diagnostic and target analysis","2 · Listening: form, note, and table completion","3 · Listening: matching, map, and multiple choice","4 · Reading: skimming, scanning, and locating evidence","5 · Reading: matching headings, True/False/Not Given, and paraphrase","6 · Writing Task 1: Academic visual report OR General Training letter","7 · Writing Task 2: position, paragraphing, support, and cohesion","8 · Speaking Part 1: familiar topics, fluency, and clear answers","9 · Speaking Part 2: cue-card planning and a sustained talk","10 · Speaking Part 3: developing, comparing, and supporting opinions","11 · Timed four-skill mock sections and diagnostic error log","12 · Targeted remediation, second mock, and readiness review"],
+    "academic_writing":"Task 1 describes visual information; Task 2 responds to a point of view, argument, or problem.",
+    "general_writing":"Task 1 is a letter; Task 2 responds to a point of view, argument, or problem.",
+    "speaking_rubric":["fluency and coherence","lexical resource","grammatical range and accuracy","pronunciation"],
+    "writing_rubric":["task achievement/response","coherence and cohesion","lexical resource","grammatical range and accuracy"],
+    "score_policy":"Show practice performance and rubric evidence separately from official IELTS results. Only an official IELTS test can award an official band score."
+  },
+  "assessment": {
+    "lesson_quiz_questions":5,
+    "lesson_pass_percent":80,
+    "unit_checkpoint_questions":20,
+    "mastery":"Passing a quiz alone is not the unit exit: require a real communication task and teacher feedback. Revisit missed language after spaced intervals using changed contexts.",
+    "question_reuse":"Avoid the same question in consecutive attempts. Recycle the same learning objective later with a new prompt because retrieval and review support retention.",
+    "a1_speaking_writing_rubric":["task completed","message understandable","target words used","target sentence pattern mostly accurate"]
+  },
+  "weekly_rhythm": [
+    "Day 1–4: one lesson per day, with a short retrieval review from earlier lessons.",
+    "Day 5: 20-item mixed checkpoint, unit mission, and teacher feedback.",
+    "At approximately 1, 3, and 7 days after learning: brief spaced vocabulary/grammar retrieval in a new context."
+  ],
+  "quality_gates": [
+    "Every lesson has an approved can-do outcome, source-page map, answer key, transcript or model, and accessible Uzbek instructions.",
+    "A lead English teacher with advanced proficiency and documented ELT experience authors lessons; a second teacher reviews accuracy, level appropriateness, and answer keys. IELTS reviewers must be trained to use the relevant public band descriptors.",
+    "Share scanned textbook pages with enrolled learners only when the course has the necessary distribution permission; otherwise replace them with original page-linked explanations and exercises.",
+    "IELTS exercises use official public formats and rubrics; tasks are not labelled as official IELTS questions unless licensed and sourced as such.",
+    "Pilot with a small learner group; measure lesson completion, missed objectives, confusing instructions, teacher response time, and bot delivery errors before broad release.",
+    "AI may explain and suggest practice but must not certify a CEFR level, predict an official IELTS score, unlock a course, or alter system settings."
+  ]
+}

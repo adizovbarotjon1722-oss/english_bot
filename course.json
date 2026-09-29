@@ -1,0 +1,2316 @@
+{
+  "brand": "English Path A1",
+  "level": "Beginner · A1",
+  "units": [
+    {
+      "id": 1,
+      "title": "Birinchi uchrashuvlar",
+      "icon": "👋",
+      "color": "#c9f27c",
+      "theme": "Tanishish, davlatlar, sonlar va alifbo",
+      "vocab": [
+        [
+          "hello",
+          "salom"
+        ],
+        [
+          "Nice to meet you",
+          "tanishganimdan xursandman"
+        ],
+        [
+          "And you?",
+          "siz-chi?"
+        ],
+        [
+          "on business",
+          "xizmat safari bilan"
+        ],
+        [
+          "on holiday",
+          "ta'tilda"
+        ],
+        [
+          "to study",
+          "o‘qish uchun"
+        ],
+        [
+          "country",
+          "mamlakat"
+        ],
+        [
+          "city",
+          "shahar"
+        ],
+        [
+          "the alphabet",
+          "alifbo"
+        ],
+        [
+          "spell",
+          "harflab aytmoq"
+        ],
+        [
+          "phone number",
+          "telefon raqami"
+        ],
+        [
+          "form",
+          "anketa"
+        ],
+        [
+          "first name",
+          "ism"
+        ],
+        [
+          "surname",
+          "familiya"
+        ],
+        [
+          "Australia",
+          "Avstraliya"
+        ],
+        [
+          "Brazil",
+          "Braziliya"
+        ],
+        [
+          "China",
+          "Xitoy"
+        ],
+        [
+          "Indonesia",
+          "Indoneziya"
+        ],
+        [
+          "Japan",
+          "Yaponiya"
+        ],
+        [
+          "Russia",
+          "Rossiya"
+        ],
+        [
+          "Spain",
+          "Ispaniya"
+        ],
+        [
+          "Turkey",
+          "Turkiya"
+        ],
+        [
+          "the UK",
+          "Buyuk Britaniya"
+        ],
+        [
+          "the USA",
+          "AQSH"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Tanishuvni boshlash",
+          "focus": "Introductions · be (I/you)",
+          "goal": "O‘zingizni tanishtiring va be bilan sodda savol-javob qiling.",
+          "teach": "Hello, I'm ... / Hi, I'm ... Nice to meet you. — And you. Are you here on business or on holiday? — No, I'm not. I'm here to study.",
+          "practice": "🎭 Uch rol kartasidan birini tanlang (sayyoh, talaba, xizmat safari). Salomlashib, ismingizni ayting va sherigingizdan nima maqsadda kelganini so‘rang.",
+          "quiz": [
+            [
+              "‘Tanishganimdan xursandman’ qaysi?",
+              "Nice to meet you",
+              "How old are you",
+              "See you later",
+              0
+            ],
+            [
+              "I ___ Aziza.",
+              "am",
+              "is",
+              "are",
+              0
+            ],
+            [
+              "Suhbatni boshlash uchun mos salom?",
+              "Hello!",
+              "Thanks!",
+              "Good night!",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Qayerdansiz?",
+          "focus": "Countries · numbers 1–10 · be (we/you)",
+          "goal": "Mamlakat va shaharingizni ayting, boshqa odamdan qayerdanligini so‘rang.",
+          "teach": "I'm from Uzbekistan. I'm from Tashkent. — Where are you from? We're from Brazil. Numbers: one–ten. Use I'm / we're and are you / are we.",
+          "practice": "🗺️ Xaritadan ikki mamlakat tanlang. Har biri uchun Where are you from? dialogini tuzing va 1–10 sonlarini inglizcha ayting.",
+          "quiz": [
+            [
+              "I'm ___ Uzbekistan.",
+              "from",
+              "at",
+              "to",
+              0
+            ],
+            [
+              "Are you from Brazil? — No, I ___.",
+              "isn't",
+              "am not",
+              "aren't",
+              1
+            ],
+            [
+              "‘Siz ta’tildamisiz?’",
+              "You are holiday?",
+              "Is you on holiday?",
+              "Are you on holiday?",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Ismni qanday harflaysiz?",
+          "focus": "The alphabet · What/Where/How questions",
+          "goal": "Ismni harflab ayting va anketa uchun asosiy ma'lumotni so‘rang.",
+          "teach": "What's your name? How do you spell that? Where are you from? What's your phone number? Mashq uchun telefon raqami va harf nomlarini sekin, aniq ayting.",
+          "practice": "🔤 Ism kartangizni sherigingizga ko‘rsatmang. Ismingizni harflab ayting; u yozsin, keyin tekshirib, How do you spell it? savolini bering.",
+          "quiz": [
+            [
+              "___ do you spell your name?",
+              "Where",
+              "What",
+              "How",
+              2
+            ],
+            [
+              "___ are you from?",
+              "Where",
+              "How",
+              "Who",
+              0
+            ],
+            [
+              "‘Ismingiz nima?’",
+              "What's your name?",
+              "How are you name?",
+              "Where is name?",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: tanishuv",
+          "focus": "Greetings · saying goodbye · filling in a form",
+          "goal": "Tanishuvni yakunlang va oddiy anketa ma'lumotini yozing.",
+          "teach": "Hello / Hi; Nice to meet you. — And you. Goodbye / See you. Form: first name, surname, country, city and phone number.",
+          "practice": "🪪 O‘zingiz uchun inglizcha mini-anketa to‘ldiring va 5 replikali tanishuv dialogi tuzing. Telefon raqami haqiqiy bo‘lishi shart emas.",
+          "quiz": [
+            [
+              "‘Keyinroq ko‘rishguncha’",
+              "See you later",
+              "I'm from…",
+              "Nice to meet you",
+              0
+            ],
+            [
+              "‘Are you here to study?’ uchun ijobiy qisqa javob",
+              "Yes, I am.",
+              "Yes, you are.",
+              "Yes, I do.",
+              0
+            ],
+            [
+              "‘How do you spell that?’ nimani so‘raydi?",
+              "Qanday harflanadi?",
+              "Qayerdansiz?",
+              "Necha yoshdasiz?",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Savollar",
+      "icon": "🔎",
+      "color": "#ffad91",
+      "theme": "Buyumlar, kasblar, joylashuv va vaqt",
+      "vocab": [
+        [
+          "key",
+          "kalit"
+        ],
+        [
+          "wallet",
+          "hamyon"
+        ],
+        [
+          "umbrella",
+          "soyabon"
+        ],
+        [
+          "notebook",
+          "daftar"
+        ],
+        [
+          "these",
+          "bular (yaqin)"
+        ],
+        [
+          "those",
+          "anavilar (uzoq)"
+        ],
+        [
+          "job",
+          "kasb"
+        ],
+        [
+          "engineer",
+          "muhandis"
+        ],
+        [
+          "nurse",
+          "hamshira"
+        ],
+        [
+          "near",
+          "yaqinida"
+        ],
+        [
+          "next to",
+          "yonida"
+        ],
+        [
+          "What time is it?",
+          "Soat necha?"
+        ],
+        [
+          "phone",
+          "telefon"
+        ],
+        [
+          "pen",
+          "ruchka"
+        ],
+        [
+          "book",
+          "kitob"
+        ],
+        [
+          "apple",
+          "olma"
+        ],
+        [
+          "teacher",
+          "o‘qituvchi"
+        ],
+        [
+          "doctor",
+          "shifokor"
+        ],
+        [
+          "taxi driver",
+          "taksi haydovchisi"
+        ],
+        [
+          "student",
+          "talaba"
+        ],
+        [
+          "thirteen",
+          "o‘n uch"
+        ],
+        [
+          "thirty",
+          "o‘ttiz"
+        ],
+        [
+          "o'clock",
+          "soat (aniq vaqt)"
+        ],
+        [
+          "half past",
+          "...dan yarim o‘tdi"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Bu inglizchada nima?",
+          "focus": "Objects · singular/plural · this/that/these/those · be (it/they)",
+          "goal": "Buyumlarni birlik va ko‘plikda, yaqin yoki uzoqligiga qarab ko‘rsating.",
+          "teach": "What's this? — It's a key. What's that? — It's an umbrella. What are these? — They're pens. What are those? — They're books. Ko‘p oddiy otlarga -s qo‘shiladi.",
+          "practice": "🧳 Yaqinga ikki buyum, uzoqroqqa yana ikki buyum qo‘ying. This/that/these/those bilan to‘rtta savol-javob tuzing.",
+          "quiz": [
+            [
+              "Yaqindagi bitta buyum",
+              "those",
+              "this",
+              "these",
+              1
+            ],
+            [
+              "Uzoqdagi ko‘p buyum",
+              "that",
+              "this",
+              "those",
+              2
+            ],
+            [
+              "What are these? — ___ apples.",
+              "It's",
+              "They're",
+              "He is",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Kasbingiz nima?",
+          "focus": "Jobs · be (he/she/it/they) · numbers 11–100",
+          "goal": "Kasb va raqamlarni ayting, be fe'lining he/she/they shakllarini ishlating.",
+          "teach": "What's her job? — She's a nurse. He's an engineer. They're teachers. Is he a taxi driver? — No, he isn't. 11–100 sonlarini ayting va -teen/-ty urg‘usiga e'tibor bering.",
+          "practice": "🧑‍⚕️ Uch kasb kartasini tanlang. Har biri haqida He/She is a ... deb gap tuzing; 13 va 30 kabi sonlarni farqlab ayting.",
+          "quiz": [
+            [
+              "Maria — ___ a nurse.",
+              "She's",
+              "He's",
+              "They're",
+              0
+            ],
+            [
+              "Ali and Bek — ___ students.",
+              "It's",
+              "They're",
+              "He's",
+              1
+            ],
+            [
+              "Is he a doctor? — No, he ___.",
+              "aren't",
+              "isn't",
+              "am not",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Ular qayerda?",
+          "focus": "Subject pronouns · in/on/near/next to",
+          "goal": "Ism o‘rnidagi olmoshlar va joy predloglari bilan odamlar hamda buyumlarni toping.",
+          "teach": "I/you/he/she/it/we/they names o‘rnida keladi. The keys are on the table. The phone is in the bag. The station is near the hotel.",
+          "practice": "🗺️ Xona sxemasiga 4 buyumni joylang. It/they olmoshlari va in/on/near/next to bilan qayerdaligini ayting.",
+          "quiz": [
+            [
+              "The phone is ___ the bag.",
+              "from",
+              "in",
+              "at",
+              1
+            ],
+            [
+              "Ali and Sara are here. ___ are students.",
+              "He",
+              "They",
+              "She",
+              1
+            ],
+            [
+              "The bank is ___ the museum. (yonida)",
+              "in",
+              "next to",
+              "on",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: vaqt va blog",
+          "focus": "Wh- questions · telling the time · a simple blog",
+          "goal": "Oddiy savollar va vaqtni takrorlab, o‘zingiz haqingizda qisqa blog yozing.",
+          "teach": "Who is he? Where are your keys? What time is it? — It's half past four. Blogda ismingiz, ishingiz/o‘qishingiz, shahringiz va bitta yoqtirgan narsangizni yozing.",
+          "practice": "🕵️ Uchta buyum yoki odam haqida Who/What/Where bilan savol bering. So‘ng xayoliy uchrashuv vaqtini soat bilan aytib, 4 jumlali blog yozing.",
+          "quiz": [
+            [
+              "Soat 4:30 inglizcha qanday aytiladi?",
+              "It's four past half.",
+              "It's half past four.",
+              "It's half to four.",
+              1
+            ],
+            [
+              "___ are your keys? — On the desk.",
+              "When",
+              "Where",
+              "Who",
+              1
+            ],
+            [
+              "Blog jumlasi boshida nima yoziladi?",
+              "Capital letter",
+              "Comma",
+              "Question mark",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Odamlar va ularning buyumlari",
+      "icon": "🏡",
+      "color": "#b4b8ff",
+      "theme": "Qo‘shnilar, egalik, oila va kundalik iboralar",
+      "vocab": [
+        [
+          "neighbour",
+          "qo‘shni"
+        ],
+        [
+          "friendly",
+          "do‘stona"
+        ],
+        [
+          "expensive",
+          "qimmat"
+        ],
+        [
+          "cheap",
+          "arzon"
+        ],
+        [
+          "child / children",
+          "bola / bolalar"
+        ],
+        [
+          "family",
+          "oila"
+        ],
+        [
+          "parents",
+          "ota-ona"
+        ],
+        [
+          "daughter",
+          "qiz farzand"
+        ],
+        [
+          "son",
+          "o‘g‘il farzand"
+        ],
+        [
+          "my",
+          "mening"
+        ],
+        [
+          "his / her",
+          "uning (erkak / ayol)"
+        ],
+        [
+          "Whose...?",
+          "Kimning...?"
+        ],
+        [
+          "husband",
+          "er"
+        ],
+        [
+          "wife",
+          "xotin"
+        ],
+        [
+          "house",
+          "uy"
+        ],
+        [
+          "garden",
+          "bog‘"
+        ],
+        [
+          "have got",
+          "bor bo‘lmoq"
+        ],
+        [
+          "has got",
+          "bor (he/she)"
+        ],
+        [
+          "haven't got",
+          "yo‘q (I/you/we/they)"
+        ],
+        [
+          "our",
+          "bizning"
+        ],
+        [
+          "their",
+          "ularning"
+        ],
+        [
+          "but",
+          "ammo"
+        ],
+        [
+          "people",
+          "odamlar"
+        ],
+        [
+          "keys",
+          "kalitlar"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Qo‘shnilar",
+          "focus": "Adjective + noun · irregular plurals · have got/has got",
+          "goal": "Sifatli ot birikmalari va have got bilan odam hamda narsalarni tasvirlang.",
+          "teach": "a friendly neighbour; an expensive phone; two children; three people. I've got a friendly neighbour. She's got two children. Sifat odatda otdan oldin keladi.",
+          "practice": "🏘️ Uch qo‘shniga qisqa tavsif yozing. Sifat+ot, have got va people/children kabi irregular plural ishlating.",
+          "quiz": [
+            [
+              "‘Do‘stona qo‘shni’",
+              "friendly a neighbour",
+              "a friendly neighbour",
+              "a neighbour friendly",
+              1
+            ],
+            [
+              "Child ko‘plikda",
+              "childes",
+              "childs",
+              "children",
+              2
+            ],
+            [
+              "‘Qimmat telefon’",
+              "an expensive phone",
+              "a phone expensive",
+              "expensive a phone",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Buyumlarim",
+          "focus": "have got/has got · negatives and questions",
+          "goal": "Egalikni ijobiy, inkor va savol shaklida ifoda qiling.",
+          "teach": "I've got a bike. He has got a camera. We haven't got a car. Has she got a laptop? — Yes, she has. / No, she hasn't.",
+          "practice": "🎒 Sumkamda nima bor? ro‘yxati tuzing: 3 ta bor, 2 ta yo‘q. Keyin sherigingizdan Have you got...? deb so‘rang.",
+          "quiz": [
+            [
+              "She ___ two brothers.",
+              "have got",
+              "has got",
+              "got has",
+              1
+            ],
+            [
+              "They ___ a new house.",
+              "have got",
+              "is got",
+              "has got",
+              0
+            ],
+            [
+              "I ___ an umbrella.",
+              "'ve got",
+              "'s got",
+              "am got",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Oila",
+          "focus": "Possessive determiners · possessive 's · family",
+          "goal": "Oila a'zolarini my/his/her/our va apostrof-s bilan tanishtiring.",
+          "teach": "This is my sister. His parents are friendly. Sara's husband is Ali. Apostrophe + s egalikni bildiradi: Malika's house.",
+          "practice": "🌳 Xayoliy oila daraxtini chizing. To‘rt kishini This is my... bilan tanishtirib, ikki marta possessive 's ishlating.",
+          "quiz": [
+            [
+              "Have you got a car? — No, I ___.",
+              "hasn't",
+              "haven't",
+              "don't",
+              1
+            ],
+            [
+              "Sara loves ___ family.",
+              "his",
+              "her",
+              "their",
+              1
+            ],
+            [
+              "He ___ got a sister.",
+              "hasn't",
+              "haven't",
+              "isn't",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: ijtimoiy tarmoq xabari",
+          "focus": "Opposite adjectives · everyday expressions · social media message",
+          "goal": "Qarama-qarshi sifatlar va kundalik iboralar bilan qisqa xabar yozing.",
+          "teach": "The flat is small but comfortable. The neighbours are friendly. Thanks very much! — You're welcome. And qo‘shimcha, but qarama-qarshi fikrni bog‘laydi.",
+          "practice": "💬 Oila yoki qo‘shni haqida 4 jumlali post yozing. And/but, qarama-qarshi sifat va tabiiy javob iborasini ishlating.",
+          "quiz": [
+            [
+              "‘Arzon’ so‘zining teskarisi",
+              "sad",
+              "old",
+              "expensive",
+              2
+            ],
+            [
+              "Qarama-qarshi fikrni bog‘lovchi",
+              "but",
+              "and",
+              "the",
+              0
+            ],
+            [
+              "‘Rahmat’ga odatiy javob",
+              "You're welcome.",
+              "Bless you.",
+              "Excuse me.",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Mening hayotim",
+      "icon": "☀️",
+      "color": "#ffd078",
+      "theme": "Kundalik hayot, qatnov, kun tartibi va do‘kondagi suhbat",
+      "vocab": [
+        [
+          "get up",
+          "o‘rindan turmoq"
+        ],
+        [
+          "have breakfast",
+          "nonushta qilmoq"
+        ],
+        [
+          "go to work",
+          "ishga bormoq"
+        ],
+        [
+          "get home",
+          "uyga yetib kelmoq"
+        ],
+        [
+          "take the bus",
+          "avtobusda bormoq"
+        ],
+        [
+          "by train",
+          "poyezdda"
+        ],
+        [
+          "walk",
+          "piyoda yurmoq"
+        ],
+        [
+          "work",
+          "ishlamoq"
+        ],
+        [
+          "study",
+          "o‘qimoq"
+        ],
+        [
+          "buy",
+          "sotib olmoq"
+        ],
+        [
+          "How much is it?",
+          "Bu qancha turadi?"
+        ],
+        [
+          "Can I have...?",
+          "...olsam bo‘ladimi?"
+        ],
+        [
+          "wake up",
+          "uyg‘onmoq"
+        ],
+        [
+          "get dressed",
+          "kiyinmoq"
+        ],
+        [
+          "have lunch",
+          "tushlik qilmoq"
+        ],
+        [
+          "finish work",
+          "ishni tugatmoq"
+        ],
+        [
+          "go home",
+          "uyga bormoq"
+        ],
+        [
+          "every day",
+          "har kuni"
+        ],
+        [
+          "at weekends",
+          "dam olish kunlari"
+        ],
+        [
+          "by car",
+          "mashinada"
+        ],
+        [
+          "on foot",
+          "piyoda"
+        ],
+        [
+          "drive",
+          "mashina haydamoq"
+        ],
+        [
+          "read",
+          "o‘qimoq"
+        ],
+        [
+          "watch TV",
+          "televizor ko‘rmoq"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Kundalik hayot",
+          "focus": "Present simple positive",
+          "goal": "Har kuni bajaradigan ishlarni aytish",
+          "teach": "I work in a school. We live in Tashkent. He works in an office. She studies English. He/she/it fe'lida ko‘pincha -s qo‘shiladi.",
+          "practice": "⏰ Kun tartibi rasmlarini to‘g‘ri ketma-ketlikka qo‘ying va 5 ta ‘I …’ gap tuzing.",
+          "quiz": [
+            [
+              "She ___ English every day.",
+              "studys",
+              "study",
+              "studies",
+              2
+            ],
+            [
+              "They ___ in a flat.",
+              "lives",
+              "living",
+              "live",
+              2
+            ],
+            [
+              "He ___ football on Sundays.",
+              "plays",
+              "play",
+              "plaies",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Safar va qatnov",
+          "focus": "Transport · present simple negative",
+          "goal": "Qatnov odatlari va qilmaydigan ishlaringizni don't/doesn't bilan ayting.",
+          "teach": "I go to work by bus. I don't drive. He doesn't travel by train. Don't I/you/we/they bilan, doesn't he/she/it bilan keladi; undan keyin fe'lning oddiy shakli ishlatiladi.",
+          "practice": "🚌 Ikki kishining qatnovini taqqoslang. Qaysi transportda borishini va nimalar qilmasligini 4 gapda yozing; don't/doesn't ikkalasini ishlating.",
+          "quiz": [
+            [
+              "He ___ travel by train.",
+              "doesn't",
+              "isn't",
+              "don't",
+              0
+            ],
+            [
+              "We ___ the bus to work.",
+              "takes",
+              "take",
+              "taking",
+              1
+            ],
+            [
+              "I don't ___ to work.",
+              "driving",
+              "drives",
+              "drive",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Mening kunim",
+          "focus": "Daily activities · present simple yes/no questions",
+          "goal": "Do/Does yordamida kun tartibi haqida savol bering va qisqa javob qaytaring.",
+          "teach": "Do you get up at seven? — Yes, I do. Does she have breakfast at home? — No, she doesn't. Does bilan asosiy fe'lga -s qo‘shilmaydi.",
+          "practice": "⏰ Kun tartibi jadvalini to‘ldiring. Sherigingizga Do you...? bilan uch savol bering va Yes, I do / No, I don't bilan javob bering.",
+          "quiz": [
+            [
+              "___ you have breakfast at home?",
+              "Are",
+              "Does",
+              "Do",
+              2
+            ],
+            [
+              "Does she ___ up at seven?",
+              "get",
+              "getting",
+              "gets",
+              0
+            ],
+            [
+              "Do they work here? — No, they ___.",
+              "aren't",
+              "don't",
+              "doesn't",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Mening haftam",
+          "focus": "Short informal email; everyday situations",
+          "goal": "Kundalik hayot haqida qisqa email yozish",
+          "teach": "Hi Sam, I usually get up at seven. I go to work by bus. I don't work on Sundays. What do you do at weekends?",
+          "practice": "✉️ Do‘stingizga 5 jumlali email yozing. Bir kun tartibi, bitta inkor, bitta savol bo‘lsin.",
+          "quiz": [
+            [
+              "I ___ watch TV in the morning. (hech qachon)",
+              "never",
+              "doesn't",
+              "not",
+              0
+            ],
+            [
+              "She ___ to work by train.",
+              "goes",
+              "going",
+              "go",
+              0
+            ],
+            [
+              "To‘g‘ri email salomi",
+              "Hi Sam,",
+              "Dear is Sam,",
+              "Hello to Sam,",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Uslub va dizayn",
+      "icon": "👗",
+      "color": "#ff9bc2",
+      "theme": "Kiyim, arxitektura, tashqi ko‘rinish va sayohat ma'lumoti",
+      "vocab": [
+        [
+          "shirt",
+          "ko‘ylak"
+        ],
+        [
+          "trousers",
+          "shim"
+        ],
+        [
+          "comfortable",
+          "qulay"
+        ],
+        [
+          "usually",
+          "odatda"
+        ],
+        [
+          "sometimes",
+          "ba'zan"
+        ],
+        [
+          "building",
+          "bino"
+        ],
+        [
+          "beautiful",
+          "chiroyli"
+        ],
+        [
+          "very / really",
+          "juda"
+        ],
+        [
+          "hair",
+          "soch"
+        ],
+        [
+          "eyes",
+          "ko‘zlar"
+        ],
+        [
+          "Where does it leave from?",
+          "U qayerdan jo‘naydi?"
+        ],
+        [
+          "What time does it arrive?",
+          "U soat nechada yetib keladi?"
+        ],
+        [
+          "dress",
+          "ko‘ylak (ayollar)"
+        ],
+        [
+          "jacket",
+          "pidjak / kurtka"
+        ],
+        [
+          "shoes",
+          "oyabzal"
+        ],
+        [
+          "black",
+          "qora"
+        ],
+        [
+          "tall",
+          "novcha"
+        ],
+        [
+          "short",
+          "kalta / past bo‘yli"
+        ],
+        [
+          "old",
+          "eski / qari"
+        ],
+        [
+          "new",
+          "yangi"
+        ],
+        [
+          "very",
+          "juda"
+        ],
+        [
+          "really",
+          "haqiqatan / juda"
+        ],
+        [
+          "bus station",
+          "avtovokzal"
+        ],
+        [
+          "ticket",
+          "chipta"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Kiyim uslubi",
+          "focus": "Colours and clothes · adverbs of frequency",
+          "goal": "Kiyimlarni rang bilan tasvirlang va qanchalik tez-tez kiyishingizni ayting.",
+          "teach": "I usually wear a blue shirt. She sometimes wears a jacket. Chastota ravishi asosiy fe'ldan oldin keladi: I often wear... Be fe'lidan keyin keladi: It is always comfortable.",
+          "practice": "👕 Haftaning uch kuni uchun kiyim tanlang. Har birini rang bilan tasvirlab, usually/sometimes/never dan kamida ikkitasini ishlating.",
+          "quiz": [
+            [
+              "I ___ wear a jacket in winter. (odatda)",
+              "usually",
+              "usual",
+              "use",
+              0
+            ],
+            [
+              "To‘g‘ri birikma",
+              "a blue shirt",
+              "a shirt blue",
+              "blue a shirt",
+              0
+            ],
+            [
+              "She ___ wears trainers. (ba'zan)",
+              "neverly",
+              "sometimes",
+              "some time",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Ajoyib arxitektura",
+          "focus": "Adjectives · Wh- questions · very/really",
+          "goal": "Yoqtirgan binongizni sifatlar bilan tasvirlab, Wh- savollar bering.",
+          "teach": "It's a very modern building. It's really beautiful. What does it look like? Where is it? Why do you like it? Very/really sifatdan oldin keladi.",
+          "practice": "🏛️ Xayoliy bino rasmini tasavvur qiling. Uch sifat bilan tasvirlab, What/Where/Why savollaridan ikkitasiga javob yozing.",
+          "quiz": [
+            [
+              "It's ___ beautiful building.",
+              "a very",
+              "an very",
+              "very a",
+              0
+            ],
+            [
+              "___ do you like the building? — Because it's unusual.",
+              "Who",
+              "Where",
+              "Why",
+              2
+            ],
+            [
+              "‘U juda zamonaviy’",
+              "It really is modern building.",
+              "It's modern really a.",
+              "It's really modern.",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Dunyo bo‘ylab uslublar",
+          "focus": "Parts of the body · present simple all forms",
+          "goal": "Tashqi ko‘rinish va uslub haqida ijobiy, inkor va savol shaklida gapiring.",
+          "teach": "She has long hair and blue eyes. Do you wear traditional clothes? He doesn't wear a hat. Does she like this style? Present simplening ijobiy, inkor va savol shakllarini takrorlang.",
+          "practice": "🌍 Ikki xayoliy insonning kiyimi va tashqi ko‘rinishini taqqoslang. Bitta ijobiy, bitta inkor va bitta Do/Does savol yozing.",
+          "quiz": [
+            [
+              "She has long ___.",
+              "a hair",
+              "hairs",
+              "hair",
+              2
+            ],
+            [
+              "He ___ wear a hat at work.",
+              "don't",
+              "isn't",
+              "doesn't",
+              2
+            ],
+            [
+              "___ you like this style?",
+              "Does",
+              "Are",
+              "Do",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: safar ma'lumoti",
+          "focus": "Asking/giving travel information · arrangements by text",
+          "goal": "Yo‘l, vaqt va uchrashuvni aniqlashtirib, qisqa xabar almashing.",
+          "teach": "Where does the bus leave from? What time does it arrive? Let's meet at six. — Great! Xabarda uchrashuv joyi va vaqtini aniq ko‘rsating.",
+          "practice": "🚆 Xayoliy safar jadvalidan foydalaning. Jo‘nash joyi/vaqtini so‘rab-javob qiling va uchrashuvni kelishuvchi ikki SMS yozing.",
+          "quiz": [
+            [
+              "Where ___ the train leave from?",
+              "is",
+              "do",
+              "does",
+              2
+            ],
+            [
+              "Let's meet ___ six o'clock.",
+              "on",
+              "in",
+              "at",
+              2
+            ],
+            [
+              "‘Avtobus qayerga yetib keladi?’",
+              "Where is the bus arrive?",
+              "Where arrives the bus?",
+              "Where does the bus arrive?",
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Joylar va qulayliklar",
+      "icon": "🏙️",
+      "color": "#88d9e5",
+      "theme": "Shahar, mehmonxona, xonalar va muammolarni tushuntirish",
+      "vocab": [
+        [
+          "museum",
+          "muzey"
+        ],
+        [
+          "station",
+          "bekat / vokzal"
+        ],
+        [
+          "opposite",
+          "ro‘parasida"
+        ],
+        [
+          "hotel facilities",
+          "mehmonxona qulayliklari"
+        ],
+        [
+          "Wi-Fi",
+          "Wi-Fi"
+        ],
+        [
+          "lift",
+          "lift"
+        ],
+        [
+          "kitchen",
+          "oshxona"
+        ],
+        [
+          "bedroom",
+          "yotoqxona"
+        ],
+        [
+          "each",
+          "har biri"
+        ],
+        [
+          "all the",
+          "barcha"
+        ],
+        [
+          "There is a problem.",
+          "Muammo bor."
+        ],
+        [
+          "It doesn't work.",
+          "U ishlamayapti."
+        ],
+        [
+          "bank",
+          "bank"
+        ],
+        [
+          "hospital",
+          "shifoxona"
+        ],
+        [
+          "café",
+          "kafe"
+        ],
+        [
+          "park",
+          "bog‘ / xiyobon"
+        ],
+        [
+          "supermarket",
+          "supermarket"
+        ],
+        [
+          "reception",
+          "qabulxona"
+        ],
+        [
+          "bathroom",
+          "hammom"
+        ],
+        [
+          "living room",
+          "mehmonxona"
+        ],
+        [
+          "chair",
+          "stul"
+        ],
+        [
+          "sofa",
+          "divan"
+        ],
+        [
+          "window",
+          "deraza"
+        ],
+        [
+          "shower",
+          "dush"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Ikki shahar",
+          "focus": "Places in a town · there is/there are",
+          "goal": "Shahardagi joylarni birlik va ko‘plikda tasvirlang.",
+          "teach": "There's a museum near the station. There are two cafés in the town. There is birlik, there are ko‘plikdagi narsalar uchun ishlatiladi.",
+          "practice": "🏙️ Ikki xayoliy shahar xaritasini tuzing. Har birida There is va There are bilan gap yozib, farqini tushuntiring.",
+          "quiz": [
+            [
+              "___ a museum near here.",
+              "There are",
+              "There is",
+              "It are",
+              1
+            ],
+            [
+              "___ two cafés on this street.",
+              "They is",
+              "There is",
+              "There are",
+              2
+            ],
+            [
+              "There ___ a station in my village.",
+              "don't",
+              "aren't",
+              "isn't",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Wi-Fi bormi?",
+          "focus": "Hotel facilities · Is there...? / Are there...?",
+          "goal": "Mehmonxona qulayliklarini so‘rang va qisqa javob bering.",
+          "teach": "Is there Wi-Fi? — Yes, there is. Are there any lifts? — No, there aren't. Is there birlik, Are there ko‘plik uchun ishlatiladi.",
+          "practice": "🏨 Resepshnda Wi-Fi, lift va boshqa qulayliklar haqida to‘rtta savolli suhbat yozing; qisqa javoblarni ham qo‘shing.",
+          "quiz": [
+            [
+              "___ there a swimming pool?",
+              "Are",
+              "Is",
+              "Does",
+              1
+            ],
+            [
+              "Are there two beds? — Yes, ___.",
+              "they do",
+              "there are",
+              "there is",
+              1
+            ],
+            [
+              "‘Wi-Fi bormi?’",
+              "There Wi-Fi is?",
+              "Is there Wi-Fi?",
+              "Are Wi-Fi?",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Har bir xonadonda oshxona bormi?",
+          "focus": "Rooms/furniture · each and all the",
+          "goal": "Xonalar va jihozlarni tasvirlab, each va all the ni ishlating.",
+          "teach": "Each flat has a kitchen. All the rooms have a window. Yotoqxona, oshxona va mehmonxona jihozlarini sodda gaplar bilan tasvirlang.",
+          "practice": "🛋️ Uch xonali uy rejasini chizing. Each bilan bitta, all the bilan bitta gap va mebel nomlari bilan yana ikkita gap yozing.",
+          "quiz": [
+            [
+              "Har bir xonada",
+              "all each room",
+              "every the room",
+              "in each room",
+              2
+            ],
+            [
+              "Chiroq karavotning yonida",
+              "The lamp next bed is.",
+              "The lamp is from bed.",
+              "The lamp is next to the bed.",
+              2
+            ],
+            [
+              "Barcha xonalar",
+              "all the rooms",
+              "each rooms",
+              "all room the",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: mehmonxona sharhi",
+          "focus": "Explaining problems · writing a hotel review",
+          "goal": "Mehmonxonadagi muammoni muloyim tushuntiring va qisqa sharh yozing.",
+          "teach": "Excuse me, there's a problem with the shower. It doesn't work. Could you help, please? Sharhda bitta yaxshi jihat va bitta muammoni ayting.",
+          "practice": "🧳 Mehmon va resepshn xodimi bo‘lib 4 replikali dialog yozing. So‘ng qulaylik, muammo va umumiy bahoni beruvchi 4 jumla yozing.",
+          "quiz": [
+            [
+              "Muloyim yordam so‘rash",
+              "Help me now!",
+              "Could you help me?",
+              "You help?",
+              1
+            ],
+            [
+              "‘Xonada issiq suv yo‘q’",
+              "There isn't any hot water in the room.",
+              "There aren't hot water.",
+              "It not hot water.",
+              0
+            ],
+            [
+              "Sharhda qarama-qarshilik",
+              "but",
+              "each",
+              "and",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Ko‘nikmalar va qiziqishlar",
+      "icon": "🎸",
+      "color": "#b4e3a4",
+      "theme": "Qobiliyat, iltimos, hobbi va ijtimoiy tarmoq posti",
+      "vocab": [
+        [
+          "paint",
+          "rasm chizmoq / bo‘yamoq"
+        ],
+        [
+          "cook",
+          "ovqat pishirmoq"
+        ],
+        [
+          "sing",
+          "kuylamoq"
+        ],
+        [
+          "carefully",
+          "ehtiyotkorlik bilan"
+        ],
+        [
+          "quickly",
+          "tez"
+        ],
+        [
+          "well",
+          "yaxshi"
+        ],
+        [
+          "hobby",
+          "sevimli mashg‘ulot"
+        ],
+        [
+          "go out",
+          "ko‘ngil yozgani chiqmoq"
+        ],
+        [
+          "like doing",
+          "qilishni yoqtirmoq"
+        ],
+        [
+          "Can you help me?",
+          "Menga yordam bera olasizmi?"
+        ],
+        [
+          "Could you...?",
+          "...qila olasizmi? (muloyim)"
+        ],
+        [
+          "post",
+          "ijtimoiy tarmoq posti"
+        ],
+        [
+          "swim",
+          "suzmoq"
+        ],
+        [
+          "dance",
+          "raqsga tushmoq"
+        ],
+        [
+          "draw",
+          "rasm chizmoq"
+        ],
+        [
+          "play chess",
+          "shaxmat o‘ynamoq"
+        ],
+        [
+          "play the guitar",
+          "gitara chalmoq"
+        ],
+        [
+          "run",
+          "yugurmoq"
+        ],
+        [
+          "slowly",
+          "sekin"
+        ],
+        [
+          "badly",
+          "yomon"
+        ],
+        [
+          "politely",
+          "odob bilan"
+        ],
+        [
+          "Would you... ?",
+          "...xohlarmidingiz?"
+        ],
+        [
+          "Could you open...?",
+          "...ochib bera olasizmi?"
+        ],
+        [
+          "club",
+          "to‘garak"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "U rasm chiza oladi",
+          "focus": "Skills · can/can't",
+          "goal": "Qila oladigan va qila olmaydigan ishlaringizni ayting.",
+          "teach": "I can swim, but I can't paint. She can sing. Can/can't dan keyin fe'lning oddiy shakli keladi; can bilan he/she uchun -s qo‘shilmaydi.",
+          "practice": "🎨 O‘zingiz va xayoliy do‘st uchun ko‘nikmalar jadvali tuzing. Har biri haqida uchtadan can/can't gap yozing.",
+          "quiz": [
+            [
+              "He ___ play chess.",
+              "can",
+              "cans",
+              "is can",
+              0
+            ],
+            [
+              "I ___ drive. (qila olmayman)",
+              "don't can",
+              "can't",
+              "am not can",
+              1
+            ],
+            [
+              "She can ___ very well.",
+              "sings",
+              "sing",
+              "to sing",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Yordam bera olasizmi?",
+          "focus": "Can you...? · adverbs of manner · simple requests",
+          "goal": "Qobiliyatni so‘rang, muloyim iltimos qiling va harakatni ravish bilan tasvirlang.",
+          "teach": "Can you cook? — Yes, I can. Can you help me, please? She paints carefully. Quickly/well/carefully harakat qanday bajarilishini bildiradi.",
+          "practice": "🤝 Uchta vaziyat uchun muloyim Can you...? iltimos tuzing. Javoblarda well/quickly/carefully dan foydalaning.",
+          "quiz": [
+            [
+              "Can you ___ me, please?",
+              "helping",
+              "helps",
+              "help",
+              2
+            ],
+            [
+              "She paints ___. (ehtiyotkorlik bilan)",
+              "careful",
+              "carefully",
+              "care",
+              1
+            ],
+            [
+              "Can he swim? — No, he ___.",
+              "doesn't",
+              "can't",
+              "isn't",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Men tashqariga chiqishni yoqtiraman",
+          "focus": "Hobbies · like/love/hate + -ing",
+          "goal": "Hobbi va yoqtirishlarni fe'lning -ing shakli bilan ayting.",
+          "teach": "I like going out. He loves playing chess. They hate waiting. Like/love/hate dan keyin fe'lga -ing qo‘shiladi.",
+          "practice": "🎲 Hobbi tanlang va like/love/hate + -ing bilan uch gap tuzing. Sherigingizdan Do you like ...ing? deb so‘rang.",
+          "quiz": [
+            [
+              "I like ___ books.",
+              "to reading",
+              "read",
+              "reading",
+              2
+            ],
+            [
+              "He loves ___ football.",
+              "play",
+              "playing",
+              "plays",
+              1
+            ],
+            [
+              "They hate ___ early.",
+              "get up",
+              "getting up",
+              "gets up",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: ijtimoiy tarmoq posti",
+          "focus": "Simple requests · writing a social media post",
+          "goal": "Muloyim iltimos qiling va qiziqishingiz haqida qisqa post yozing.",
+          "teach": "Could you open the window, please? Can you help me? Postda hobbi yoki noodatiy mashg‘ulotni tanishtirib, do‘stona taklif qo‘shing.",
+          "practice": "📱 Qiziqishingiz haqida 4 jumlali post yozing. Like + -ing, can/can't va bitta muloyim iltimosni qo‘shing.",
+          "quiz": [
+            [
+              "‘Ehtiyotkorlik bilan’",
+              "care",
+              "careful",
+              "carefully",
+              2
+            ],
+            [
+              "Muloyim iltimos",
+              "You help me now.",
+              "Could you help me, please?",
+              "Can you helping me?",
+              1
+            ],
+            [
+              "Postda qaysi jumla tabiiy?",
+              "I like went out.",
+              "I like go out.",
+              "I like going out.",
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "O‘tmishimiz",
+      "icon": "📸",
+      "color": "#ffbd78",
+      "theme": "O‘tmishdagi holatlar, voqealar, object pronouns va tarjimai hol",
+      "vocab": [
+        [
+          "was / were",
+          "edi"
+        ],
+        [
+          "born",
+          "tug‘ilgan"
+        ],
+        [
+          "died",
+          "vafot etgan"
+        ],
+        [
+          "in 2010",
+          "2010-yilda"
+        ],
+        [
+          "last year",
+          "o‘tgan yili"
+        ],
+        [
+          "yesterday",
+          "kecha"
+        ],
+        [
+          "met",
+          "uchrashdi"
+        ],
+        [
+          "him / her",
+          "uni (erkak / ayol)"
+        ],
+        [
+          "them",
+          "ularni"
+        ],
+        [
+          "birthday",
+          "tug‘ilgan kun"
+        ],
+        [
+          "wedding",
+          "to‘y"
+        ],
+        [
+          "Congratulations!",
+          "Tabriklayman!"
+        ],
+        [
+          "January",
+          "yanvar"
+        ],
+        [
+          "February",
+          "fevral"
+        ],
+        [
+          "in 1998",
+          "1998-yilda"
+        ],
+        [
+          "when I was a child",
+          "bolaligimda"
+        ],
+        [
+          "moved",
+          "ko‘chib o‘tdi"
+        ],
+        [
+          "lived",
+          "yashadi"
+        ],
+        [
+          "worked",
+          "ishladi"
+        ],
+        [
+          "invited",
+          "taklif qildi"
+        ],
+        [
+          "us",
+          "bizni / bizga"
+        ],
+        [
+          "me",
+          "meni / menga"
+        ],
+        [
+          "What happened?",
+          "Nima bo‘ldi?"
+        ],
+        [
+          "Really?",
+          "Rostdanmi?"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Yetti yoshimizda",
+          "focus": "Dates · past be (was/were)",
+          "goal": "O‘tmishdagi yosh, sana va joy haqida was/were bilan gapiring.",
+          "teach": "I was seven in 2015. We were at school. Was she happy? — Yes, she was. Was I/he/she/it bilan, were you/we/they bilan ishlatiladi.",
+          "practice": "📅 Xayoliy bola uchun uch sana belgilang. Was/were bilan o‘sha paytdagi yoshi, joyi va holati haqida gap yozing.",
+          "quiz": [
+            [
+              "I ___ at home yesterday.",
+              "was",
+              "am",
+              "were",
+              0
+            ],
+            [
+              "They ___ at the museum.",
+              "are",
+              "were",
+              "was",
+              1
+            ],
+            [
+              "___ she born in 1999?",
+              "Were",
+              "Was",
+              "Did",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "O‘tmishdagi hayotlar",
+          "focus": "was born/died · regular past simple verbs",
+          "goal": "Tarjimai hol faktlari va regular fe'llar bilan o‘tmishdagi hayotni ayting.",
+          "teach": "She was born in 1998. He died in 2010. They lived in a small town and worked at a school. Regular past fe'llarga -ed qo‘shiladi; talaffuzi /t/, /d/ yoki /ɪd/ bo‘lishi mumkin.",
+          "practice": "📰 Xayoliy inson haqida 5 faktli mini-biografiya yozing. Was born, lived/worked va ikkita sanani ishlating.",
+          "quiz": [
+            [
+              "visit — o‘tgan zamon",
+              "visitted",
+              "visited",
+              "visits",
+              1
+            ],
+            [
+              "watch — o‘tgan zamon",
+              "watchted",
+              "watchs",
+              "watched",
+              2
+            ],
+            [
+              "We ___ in a café last night.",
+              "works",
+              "worked",
+              "work",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Muhim lahzalar",
+          "focus": "Object pronouns · past time phrases · special occasions",
+          "goal": "Object pronouns bilan muhim voqeani ayting va suhbatdoshga qiziqish bildiring.",
+          "teach": "I met Sara yesterday. I called her. We invited them last year. Object pronouns: me, you, him, her, it, us, them. Qiziqish bildiring: Really? That's great! Oh no!",
+          "practice": "🎉 Tug‘ilgan kun, to‘y yoki bitiruv voqeasini tanlang. To‘rt gapda kamida ikkita object pronoun ishlating va suhbatdoshning qiziqish bildiruvchi javobini qo‘shing.",
+          "quiz": [
+            [
+              "I called Sara. I called ___.",
+              "him",
+              "them",
+              "her",
+              2
+            ],
+            [
+              "We invited Ali and Malika. We invited ___.",
+              "him",
+              "them",
+              "her",
+              1
+            ],
+            [
+              "‘Really?’ suhbatda nimani bildiradi?",
+              "Qiziqish",
+              "Kelajak reja",
+              "Joylashuv",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: tarjimai hol",
+          "focus": "Special occasions · showing interest · biography",
+          "goal": "Muhim sana va voqealarni tartiblab, sodda tarjimai hol yozing.",
+          "teach": "He was born in 2001. She moved to Tashkent in 2018. O‘tgan zamon iboralari va sanalarni ishlating; voqealarni vaqt tartibida yozing.",
+          "practice": "🧑‍🚀 Haqiqiy yoki xayoliy inson haqida 5 jumlali biografiya yozing. Tug‘ilgan yil, o‘tgan ikkita voqea va qiziqish bildiruvchi iborani kiriting.",
+          "quiz": [
+            [
+              "He ___ born in 2001.",
+              "were",
+              "did",
+              "was",
+              2
+            ],
+            [
+              "Qaysi biri o'tgan voqeani vaqt tartibida beradi?",
+              "First, then, finally.",
+              "Because, but, or.",
+              "Tomorrow, now, yesterday.",
+              0
+            ],
+            [
+              "‘Ular bilan gaplashdim’",
+              "I spoke to they.",
+              "I spoke to them.",
+              "I spoke them to.",
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "G‘ayrioddiy hikoyalar",
+      "icon": "🌦️",
+      "color": "#b39cff",
+      "theme": "Xotiralar, irregular verbs, ob-havo va tadbir sharhi",
+      "vocab": [
+        [
+          "happen",
+          "sodir bo‘lmoq"
+        ],
+        [
+          "find",
+          "topmoq"
+        ],
+        [
+          "leave",
+          "ketmoq / qoldirmoq"
+        ],
+        [
+          "meet",
+          "uchrashmoq"
+        ],
+        [
+          "take",
+          "olmoq"
+        ],
+        [
+          "tell",
+          "aytib bermoq"
+        ],
+        [
+          "a long time ago",
+          "ancha oldin"
+        ],
+        [
+          "surprised",
+          "hayron"
+        ],
+        [
+          "rainy",
+          "yomg‘irli"
+        ],
+        [
+          "windy",
+          "shamolli"
+        ],
+        [
+          "last time",
+          "oxirgi safar"
+        ],
+        [
+          "event review",
+          "tadbir sharhi"
+        ],
+        [
+          "went",
+          "bordi"
+        ],
+        [
+          "saw",
+          "ko‘rdi"
+        ],
+        [
+          "had",
+          "bor edi / ega bo‘ldi"
+        ],
+        [
+          "got",
+          "oldi / bo‘lib qoldi"
+        ],
+        [
+          "bought",
+          "sotib oldi"
+        ],
+        [
+          "made",
+          "yasadi"
+        ],
+        [
+          "cloudy",
+          "bulutli"
+        ],
+        [
+          "sunny",
+          "quyoshli"
+        ],
+        [
+          "exciting",
+          "hayajonli"
+        ],
+        [
+          "two days ago",
+          "ikki kun oldin"
+        ],
+        [
+          "first / then / finally",
+          "avval / keyin / oxirida"
+        ],
+        [
+          "What was the weather like?",
+          "Ob-havo qanday edi?"
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Quvonchli xotiralar",
+          "focus": "Past simple irregular verbs · adjective + noun",
+          "goal": "Irregular fe'llar bilan esda qolgan voqeani qisqa aytib bering.",
+          "teach": "I went to the park, saw a strange bird and took a photo. We had a great day. Irregular forms: go/went, see/saw, take/took, have/had.",
+          "practice": "📸 Went/saw/had/found/met/took fe'llaridan uchtasini tanlang. Ulardan foydalanib to‘rt jumlali xotira yozing.",
+          "quiz": [
+            [
+              "go — past simple",
+              "goes",
+              "goed",
+              "went",
+              2
+            ],
+            [
+              "see — past simple",
+              "seen",
+              "saw",
+              "seed",
+              1
+            ],
+            [
+              "‘g‘alati hikoya’",
+              "a strange story",
+              "a story strange",
+              "strange a story",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Yaxshi bahona",
+          "focus": "Past simple negatives and questions",
+          "goal": "Did/didn't bilan o‘tgan voqeani so‘rang va inkor qiling.",
+          "teach": "Did you call? — No, I didn't. She didn't see the message. Did/didn't dan keyin fe'lning oddiy shakli keladi: Did you go?",
+          "practice": "🕵️ Sirli voqea uchun Did...? shaklida uch savol tuzing. Ikki javobni didn't bilan yozing; fe'lni oddiy shaklda qoldiring.",
+          "quiz": [
+            [
+              "___ you visit the museum?",
+              "Were",
+              "Do",
+              "Did",
+              2
+            ],
+            [
+              "She didn't ___ the key.",
+              "find",
+              "found",
+              "finds",
+              0
+            ],
+            [
+              "Did he call? — No, he ___.",
+              "didn't",
+              "wasn't",
+              "doesn't",
+              0
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Yangilik hikoyalari",
+          "focus": "Ago · verb phrases · past time expressions",
+          "goal": "Qachon sodir bo‘lganini ago bilan aytib, voqeani ketma-ket bayon qiling.",
+          "teach": "It happened two days ago. I went out, met a friend and found a wallet. First/then/finally kabi ketma-ketlik iboralari hikoyani tushunarli qiladi.",
+          "practice": "📰 Xayoliy yangilik yozing: voqeani ago bilan vaqtga bog‘lang va first/then/finally yordamida to‘rt gapda ayting.",
+          "quiz": [
+            [
+              "‘Uch kun oldin’",
+              "last ago three",
+              "ago three days",
+              "three days ago",
+              2
+            ],
+            [
+              "It ___ rainy yesterday.",
+              "were",
+              "did",
+              "was",
+              2
+            ],
+            [
+              "Hikoyadagi ‘keyin’",
+              "each",
+              "ago",
+              "then",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: ob-havo va tadbir sharhi",
+          "focus": "Talking about the weather · event review",
+          "goal": "Ob-havoni tasvirlang va o‘tgan tadbirga qisqa baho bering.",
+          "teach": "It was rainy and windy. The concert started late, but the music was great. Sharhda tadbir, ob-havo, fikringiz va sababini yozing.",
+          "practice": "🌦️ Ochiq havodagi tadbir haqida 5 jumlali sharh yozing. Ob-havo, past simple va because bilan bitta sabab kiriting.",
+          "quiz": [
+            [
+              "It ___ rainy and windy yesterday.",
+              "is",
+              "were",
+              "was",
+              2
+            ],
+            [
+              "Sharhda fikrni sabab bilan bog‘lash uchun",
+              "next",
+              "ago",
+              "because",
+              2
+            ],
+            [
+              "‘Tadbir ajoyib edi’",
+              "The event was great.",
+              "The event were great.",
+              "The event is great yesterday.",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Yangi joylar, yangi loyihalar",
+      "icon": "🚀",
+      "color": "#ff9f82",
+      "theme": "Kelajak rejalari, hayotdagi o‘zgarish, kafe va takliflar",
+      "vocab": [
+        [
+          "next week",
+          "kelasi hafta"
+        ],
+        [
+          "in the future",
+          "kelajakda"
+        ],
+        [
+          "project",
+          "loyiha"
+        ],
+        [
+          "raise money",
+          "pul yig‘moq"
+        ],
+        [
+          "move",
+          "ko‘chmoq"
+        ],
+        [
+          "would like",
+          "xohlardim"
+        ],
+        [
+          "menu",
+          "menyu"
+        ],
+        [
+          "I'd like...",
+          "...xohlardim"
+        ],
+        [
+          "at the weekend",
+          "dam olish kunida"
+        ],
+        [
+          "invite",
+          "taklif qilmoq"
+        ],
+        [
+          "Would you like to...?",
+          "...qilishni xohlaysizmi?"
+        ],
+        [
+          "Thank you for...",
+          "...uchun rahmat"
+        ],
+        [
+          "tomorrow",
+          "ertaga"
+        ],
+        [
+          "on Monday",
+          "dushanba kuni"
+        ],
+        [
+          "later",
+          "keyinroq"
+        ],
+        [
+          "start",
+          "boshlamoq"
+        ],
+        [
+          "plan",
+          "reja"
+        ],
+        [
+          "café",
+          "kafe"
+        ],
+        [
+          "cake",
+          "tort"
+        ],
+        [
+          "sandwich",
+          "sendvich"
+        ],
+        [
+          "coffee",
+          "qahva"
+        ],
+        [
+          "Would you like a...?",
+          "...xohlaysizmi?"
+        ],
+        [
+          "at six o'clock",
+          "soat oltida"
+        ],
+        [
+          "Thank you for inviting me.",
+          "Taklif qilganingiz uchun rahmat."
+        ]
+      ],
+      "lessons": [
+        {
+          "id": 1,
+          "title": "5000 funt yig‘moqchimiz",
+          "focus": "Going to · positive/negative · future time phrases",
+          "goal": "Kelajak rejasi va amalga oshirmoqchi bo‘lmagan ishni ayting.",
+          "teach": "We're going to raise £5,000. I'm going to help. He isn't going to travel next week. Use be + going to + base verb for plans.",
+          "practice": "💡 Kichik ijtimoiy loyiha tanlang. 3 ta going to reja va 1 ta going to inkor gap bilan maqsadingizni taqdim eting.",
+          "quiz": [
+            [
+              "I ___ going to study tonight.",
+              "am",
+              "is",
+              "are",
+              0
+            ],
+            [
+              "They ___ going to travel tomorrow.",
+              "don't",
+              "isn't",
+              "aren't",
+              2
+            ],
+            [
+              "‘Kelasi hafta’",
+              "ago week",
+              "last week",
+              "next week",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Yangi hayot",
+          "focus": "Going to questions · short answers · life changes",
+          "goal": "Kelajak rejalari haqida going to bilan savol bering va qisqa javob qaytaring.",
+          "teach": "Are you going to move? — Yes, I am. Is she going to study? — No, she isn't. Yangi uy, ish yoki safar kabi hayotdagi o‘zgarishlar haqida gapiring.",
+          "practice": "🧭 Yangi joyga ko‘chayotgan xayoliy insonni tanlang. Are you going to...? bilan to‘rt savol-javob tuzing.",
+          "quiz": [
+            [
+              "___ you going to move next month?",
+              "Do",
+              "Are",
+              "Is",
+              1
+            ],
+            [
+              "Is she going to study? — Yes, she ___.",
+              "does",
+              "is",
+              "are",
+              1
+            ],
+            [
+              "They ___ going to travel this year.",
+              "doesn't",
+              "isn't",
+              "aren't",
+              2
+            ]
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Kafe shaharlari",
+          "focus": "Cafe food · would like · ordering food and drink",
+          "goal": "would like yordamida xohishni bildirib, kafeda buyurtma bering.",
+          "teach": "I'd like a coffee, please. I'd like to try the local cake. Would you like some water? Use would like + noun or to + verb for a polite choice.",
+          "practice": "☕ Menyudan uchta narsa tanlang. Mijoz va ofitsiant bo‘lib kamida 5 replikali buyurtma dialogi yozing.",
+          "quiz": [
+            [
+              "Muloyim buyurtma",
+              "I like tea now.",
+              "Give tea.",
+              "I'd like a tea, please.",
+              2
+            ],
+            [
+              "I'd like ___ try the cake.",
+              "for",
+              "to",
+              "at",
+              1
+            ],
+            [
+              "‘Yana nima buyurtma qilasiz?’",
+              "What would you like else?",
+              "What else would you like?",
+              "What else you like?",
+              1
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Gapirish va yozish: taklif va minnatdorchilik",
+          "focus": "Invitations · thank-you notes · unit review",
+          "goal": "Taklif va minnatdorchilik xati yozib, bo‘lim ko‘nikmalarini jamlang.",
+          "teach": "Would you like to join us? Let's meet at the weekend. Thank you for inviting me. Taklifda nima, qayerda va qachonligini yozing; javobda minnatdorchilik bildiring.",
+          "practice": "✉️ Yangi loyihangiz tadbiriga taklif yozing va unga qisqa javob qaytaring. So‘ng tanishuv, kafe buyurtmasi va kelajak rejalarini bitta final dialogda birlashtiring.",
+          "quiz": [
+            [
+              "Taklif qilish",
+              "Would you like to join us?",
+              "Do you like join us?",
+              "Would you like joining us?",
+              0
+            ],
+            [
+              "Taklif uchun minnatdorchilik",
+              "Thanks for inviting me!",
+              "Thank you invite.",
+              "Thanks invite me!",
+              0
+            ],
+            [
+              "‘Biz loyiha boshlamoqchimiz’",
+              "We going start a project.",
+              "We're start going project.",
+              "We're going to start a project.",
+              2
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
